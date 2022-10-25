@@ -1,0 +1,11 @@
+configurations {
+	pmd
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src']
+		}
+	}
+}

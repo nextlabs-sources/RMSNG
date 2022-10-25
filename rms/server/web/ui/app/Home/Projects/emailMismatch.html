@@ -1,0 +1,32 @@
+<div data-ng-controller="emailMismatchController">
+    <div id="rms-right-panel" style="overflow:auto;">
+        <div id="personal_summary_row" class="row">
+            <div class="shadow" id="summary" style="margin: 0 auto;" data-ng-if="projectName!='undefined'&&projectName!=null">
+                    <div id="email-error">
+                        <div class="row display-block">
+                            <div class="col-xs-12" id="email-mismatch-title">
+                                <h4><font color="white">{{'project.email.mismatch.title' | translate}}</font></h4>
+                                <h5><font color="white">{{'project.email.mismatch.discription' | translate}}</font></h5>
+                            </div>
+                        </div>
+                        <div class="row display-block col-xs-12 email-mismatch-padding">
+                            <label class="file-info-label"><b>{{'project.email.mismatch.gotoMyDrive1' | translate}}<a class="pointer-click font-blue" data-ng-click="gotoMyDrive()">{{'project.email.mismatch.gotoMyDrive2' | translate}}</a>!</b></label>
+                            <br>
+                            <label class="file-info-label">{{'project.email.mismatch.unable.join' | translate}}<a class="font-blue"> {{projectName}}</a></label>    
+                        </div>
+                        <div class="row display-block col-xs-12 email-mismatch-padding">
+                            <label class="file-info-label"><b>{{'project.email.mismatch.join' | translate}}</b></label>
+                            <br>
+                            <label><a class="font-blue">{{projectName}}</a></label>
+                            <br>
+                            <label class="file-info-label">{{'project.email.mismatch.signup.info' | translate}}</label>
+                        </div>
+                        <div class="row display-block col-xs-12 form-group email-mismatch-padding">
+                            <a class="btn btn-default rms-settings-button-color" data-ng-click="signup()">{{'project.email.mismatch.signup' | translate}}</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div ng-include="'ui/app/Home/Projects/footerProject.html'"></div>
+</div>

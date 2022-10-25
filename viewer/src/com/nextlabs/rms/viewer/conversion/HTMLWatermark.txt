@@ -1,0 +1,10 @@
+<svg height="0" width="0" xmlns="http://www.w3.org/2000/svg" version="1.1"> 
+    <defs> 
+        <pattern id="watermarkPattern" patternUnits="userSpaceOnUse" width="{{width}}" height="{{width}}"> 
+            <image xlink:href="{{watermark.png}}" x="0" y="0" width="{{width}}" height="{{width}}"></image> 
+        </pattern> 
+    </defs> 
+</svg>
+<svg id="watermark" style="position: absolute; z-index: 10; display:none; width: 99vw; height: 88vh;">
+    <rect style="fill: url(#watermarkPattern) #fff;" x="0" y="0" height="100%" width="100%"></rect>
+</svg>

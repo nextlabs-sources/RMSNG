@@ -1,0 +1,169 @@
+<div class="rms-upload-file protect-widget-dialog">
+	<div id="fileUploading" data-ng-show="isLoading">
+		<div id="pgLoading-image">
+           <img src="ui/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+	<div class="text-align-center">
+		<h4>{{header}}</h4>
+		<div data-ng-if="!success">
+			<label data-ng-if="!fileConfirmed">{{"widget.choose.file.description" | translate}}</label>
+			<label data-ng-if="fileConfirmed && !isNxl && operation == 'protect' && protectInPlaceAllowed && !saveFileLocationConfirmed">{{"widget.save-location.file.description" | translate}}</label>
+			<label data-ng-if="fileConfirmed && !isNxl && saveFileLocationConfirmed && protectUsing.mode=='rights'">{{"widget.protect.file.description" | translate}}</label>
+			<label data-ng-if="fileConfirmed && !isNxl && saveFileLocationConfirmed && protectUsing.mode=='classification'">{{"widget.classify.file.description" | translate}}</label>
+			<label data-ng-if="fileConfirmed && isNxl && saveFileLocationConfirmed && operation === 'share'">{{"widget.share.file.description" | translate}}</label>
+		</div> 
+	</div>
+
+	<div class="error-container">
+		<div ng-class="{'alert': true, 'alert-danger': true, 'show-alert': isError, 'fading-out': errorFadeOut}">
+			<p>{{error}}</p>
+			<button type="button" class="close" ng-click="hideError()">x</button>
+		</div>
+	</div>
+
+	<div ng-show="!fileConfirmed" class="row" style="height: 400px; background-color: #F2F3F5; margin: 20px; border: 2px #F2F3F5 solid;">
+		<!-- Repo Selector for Desktop -->
+		<div class="widget-desktop-display" data-ng-include="'ui/app/Home/Repositories/partials/protectWidgetRepoTemplate.html'"></div>
+		
+		<!--File List-->
+		<div ng-if="!srcIsLocal" class="protect-widget-dialog-right-col protect-widget-dialog-repo-right-col">	
+			<!-- Repo Selector for Mobile -->
+			<div class="widget-mobile-display" data-ng-include="'ui/app/Home/Repositories/partials/protectWidgetRepoTemplate.html'"></div>
+			<h5 class="padding-10">
+  				<a class="rms-breadCrumbItem rms-file-item" data-ng-click="onClickFile({isFolder: true, pathId: '/', path:'/', repoId: breadCrumbsContent[0].repoId})" ><b>{{srcRepo.name}}</b></a>
+  				<span data-ng-repeat="eachFolder in breadCrumbsContent"> 
+  					<b> > </b>
+	  				<a class="rms-breadCrumbItem rms-file-item" data-ng-click="onClickFile(eachFolder)">
+	  					<b>{{eachFolder.name}}</b>
+	  				</a>
+  				</span>
+  			</h5>
+			<div ng-class="repoContents.length > 0 ? 'nonEmptyFileList' : 'emptyFileList'">
+				<ul data-ng-if="!isLoadingFileList" class="padding-left-0" id="unordered-fileList-id">
+					<li class="list-group-item rms-file-list pointer-click" data-ng-repeat="eachFile in repoContents |orderBy: selectedSort" data-ng-class="srcFile === eachFile ? 'rms-file-list-selected': ''" data-ng-click="onClickFile(eachFile)"> 
+						<img data-ng-if="!eachFile.isFolder" ng-src="{{fileIconName(eachFile)}}" alt="icon">
+						<i data-ng-if="eachFile.isFolder" class="glyphicon glyphicon-folder-close" style="padding:3px; font-size: 18px;"></i>
+						<label class="rms-file-item">{{eachFile.name}}</label>
+					</li>
+				</ul>
+				<label data-ng-if="!isLoadingFileList && repoContents.length == 0" class="rms-file-item" style="font-size: small; font-style: italic; width: 100%; text-align: center;">
+					{{"widget.source.no.items" | translate}}
+				</label>
+				<div data-ng-if="isLoadingFileList" class="loading-div" style="width: 32px; margin: auto; height: 100%"></div>
+			</div>
+		</div>
+
+		<!--Choose from Local-->
+		<div ng-show="srcIsLocal" class="protect-widget-dialog-right-col">
+			<!-- Repo Selector for Mobile -->
+			<div class="widget-mobile-display" data-ng-include="'ui/app/Home/Repositories/partials/protectWidgetRepoTemplate.html'"></div>
+			<div ngf-drop="" ng-model="files" class="upload-widget-icon" ngf-drag-over-class="'protect-widget-dragover'" ngf-allow-dir="false" style="margin: 20px; position: relative;">
+				<div class="color-gray text-align-center" style="margin: 20px auto; position: absolute; bottom: 0px; width: 100%">
+					<div data-ng-show="!fileChosen">
+						{{"widget.protect.file.instruction.1" | translate}}
+						<a class="underline color-light-blue pointer-click" ng-model="files" ngf-multiple="false" ngf-select="">{{"widget.protect.file.browse" | translate}}</a>
+						{{operation==='protect'? "widget.protect.file.instruction.2" : "widget.share.file.instruction.2" | translate}}
+					</div>
+					<div data-ng-show="fileChosen">
+						<span>{{"managelocalfile.file.chosen.label" | translate}}:</span>
+						<span class="text-ellipsis inline-block" style="vertical-align: bottom; max-width:250px"><b>{{files.name}}</b></span>
+						<span style="margin-left:10px;" class="pointer-click glyphicon glyphicon-pencil" ng-model="files" ngf-multiple="false" ngf-select=""></span>
+					</div>
+				</div>
+			</div>
+     	</div>
+	</div>
+
+	<div ng-show="fileConfirmed && saveFileLocationConfirmed && !success" class="widget-content">
+		<div>
+			<div class="rms-all-files-selected padding-10 rms-files margin-bottom-0">
+				<button type="button" class="close" style="margin-left:20px; font-size:18px" data-ng-click="fileConfirmed=false">x</button>
+				<p class="protect-widget-dialog-content" style="margin:0px"><b>{{srcIsLocal ? files.name : srcFile.name}}</b></p>
+			</div>
+			<div class="col-xs-12" style="height:10px"></div>
+			<div ng-if="!isNxl">
+				<div class="margin-bottom-20" ng-show="operation=='uploadProjectFile' || operation=='uploadWorkspaceFile' || (protectInPlaceAllowed && saveFileLocation == 'inplace')">
+					<b>{{'specify.rights.type' | translate}}</b>
+				</div>
+				<div ng-show="operation=='uploadProjectFile' || operation=='uploadWorkspaceFile' || (protectInPlaceAllowed && saveFileLocation == 'inplace')" class="margin-bottom-20">
+					<a ng-class="protectUsing.mode=='rights' ? 'btn btn-default rms-settings-button-color':'btn btn-default'" ng-click="toggleRightType('rights')" style="width:150px;" data-ng-show="isAdhocRightEnabled">{{'user.defined' |  translate}}</a>
+					<a ng-class="protectUsing.mode=='classification' ? 'btn btn-default rms-settings-button-color':'btn btn-default'" ng-click="toggleRightType('classification')" style="width:150px;">{{'company.defined' |  translate}}</a>
+					<div ng-if="protectUsing.mode=='rights'" data-ng-show="isAdhocRightEnabled" class="rights-template" data-ng-include="'ui/app/Home/Repositories/partials/fileRightsSelectionTemplate.html'"></div>
+					<div ng-if="protectUsing.mode=='classification'" class="rights-template" data-ng-include="'ui/app/Home/Repositories/partials/classificationSelectionTemplate.html'"></div>
+				</div>
+				<div ng-show="operation !='uploadProjectFile' && operation != 'uploadWorkspaceFile' && saveFileLocation != 'inplace'">
+					<div data-ng-include="'ui/app/Home/Repositories/partials/fileRightsSelectionTemplate.html'"></div>
+				</div>
+			</div>
+            <div ng-if="operation == 'share'">
+                <b>{{"share.with.label" | translate}}:</b><br/>
+                <input type="hidden" id="shareWithModal">
+                <ul id="mailShareTagsModal" style="max-width:500px; max-height:80px; margin:auto; overflow:auto" tag-it />
+                <p id="error-label"></p>
+                <div><b>{{"comment.label" | translate}}</b><i> {{"optional.label" | translate}}</i></span><b>:</b></div>
+                <textarea class="comment-textarea" ng-attr-placeholder="{{'comment.placeholder' | translate}}" style="max-width:500px; margin:auto;" data-ng-model="comment.text" data-ng-trim="false" maxlength="250"></textarea>
+                <div style="max-width:500px; margin:auto; text-align: right">{{250 - comment.text.length}} / 250</div>
+			</div>
+			<div class="save-location-info{{operation == 'share' ? ' no-vertical-margin' : ''}}" ng-if="!isNxl && operation != 'uploadProjectFile' && operation != 'uploadWorkspaceFile'">
+				<img src="ui/img/info_icon.svg" alt="Info"> <span>{{"widget.protect.file.the-file-will-be-saved-to" | translate}}</span>
+				<span class="color-light-blue" ng-if="saveFileLocation == 'inplace'"> {{srcRepo.name}}</span>
+				<span class="color-light-blue" ng-if="saveFileLocation == 'myvault'"> {{"myvault.title" | translate}}</span>
+			</div>
+		</div>
+ 	</div>
+
+	<div ng-if="success" style="min-height: 400px; margin: 20px;">
+		<div class="padding-20 text-align-center" style="border: 1px #399649 solid; margin:30px 30px 10px 30px;">
+			<div data-ng-if="!isNxl">
+				{{'widget.success.message.the.file'| translate}}
+				<span class="rms-files color-light-blue inline-block" style="margin-bottom: 5px"><b>{{protectedFileName}}</b></span><br>
+				<span ng-if="operation==='protect'">
+					<span>{{'widget.protect.file.protected.success' | translate}}</span>
+					<span class="color-light-blue pointer-click" data-ng-click="goToMyVault()" ng-if="saveFileLocation == 'myvault'">{{"myvault.title" | translate}}</span>
+					<span class="color-light-blue pointer-click" data-ng-click="goToProtectedFileRepo()" ng-if="saveFileLocation == 'inplace'">{{srcRepo.name}}</span>
+				</span>
+				<span ng-if="operation==='share'">
+					<span>{{'widget.share.file.shared.success' | translate}}</span>
+					<label class="color-light-blue" style="max-height: 120px; width: 100%; overflow: auto;">{{formattedRecipients}}</label>
+				</span>
+			</div>
+			<div data-ng-if="isNxl">
+				<span>{{message1}}</span><br>
+				<span>{{message2}}</span>
+			</div>
+		</div>
+		<div class="text-align-center" ng-if="operation==='share' && !isNxl">
+			<span>{{'widget.share.file.added.to.myvault' | translate}}</span>
+			<span class="color-light-blue pointer-click" data-ng-click="goToMyVault()">{{"myvault.title" | translate}}</span>
+		</div>
+		<div class="text-align-center" ng-if="operation==='share' && isNxl && isOwner">
+			<span>{{'widget.share.file.manage.from.myvault' | translate}}</span>
+			<span class="color-light-blue pointer-click" data-ng-click="goToMyVault()">{{"myvault.title" | translate}}</span>
+		</div>
+		<div class="text-align-center" style="margin-top: 30px" data-ng-if="rights.length > 0">
+			<label style="margin-bottom:40px"><b>
+				{{"right.granted.label" | translate}}</b>
+				<i data-ng-controller="loginController" uib-tooltip="{{'file.rights.meaning' | translate}}" ng-click="help()" class="pointer-click glyphicon glyphicon-question-sign"></i>
+			</label>
+			<div data-ng-include="'ui/app/Home/Repositories/partials/fileRightsTemplate.html'"></div>
+			<div data-ng-if="tagsExist" data-ng-include="'ui/app/Home/Repositories/partials/fileClassificationsTemplate.html'"></div>
+		</div>
+	</div>
+
+	<div class="text-align-center">
+		<div data-ng-show="!success">
+			<button type="button" class="btn btn-default rms-settings-button" style="margin-right:10px" data-ng-click="ok()" tabindex="0">{{"cancel" | translate}}</button>
+			<button type="button" data-ng-if="!fileConfirmed" class="btn btn-default rms-settings-button rms-settings-button-color" data-ng-disabled="!fileChosen" data-ng-click="proceed()" tabindex="1" ng-model="fileupload">{{"proceed" | translate}}</button>
+			<button type="button" data-ng-if="fileConfirmed && saveFileLocationConfirmed && saveFileLocation == 'inplace' && operation==='protect'" class="btn btn-default rms-settings-button rms-settings-button-color" data-ng-disabled="editWatermark" data-ng-click="editWatermark || checkIfInPlaceFileExistsThenProtect()" tabindex="12">{{"widget.protect.button" | translate}}</button>
+			<button type="button" data-ng-if="fileConfirmed && saveFileLocationConfirmed && saveFileLocation == 'myvault' && operation==='protect'" class="btn btn-default rms-settings-button rms-settings-button-color" data-ng-disabled="editWatermark" data-ng-click="editWatermark || checkMyVaultFileExistsThenShareFile()" tabindex="12">{{"widget.protect.button" | translate}}</button>
+			<button type="button" data-ng-show="fileConfirmed && saveFileLocationConfirmed && operation==='share'" data-ng-disabled="mailPristine || editWatermark" class="btn btn-default rms-settings-button rms-settings-button-color" data-ng-click="editWatermark || checkMyVaultFileExistsThenShareFile()" tabindex="12">{{isNxl ? "widget.share.button.nxl" : "widget.share.button" | translate}}</button>
+			<button type="button" data-ng-if="fileConfirmed && saveFileLocationConfirmed && operation==='uploadProjectFile'" class="btn btn-default rms-settings-button rms-settings-button-color" data-ng-click="checkIfProjectFileExistsThenUpload()" tabindex="12" style="margin-bottom:5px;">{{"upload.file.button.upload"| translate}}</button>
+			<button type="button" data-ng-if="fileConfirmed && saveFileLocationConfirmed && operation==='uploadWorkspaceFile'" class="btn btn-default rms-settings-button rms-settings-button-color" data-ng-click="checkIfWorkspaceFileExistsThenUpload()" tabindex="12" style="margin-bottom:5px;">{{"upload.file.button.upload"| translate}}</button>
+		</div>
+		<div data-ng-if="success">
+			<button type="button" class="btn btn-default rms-settings-button-color" data-ng-click="ok()">{{"ok" | translate}}</button>
+		</div>
+	</div>
+
+</div>

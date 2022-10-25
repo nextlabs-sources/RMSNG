@@ -1,0 +1,24 @@
+<div class="rms-repo-list-header">
+    <div class = "rms-repoTitle">
+        <div class="repo-info">
+            <span>
+               <button type="button" ng-click="toggleShareTab(false)" ng-class="!showSharedWithMe ? 'btn btn-default rms-settings-button-color' : 'btn btn-default rms-settings-button' " style="width:120px;border-radius:0px;margin-right:-10px;">{{'shared.files'  | translate}}</button>
+               <button type="button" ng-click="toggleShareTab(true)" ng-class="showSharedWithMe ? 'btn btn-default rms-settings-button-color' : 'btn btn-default rms-settings-button' " style="width:120px;border-radius:0px;">{{'shared.with.me' | translate}}</button>
+            </span>
+        </div>
+        <div data-ng-class="!isTreeOpen ? 'rms-file-search rms-file-search-custom' : 'rms-file-search tree'">
+            <form ng-submit="search()" >
+                <i class="fa fa-search"></i>
+                <input style="max-width: 140px" placeholder="{{'search.file.placeholder' | translate}}"  type="text" ng-model="$parent.searchString" clear-input="clearSearch()"></input>
+            </form>
+        </div> 
+    </div>
+    <div >
+        <span class="rms-file-sort rms-file-sort-custom">
+            <label class="rms-file-sort-label">{{'sort.by' | translate}}</label>&nbsp;
+            <select 
+                data-ng-options="sort.lookupCode as sort.description | translate for sort in sortOptions" data-ng-model="$parent.selectedSort" data-ng-change="sortChanged($parent.selectedSort)">
+            </select>
+        </span>
+    </div> 
+</div>

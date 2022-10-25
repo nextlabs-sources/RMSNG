@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://nextlabs.com/rms/rmc" xmlns:rms-rmc-type="http://nextlabs.com/rms/rmc/types">
+
+	<xs:import schemaLocation="../types/rms-rmc-integration-types.xsd"
+		namespace="http://nextlabs.com/rms/rmc/types" />
+
+	<xs:element name="getRepositoryDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="fetchSinceGMTTimestamp" type="xs:dateTime">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">
+							If this value is more than a configured threshold on server, server will send a the full copy (only active items) instead of delta.
+							If a full copy is being sent, server will set isFullCopy to true
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="rms-rmc-type:RequestAttributes" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getRepositoryDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="isFullCopy" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="repoItems" type="rms-rmc-type:RepositoryListType" minOccurs="0"/>				
+				<xs:element name="deletedRepoItems" type="rms-rmc-type:DeletedItemIdListType" minOccurs="0"/>
+				<xs:element name="status" type="rms-rmc-type:StatusType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

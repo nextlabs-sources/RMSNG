@@ -1,0 +1,29 @@
+<svg width="36" height="36" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Remove</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(29186 -6258)">
+<g id="Btn/Remove">
+<g id="Button">
+<g id="Rectangle 3" filter="url(#filter0_d)">
+<use xlink:href="#path0_fill_cross" transform="translate(-29182 6261)" fill="#FFFFFF"/>
+</g>
+</g>
+<g id="Union">
+<use xlink:href="#path1_fill_cross" transform="matrix(1 5.55112e-17 -5.55112e-17 1 -29169.2 6273.75)" fill="#EB5757"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d" filterUnits="userSpaceOnUse" x="-29186" y="6258" width="46" height="46" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 0"/>
+<feOffset dx="0" dy="1"/>
+<feGaussianBlur stdDeviation="2"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.24 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<path id="path0_fill_cross" d="M 0 4C 0 1.79086 1.79086 0 4 0L 34 0C 36.2091 0 38 1.79086 38 4L 38 34C 38 36.2091 36.2091 38 34 38L 4 38C 1.79086 38 0 36.2091 0 34L 0 4Z"/>
+<path id="path1_fill_cross" fill-rule="evenodd" d="M 1.3418 0.00831922C 1.01172 0.0429872 0.691406 0.186542 0.439453 0.438983C -0.146484 1.02443 -0.146484 1.97414 0.439453 2.56008L 4.26367 6.3882L 0.439453 10.2105C -0.146484 10.7959 -0.146484 11.7456 0.439453 12.3316C 1.02539 12.918 1.97461 12.918 2.56055 12.3325L 6.38477 8.51076L 10.2031 12.332C 10.5488 12.6778 11.0215 12.8194 11.4707 12.7573C 11.7832 12.7139 12.084 12.5723 12.3242 12.3325C 12.9102 11.7471 12.9121 10.7974 12.3262 10.2114L 8.50781 6.39016L 12.332 2.56789C 12.918 1.98244 12.918 1.03273 12.332 0.446796C 11.8945 0.00978406 11.2559 -0.101544 10.7168 0.112323C 10.5332 0.185565 10.3594 0.296893 10.2109 0.445819L 6.38672 4.26809L 2.56055 0.43996C 2.22656 0.106464 1.77539 -0.0375792 1.3418 0.00831922Z"/>
+</defs>
+</svg>

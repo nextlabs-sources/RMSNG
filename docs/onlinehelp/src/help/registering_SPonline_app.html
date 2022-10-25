@@ -1,0 +1,227 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xml:lang="en" lang="en">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta charset="UTF-8" /><meta name="copyright" content="(C) Copyright 2019" /><meta name="DC.rights.owner" content="(C) Copyright 2019" /><meta name="DC.Type" content="task" /><meta name="description" content="Before you can use SkyDRM RMS to create your SharePoint Online App, you must register your SharePoint Online App. The registration process generates Client and Secret Client IDs while also saving the public listed IP address of the machine on which your SkyDRM RMS deployment is hosted." /><meta name="DC.Relation" scheme="URI" content="configuring_sharepoint_online.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="task_w5x_41t_q2b" />        
+      <title>Registering a SharePoint Online app</title><!--  Generated with Oxygen version 20.1-SNAPSHOT, build number 2018061311.  --><meta name="wh-path2root" content="" /><meta name="wh-toc-id" content="task_w5x_41t_q2b-d66e596" /><link rel="stylesheet" type="text/css" href="./oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css" /><link rel="stylesheet" href="./oxygen-webhelp/lib/bootstrap/css/bootstrap-theme.min.css" /><link rel="stylesheet" href="./oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css" /><link rel="stylesheet" type="text/css" href="./oxygen-webhelp/app/topic-page.css?buildId=2018061311" /><script type="text/javascript" src="./oxygen-webhelp/lib/jquery/jquery-3.1.1.min.js"><!----></script><script data-main="./oxygen-webhelp/app/topic-page.js" src="./oxygen-webhelp/lib/requirejs/require.js"></script><link rel="stylesheet" type="text/css" href="oxygen-webhelp/template/blue.css?buildId=2018061311" /></head>
+
+    <body id="task_w5x_41t_q2b" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">Jump to main content</a>
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        
+        
+        
+        <header class="navbar navbar-default wh_header">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <a href="index.html" class=" wh_logo hidden-xs "><img src="SkyDRM_Logo_small1.png" alt="  SkyDRM RMS 10.4 Administrator's Guide  Revision 1  June 2019  " /></a>
+                    <div class=" wh_publication_title "><a href="index.html"><span class="booktitle">  <span class="ph mainbooktitle">SkyDRM RMS 10.4 Administrator's Guide</span>  <span class="ph booktitlealt">Revision 1</span>  <span class="ph booktitlealt">June 2019</span>  </span></a></div>
+                    
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                <button type="button" data-target="#wh_top_menu_and_indexterms_link" id="wh_menu_mobile_button" data-toggle="collapse" class="navbar-toggle collapsed wh_toggle_button" aria-expanded="false" aria-label="Toggle menu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+                <nav class=" wh_top_menu "><ul>
+   <li class="has-children"><span data-tocid="about_skydrm_rms-d66e24" data-state="not-ready" class=" topicref " data-id="about_skydrm_rms"><span class="title"><a href="about_skydrm_rms.html">About SkyDRM RMS</a></span></span></li>
+   <li class="has-children"><span data-tocid="installing_skydrm_rms-d66e90" data-state="not-ready" class=" topicref " data-id="installing_skydrm_rms"><span class="title"><a href="installing_skydrm_rms.html">SkyDRM RMS installation</a></span></span></li>
+   <li class="has-children"><span data-tocid="skydrm_rms_configuration-d66e415" data-state="not-ready" class=" topicref " data-id="skydrm_rms_configuration"><span class="title"><a href="skydrm_rms_configuration_2.html">SkyDRM RMS configuration</a></span></span></li>
+   <li class="has-children"><span data-tocid="creating_policies-d66e671" data-state="not-ready" class=" topicref " data-id="creating_policies"><span class="title"><a href="creating_policies.html">Policy creation in SkyDRM RMS</a></span></span></li>
+   <li class="has-children"><span data-tocid="concept_akn_5k4_mfb-d66e744" data-state="not-ready" class=" topicref " data-id="concept_akn_5k4_mfb"><span class="title"><a href="troubleshooting.html">Troubleshooting</a></span></span></li>
+</ul></nav>
+                <div class=" wh_indexterms_link "><a href="indexTerms.html" title="Index" aria-label="Go to index terms page"><span>Index</span></a></div>
+                
+            </div>
+        </div>
+    </div>
+</header>
+        
+        <div class=" wh_search_input "><form id="searchForm" method="get" role="search" action="search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div><script><!--
+                                    $(document).ready(function () {
+                                        $('#searchForm').submit(function (e) {
+                                            if ($('.wh_search_textfield').val().length < 1) {
+                                                e.preventDefault();
+                                            }
+                                        });
+                                    });
+                                --></script></form></div>
+        
+        <div class="container-fluid">
+            <div class="row">
+
+                <nav class="wh_tools hidden-print">
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "><ol xmlns:html="http://www.w3.org/1999/xhtml" class="hidden-print"><li><span class="home"><a href="index.html"><span>Home</span></a></span></li>
+   <li><span class="topicref" data-id="skydrm_rms_configuration"><span class="title"><a href="skydrm_rms_configuration_2.html">SkyDRM RMS configuration</a></span></span></li>
+   <li><span class="topicref" data-id="configuring_storage_service_providers"><span class="title"><a href="configuring_storage_service_providers.html">Storage service providers configuration</a></span></span></li>
+   <li><span class="topicref" data-id="integrating_with_sharepoint_online_cross_launch_app"><span class="title"><a href="configuring_sharepoint_online.html">Configuring SharePoint Online as a storage service provider</a></span></span></li>
+   <li class="active"><span class="topicref" data-id="task_w5x_41t_q2b"><span class="title"><a href="registering_SPonline_app.html">Registering a SharePoint Online app</a><span class="wh-tooltip">
+               
+               <p xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:toc="http://www.oxygenxml.com/ns/webhelp/toc" class="shortdesc">Before you can use SkyDRM RMS to create your SharePoint Online App, you must register         your SharePoint Online App.
+                  The registration process generates Client and Secret Client IDs         while also saving the public listed IP address of
+                  the machine on which your SkyDRM RMS         deployment is hosted.
+                  
+               </p>
+               </span></span></span></li>
+</ol></div>
+
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links" class="navheader">
+  </span></div>
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <button class="webhelp_expand_collapse_sections" data-next-state="collapsed" aria-label="Collapse sections" title="Collapse sections"></button>
+                        <div class=" wh_print_link print "><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="wh_content_area">
+                <div class="row">
+                    
+                        <nav role="navigation" id="wh_publication_toc" class="col-lg-3 col-md-3 col-sm-3 hidden-xs navbar hidden-print">
+                            <div class=" wh_publication_toc " data-tooltip-position="right"><ul role="tree" aria-label="Table of Contents"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" aria-expanded="true"><span data-tocid="skydrm_rms_configuration-d66e415" class="topicref" data-id="skydrm_rms_configuration" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action skydrm_rms_configuration-d66e415-link" class="wh-expand-btn"></span><span class="title"><a href="skydrm_rms_configuration_2.html" id="skydrm_rms_configuration-d66e415-link">SkyDRM RMS configuration</a></span></span><ul role="group" class="nav nav-list"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" aria-expanded="false"><span data-tocid="concept_ltm_qjm_fgb-d66e423" class="topicref" data-id="concept_ltm_qjm_fgb" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action concept_ltm_qjm_fgb-d66e423-link" class="wh-expand-btn"></span><span class="title"><a href="tenant_mgmt.html" id="concept_ltm_qjm_fgb-d66e423-link">Tenant management</a></span></span></li>
+         <li role="treeitem"><span data-tocid="task_e5w_hbp_r2b-d66e455" class="topicref" data-id="task_e5w_hbp_r2b" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="mapping_user_attributes.html" id="task_e5w_hbp_r2b-d66e455-link">Mapping user attributes</a></span></span></li>
+         <li role="treeitem"><span data-tocid="task_ccm_mbp_r2b-d66e463" class="topicref" data-id="task_ccm_mbp_r2b" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="assigning_project_admin.html" id="task_ccm_mbp_r2b-d66e463-link">Assigning project administrators</a><span class="wh-tooltip">
+                     
+                     <p xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:toc="http://www.oxygenxml.com/ns/webhelp/toc" class="shortdesc">You can grant the right to create a project to SkyDRM RMS users. This user becomes         the project administrator.</p>
+                     </span></span></span></li>
+         <li role="treeitem"><span data-tocid="task_em3_g2z_fgb-d66e474" class="topicref" data-id="task_em3_g2z_fgb" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="creating_project_tags.html" id="task_em3_g2z_fgb-d66e474-link">Defining a project tag</a></span></span></li>
+         <li role="treeitem" aria-expanded="true"><span data-tocid="configuring_storage_service_providers-d66e482" class="topicref" data-id="configuring_storage_service_providers" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action configuring_storage_service_providers-d66e482-link" class="wh-expand-btn"></span><span class="title"><a href="configuring_storage_service_providers.html" id="configuring_storage_service_providers-d66e482-link">Storage service providers configuration</a></span></span><ul role="group" class="nav nav-list"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" aria-expanded="false"><span data-tocid="configuring_microsoft_onedrive_as_a_storage_service_provider-d66e490" class="topicref" data-id="configuring_microsoft_onedrive_as_a_storage_service_provider" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action configuring_microsoft_onedrive_as_a_storage_service_provider-d66e490-link" class="wh-expand-btn"></span><span class="title"><a href="configuring_microsoft_onedrive_as_a_storage_service_provider.html" id="configuring_microsoft_onedrive_as_a_storage_service_provider-d66e490-link">Configuring Microsoft OneDrive as a storage service provider</a></span></span></li>
+               <li role="treeitem" aria-expanded="false"><span data-tocid="configuring_google_drive_as_a_storage_service_provider-d66e514" class="topicref" data-id="configuring_google_drive_as_a_storage_service_provider" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action configuring_google_drive_as_a_storage_service_provider-d66e514-link" class="wh-expand-btn"></span><span class="title"><a href="configuring_google_drive_as_a_storage_service_provider.html" id="configuring_google_drive_as_a_storage_service_provider-d66e514-link">Configuring Google Drive as a storage service provider</a></span></span></li>
+               <li role="treeitem" aria-expanded="false"><span data-tocid="configuring_dropbox_as_a_storage_service_provider-d66e538" class="topicref" data-id="configuring_dropbox_as_a_storage_service_provider" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action configuring_dropbox_as_a_storage_service_provider-d66e538-link" class="wh-expand-btn"></span><span class="title"><a href="configuring_dropbox_as_a_storage_service_provider.html" id="configuring_dropbox_as_a_storage_service_provider-d66e538-link">Configuring Dropbox as a storage service provider</a></span></span></li>
+               <li role="treeitem" aria-expanded="false"><span data-tocid="configuring_box_as_a_storage_service_provider-d66e564" class="topicref" data-id="configuring_box_as_a_storage_service_provider" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action configuring_box_as_a_storage_service_provider-d66e564-link" class="wh-expand-btn"></span><span class="title"><a href="configuring_box_as_a_storage_service_provider.html" id="configuring_box_as_a_storage_service_provider-d66e564-link">Configuring Box as a storage service provider</a></span></span></li>
+               <li role="treeitem" aria-expanded="true"><span data-tocid="integrating_with_sharepoint_online_cross_launch_app-d66e588" class="topicref" data-id="integrating_with_sharepoint_online_cross_launch_app" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action integrating_with_sharepoint_online_cross_launch_app-d66e588-link" class="wh-expand-btn"></span><span class="title"><a href="configuring_sharepoint_online.html" id="integrating_with_sharepoint_online_cross_launch_app-d66e588-link">Configuring SharePoint Online as a storage service provider</a></span></span><ul role="group" class="nav nav-list"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" class="active"><span data-tocid="task_w5x_41t_q2b-d66e596" class="topicref" data-id="task_w5x_41t_q2b" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="registering_SPonline_app.html" id="task_w5x_41t_q2b-d66e596-link">Registering a SharePoint Online app</a><span class="wh-tooltip">
+                                 
+                                 <p xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:toc="http://www.oxygenxml.com/ns/webhelp/toc" class="shortdesc">Before you can use SkyDRM RMS to create your SharePoint Online App, you must register         your SharePoint Online App.
+                                    The registration process generates Client and Secret Client IDs         while also saving the public listed IP address of
+                                    the machine on which your SkyDRM RMS         deployment is hosted.
+                                    
+                                 </p>
+                                 </span></span></span></li>
+                     <li role="treeitem"><span data-tocid="task_jg1_dmt_q2b-d66e607" class="topicref" data-id="task_jg1_dmt_q2b" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="creating_sponline_app.html" id="task_jg1_dmt_q2b-d66e607-link">Creating a SharePoint Online app</a><span class="wh-tooltip">
+                                 
+                                 <p xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:toc="http://www.oxygenxml.com/ns/webhelp/toc" class="shortdesc"></p>
+                                 </span></span></span></li>
+                     <li role="treeitem"><span data-tocid="task_szv_mqt_q2b-d66e617" class="topicref" data-id="task_szv_mqt_q2b" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="deploy_SPonline_app.html" id="task_szv_mqt_q2b-d66e617-link">Deploying a SharePoint Online app</a><span class="wh-tooltip">
+                                 
+                                 <p xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:toc="http://www.oxygenxml.com/ns/webhelp/toc" class="shortdesc">After creating the SharePoint Online app, you can upload it to the SharePoint Online         App Catalog.</p>
+                                 </span></span></span></li>
+                  </ul>
+               </li>
+               <li role="treeitem"><span data-tocid="integrating_with_sharepoint_on_premise_cross_launch_app-d66e628" class="topicref" data-id="integrating_with_sharepoint_on_premise_cross_launch_app" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="configuring_sharepoint_on_premise.html" id="integrating_with_sharepoint_on_premise_cross_launch_app-d66e628-link">Configuring SharePoint On-Premises as a storage provider</a></span></span></li>
+            </ul>
+         </li>
+         <li role="treeitem" aria-expanded="false"><span data-tocid="tocId-d66e636" class="topicref" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action tocId-d66e636-link" class="wh-expand-btn"></span><span class="title"><a href="integrating_with_okta.html" id="tocId-d66e636-link">Integrating external identity providers</a></span></span></li>
+      </ul>
+   </li>
+</ul></div>
+                        </nav>
+                    
+                    
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12" id="wh_topic_body">
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+    <h1 class="title topictitle1" id="ariaid-title1">Registering a SharePoint Online app</h1>
+    
+    <div class="body taskbody"><p class="shortdesc">Before you can use SkyDRM RMS to create your SharePoint Online App, you must register
+        your SharePoint Online App. The registration process generates Client and Secret Client IDs
+        while also saving the public listed IP address of the machine on which your SkyDRM RMS
+        deployment is hosted.</p>
+        <ol class="ol steps"><li class="li step stepexpand">
+                <span class="ph cmd">Log in to your SharePoint Online site.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Navigate to <kbd class="ph userinput">https://&lt;your
+                        organization&gt;.sharepoint.com/_layouts/15/appregnew.aspx</kbd>.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Generate</span> to generate a client ID.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Generate</span> to generate a client secret.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Type a title for the new SharePoint online app.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Type the following information.</span>
+                <div class="simpletable-container"><table border="1" frame="hsides" rules="rows" cellpadding="4" cellspacing="0" summary="" class="simpletable choicetable choicetableborder" id="task_w5x_41t_q2b__choicetable_b1s_wjt_q2b"><colgroup><col style="width:25%" /><col style="width:75%" /></colgroup><thead><tr class="sthead chhead"><th class="stentry choptionhd" style="vertical-align:bottom;text-align:left;" id="d15986e65-option">Box</th><th class="stentry chdeschd" style="vertical-align:bottom;text-align:left;" id="d15986e65-desc">Description</th></tr></thead><tbody><tr class="strow chrow">
+                        <th style="vertical-align:top;" headers="d15986e65-option" id="d15986e78" class="stentry choption">App Domain</th>
+                        <td style="vertical-align:top;" headers="d15986e65-desc d15986e78" class="stentry chdesc">The publicly listed fully qualified domain name (FQDN) for your
+                            SkyDRM RMS server. For example, <kbd class="ph userinput">
+                                www.MyMachine.com</kbd><p class="p">If the port number being used is not
+                                443, you must specify the port number with this value. For example,
+                                    <kbd class="ph userinput">10.xxx.23.xx:8444</kbd> or
+                                    <kbd class="ph userinput">www.MyMachine.com:8444</kbd>.</p></td>
+                    </tr><tr class="strow chrow">
+                        <th style="vertical-align:top;" headers="d15986e65-option" id="d15986e97" class="stentry choption">Redirect URI</th>
+                        <td style="vertical-align:top;" headers="d15986e65-desc d15986e97" class="stentry chdesc">The publicly listed IP address or web address for your SkyDRM RMS
+                            server with the appropriate protocol included. For example:
+                                <kbd class="ph userinput">https://10.xxx.23.xx:8444</kbd> or
+                                <kbd class="ph userinput">https://MyMachine.com:8444</kbd><p class="p">If the port
+                                number being used is not 443, you must specify the port number with
+                                this value.</p>
+                        </td>
+                    </tr></tbody></table></div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Create</span>.</span>
+                <div class="itemgroup stepresult">A message appears, informing you that the app identifier has been
+                    successfully created.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Copy and save the information on your screen.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">OK</span>.</span>
+            </li></ol>
+    </div>
+</article></main></div>
+                        
+                        
+                                                
+                    </div>
+                    
+                </div>
+            </div>
+        </div> 
+        
+        <div class="wh_navigation_links">
+            <div class=" wh_navigation_links "><span id="topic_navigation_links" class="navheader">
+  </span></div>
+        </div>
+        
+        <div class="wh_related_links">
+            
+        </div>
+
+
+        <footer class="navbar navbar-default wh_footer">
+  <div class=" footer-container text-center ">
+    CONFIDENTIALITY NOTICE <div>THIS DOCUMENT IS CONFIDENTIAL AND PROPRIETARY TO NEXTLABS, INC. AND MAY NOT BE REPRODUCED, PUBLISHED OR DISCLOSED TO OTHERS WITHOUT COMPANY AUTHORIZATION.</div> <div> Copyright (C) 2019 NextLabs, Inc. All rights reserved.</div>
+  </div>
+</footer>
+
+        
+        <div id="go2top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        
+        <!-- The modal container for images -->
+        <div id="modal_img_large" class="modal">
+            <span class="close glyphicon glyphicon-remove"></span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal-img" />
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        
+        <script src="./oxygen-webhelp/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        
+    </body>
+</html>

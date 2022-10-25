@@ -1,0 +1,205 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jpr:project xmlns:jpr="http://xmlns.oracle.com/ide/project">
+   <hash n="component-versions">
+      <value n="oracle.ide.model.Project" v="11.1.2.0.0;12.1.2.0.0;12.1.3.0.0;12.2.1.0.0"/>
+      <value n="oracle.ide.model.ResourcePathsMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.ideimpl.model.TechnologyScopeUpdateMigrator" v="11.1.2.0.0.4;11.1.2.0.0.5;11.1.2.0.0.6"/>
+      <value n="oracle.jdeveloper.library.ProjectLibraryMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jdeveloper.maven.migrator.POMNodeMigrator" v="12.2.1.0.0"/>
+      <value n="oracle.jdeveloper.model.OutputDirectoryMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jdevimpl.deploy.DeploymentProfilesMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jdevimpl.deploy.migrators.DeploymentMigrator" v="12.1.2.0.1"/>
+   </hash>
+   <list n="contentSets">
+      <string v="oracle.jdeveloper.model.PathsConfiguration/javaContentSet"/>
+      <string v="oracle.ide.model.ResourcePaths/resourcesContentSet"/>
+   </list>
+   <value n="defaultPackage" v="com.nextlabs.router.web"/>
+   <hash n="oracle.ide.model.DependencyConfiguration">
+      <list n="dependencyList">
+         <hash>
+            <hash n="dependable">
+               <url n="sourceOwnerURL" path="nextlabs.jws"/>
+               <url n="sourceURL" path="router_db.jpr"/>
+            </hash>
+            <value n="recognizerId" v="oracle.jdeveloper.library"/>
+         </hash>
+         <hash>
+            <hash n="dependable">
+               <url n="sourceOwnerURL" path="nextlabs.jws"/>
+               <url n="sourceURL" path="shared.jpr"/>
+            </hash>
+            <value n="recognizerId" v="oracle.jdeveloper.library"/>
+         </hash>
+      </list>
+   </hash>
+   <hash n="oracle.ide.model.ResourcePaths">
+      <hash n="resourcesContentSet">
+         <list n="constituent-sets"/>
+         <list n="pattern-filters">
+            <string v="-build/"/>
+            <string v="-web/WEB-INF/lib/"/>
+            <string v="-web/WEB-INF/deploy/"/>
+            <string v="-web/WEB-INF/classes/"/>
+            <string v="-web/images/"/>
+            <string v="-src/"/>
+            <string v="-gwt-unitCache/"/>
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="../router/server/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.ide.model.TechnologyScopeConfiguration">
+      <list n="technologyScope">
+         <string v="Ant"/>
+         <string v="HTML"/>
+         <string v="JAVASCRIPT"/>
+         <string v="JSP"/>
+         <string v="Java"/>
+         <string v="Maven"/>
+         <string v="XML"/>
+         <string v="XML_SCHEMA"/>
+         <string v="XSL"/>
+      </list>
+   </hash>
+   <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
+      <value n="internalEncoding" v="UTF-8"/>
+      <list n="Javac.commandline.optionlist">
+         <string v="-g"/>
+         <string v="-Xlint:all"/>
+      </list>
+      <value n="Javac.-Xlint:-cast" v="false"/>
+      <value n="Javac.-Xlint:-empty" v="false"/>
+      <value n="Javac.-Xlint:-fallthrough" v="false"/>
+      <value n="Javac.-Xlint:-path" v="false"/>
+      <value n="Javac.-Xlint:-processing" v="false"/>
+      <value n="Javac.-Xlint:-serial" v="false"/>
+      <value n="Javac.-Xlint:-unchecked" v="false"/>
+      <value n="webIANAEncoding" v="UTF-8"/>
+   </hash>
+   <hash n="oracle.jdeveloper.model.J2eeSettings">
+      <hash n="webContentSet">
+         <list n="url-path">
+            <url path="public_html/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.model.PathsConfiguration">
+      <hash n="javaContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="../router/server/src/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.runner.RunConfigurations">
+      <hash n="runConfigurationDefinitions">
+         <hash n="Default">
+            <value n="custom" v="false"/>
+            <value n="name" v="Default"/>
+            <hash n="oracle.jdevimpl.runner.debug.DebugConfiguration">
+               <value n="promptForRemoteDebugging" v="false"/>
+               <value n="remoteParameter:jpda:port" v="8000"/>
+            </hash>
+            <value n="programArguments" v=""/>
+            <value n="remoteDebuggingProfiling" v="false"/>
+            <url n="runDirectoryURL" path="../router/server/"/>
+            <url n="targetURL" path="../router/server/src/com/nextlabs/router/Main.java"/>
+         </hash>
+         <hash n="listen">
+            <value n="custom" v="false"/>
+            <value n="name" v="listen"/>
+            <hash n="oracle.jdevimpl.runner.debug.DebugConfiguration">
+               <value n="promptForRemoteDebugging" v="false"/>
+               <value n="remoteParameter:jpda:port" v="8000"/>
+               <value n="remoteProtocol" v="jpdalisten"/>
+            </hash>
+            <value n="remoteDebuggingProfiling" v="true"/>
+         </hash>
+         <hash n="Remote">
+            <value n="custom" v="false"/>
+            <value n="name" v="Remote"/>
+            <hash n="oracle.jdevimpl.runner.debug.DebugConfiguration">
+               <value n="promptForRemoteDebugging" v="false"/>
+               <value n="remoteParameter:jpda:port" v="8000"/>
+            </hash>
+            <value n="remoteDebuggingProfiling" v="true"/>
+         </hash>
+      </hash>
+      <list n="runConfigurationList">
+         <string v="Default"/>
+         <string v="Remote"/>
+         <string v="listen"/>
+      </list>
+   </hash>
+   <hash n="oracle.jdevimpl.config.JProjectLibraries">
+      <list n="exportedReferences">
+         <hash>
+            <value n="id" v="jersey"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="web"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
+      <hash n="internalDefinitions">
+         <list n="libraryDefinitions">
+            <hash>
+               <list n="classPath">
+                  <url path="../../libraries/libs/web/commons-cli-1.2.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/commons-fileupload-1.3.2.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/commons-logging-1.2.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/flyway-core-2.0.3.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/httpcore-4.4.4.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/httpclient-4.3.6.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/guava-18.0.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/gson-2.3.1.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/slf4j-api-1.7.21.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/system/javax.servlet-api-3.1.0.jar" jar-entry=""/>
+               </list>
+               <value n="description" v="web"/>
+               <value n="id" v="web"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="../../libraries/libs/web/jersey/aopalliance-repackaged-2.4.0-b31.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/jersey/hk2-api-2.4.0-b31.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/jersey/hk2-locator-2.4.0-b31.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/jersey/hk2-utils-2.4.0-b31.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/jersey/javassist-3.17.1-GA.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/jersey/javax.annotation-api-1.2.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/jersey/javax.inject-2.4.0-b31.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/jersey/javax.ws.rs-api-2.0.1.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/jersey/jersey-client-2.22.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/jersey/jersey-common-2.22.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/jersey/jersey-container-servlet-core-2.22.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/jersey/jersey-guava-2.22.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/jersey/jersey-media-jaxb-2.22.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/jersey/jersey-server-2.22.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/jersey/validation-api-1.1.0.Final.jar" jar-entry=""/>
+               </list>
+               <value n="description" v="jersey"/>
+               <value n="id" v="jersey"/>
+            </hash>
+         </list>
+      </hash>
+      <list n="libraryReferences">
+         <hash>
+            <value n="id" v="jersey"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="web"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
+   </hash>
+   <hash n="oracle.jdevimpl.config.JProjectPaths">
+      <url n="outputDirectory" path="../router/server/web/WEB-INF/classes/"/>
+   </hash>
+</jpr:project>

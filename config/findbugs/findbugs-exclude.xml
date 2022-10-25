@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FindBugsFilter>
+    <Match>
+        <Bug pattern="DM_EXIT,DMI_EMPTY_DB_PASSWORD,DMI_HARDCODED_ABSOLUTE_FILENAME,EI_EXPOSE_REP,EI_EXPOSE_REP2,SF_SWITCH_FALLTHROUGH,NM_CONFUSING"/>
+    </Match>
+    <!-- low priority issues-->
+    <Match>
+        <Bug pattern="DM_CONVERT_CASE,SE_TRANSIENT_FIELD_NOT_RESTORED,UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR,BC_UNCONFIRMED_CAST_OF_RETURN_VALUE"/>
+    </Match>
+    <Match>
+        <Bug pattern="PZLA_PREFER_ZERO_LENGTH_ARRAYS,DB_DUPLICATE_SWITCH_CLAUSES,BC_UNCONFIRMED_CAST"/>
+    </Match>
+
+    <!-- wildcard suppression -->
+    <Match>
+        <Class name="~android\..*"/>
+    </Match>
+    <Match>
+        <Class name="~com\.google\..*"/>
+    </Match>
+    <Match>
+        <Class name="~com(\.\w+)+\.R\$.*"/>
+    </Match>
+    <Match>
+        <Method name="main" params="java.lang.String[]" returns="void"/>
+        <Bug pattern="ISC_INSTANTIATE_STATIC_CLASS"/>
+    </Match>
+    <Match>
+        <Class name="com.nextlabs.rms.rs.TokenMgmt"/>
+        <Method name="lookupTenant"/>
+        <Bug pattern="NP_LOAD_OF_KNOWN_NULL_VALUE,RCN_REDUNDANT_NULLCHECK_OF_NULL_VALUE"/>
+    </Match>
+	<Match>
+        <Class name="com.nextlabs.rms.rs.UserMgmt"/>
+        <Method name="login"/>
+        <Bug pattern="NP_LOAD_OF_KNOWN_NULL_VALUE"/>
+    </Match>
+	<Match>
+        <Class name="com.nextlabs.rms.rs.MyDriveMgmt"/>
+        <Method name="getMyDriveUsage"/>
+        <Bug pattern="NP_LOAD_OF_KNOWN_NULL_VALUE,RCN_REDUNDANT_NULLCHECK_OF_NULL_VALUE,RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE"/>
+    </Match>
+	<Match>
+        <Class name="com.nextlabs.rms.rs.MyVaultMgmt"/>
+        <Method name="getFileMetadata"/>
+        <Bug pattern="NP_LOAD_OF_KNOWN_NULL_VALUE"/>
+    </Match>
+	<Match>
+        <Class name="com.nextlabs.nxl.EncryptUtil"/>
+        <Method name="doEncrypt"/>
+        <Bug pattern="NP_LOAD_OF_KNOWN_NULL_VALUE,RCN_REDUNDANT_NULLCHECK_OF_NULL_VALUE"/>
+    </Match>
+    <Match>
+        <Class name="com.nextlabs.common.io.IOUtils"/>
+        <Method name="closeQuietly"/>
+        <Bug pattern="DE_MIGHT_IGNORE"/>
+    </Match>
+    <Match>
+        <Class name="com.nextlabs.rms.repository.RMSRepositoryDBSearcherImpl"/>
+        <Method name="getAncestors"/>
+        <Bug pattern="SBSC_USE_STRINGBUFFER_CONCATENATION"/>
+    </Match>
+	<Match>
+        <Class name="com.nextlabs.rms.rs.RemoteViewer"/>
+        <Method name="proxyUploadAndView"/>
+        <Bug pattern="NP_LOAD_OF_KNOWN_NULL_VALUE"/>
+    </Match>
+	<Match>
+        <Class name="com.nextlabs.rms.rs.ProjectMgmt"/>
+        <Method name="createProject"/>
+        <Bug pattern="NP_LOAD_OF_KNOWN_NULL_VALUE"/>
+    </Match>
+    <!-- inherited from 3rd party -->
+    <Match>
+        <Class name="com.nextlabs.rms.viewer.conversion.MemoryStream"/>
+        <Bug pattern="NM_METHOD_NAMING_CONVENTION"/>
+    </Match>
+
+    <!-- false positive -->
+
+</FindBugsFilter>

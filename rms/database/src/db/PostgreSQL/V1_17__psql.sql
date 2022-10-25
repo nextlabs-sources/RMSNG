@@ -1,0 +1,1 @@
+ALTER SEQUENCE group_id_seq RENAME TO project_id_seq;

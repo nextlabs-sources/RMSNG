@@ -1,0 +1,41 @@
+<div ng-controller="settingsController" id="system-configuration" style="background-color: white; width: 100%; margin-top: 30px;">
+	<div id="system-configuration-heading" class="admin-heading-border" style="position:relative;">
+		<span id="system-configuration-landing-page-icon" style="padding-left:10px;">
+			<i data-ng-include="'ui/img/gear.svg'"></i>
+		</span>
+		<span style="display:inline-block;padding:10px;">
+			<div class="admin-section-title">{{'config.system_config' | translate}}</div>
+			<div class="admin-section-description">{{'system.config.description' | translate}}</div>
+		</span>
+		<span style="position:absolute; right:3%; top:32%; cursor:pointer;" data-ng-click="onClickTab('systemConfiguration')">
+			<i data-ng-include="'ui/img/Arrow_Grey.svg'"></i>
+		</span>
+	</div>
+	<div id="system-configuration-body" class="admin-body-border" style="position:relative;">
+		<div id="client-management-section" class="inline-block">
+			<div style="font-size:16px; font-weight:500; padding-bottom:10px;"> {{'config.client.management.heading' | translate | uppercase}} </div>
+			<div ng-repeat="clientManagement in clientManagementList" class="padding-top-10">
+				<i ng-hide="clientManagement.selected" data-ng-include="'ui/img/Circle-Grey.svg'" style="padding-right:5px;"></i>
+				<i ng-show="clientManagement.selected" data-ng-include="'ui/img/Circle-Green.svg'" style="padding-right:5px;"></i>
+				<span ng-class="clientManagement.selected ? 'dark-gray-text' : 'light-gray-text'">{{(clientManagement.field) | translate}}</span>
+			</div>
+		</div>
+		<div id="download-link-section" class="inline-block">
+			<div style="font-size:16px; font-weight:500; padding-bottom:10px;"> {{'config.client.downloadlinks.heading' | translate | uppercase}} </div>
+			<div ng-repeat="downloadLink in downloadLinkList" class="padding-top-10">
+				<i ng-hide="downloadLink.selected" data-ng-include="'ui/img/Circle-Grey.svg'" style="padding-right:5px;"></i>
+				<i ng-show="downloadLink.selected" data-ng-include="'ui/img/Circle-Green.svg'" style="padding-right:5px;"></i>
+				<span ng-class="downloadLink.selected ? 'dark-gray-text' : 'light-gray-text'">{{(downloadLink.field) | translate}}</span>
+			</div>
+		</div>
+		<div id="tenant-management-section" class="inline-block" style="margin-top:30px;">
+			<div style="font-size:16px; font-weight:500; padding-bottom:10px;"> {{'config.tenant.management.heading' | translate | uppercase}} </div>
+			<div ng-repeat="tenantManagement in tenantManagementList" class="padding-top-10">
+				<i ng-hide="tenantManagement.selected" data-ng-include="'ui/img/Circle-Grey.svg'" style="padding-right:5px;"></i>
+				<i ng-show="tenantManagement.selected" data-ng-include="'ui/img/Circle-Green.svg'" style="padding-right:5px;"></i>
+				<span ng-class="tenantManagement.selected ? 'dark-gray-text' : 'light-gray-text'">{{(tenantManagement.field) | translate}}</span>
+			</div>
+		</div>
+		<button type="button" class="btn-link" data-ng-click="onClickTab('systemConfiguration')" style="position:absolute; right:0px; bottom:5px;">{{'update.system.configuration' | translate}}<i style="padding-left:5px;" data-ng-include="'ui/img/back arrow - black.svg'"></i></button>
+	</div>
+</div>

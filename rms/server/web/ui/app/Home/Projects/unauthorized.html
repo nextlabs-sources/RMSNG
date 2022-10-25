@@ -1,0 +1,9 @@
+<div data-ng-controller="projectController">
+	<div id="rms-right-panel" style="overflow:auto;">
+	    <div id="statusContainer" class="margin-top-20 text-align-center alert alert-danger" style="margin:20px auto 0px auto !important; width: 90%">
+	        <p>{{'project.error.unauthorized' | translate}}</p>
+	        <p><a class='rms-error-messages pointer-click' data-ng-click="goToLanding()">{{'back.to.home' | translate}}</a></p>
+	    </div>
+	</div>
+</div>
+<div ng-include="'ui/app/Home/Projects/footerProject.html'"></div>

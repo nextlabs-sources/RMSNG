@@ -1,0 +1,4 @@
+<div ng-controller="repositoryController">
+	<div ng-if="repoClass === 'PERSONAL'" ng-include="'ui/app/Home/Repositories/personal/personalRepoFileList.html'"></div>
+	<div ng-if="repoClass === 'APPLICATION'" ng-include="'ui/app/Home/Repositories/application/applicationRepoFileList.html'"></div>
+</div>

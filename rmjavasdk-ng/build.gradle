@@ -1,0 +1,91 @@
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+dependencies {
+	compile project(':shared')
+	compile libs.'log4j'
+	compile libs.'guava'
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src']
+		}
+	}
+}
+
+import proguard.gradle.ProGuardTask
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+ 
+    dependencies {
+        classpath 'net.sf.proguard:proguard-gradle:6.2.2'
+    }
+}
+
+task rename(type: Copy) {
+    from("$buildDir/libs/${project.name}.jar")
+    into("$buildDir/libs/")
+    rename ("${project.name}.jar","nxl.jar")
+}
+
+task proguard(type: ProGuardTask) {
+
+    configuration 'proguard.txt'
+
+    injars "$buildDir/libs/nxl.jar"
+    outjars "$buildDir/libs/${project.name}.jar"
+    printmapping "$buildDir/libs/proguard.map"
+ 
+    libraryjars "${System.getProperty('java.home')}/lib/rt.jar"
+    libraryjars "${System.getProperty('java.home')}/lib/jce.jar"
+    libraryjars files(configurations.compile.collect())
+}
+
+task doc(type: Javadoc) {
+  source "src/com/nextlabs/nxl/RightsManager.java"
+  classpath = configurations.compile + files("src")
+}
+
+jar {
+  manifest {
+    attributes ( 
+        'Manifest-Version'      : '1.0',
+        "Implementation-Version": 'RMJavaSDK v9.1.001',
+        'Implementation-Title'  : 'Secure Collaboration',
+        'Implementation-Time'   :  new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date()),
+        'Implementation-Vendor' : 'NextLabs, Inc.',
+        'Build-Jdk'             : "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+        'Build-OS'              : "${System.properties['os.name']} ${System.properties['os.arch']} ${System.properties['os.version']}"                                 
+    )
+  }
+}
+
+task publish(type: Zip) {
+    into('lib') {
+        from files(configurations.compile.collect())
+        from "$buildDir/libs/${project.name}.jar"
+    }
+    into('samples') {
+        from "samples"
+    }
+    into('docs') {
+        from "docs/RMJavaSDK User guide.docx"
+    }
+    into('docs/javadoc') {
+        from "$buildDir/docs/javadoc" 
+    }
+ }
+
+jar.finalizedBy rename
+
+rename.dependsOn jar
+rename.finalizedBy proguard
+
+proguard.dependsOn rename
+
+publish.dependsOn doc
+publish.dependsOn proguard

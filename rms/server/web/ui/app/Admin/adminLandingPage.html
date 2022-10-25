@@ -1,0 +1,29 @@
+<div data-ng-controller="adminLandingPageController">
+    <div id="rms-right-panel" style="overflow:auto;">
+        <div id="statusContainer" class="margin-top-20 alert alert-danger" style="margin-bottom:0px !important;" data-ng-show="errorMessage && errorMessage.length>0">
+            <button type="button" class="close" data-ng-click="dismissMessage()">x</button>
+            <center><p>{{errorMessage | translate}}</p></center>
+        </div>
+        <div id="admin-section" style="position:relative;">
+            <div id="admin-heading-section">
+                <div style="position:absolute; left:9%; top:48px;font-size: 24px; color: #BDBDBD;">
+                    <span style="font-size:24px;" ng-show="isDefaultTenant">{{'super.admin.landing.page' | translate | uppercase}}</span>
+                    <span style="font-size:24px;" ng-show="!isDefaultTenant">{{'admin.landing.page' | translate | uppercase}}</span>
+                    <span style="font-size:18px;">({{loginTenant}})</span>
+                </div>
+                <div class="welcome" style="position:absolute; right:11%; top:55px; font-size:18px;">
+                    <span class="color-grey-text">{{"landing.page.welcome" | translate}}</span>
+                    <span> {{displayName}} </span>
+                    <div id="profileImageLandingPageTop" class="default_profile" data-ng-class="'profile_'+displayName[0].toLowerCase()" uib-tooltip="{{getUserFullDisplayName(displayName, email)}}" tooltip-enable="!mobile" style="position:relative; top:-10px; left: 12px">
+                        <div id="profileNameLandingPageTop">
+                            {{displayName | initials}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="isDefaultTenant&&!showTenantConsole" data-ng-include="'ui/app/Admin/Super/SuperAdminLandingPage.html'"></div>
+            <div ng-if="showTenantConsole||!isDefaultTenant" data-ng-include="'ui/app/Admin/Tenant/TenantAdminLandingPage.html'"></div>
+        </div>
+    </div>
+    <div data-ng-include="'ui/app/Home/Projects/footerProject.html'"></div>
+</div>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="config">
+    <!--
+    <property name="developer" value="true"/>
+    <property name="lib_home" location="C:/source/libraries"/>
+    <property name="findbugs.home" location="C:/Program Files/findbugs-3.0.1"/>
+    <property name="catalina.home" location="C:/ProgramData/apache-tomcat-8.0.32"/>
+    -->
+</project>

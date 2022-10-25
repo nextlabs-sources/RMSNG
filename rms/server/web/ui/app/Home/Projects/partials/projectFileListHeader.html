@@ -1,0 +1,52 @@
+<div class="project-file-list-header rms-repo-list-header">
+    <div class="project-file-list-title rms-repoTitle">
+        <div class="repo-info">
+            <span uib-tooltip="{{pageTitle}}" tooltip-placement="right" tooltip-enable="false"><b>{{ 'project.files' | translate}}</b></span>
+            <div class="myDriveUsage-text">
+                    <i>{{usage|filesize}} of {{quota|filesize}} used</i>
+                    <span class="small-screen-hide" uib-popover-template="'ui/app/Home/Projects/partials/usageDetails.html'" popover-trigger="mouseenter click" popover-placement="bottom"> <i class="glyphicon glyphicon-info-sign"></i></span>
+                    <i data-ng-show = "storageExceeded" class="mandatory">{{'project.storage.full' | translate}}</i>
+                </div>
+        </div>
+        <div class="rms-file-search rms-file-search-custom">
+            <form ng-submit="search()">
+                <i class="fa fa-search"></i>
+                <input placeholder="{{'search.placeholder' | translate}}" type="text" ng-model="$parent.searchString" clear-input="clearSearch()">
+            </form>
+        </div>
+    </div>
+    <div class="rms-fileList-options">
+        <!--<span class="rms-padding-treebutton-and-breadcrumbs show-only-on-desktop" data-ng-click="toggleTreeView()" data-ng-show="!showAllServices && showTree &&!searchActivated">
+			<button type="button" class="btn btn-default rms-repo-btn rms-repo-btn-big"><i data-ng-class="isTreeOpen ? 'glyphicon glyphicon-indent-right' : 'glyphicon glyphicon-indent-left'"></i></button>
+		</span>
+        <span class="show-only-on-desktop" ng-if="!searchActivated">|</span>-->
+        <div class="repo-info" style="margin-left: 0px;" ng-show="projectSharingEnabled">
+                <span>
+                    <button type="button" ng-click="toggleTabs('allFiles')" ng-class="(selectedTab === 'allFiles') ? 'btn btn-default rms-settings-button-color rms-share-space-button' : 'btn btn-default rms-settings-button rms-share-space-button'" >{{'all.files.project'  | translate}}</button>
+                    <button type="button" ng-click="toggleTabs('sharedWithProject')" ng-class="(selectedTab === 'sharedWithProject') ? 'btn btn-default rms-settings-button-color rms-share-space-button' : 'btn btn-default rms-settings-button rms-share-space-button'" >{{'shared.with.project'  | translate}}</button>
+                    <button type="button" ng-click="toggleTabs('allShared')" ng-class="(selectedTab === 'allShared') ? 'btn btn-default rms-settings-button-color rms-share-space-button' : 'btn btn-default rms-settings-button rms-share-space-button'">{{'shared.by.project' | translate}}</button>
+                </span>
+        </div>
+        <div style="margin-top: 10px;margin-left: 1px;">
+        <span ng-if="!searchActivated && (selectedTab === 'allFiles')">
+            <a class="rms-breadCrumbItem" data-ng-click="onClickFile({folder: true, pathId: '/', pathDisplay:'/'})" ><b>Root</b></a>
+            <span data-ng-repeat="eachFolder in breadCrumbsContent"> 
+                <b> > </b>
+                <a class="rms-breadCrumbItem" data-ng-click="onClickFile(eachFolder)">
+                    <b>{{eachFolder.name}}</b>
+                </a>
+            </span>
+        </span>
+        <div class="rms-file-sort rms-file-sort-custom">
+            <img src="ui/img/CreateFolder_P.svg" data-ng-if="(selectedTab === 'allFiles')" uib-tooltip="{{'create.folder' | translate}}" tooltip-placement="bottom" data-ng-show="!searchActivated" data-ng-click="createFolderModal()" class="pointer-click"
+            />
+            <span data-ng-if="(selectedTab === 'allFiles')" data-ng-show="!searchActivated">&nbsp; &nbsp;  | &nbsp;  &nbsp;</span>
+            <img  data-ng-if="(selectedTab === 'allFiles')" src="ui/img/FileUpload_P.svg" uib-tooltip="{{'upload.file.project' | translate:{projectName:project.name} }}" tooltip-placement="bottom" data-ng-class="storageExceeded?'disableImage cursor-not-allowed':'pointer-click'" data-ng-show="!searchActivated" data-ng-click="!storageExceeded && uploadFileModal()" />
+            <span  data-ng-if="(selectedTab === 'allFiles')" data-ng-show="!searchActivated">&nbsp; &nbsp;  | &nbsp;  &nbsp;</span>
+            <label class="rms-file-sort-label">{{'sort.by' | translate}}</label>&nbsp;
+            <select data-ng-options="sort.lookupCode as sort.description | translate for sort in sortOptions" data-ng-model="$parent.selectedSort"
+                data-ng-change="update()"></select>
+        </div>
+        </div>
+    </div>
+</div>

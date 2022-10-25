@@ -1,0 +1,35 @@
+.ui-modelbrowser-minimizebutton {
+    width: 1.875em;
+    height: 1.875em;
+    background-size: 1.875em;
+    display: block;
+    background-repeat: no-repeat;
+}
+
+.ui-modelbrowser-minimizebutton.maximized {
+	background-image: url("/viewer/ui/img/modelbrowser_collapse.svg");
+	background-size: 80% 80%;
+	background-position: 0.15em 0.15em;
+	background-color: #39974A;
+	padding-top: 22px;
+}
+
+.ui-modelbrowser-minimizebutton.minimized {
+	background-image: url("/viewer/ui/img/modelbrowser_expand.svg");
+	background-size: 80% 80%;
+	background-position: 0.15em 0.15em;
+	padding-top: 22px;
+}
+
+.ui-modelbrowser-minimizetd {
+    width: 1.875em;
+    height: 1.875em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+}
+
+.ui-modelbrowser-tab {
+    border-right: none;
+}

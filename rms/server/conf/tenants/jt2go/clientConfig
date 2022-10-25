@@ -1,0 +1,9 @@
+{
+    "platformId": 0,
+    "heartbeatInterval": 86400,
+    "logInterval": 86400,
+    "bypassFilter": "^[c-zC-Z]{1}:\\\\windows\\\\.*|.*\\.exe$|.*\\.dll$|.*\\.ttf$|.*\\.zip$|.*\\.rar",
+    "protection": {
+        "enabled": false
+    }
+}

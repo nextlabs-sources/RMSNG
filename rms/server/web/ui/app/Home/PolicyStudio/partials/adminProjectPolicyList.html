@@ -1,0 +1,19 @@
+<div data-ng-controller="manageProjectPoliciesController">
+    <div class="padding-20">
+        <div class="float-left">
+            <div style="font-size: 18px;font-weight: 500;" class="ng-binding">{{'project.policies' | translate}}</div>
+            <div class="sort">
+                <label class="rms-file-sort-label">{{'sort.by' | translate}}</label>&nbsp;
+                <select data-ng-options="sort.lookupCode as sort.description | translate for sort in sortPolicyOptions" data-ng-model="policyFilter.orderPolicyBy" data-ng-change="getProjectPolicies()"></select>
+            </div>
+        </div>
+        <div class="float-right">
+            <form ng-submit="getProjectPolicies()" style="display:inline-block;">
+                <i class="fa fa-search"></i></input>
+                <input placeholder="{{'search.policies.placeholder' | translate}}"  type="text" ng-model="policyFilter.searchPolicyString" clear-input="clearPolicySearch()">
+            </form>
+            <a class="btn btn-default rms-settings-button" data-ng-click="goToCreate()" data-ng-disabled="" style="width:160px;font-weight: 500;"> <span class="bold-large-font">+</span> {{'add.project.policy' | translate}}</a>
+        </div>
+    </div>
+    <div data-ng-include="'ui/app/Admin/Tenant/partials/ProjectPolicyList.html'"></div>
+</div>

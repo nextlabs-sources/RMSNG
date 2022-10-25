@@ -1,0 +1,31 @@
+<div data-ng-controller="favoritesController">
+	<div id="loading-background" data-ng-show="isLoading" class="loading-div" />
+	<div id="fileListHeader" class="show-only-on-desktop" data-ng-include="'ui/app/Home/Repositories/partials/favoritesHeader.html'"></div>
+	<div class="mobile-tablet-display" data-ng-include="'ui/app/Home/Repositories/partials/favoritesHeaderForMobile.html'"></div>
+	<div class="row full-width">
+		<div id="fileList-col-id" class="col-md-10">
+			<center>
+				<label data-ng-if="favContents.length === 0 && searchActivated">{{"err.no.search.results"|translate}}</label>
+			</center>
+			<div data-ng-if="favContents">
+				<div style="min-height: 350px;">
+					<ul id="unordered-fileList-id">
+						<li class="list-group-item rms-file-list" data-ng-repeat="eachFile in favContents">
+							<div data-ng-include="'ui/app/Home/Repositories/partials/favoriteFileTemplate.html'"></div>
+						</li>
+					</ul>
+					<div data-ng-if="favContents.length === 0 && !isLoading && !searchActivated" class="empty-file-container" style="margin-left: 0px">
+						<center>
+							<div class="upload"></div>
+							<b>{{ 'favorite.file.empty' | translate }}</b> <br/>
+							<i class="color-gray">{{ 'favorite.file.encourage' | translate }}</i>
+						</center>
+					</div>
+				</div>
+				<center>
+					<button data-ng-class="'btn btn-default'" data-ng-if="!isLoading && favContents.length !== 0 && loadMore" data-ng-click="loadMoreFiles()">{{"share.file.loadmore" | translate }}</button>
+				</center>
+			</div>
+		</div>
+	</div>
+</div>

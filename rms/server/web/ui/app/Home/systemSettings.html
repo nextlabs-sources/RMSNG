@@ -1,0 +1,225 @@
+<div id="settings-pane" data-ng-controller="systemSettingsController">
+	<div id="loading-background" data-ng-show="isLoading">
+		<div id="pgLoading-image">
+			<img src="ui/img/loading-icon.gif" alt="Loading..." />
+		</div>
+	</div>
+	<div class="row service-provider-title">
+		<div class="col-xs-3 setting-sidebar-toggle-div">
+			<div class="file-list-icons big-screen-hide ipad-potrait-hide toggle-icon-div"
+				data-ng-click="toggleSideBar()">
+				<i class="fa fa-bars toggle-glyhicon"></i>
+			</div>
+			<div>
+				<h4 class="padding-mobile">{{'configuration' | translate}}</h4>
+			</div>
+		</div>
+		<div class="col-xs-6"></div>
+		<div class="col-xs-3">
+			<nav class="bs-docs-sidebar margin-top-20 fixed hidden-print small-screen-hide" id="myScrollspy">
+				<a class="btn btn-default rms-settings-button" data-ng-click="doReset()">{{"reset" |
+					translate}}</a> <a class="btn btn-default rms-settings-button rms-settings-button-color"
+					data-ng-disabled="(mailForm.$pristine && generalSettingForm.$pristine) || mailForm.$invalid || generalSettingForm.$invalid"
+					data-ng-click="(mailForm.$pristine && generalSettingForm.$pristine) || mailForm.$invalid || generalSettingForm.$invalid || doSave()">{{"SAVE"
+					| translate}}</a>
+				<ul class="nav nav-stacked bs-docs-sidenav small-screen-hide" id="sidebar">
+					<li><a data-ng-click="scrollTo('general_settings')">{{'config.general.nav' | translate}}</a></li>
+					<li><a data-ng-click="scrollTo('mail_settings')">{{'config.mail_server.nav' | translate}}</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-8">
+			<div id="statusContainer"
+				data-ng-class="{'alert alert-success': messageStatus==2, 'alert alert-danger': messageStatus==1}"
+				style="margin-bottom: 0px !important;" data-ng-show="messageStatus==1 || messageStatus==2">
+				<button type="button" class="close" data-ng-click="dismissStatus()">x</button>
+				{{message}}
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-9 settings-root-div">
+			<section id="general_settings" class="group settings-section">
+				<h5>GENERAL</h5>
+				<hr />
+				<form class="form-horizontal" name="generalSettingForm">
+					<div class="form-group">
+						<label for="DISABLE_FEEDBACK_MAIL" class="control-label col-xs-5">{{"config.disable.feedback.label"
+							| translate}}<span class="mandatory"> * </span>
+						</label>
+						<div class="col-xs-7">
+							<span>
+								<switch class="input-configuration-margin" id="DISABLE_FEEDBACK_MAIL"
+									data-ng-model="configurations.DISABLE_FEEDBACK_MAIL"
+									data-ng-change="setFormDirty(mailForm)"></switch>
+							</span>
+							<span class="small-screen-hide"
+								data-uib-tooltip="{{'config.disable.feedback.label' | translate}}"
+								data-tooltip-placement="bottom">
+								<i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="RMC_TOKEN_EXPIRATION_TIME" class="control-label col-xs-5">{{"config.rmc_token_expiration_time.label"
+							| translate}}
+						</label>
+						<div class="col-xs-7">
+							<input class="input-configuration-margin" type="text"
+								data-ng-model="configurations.RMC_TOKEN_EXPIRATION_TIME" name="RMC_TOKEN_EXPIRATION_TIME"
+								id="RMC_TOKEN_EXPIRATION_TIME" data-ng-pattern="/^[0-9]{1,5}$/" />
+							<span class="small-screen-hide" data-uib-tooltip="{{'config.rmc_token_expiration_time.info' | translate}}"
+								data-tooltip-placement="bottom">
+								<i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i>
+							</span>
+						</div>
+					</div>
+				</form>
+			</section>
+			<section id="mail_settings" class="group settings-section">
+				<br/>
+				<h5>{{"config.mail.server.heading" | translate}}</h5>
+				<hr/>
+				<form class="form-horizontal" name="mailForm">
+					<div>
+						<div class="form-group">
+							<label for="SMTP_HOST" class="control-label col-xs-5">{{"config.smtp_host.label" |
+								translate}}<span class="mandatory"> * </span>
+							</label>
+							<div class="col-xs-7">
+								<input class="input-configuration-margin" type="text"
+									data-ng-model="configurations.SMTP_HOST" id="SMTP_HOST" name="SMTP_HOST"
+									data-ng-required="configurations.ALLOW_REGN_REQUEST" data-ng-trim="true" />
+								<span class="small-screen-hide" data-uib-tooltip="{{'config.smtp_host.info' | translate}}"
+									data-tooltip-placement="bottom">
+									<i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i>
+								</span>
+								<span class="mandatory" data-ng-messages="mailForm.SMTP_HOST.$error"
+									data-ng-if='mailForm.SMTP_HOST.$invalid && mailForm.SMTP_HOST.$touched'>
+									<span data-ng-message="required">{{"config.smtp_host.required" | translate}}</span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="SMTP_PORT" class="control-label col-xs-5">{{"config.smtp_port.label" |
+								translate}}<span class="mandatory"> * </span>
+							</label>
+							<div class="col-xs-7">
+								<input class="input-configuration-margin" type="text"
+									data-ng-model="configurations.SMTP_PORT" name="SMTP_PORT" id="SMTP_PORT"
+									data-ng-required="configurations.ALLOW_REGN_REQUEST" data-ng-pattern="/^[0-9]{1,5}$/" />
+								<span class="small-screen-hide" data-uib-tooltip="{{'config.smtp_port.info' | translate}}"
+									data-tooltip-placement="bottom">
+									<i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i>
+								</span>
+								<span class="mandatory" data-ng-messages="mailForm.SMTP_PORT.$error"
+									data-ng-if='mailForm.SMTP_PORT.$invalid && mailForm.SMTP_PORT.$touched'>
+									<span data-ng-message="pattern">{{"config.smtp_port_valid.required" | translate}}</span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="SMTP_AUTH" class="control-label col-xs-5">{{"config.smtp_auth_needed.label"
+								| translate}}<span class="mandatory"> * </span>
+							</label>
+							<div class="col-xs-7">
+								<span>
+									<switch class="input-configuration-margin" id="SMTP_AUTH"
+										data-ng-model="configurations.SMTP_AUTH" data-ng-change="setFormDirty(mailForm)"></switch>
+								</span>
+								<span class="small-screen-hide"
+									data-uib-tooltip="{{'config.smtp_auth_needed.info' | translate}}"
+									data-tooltip-placement="bottom">
+									<i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i>
+								</span>
+							</div>
+						</div>
+						<div data-ng-if="configurations.SMTP_AUTH==true">
+							<div class="form-group">
+								<label for="SMTP_USER_NAME" class="control-label col-xs-5">{{"config.smtp_user_name.label"
+									| translate}}<span class="mandatory"> * </span>
+								</label>
+								<div class="col-xs-7">
+									<input class="input-configuration-margin" type="text"
+										data-ng-model="configurations.SMTP_USER_NAME" name="SMTP_USER_NAME" id="SMTP_USER_NAME"
+										data-ng-required="configurations.SMTP_AUTH" />
+									<span class="small-screen-hide"
+										data-uib-tooltip="{{'config.smtp_user_name.info' | translate}}"
+										data-tooltip-placement="bottom">
+										<i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i>
+									</span>
+									<span class="mandatory" data-ng-messages="mailForm.SMTP_USER_NAME.$error"
+										data-ng-if='mailForm.SMTP_USER_NAME.$invalid && mailForm.SMTP_USER_NAME.$touched'>
+										<span data-ng-message="required">{{"config.smtp_user_name.required" | translate}}</span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="SMTP_PASSWORD" class="control-label col-xs-5">{{"config.smtp_password.label"
+									| translate}}<span class="mandatory"> * </span>
+								</label>
+								<div class="col-xs-7">
+									<div data-ng-if="configurations.showSMTPPassword==false">
+										<button data-ng-click="showSMTPPassword()">{{"config.smtp_change_password.label"
+											| translate}}</button>
+									</div>
+									<div data-ng-if="configurations.showSMTPPassword==true">
+										<input class="input-configuration-margin" type="password"
+											data-ng-model="configurations.SMTP_PASSWORD" name="SMTP_PASSWORD" id="SMTP_PASSWORD"
+											required />
+										<span class="small-screen-hide"
+											data-uib-tooltip="{{'config.smtp_password.info' | translate}}"
+											data-tooltip-placement="bottom">
+											<i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i>
+										</span>
+										<span class="mandatory" data-ng-messages="mailForm.SMTP_PASSWORD.$error"
+											data-ng-if='mailForm.SMTP_PASSWORD.$invalid && mailForm.SMTP_PASSWORD.$touched'>
+											<span data-ng-message="required">{{"config.smtp_password.required" | translate}}</span>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="SMTP_ENABLE_TTLS" class="control-label col-xs-5">{{"config.smtp_enable_tls.label"
+								| translate}}<span class="mandatory"> * </span>
+							</label>
+							<div class="col-xs-7">
+								<span>
+									<switch class="input-configuration-margin" id="SMTP_ENABLE_TTLS"
+										data-ng-model="configurations.SMTP_ENABLE_TTLS" data-ng-change="setFormDirty(mailForm)"></switch>
+								</span>
+								<span class="small-screen-hide"
+									data-uib-tooltip="{{'config.smtp_enable_tls.info' | translate}}"
+									data-tooltip-placement="bottom">
+									<i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="SUPPORT_EMAILID" class="control-label col-xs-5">{{"config.support_email_id.label"
+								| translate}}<span class="mandatory"> * </span>
+							</label>
+							<div class="col-xs-7">
+								<input class="input-configuration-margin" type="text"
+									data-ng-model="configurations.SUPPORT_EMAILID" id="SUPPORT_EMAILID" name="SUPPORT_EMAILID"
+									data-ng-trim="true" />
+								<span class="small-screen-hide"
+									data-uib-tooltip="{{'config.support_email_id.info' | translate}}"
+									data-tooltip-placement="bottom">
+									<i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i>
+								</span>
+								<span class="mandatory" data-ng-messages="mailForm.SUPPORT_EMAILID.$error"
+									data-ng-if='mailForm.SUPPORT_EMAILID.$invalid && mailForm.SUPPORT_EMAILID.$touched'>
+									<span data-ng-message="required">{{"config.support_email.required" | translate}}</span>
+								</span>
+							</div>
+						</div>
+					</div>
+				</form>
+			</section>
+		</div>
+	</div>
+</div>

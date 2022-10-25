@@ -1,0 +1,1 @@
+ALTER TABLE repository ALTER COLUMN token TYPE varchar(2000);

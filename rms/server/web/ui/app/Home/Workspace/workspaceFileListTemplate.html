@@ -1,0 +1,51 @@
+<div class="cc-ps-policy">
+    <div id="rms-file-details">
+        <div class="rms-files">
+            <span data-ng-if="!eachFile.isFolder" class="inline-flex">
+                <img data-ng-if="!eachFile.folder" ng-src="{{fileIconName(eachFile)}}" alt="icon">
+            </span>
+            <i data-ng-if="eachFile.folder" class="glyphicon glyphicon-folder-close"></i>
+            <a data-ng-click="onClickFile(eachFile)" class="rms-file-item"> {{eachFile.name}} </a>
+        </div>
+        <div>
+            <label title="{{'file.path'| translate}}" class="file-info-label" data-ng-if="searchActivated">{{eachFile.folder && eachFile.pathDisplay.slice(-1) === "/" ? eachFile.pathDisplay.slice(0, -1) : eachFile.pathDisplay}}</label>
+            <label title="{{'file.size'| translate}}" class="file-info-label" data-ng-if="eachFile.size != null && eachFile.folder == false">{{eachFile.size | filesize:2}}</label>
+            <label title="{{'file.size'| translate}}" class="file-info-label" data-ng-if="eachFile.size == null && eachFile.folder == false">{{'not-applicable' | translate}}</label>
+            <label title="{{'last.modified'| translate}}" class="file-info-label">
+			<friendly-date data-ng-if="eachFile.lastModified != null" data-date="{{eachFile.lastModified}}"
+				data-content-class="friendly-date" data-full-format="d MMM yyyy,hh:mm a"
+				data-short-format="hh:mm a" />
+            </label>
+            <label title="{{eachFile.uploader.email}}" class="file-info-label" data-ng-if="eachFile.folder == false">{{eachFile.uploader.displayName}}</label>
+        </div>
+    </div>
+    <div class="rms-file-menu">
+        <div class=" file-menu-button">
+            <span>
+				<a title="{{'toolbar.menu'| translate}}" data-ng-click="onClickMenu(eachFile.pathId, eachFile.folder)" class="glyphicon glyphicon-option-vertical" data-ng-hide="eachFile.folder==true && !isTenantAdmin"></a>
+			</span>
+        </div>
+        <div class="file-menu-operations">
+            <span data-ng-if ="selectedFileId == eachFile.pathId && eachFile.isMenuClicked">
+				<a class="fileListOption-info-icon" title="{{'viewer.toolbar.info'| translate}}" data-ng-click="onClickInfo()" data-ng-if ="eachFile.folder!=true">
+					<i data-ng-include="'ui/img/FileInfo_P.svg'"></i>
+				</a>
+				<a class="sharedFileListOption-activity-icon" title="{{'share.file.viewActivity'| translate}}" data-ng-if ="eachFile.folder!=true && isTenantAdmin" data-ng-click="viewFileActivity(eachFile)">
+				 	<i data-ng-include="'ui/img/Share_Activity_P.svg'"></i>
+				</a>
+				<a class="fileListOption-download-icon" title="{{'viewer.toolbar.download'| translate}}" data-ng-click="onClickDownload(eachFile)" data-ng-if ="eachFile.folder!=true && rights.indexOf('DOWNLOAD') > -1">
+					<i data-ng-include="'ui/img/Download_Protected.svg'"></i>
+                </a>
+                <a class="fileListOption-extract-icon" title="{{'viewer.toolbar.extract'| translate}}" data-ng-click="onClickDecrypt(eachFile)" data-ng-if ="eachFile.folder!=true && rights.indexOf('DECRYPT') > -1">
+					<i data-ng-include="'ui/img/ExtractButton_P.svg'"></i>
+				</a>
+				<a class="fileListOption-delete-icon" title="{{'viewer.toolbar.delete'| translate}}" data-ng-click="onClickDelete(eachFile)" data-ng-if="isTenantAdmin" >
+					<i data-ng-include="'ui/img/Delete_P.svg'"></i>
+				</a>
+				<a class="fileListOption-classify-icon" title="{{'modify.rights'| translate}}" data-ng-click="onClickClassify(eachFile)" data-ng-if ="eachFile.folder!=true && protectionType == 1 && isTenantAdmin" >
+					<i data-ng-include="'ui/img/ModifyRights.svg'"></i>
+				</a>
+			</span>
+        </div>
+    </div>
+</div>

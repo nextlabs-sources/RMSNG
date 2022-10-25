@@ -1,0 +1,129 @@
+<div data-ng-if="!isSharedFromProject">
+	<div class="row modal-header" style="width: 100%;">
+		<div id="fileSharing" data-ng-show="isLoading">
+			<div id="pgLoading-image">
+				<img src="ui/img/loading-icon.gif" alt="Loading..." />
+			</div>
+		</div>
+		<div data-ng-if="!revoked" class="col-xs-6 overflow-hidden rms-break-word" uib-tooltip="{{file.name}}" tooltip-placement="bottom">{{"manage" | translate}}<br/><b>{{file.name}}</b></div>
+		<div data-ng-if="revoked" class="col-xs-6 overflow-hidden rms-break-word" uib-tooltip="{{file.name}}" tooltip-placement="bottom">{{"details" | translate | uppercase}}<br/><b>{{file.name}}</b></div>
+		<div class="col-xs-1"></div> 
+		<div class="col-xs-5">
+			<div class="manage-sharedFile-btn" data-ng-hide="isLoading || revoked || shareFileForm.$invalid || checkMailPristine() || !sharedWithUpdated()">
+				<a class="btn btn-default rms-settings-button" data-ng-click="cancel()" data-ng-class="(!revoked) ? '' : 'float-right' " >{{"cancel" | translate}}</a>
+				<a class="btn btn-default rms-settings-button-color rms-settings-button"
+					data-ng-if="!revoked" data-ng-click="(revoked || shareFileForm.$invalid || checkMailPristine()  || !sharedWithUpdated()) || updateRecipientList()">{{"update" | translate}}</a>
+			</div>
+			<div class="manage-sharedFile-btn" data-ng-show="revoked || shareFileForm.$invalid || checkMailPristine() || !sharedWithUpdated()">
+				<a class="btn btn-default rms-settings-button-color rms-settings-button" data-ng-click="cancel()" tabindex="2">{{"ok"|translate}}</a>
+			</div>	
+		</div>
+		<br />
+	</div>
+	<div class="rms-break-word">
+		<div data-ng-class="{'alert alert-success': messageStatus==2, 'alert alert-danger': messageStatus==1}"
+			style="margin: 2%">
+			{{message}}
+		</div>		
+	</div>
+	<br />
+	<div>
+		<form name="shareFileForm">
+			<div class="rms-popup-panel-div">
+				<div class="rms-popup-panel-content-div">
+					<div data-ng-show="{{revoked && !deleted}}">
+						<div class="alert alert-danger">
+							{{"share.file.revoked" | translate}}
+						</div>		
+					</div>
+					<div data-ng-show="deleted">
+						<div class="alert alert-danger">
+							{{"share.file.delete.title" | translate}}
+						</div>		
+					</div>
+					<div class="div-col-x2" data-ng-if="!revoked && !deleted">
+						<div data-ng-if="shared && file.sharedOn!= null">
+							<label><b>{{"share.on.label" | translate}}:</b></label><br>
+							<friendly-date  data-date="{{file.sharedOn}}" data-content-class="friendly-date" data-full-format="d MMM yyyy,hh:mm a" data-short-format="hh:mm a" />
+						</div>
+						<div data-ng-if="!shared && file.protectedOn!= null">
+							<label><b>{{"protect.on.label" | translate}}:</b></label><br>
+							<friendly-date  data-date="{{file.protectedOn}}" data-content-class="friendly-date" data-full-format="d MMM yyyy,hh:mm a" data-short-format="hh:mm a" />
+						</div>
+					</div>
+				</div>
+				<br/>
+				<div>
+					<span class="inline-block" data-ng-show="linkAvailable && !revoked">
+                        <div class="file-link-div">
+    						<span class="fileLinkLabel"><b>{{"share.file.link" | translate}}:</b></span>
+                            <span data-ng-if="!firstLoad">
+                            	<span id="fileLinkCopied" data-ng-hide="!copyLinkClicked" class="alert-success text-fade float-right file-link-span">{{"share.file.link.copied" | translate}}</span>
+                        	</span>
+                        </div>
+						<input class="fileLinkInput" type="text" id="fileLinkId" value="{{fileLink}}" data-ng-click="selectText()" readonly>
+						<button class="btn" ngclipboard data-clipboard-target="#fileLinkId" data-ng-click="clickAfterCopy()" type="button">Copy Link</button>
+					</span>
+					<br/><br/>
+					<label><b>{{"file.rights" | translate}}</b></label>
+					<i data-ng-controller="loginController" uib-tooltip="{{'file.rights.meaning' | translate}}" ng-click="help()" class="pointer-click glyphicon glyphicon-question-sign"></i>
+					<div class="rms-info-rights">
+						<div class="text-align-center file-rights-container">
+							<li data-ng-if="rightsGranted['VIEW']"><div><img class="rms-sharefile-icon-50px" src="ui/img/View_P.svg"/><br><h6>View</h6></div></li>
+							<li data-ng-if="rightsGranted['DOWNLOAD']"><div><img class="rms-sharefile-icon-50px" src="ui/img/SaveAsRight_P.svg"/><br><h6>Save As</h6></div></li>
+							<!--<li data-ng-if="rightsGranted['CLIPBOARD']"><div><img class="rms-sharefile-icon-50px" src="ui/img/copy_P.svg"/><br><h6>Copy</h6></div></li>-->
+							<li data-ng-if="rightsGranted['PRINT']"><div><img class="rms-sharefile-icon-50px" src="ui/img/Print_P.svg"/><br><h6>Print</h6></div></li>
+							<!--<li data-ng-if="rightsGranted['CLASSIFY']"><div><img class="rms-sharefile-icon-50px" src="ui/img/Classify_P.svg"/><br><h6>Classify</h6></div></li>-->
+							<li data-ng-if="rightsGranted['EDIT']"><div><img class="rms-sharefile-icon-50px" src="ui/img/EditRight_P.svg"/><br><h6>Edit</h6></div></li>
+							<!--<li data-ng-if="rightsGranted['SAVEAS']"><div><img src="ui/img/SaveAs_P.svg"/><br><h6>Save As</h6></div></li>-->
+							<li data-ng-if="rightsGranted['SHARE']"><div><img class="rms-sharefile-icon-50px" src="ui/img/SharedFilesInfo_P.svg"/><br><h6>ReShare</h6></div></li>
+							<!--<li data-ng-if="rightsGranted['SEND']"><div><img src="ui/img/SharedFilesInfo_P.svg"/><br><h6>Send</h6></div></li>-->
+							<!--<li data-ng-if="rightsGranted['DECRYPT']"><div><img src="ui/img/SharedFilesInfo_P.svg"/><br><h6>Decrypt</h6></div></li>-->
+							<!--<li data-ng-if="rightsGranted['SCREENCAP']"><div><img src="ui/img/SharedFilesInfo_P.svg"/><br><h6>Screen Capture</h6></div></li>-->
+							<li data-ng-if="rightsGranted['WATERMARK']"><div><img class="rms-sharefile-icon-50px" src="ui/img/WaterMark_P.svg"/><br><h6>Watermark</h6></div></li>
+							<li><div><img class="rms-sharefile-icon-50px" src="ui/img/Validity_P.svg"/><br><h6>Validity</h6></div></li>
+						</div>
+					</div>
+					<div class="expiry-info">
+						<p>{{'validity' | translate}} : {{expiration}}</p>
+					</div>
+					<br/>
+					<br/><br/>
+				<br />
+					<div data-ng-if="!revoked"><label><b>{{"share.with.label" | translate}}: </b></label></div>
+					<div data-ng-if="revoked"><label><b>{{"shared.with.label" | translate}}: </b></label></div>
+					<div data-ng-class ="revoked?'shareLinkDisabled':'' ">
+						<input type="hidden" id="shareWith">
+						<ul id="mailIdTags" tag-it>
+						</ul>
+						<p id="error-label"></p>
+					</div>
+				</div>
+				<br />
+				<div data-ng-if="sharedWithAddedNew()">
+					<div><label><b>{{"comment.label" | translate}}</b><i> {{"optional.label" | translate}}</i></span><b>:</b> </label></div>
+					<textarea class="comment-textarea" ng-attr-placeholder="{{'comment.placeholder' | translate}}" data-ng-model="comment.text" data-ng-trim="false" maxlength="250"></textarea>
+					<span class="float-right">{{250 - comment.text.length}} / 250</span>
+				</div>
+				<br/>
+				<!--<div>
+					<div><label>{{"valid.until.label" | translate}}: </label></div>
+					<div>						 
+						<p class="input-group">
+				          <input type="text" class="form-control" data-uib-datepicker-popup="{{format}}" data-ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats" />
+				          <span class="input-group-btn">
+				            <button type="button" class="btn btn-default" data-ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+				          </span>
+				        </p>
+					</div>
+				</div>-->
+				<div id="revoke_button" data-ng-show="!revoked">
+			 		<a class="btn btn-default  rms-delete-button"  data-ng-click="revoke()" tabindex="1">{{"share.revoke" | translate}}</a>
+				</div>				
+				<br><br>
+			</div>
+			
+		</form>
+	</div>
+</div>
+<div data-ng-include="'ui/app/Home/SharedFiles/partials/sharedProjectFileDetailsTemplate.html'"></div>

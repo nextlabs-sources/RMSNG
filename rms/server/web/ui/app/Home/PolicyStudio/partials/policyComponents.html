@@ -1,0 +1,51 @@
+<div class="margin-top-10 policy-components-container">
+	<div class="components-container-header">
+		<div class="col-xs-8">
+			<h4 class="col-xs-12 margin-bottom-0">{{getComponentType()}}</h4>
+			<label class="col-xs-12">{{getComponentDescription()}}</label>
+		</div>
+		<div class="col-xs-4" style="float: right; padding-top: 10px">
+			<a class="btn btn-default" style="float: right; background-color: #333333; color: white; padding: 8px" data-ng-click="addComponentSet()" data-ng-disabled="attributes && attributes.length==0"><i class="glyphicon glyphicon-plus">&nbsp</i> {{'policy.add.and.block' | translate}}</a>
+		</div>
+	</div>
+	<div class="component-set" ng-repeat-start="componentSet in componentSets track by $index" ng-init="componentSetIndex=$index">
+	<a class="btn btn-default" style="position: relative; float: right; background-color: #EB5757; color: white; padding: 4px; margin-right: 20px; top: -15px" data-ng-click="removeComponentSet(componentSet, componentSets, componentSetIndex);" data-ng-disabled="conditionTable.error">&nbsp;{{'policy.remove.block' | translate}}&nbsp;<i class="fa fa-remove"></i></a>
+		<div style="padding: 20px 0 0 30px;">
+			<label style="font-style: italic; color: #828282">{{'policy.selected.conditons' | translate}}</label>
+			<select class="form-control" style="margin-left: 20px; display: inline-block; width:100px; padding: 3px 6px; height: auto" data-ng-model="componentSet.operator" data-ng-options="operator.text for operator in componentOperators track by operator.value"></select>
+		</div>
+		<div class="component-container" ng-repeat-start="component in componentSet.components track by $index" ng-init="componentIndex=$index">
+			<div>
+				<p class="table-message" data-ng-class="{'success':conditionTable.success,'error':conditionTable.error}" data-ng-show="conditionTable.notify">{{conditionTable.message}}</p>           
+				<table class="table" style="margin-bottom:0px">
+				<tbody>
+					<tr class="policy-condition-tr" ng-repeat-start="con in component.conditions track by $index"  ng-init="conditionIndex=$index" data-ng-include="'ui/app/Home/PolicyStudio/partials/condition-edit.html'"></tr>
+					<tr class="policy-condition-tr" ng-repeat-end ng-if="!$last"> 
+						<td colspan="3">
+							<div style="height: 50px; margin-left: 10px; padding: 10px; border-left: dashed 1px #219653">
+								<span style="position: relative; left: -15px;width: 10px;height: 10px;border-radius: 50%;background-color: #219653; display:inline-block"> </span>
+								<a class="btn btn-default" style="cursor: initial; position: relative; left: -15px; background-color: #34994C; color: white; padding: 4px; display: inline-block" data-ng-disabled="conditionTable.error">AND <></a>
+								<div style="position: relative;left: 60px;top: -50%;border-top: 1px dashed #219653;"></div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+				</table>
+				<a class="btn btn-default" style="float: right; background-color: #34994C; color: white; padding: 4px; margin: 10px" data-ng-click="attributes=$parent.$parent.resourceModel.attributes;addCondition(component);" data-ng-disabled="conditionTable.error"><i class="glyphicon glyphicon-plus">&nbsp</i> {{'policy.add.and.condition' | translate}}</a>
+			</div>
+		</div>
+		<div ng-repeat-end ng-if="!$last" style="height: 50px; margin-left: 20px; padding: 10px; border-left: dashed 1px #249FF4">
+			<span style="position: relative; left: -15px;width: 10px;height: 10px;border-radius: 50%;background-color: #249FF4; display:inline-block"> </span>
+			<a class="btn btn-default" style="cursor: initial; position: relative; left: -15px; background-color: #249FF4; color: white; padding: 4px; display: inline-block" data-ng-disabled="conditionTable.error">OR <></a>
+			<div style="position: relative;left: 60px;top: -50%;border-top: 1px dashed #249FF4; width: calc(100% - 60px);"></div>
+		</div>
+		<div style="display: inline-block">
+			<a class="btn btn-default" style="float: left; background-color: #249FF4; color: white; padding: 4px; margin: 10px" data-ng-click="addComponent(componentSet);" data-ng-disabled="conditionTable.error"><i class="glyphicon glyphicon-plus">&nbsp</i> {{'policy.add.or.block' | translate}}</a>
+		</div>
+	</div>
+	<div ng-repeat-end ng-if="!$last" style="height: 50px; margin-left: 10px; padding: 10px; border-left: dashed 1px #333333">
+		<span style="position: relative; left: -15px;width: 10px;height: 10px;border-radius: 50%;background-color: #333333; display:inline-block"> </span>
+		<a class="btn btn-default" style="cursor: initial; position: relative; left: -15px; background-color: #333333; color: white; padding: 4px; display: inline-block" data-ng-disabled="conditionTable.error">AND <></a>
+		<div style="position: relative;left: 60px;top: -50%;border-top: 1px dashed #333333; width: calc(100% - 60px);"></div>
+	</div>
+</div>

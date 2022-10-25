@@ -1,0 +1,41 @@
+<div class="cc-ps-policy">
+<div class="cc-layout-full-width">
+	<div title="{{eachFile.title}}" class="rms-shared-files">
+		<span class="inline-flex" data-ng-class="eachFile.revoked?'revoked revoked-icon':''">
+			<img ng-src="{{fileIconName(eachFile)}}" alt="icon">
+		</span>
+		<a class="rms-file-item" ng-class="{'revoked':eachFile.revoked, 'deleted':eachFile.deleted}" data-ng-click="eachFile.shared || eachFile.deleted ? viewFileDetails(eachFile) : onClickShare(eachFile)"> {{eachFile.name}} </a>
+	</div>
+	<div title="{{eachFile.title}}" data-ng-class="eachFile.revoked?'revoked':''">
+		<label title="{{'file.size'| translate}}" class="file-info-label" data-ng-if="eachFile.size != null">{{eachFile.size | filesize:2}}</label>
+		<label title="{{'protect.on.label'| translate}}" class="file-info-label" >
+			<friendly-date data-ng-if="eachFile.sharedOn!= null" data-date="{{eachFile.sharedOn}}"
+				data-content-class="friendly-date" data-full-format="d MMM yyyy,hh:mm a"
+				data-short-format="hh:mm a" />
+		</label>		
+		<label title="{{'shared.with'| translate}}" class="file-info-info">{{eachFile.sharedWith}}</label>
+		<label title="{{'file.origin'| translate}}" class="myvault-file-info-label file-info-label" data-ng-if="eachFile.customMetadata != null">
+			<i>{{ sourceTag(eachFile) }}</i>
+		</label>	
+	</div>
+	<div class="rms-file-menu shared-file-menu" data-ng-mouseleave="hideMenu(eachFile)" data-ng-mouseover="showMenu(eachFile)" data-ng-show="!mobile || (!eachFile.deleted || eachFile.shared || (!eachFile.shared && !eachFile.deleted && !eachFile.revoked))">
+		<div class="shared-file-menu-button">
+			<span>
+				<a title="{{'toolbar.menu'| translate}}" data-ng-click="onClickMenu(eachFile)" class="glyphicon glyphicon-option-vertical "></a>
+			</span>
+		</div>
+		<div class="shared-file-menu-operations">
+			<span data-ng-if ="(selectedFileId == eachFile.pathId && menuClickedMode)" >
+				<a class="sharedFileListOption-manage-icon" title="{{'viewer.toolbar.info' | translate}}" data-ng-click="onClickNxlFileInfo(eachFile)">
+					<i data-ng-include="'ui/img/FileInfo_P.svg'"></i>
+				</a>
+				<a class="sharedFileListOption-activity-icon" title="{{'share.file.viewActivity'| translate}}" data-ng-click="viewFileActivity(eachFile)">
+					<i data-ng-include="'ui/img/Share_Activity_P.svg'"></i>
+				</a>
+				<a class="fileListOption-share-icon" title="{{'share.file.viewDetails'| translate}}" data-ng-click="viewFileDetails(eachFile)">
+					<i data-ng-include="'ui/img/Share_Manage_P.svg'"></i>
+				</a>
+			</span>
+		</div>
+	</div>
+</div>

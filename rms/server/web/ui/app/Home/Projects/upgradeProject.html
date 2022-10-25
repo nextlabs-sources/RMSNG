@@ -1,0 +1,173 @@
+<div data-ng-controller="upgradeProjectController">
+    <div id="sign-up-header" class="col-xs-12 no-padding" style="background-image:url('ui/img/grayBackground.svg');background-repeat: no-repeat;background-position: right top; background-size: auto 100%; background-color: white">
+	        <div class="row-desktop" style="margin-top: 20px;">
+	            <div class="col-xs-12 col-md-8 margin-auto">
+	                <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-offset-2 text-align-center">
+	                    <div class="inline-block col-md-4" style="min-width: 260px;">
+	                        <img src="ui/img/rms-project-logo.svg">
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-xs-12 col-md-4 col-lg-6 margin-auto padding-20">
+	            </div>
+	        </div>
+	        <div id="sign-up-main" class="col-xs-12 row-desktop">
+	            <div class="col-xs-12 col-md-8 padding-20 margin-auto">
+	                <div class="col-xs-12 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+	                    <div class="margin-bottom-20 margin-top-20" style="font-size: x-large">
+	                        <span>Work securely in a team without worrying about leakage of intellectual property and trade secrets.</span>
+                        </div>
+                    <div data-ng-if="saasMode">
+	                    <button type="button" class="btn btn-default rms-settings-button no-vertical-margin" data-ng-click="goBack()">Cancel</button>
+	                    <button type="button" class="btn btn-default rms-settings-button-color rms-tile-gradient" data-ng-click="goToCreateProject()">Create a project</button>
+	                    <hr/>
+	                    <div class="margin-bottom-10 margin-top-10" style="font-size: small;">
+	                        <span>By creating a project, you agree to our 
+                                <a data-ng-href="{{termsUrl}}" target="_blank"><u>terms</u></a> and 
+                                <a data-ng-href="{{privatePolicyUrl}}" target="_blank"><u>privacy policy.</u></a>
+                            </span>
+	                    </div>
+                    </div>    
+	                </div>
+	            </div>
+	            <div class="col-xs-12 col-md-6 margin-auto padding-20 hidden-xs hidden-sm">
+                    <div class="margin-auto padding-20">
+                        <img alt="" src="ui/img/project-intro-img.svg" style="max-width: 100%;">
+                    </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div id="upgrade-project-orientation" class="col-xs-12 padding-20 text-align-center" style="background-color:#F2F3F5">
+	        <div class="col-xs-12 margin-top-20 margin-bottom-20">
+	            <div class="col-xs-12 col-md-3">
+	                <div class="col-xs-12 margin-auto">
+	                    <img src="ui/img/titleLineDots.svg" alt="">
+	                    <div class="bold-large-font">Why SkyDRM project?</div>
+	                </div>
+	            </div>
+	        </div>
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                <div class="row-desktop">
+                    <div class="col-xs-12 col-md-6 padding-20 margin-auto inline-block text-align-left" style="max-height:450px;">
+                        <div class="col-sm-10 col-sm-offset-1 col-xs-12" style="height: 100%; display: flex; flex-direction:column;">
+                            <div class="margin-auto">
+                                <div class="margin-top-10 margin-bottom-10" style="font-size: x-large"><strong>Share project documents</strong></div>
+                                <div class="margin-top-5 margin-bottom-10 color-green" style="font-size: x-large"><i>safely!</i></div>
+                                <div class="margin-top-20 margin-bottom-20" style="font-size: medium; color: #4F4F4F">Store and manage documents for the project for secure sharing across project team.</div>
+                                <button type="button" class="btn borderless-shadow" data-ng-click="projectHelp()">Learn more</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 margin-auto inline-block text-align-left" style="max-height:450px;">
+                        <div class="padding-10 margin-auto">
+                            <img src="ui/img/shareFilesSecurely.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                <div class="row-desktop flex-reverse-col">
+                    <div class="col-xs-12 col-md-6 margin-auto inline-block text-align-left" style="max-height:450px;">
+                        <div class="padding-10 margin-auto">
+                            <img src="ui/img/teamwork-img.svg">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 padding-20 margin-auto inline-block text-align-left" style="max-height:450px;">
+                        <div class="col-sm-10 col-sm-offset-1 col-xs-12" style="height: 100%; display: flex; flex-direction:column;">
+                            <div class="margin-auto">
+                                <div class="margin-top-10 margin-bottom-10" style="font-size: x-large"><strong>Teamwork!</strong></div>
+                                <div class="margin-top-20 margin-bottom-20" style="font-size: medium; color: #4F4F4F">Common collaboration space for the project team to work together!</div>
+                                <button type="button" class="btn borderless-shadow" data-ng-click="projectHelp()">Learn more</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                <div class="row-desktop">
+                    <div class="col-xs-12 col-md-6 padding-20 inline-block text-align-left" style="max-height:450px;">
+                        <div class="col-sm-10 col-sm-offset-1 col-xs-12" style="height: 100%; display: flex; flex-direction:column;">
+                            <div class="margin-auto">
+                                <div class="margin-top-10 margin-bottom-10" style="font-size: x-large"><strong>Manage project</strong></div>
+                                <div class="margin-top-10 margin-bottom-10 color-green" style="font-size: x-large"><i>centrally!</i></div>
+                                <div class="margin-top-20 margin-bottom-20" style="font-size: medium; color: #4F4F4F">Central place to manage and track all critical documents and sensitive files shared with project team.</div>
+                                <button type="button" class="btn borderless-shadow" data-ng-click="projectHelp()">Learn more</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 inline-block text-align-center" style="max-height:450px;">
+                        <div class="padding-10 margin-auto">
+                            <img src="ui/img/manage-centrally-img.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                <div class="row-desktop flex-reverse-col">
+                    <div class="col-xs-12 col-md-6 inline-block text-align-center" style="max-height:450px;">
+                        <div class="padding-10 margin-auto">
+                            <img src="ui/img/track-monitor-img.svg">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 padding-20 inline-block text-align-left" style="max-height:450px;">
+                        <div class="col-sm-10 col-sm-offset-1 col-xs-12" style="height: 100%; display: flex; flex-direction:column;">
+                            <div class="margin-auto">
+                                <div class="margin-top-10 margin-bottom-10" style="font-size: x-large"><strong>Track and monitor</strong></div>
+                                <div class="margin-top-10 margin-bottom-10 color-green" style="font-size: x-large"><i>usage and risk!</i></div>
+                                <div class="margin-top-10 margin-bottom-20" style="font-size: medium; color: #4F4F4F">Revoke, track, monitor and report usage of all project documents easily.</div>
+                                <button type="button" class="btn borderless-shadow" data-ng-click="projectHelp()">Learn more</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	    </div>
+        <div class="col-xs-12 col-md-12 margin-auto text-align-center" style="background-color: white; padding:80px">
+                <div class="col-md-8" style="font-size: large; margin: 0 auto; padding-bottom: 10px; float: none">
+                    Work securely in a team without worrying about leakage of intellectual property and trade secrets.
+                </div>
+            <div data-ng-if = "saasMode">    
+                <button type="button" class="btn btn-default rms-settings-button no-vertical-margin" data-ng-click="goBack()">Cancel</button>
+                <button type="button" class="btn btn-default rms-settings-button-color rms-tile-gradient" data-ng-click="goToCreateProject()">Create a project</button>
+                <div class="margin-bottom-10 margin-top-10" style="font-size: small;">
+                    <span>By creating a project, you agree to our 
+                        <a data-ng-href="{{termsUrl}}" target="_blank"><u>terms</u></a> and 
+                        <a data-ng-href="{{privatePolicyUrl}}" target="_blank"><u>privacy policy.</u></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+	    <div id="projectIntro-footer" class="col-xs-12 rms-tile-gradient row-desktop">
+	        <div class="col-xs-12 col-md-6 padding-20 margin-auto row-desktop">
+	            <div id="footer-logo" class="col-xs-12 col-md-4 margin-auto padding-20 text-align-center" >
+	                <img class="inline-block" src="ui/img/SkyDRM Logo-White.svg" style="max-width: 100%;">
+	            </div>
+	            <div class="col-xs-12 col-md-8 margin-auto text-align-center mobile-no-padding">
+	                <div class="inline-block">
+	                    <div class="row-desktop margin-top-20">
+	                        <a class="margin-right-10 margin-left-10" href="{{termsUrl}}" target="_blank">Terms and conditions</a><br class="visible-xs visible-sm"/>
+	                        <a class="margin-right-10 margin-left-10" href="{{privatePolicyUrl}}" target="_blank">Privacy policy</a><br class="visible-xs visible-sm"/>
+	                        <a class="margin-right-10 margin-left-10" href="mailto:support@skydrm.com">Contact us</a>
+	                    </div>
+	                    <div class="margin-top-20">
+	                        <div><p style="color: white">Copyright © {{'copyright-year' | translate}} <a href="https://www.nextlabs.com" target="_blank">NextLabs, Inc.</a> All rights reserved.</p></div>
+	                    </div>                            
+	                </div>
+	            </div>        
+	        </div>
+	        <div class="col-xs-12 col-md-3 padding-20 margin-auto text-align-center">
+	            <div class="inline-block margin-auto padding-10">
+	                <a target="_blank" href="https://www.linkedin.com/company/nextlabs"><img src="ui/img/Linkedin.svg"></a>
+	            </div>
+	            <div class="inline-block margin-auto padding-10">
+	                <a target="_blank" href="https://twitter.com/nextlabs"><img src="ui/img/Twitter.svg"></a>
+	            </div>
+	            <div class="inline-block margin-auto padding-10">
+	                <div class="margin-auto">
+	                    <a href="https://www.nextlabs.com" target="_blank">Visit NextLabs</a>
+	                    <img src="ui/img/rightArrow.svg">
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+</div>

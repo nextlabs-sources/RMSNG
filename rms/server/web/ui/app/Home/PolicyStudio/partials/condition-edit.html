@@ -1,0 +1,33 @@
+<td style="width: 20%">
+    <select class="form-control" data-ng-model="con.attribute" data-ng-options="key.name for key in getAttributes() track by key.name" 
+    ng-init="initConditions(con)"
+    ng-change="changeOptions(con)" name="con_{{$index}}">
+    </select>
+</td>
+<td style="width: 15%">
+    <select class="form-control" data-ng-model="con.operator" data-ng-options="attr.label for attr in con.attribute.operatorConfigs track by attr.label"
+    ng-init='initOperator(con)' name="operator_{{$index}}"> 
+    </select>
+</td>
+<td style="width: 60%">
+    <div ng-if="type=='SUBJECT'" id="user-input_SUBJECT_{{componentSetIndex}}_{{componentIndex}}_{{conditionIndex}}">
+        <go-as-you-type data-placeholder="{{'type.here' | translate}}" data-input-max="255" data-condition="con"></go-as-you-type>
+    </div>
+    <div ng-if="type=='RESOURCE'" id="resource-input_RESOURCE_{{componentSetIndex}}_{{componentIndex}}_{{conditionIndex}}">
+        <div ng-show="con.attribute.values == undefined">
+            <input type="text" id="resource-input_RESOURCE_{{componentSetIndex}}_{{componentIndex}}_{{conditionIndex}}" class="form-control" name="condition_value_{{$index}}" ng-model="con.value"  ng-value="con.value" required>
+        </div>   
+        <select ng-show="con.attribute.values != undefined" id="resource-input_RESOURCE_{{componentSetIndex}}_{{componentIndex}}_{{conditionIndex}}" class="form-control" name="condition_value_{{$index}}" ng-model="con.value"  ng-options="label for label in  con.attribute.values" >
+            <option value="" selected disabled hidden>{{'managelocalfile.select.option.label' | translate}}</option>
+        </select>
+    </div>
+    <div ng-if="type=='APPLICATION'" id="application-input_APPLICATION_{{componentSetIndex}}_{{componentIndex}}_{{conditionIndex}}">
+        <go-as-you-type data-placeholder="{{'type.here' | translate}}" data-input-max="255" data-condition="con"></go-as-you-type>
+    </div>
+    <div ng-messages="componentForm.val['condition_value_' + $index].$error" ng-if="componentForm.val['condition_value_' + $index].$touched">
+      <p ng-message="required">{{"component.condition.value.validation.required" | translate}}</p>
+    </div>
+</td>
+<td style="width: 5%" class="td-icon">
+  <i data-ng-include="'ui/img/CrossButton.svg'" data-ng-click="removeCondition(con, component, componentSet, conditionIndex, componentIndex, componentSets)" title="Remove" class="pointer-click"></i>
+</td>

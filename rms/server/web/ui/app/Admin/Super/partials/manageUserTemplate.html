@@ -1,0 +1,73 @@
+<div class="cc-layout-full-width">
+    <div class="row" style="font-size:13px">
+        <div class="col-md-3">
+            <div class="row">
+                <div id="profileImageLandingPageTop" class="default_profile" data-ng-class="'profile_'+eachUser.name[0].toLowerCase()" style="margin:0 5px 5px 0">
+                    <div id="profileNameLandingPageTop">
+                        {{eachUser.name | initials}}
+                    </div>
+                </div>
+                <div class="rms-file-item" style="font-size:16px">
+                    {{eachUser.name}}
+                </div>
+            </div>
+            <div class="rms-file-item" style="color: grey;font-weight: 300">
+                {{eachUser.email}}
+            </div>
+            <div class="padding-top-10">
+                {{"joined" | translate}}
+                <label class="file-info-label">
+                    <friendly-date data-date="{{eachUser.creationTime}}"
+                                   data-content-class="friendly-date" data-full-format="d MMM yyyy,hh:mm a"
+                                   data-short-format="hh:mm a"/>
+                </label>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="rms-file-item" data-ng-show="eachUser.isSuperAdmin || eachUser.ticket">
+                <span data-ng-if="eachUser.isSuperAdmin">{{"title.super.admin" | translate}}</span>
+                <span data-ng-if="eachUser.isSuperAdmin && eachUser.ticket">; </span>
+                <span data-ng-if="eachUser.ticket">{{"title.api.user" | translate}} </span>
+            </div>
+            <div class="color-green" data-ng-show="eachUser.ticket" style="font-size:12px">
+                <div class="rms-file-item">
+                    {{"appid.title" | translate}} {{eachUser.userId}}
+                </div>
+                <div class="rms-file-item">
+                    {{"ticket.title" | translate}} {{eachUser.ticket}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="rms-file-item" data-ng-class="{'color-green': eachUser.status == 0, 'color-grey': eachUser.status != 0}">
+                {{eachUser.status == 0 ? 'user.status.ACTIVE' : 'user.status.INACTIVE' | translate}}
+            </div>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="api-btn" data-ng-click="createAPIUser(eachUser, $index)" data-ng-hide="eachUser.status != 0 || eachUser.ticket">{{'assign.api.user' | translate}}</button>
+        </div>
+    </div>
+    <div class="row" style="font-size:13px">
+        <div class="col-md-9">
+            <a class="btn btn-default" ng-if="eachUser.ticket && eachUser.appCertImported" style="cursor: pointer; position: relative; background-color: red; color: white; padding: 4px; display: inline-block" ng-click="deleteCert(eachUser)" type="button">{{"api.user.cert.delete" | translate}}</a>
+            <div ngf-drop="" ng-model="files" class="padding-top-10" data-ng-show="eachUser.ticket && !eachUser.appCertImported" ngf-drag-over-class="'manage-local-dragover'" ngf-allow-dir="false">
+                <!--<span ng-show="files">{{"managelocalfile.file.chosen.label" | translate}}: <b>{{files.name}}</b></span>-->
+                <button class="btn btn-default" ng-model="files" ngf-multiple="false" ngf-select="uploadCert(files, eachUser)"  style="cursor: pointer; position: relative; background-color: #249FF4; color: white; padding: 4px; display: inline-block" type="button">{{"api.user.cert.upload" | translate}}</button>
+                <!--<a ng-show="files && eachUser.ticket" class="btn btn-default" style="cursor: initial; position: relative; background-color: #399649; color: white; padding: 4px; display: inline-block" ng-click="uploadCert(files)" data-ng-disabled="conditionTable.error">{{"upload.file.button.upload" | translate}}</a>-->
+            </div>
+        </div>
+    </div>
+    <!--<div class="rms-file-menu shared-file-menu" data-ng-mouseleave="hideMenu(eachUser)"-->
+         <!--data-ng-mouseover="showMenu(eachUser)" data-ng-show="showMenuFlag">-->
+        <!--<div class="shared-file-menu-button">-->
+        <!--<span>-->
+            <!--<a title="{{'toolbar.menu'| translate}}" data-ng-click="onClickMenu(eachUser)"-->
+               <!--class="glyphicon glyphicon-option-vertical "></a>-->
+        <!--</span>-->
+        <!--</div>-->
+        <!--<div class="shared-file-menu-operations">-->
+        <!--<span data-ng-if="(selectedUserId == eachUser.userId && menuClickedMode)">-->
+        <!--</span>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>

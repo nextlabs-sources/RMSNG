@@ -1,0 +1,351 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xml:lang="en" lang="en">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Active Directory Federation Services (AD FS) is a Microsoft software component that provides users with single sign-on access to systems and applications located across organizational boundaries. ..." /><meta charset="UTF-8" /><meta name="copyright" content="(C) Copyright 2019" /><meta name="DC.rights.owner" content="(C) Copyright 2019" /><meta name="DC.Type" content="task" /><meta name="DC.Relation" scheme="URI" content="skydrm_rms_configuration_2.html" /><meta name="DC.Relation" scheme="URI" content="configuring_saml.html" /><meta name="DC.Relation" scheme="URI" content="installing_skydrm.html" /><meta name="DC.Relation" scheme="URI" content="installing_skyrdm_high_availability.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="task_wmd_vnk_r2b" /><title>Integrating AD FS</title><!--  Generated with Oxygen version 20.1-SNAPSHOT, build number 2018061311.  --><meta name="wh-path2root" content="" /><meta name="wh-toc-id" content="task_wmd_vnk_r2b-d66e645" /><link rel="stylesheet" type="text/css" href="./oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css" /><link rel="stylesheet" href="./oxygen-webhelp/lib/bootstrap/css/bootstrap-theme.min.css" /><link rel="stylesheet" href="./oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css" /><link rel="stylesheet" type="text/css" href="./oxygen-webhelp/app/topic-page.css?buildId=2018061311" /><script type="text/javascript" src="./oxygen-webhelp/lib/jquery/jquery-3.1.1.min.js"><!----></script><script data-main="./oxygen-webhelp/app/topic-page.js" src="./oxygen-webhelp/lib/requirejs/require.js"></script><link rel="stylesheet" type="text/css" href="oxygen-webhelp/template/blue.css?buildId=2018061311" /></head>
+
+    <body id="task_wmd_vnk_r2b" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">Jump to main content</a>
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        
+        
+        
+        <header class="navbar navbar-default wh_header">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <a href="index.html" class=" wh_logo hidden-xs "><img src="SkyDRM_Logo_small1.png" alt="  SkyDRM RMS 10.4 Administrator's Guide  Revision 1  June 2019  " /></a>
+                    <div class=" wh_publication_title "><a href="index.html"><span class="booktitle">  <span class="ph mainbooktitle">SkyDRM RMS 10.4 Administrator's Guide</span>  <span class="ph booktitlealt">Revision 1</span>  <span class="ph booktitlealt">June 2019</span>  </span></a></div>
+                    
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                <button type="button" data-target="#wh_top_menu_and_indexterms_link" id="wh_menu_mobile_button" data-toggle="collapse" class="navbar-toggle collapsed wh_toggle_button" aria-expanded="false" aria-label="Toggle menu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+                <nav class=" wh_top_menu "><ul>
+   <li class="has-children"><span data-tocid="about_skydrm_rms-d66e24" data-state="not-ready" class=" topicref " data-id="about_skydrm_rms"><span class="title"><a href="about_skydrm_rms.html">About SkyDRM RMS</a></span></span></li>
+   <li class="has-children"><span data-tocid="installing_skydrm_rms-d66e90" data-state="not-ready" class=" topicref " data-id="installing_skydrm_rms"><span class="title"><a href="installing_skydrm_rms.html">SkyDRM RMS installation</a></span></span></li>
+   <li class="has-children"><span data-tocid="skydrm_rms_configuration-d66e415" data-state="not-ready" class=" topicref " data-id="skydrm_rms_configuration"><span class="title"><a href="skydrm_rms_configuration_2.html">SkyDRM RMS configuration</a></span></span></li>
+   <li class="has-children"><span data-tocid="creating_policies-d66e671" data-state="not-ready" class=" topicref " data-id="creating_policies"><span class="title"><a href="creating_policies.html">Policy creation in SkyDRM RMS</a></span></span></li>
+   <li class="has-children"><span data-tocid="concept_akn_5k4_mfb-d66e744" data-state="not-ready" class=" topicref " data-id="concept_akn_5k4_mfb"><span class="title"><a href="troubleshooting.html">Troubleshooting</a></span></span></li>
+</ul></nav>
+                <div class=" wh_indexterms_link "><a href="indexTerms.html" title="Index" aria-label="Go to index terms page"><span>Index</span></a></div>
+                
+            </div>
+        </div>
+    </div>
+</header>
+        
+        <div class=" wh_search_input "><form id="searchForm" method="get" role="search" action="search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div><script><!--
+                                    $(document).ready(function () {
+                                        $('#searchForm').submit(function (e) {
+                                            if ($('.wh_search_textfield').val().length < 1) {
+                                                e.preventDefault();
+                                            }
+                                        });
+                                    });
+                                --></script></form></div>
+        
+        <div class="container-fluid">
+            <div class="row">
+
+                <nav class="wh_tools hidden-print">
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "><ol xmlns:html="http://www.w3.org/1999/xhtml" class="hidden-print"><li><span class="home"><a href="index.html"><span>Home</span></a></span></li>
+   <li><span class="topicref" data-id="skydrm_rms_configuration"><span class="title"><a href="skydrm_rms_configuration_2.html">SkyDRM RMS configuration</a></span></span></li>
+   <li><span class="topicref"><span class="title"><a href="integrating_with_okta.html">Integrating external identity providers</a></span></span></li>
+   <li class="active"><span class="topicref" data-id="task_wmd_vnk_r2b"><span class="title"><a href="integrating_adfs.html">Integrating AD FS</a></span></span></li>
+</ol></div>
+
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links" class="navheader">
+  </span></div>
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <button class="webhelp_expand_collapse_sections" data-next-state="collapsed" aria-label="Collapse sections" title="Collapse sections"></button>
+                        <div class=" wh_print_link print "><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="wh_content_area">
+                <div class="row">
+                    
+                        <nav role="navigation" id="wh_publication_toc" class="col-lg-3 col-md-3 col-sm-3 hidden-xs navbar hidden-print">
+                            <div class=" wh_publication_toc " data-tooltip-position="right"><ul role="tree" aria-label="Table of Contents"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" aria-expanded="true"><span data-tocid="skydrm_rms_configuration-d66e415" class="topicref" data-id="skydrm_rms_configuration" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action skydrm_rms_configuration-d66e415-link" class="wh-expand-btn"></span><span class="title"><a href="skydrm_rms_configuration_2.html" id="skydrm_rms_configuration-d66e415-link">SkyDRM RMS configuration</a></span></span><ul role="group" class="nav nav-list"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" aria-expanded="false"><span data-tocid="concept_ltm_qjm_fgb-d66e423" class="topicref" data-id="concept_ltm_qjm_fgb" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action concept_ltm_qjm_fgb-d66e423-link" class="wh-expand-btn"></span><span class="title"><a href="tenant_mgmt.html" id="concept_ltm_qjm_fgb-d66e423-link">Tenant management</a></span></span></li>
+         <li role="treeitem"><span data-tocid="task_e5w_hbp_r2b-d66e455" class="topicref" data-id="task_e5w_hbp_r2b" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="mapping_user_attributes.html" id="task_e5w_hbp_r2b-d66e455-link">Mapping user attributes</a></span></span></li>
+         <li role="treeitem"><span data-tocid="task_ccm_mbp_r2b-d66e463" class="topicref" data-id="task_ccm_mbp_r2b" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="assigning_project_admin.html" id="task_ccm_mbp_r2b-d66e463-link">Assigning project administrators</a><span class="wh-tooltip">
+                     
+                     <p xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:toc="http://www.oxygenxml.com/ns/webhelp/toc" class="shortdesc">You can grant the right to create a project to SkyDRM RMS users. This user becomes         the project administrator.</p>
+                     </span></span></span></li>
+         <li role="treeitem"><span data-tocid="task_em3_g2z_fgb-d66e474" class="topicref" data-id="task_em3_g2z_fgb" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="creating_project_tags.html" id="task_em3_g2z_fgb-d66e474-link">Defining a project tag</a></span></span></li>
+         <li role="treeitem" aria-expanded="false"><span data-tocid="configuring_storage_service_providers-d66e482" class="topicref" data-id="configuring_storage_service_providers" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action configuring_storage_service_providers-d66e482-link" class="wh-expand-btn"></span><span class="title"><a href="configuring_storage_service_providers.html" id="configuring_storage_service_providers-d66e482-link">Storage service providers configuration</a></span></span></li>
+         <li role="treeitem" aria-expanded="true"><span data-tocid="tocId-d66e636" class="topicref" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action tocId-d66e636-link" class="wh-expand-btn"></span><span class="title"><a href="integrating_with_okta.html" id="tocId-d66e636-link">Integrating external identity providers</a></span></span><ul role="group" class="nav nav-list"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem"><span data-tocid="integrating_with_okta-d66e637" class="topicref" data-id="integrating_with_okta" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="integrating_with_okta.html" id="integrating_with_okta-d66e637-link">Integrating Okta</a></span></span></li>
+               <li role="treeitem" class="active"><span data-tocid="task_wmd_vnk_r2b-d66e645" class="topicref" data-id="task_wmd_vnk_r2b" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="integrating_adfs.html" id="task_wmd_vnk_r2b-d66e645-link">Integrating AD FS</a></span></span></li>
+               <li role="treeitem"><span data-tocid="task_m5c_1rk_r2b-d66e653" class="topicref" data-id="task_m5c_1rk_r2b" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="integrating_onelogin.html" id="task_m5c_1rk_r2b-d66e653-link">Integrating OneLogin</a></span></span></li>
+               <li role="treeitem"><span data-tocid="task_bvb_2rk_r2b-d66e661" class="topicref" data-id="task_bvb_2rk_r2b" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="integrating_ping.html" id="task_bvb_2rk_r2b-d66e661-link">Integrating PingOne</a></span></span></li>
+            </ul>
+         </li>
+      </ul>
+   </li>
+</ul></div>
+                        </nav>
+                    
+                    
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12" id="wh_topic_body">
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+    <h1 class="title topictitle1" id="ariaid-title1">Integrating AD FS</h1>
+    <div class="body taskbody">
+        <section class="section context">Active Directory Federation Services (AD FS) is a Microsoft software component that
+            provides users with single sign-on access to systems and applications located across
+            organizational boundaries. SkyDRM RMS can integrate with AD FS, enabling you to log in
+            to SkyDRM RMS using AD FS credentials. This topic describes how to add a relying party
+            trust in AD FS, which binds AD FS to SkyDRM RMS. You can then add the AD FS information
+            to <span class="ph filepath">admin.properties</span> file which enables login with AD FS
+            credentials.</section>
+        <ol class="ol steps"><li class="li step stepexpand">
+                <span class="ph cmd">In your AD FS console, select <span class="ph menucascade"><span class="ph uicontrol">Trust Relationships</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Relying Party Trusts</span></span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Action</span> pane appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Add Relying Party Trust</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Add Relying Party Trust Wizard</span>
+                    appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Start</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Select Data Source</span> pane appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click the <span class="ph uicontrol">Enter data about the relying party manually</span>
+                    radio button.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Next</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Specify Display Name</span> pane appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Type the display name.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Next</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Choose Profile</span> pane appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click the <span class="ph uicontrol">AD FS Profile</span> radio button.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Next</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Configure Certificate</span> pane
+                    appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Next</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Configure URL</span> pane appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Select the <span class="ph uicontrol">Enable support for the SAML 2.0 WebSSO
+                        protocol</span> check box.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">In the <span class="keyword wintitle">Relying party SAML 2.0 SSO service URL</span> box, type
+                        <span class="ph filepath">https://&lt;hostname&gt;:8444/rms/IdpManager/SamlAuth/SamlAuthFinish</span>.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Next</span>.</span>
+                <div class="itemgroup info">The <span class="keyword wintitle">Configure Identifiers</span> pane appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">In the <span class="keyword wintitle">Relying party trust identifier</span> box, type
+                        <span class="ph filepath">https://&lt;hostname&gt;:8444/rms/IdpManager/SamlAuth/SamlMetadata</span>.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Add</span>.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Next</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Configure Multi-factor Authentication Now?</span> pane
+                    appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click the <span class="ph uicontrol">I do not want to configure multi-factor authentication
+                        settings for this relying party trust at this time</span> radio
+                    button.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Next</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Choose Issuance Authorization Rules</span> pane
+                    appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click the <span class="ph uicontrol">Permit all users to access this relying party</span>
+                    radio button.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Next</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Ready to Add Trust</span> pane appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Next</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Finish</span> pane appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Close</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Edit Claim Rules</span> dialog box
+                    appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Add Rule</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Add Transform Claim Rule Wizard</span> dialog box
+                    appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">In the <span class="keyword wintitle">Choose Rule Type</span> pane, from the <span class="keyword wintitle">claim
+                        rule template</span> drop-down list, select <span class="ph uicontrol">Send LDAP
+                        Attributes as Claims</span>.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Next</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Configure Claim Rule</span> pane appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">From the <span class="keyword wintitle">Attribute store</span> drop-down list, select
+                        <span class="ph uicontrol">Active Directory</span>.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">In the <span class="keyword wintitle">Mapping of LDAP attributes to outgoing claim types</span>
+                    table, type the following mappings.</span>
+                <div class="simpletable-container"><table border="1" frame="hsides" rules="rows" cellpadding="4" cellspacing="0" summary="" class="simpletable choicetable choicetableborder" id="task_wmd_vnk_r2b__choicetable_pzh_b34_r2b"><colgroup><col style="width:50%" /><col style="width:50%" /></colgroup><thead><tr class="sthead chhead"><th class="stentry choptionhd" style="vertical-align:bottom;text-align:left;" id="d11573e377-option">LDAP Attribute</th><th class="stentry chdeschd" style="vertical-align:bottom;text-align:left;" id="d11573e377-desc">Outgoing Claim Type</th></tr></thead><tbody><tr class="strow chrow">
+                        <th style="vertical-align:top;" headers="d11573e377-option" id="d11573e390" class="stentry choption">E-Mail-Addresses<div class="p">
+                                <div class="note important note_important"><span class="note__title">Important:</span> You must configure this attribute
+                                    first.</div>
+                            </div></th>
+                        <td style="vertical-align:top;" headers="d11573e377-desc d11573e390" class="stentry chdesc">Name ID<div class="p">
+                                <div class="note important note_important"><span class="note__title">Important:</span> You must type this value. DO NOT select it
+                                    from the drop-down list. </div>
+                            </div></td>
+                    </tr><tr class="strow chrow">
+                        <th style="vertical-align:top;" headers="d11573e377-option" id="d11573e409" class="stentry choption">E-Mail-Addresses</th>
+                        <td style="vertical-align:top;" headers="d11573e377-desc d11573e409" class="stentry chdesc">email<div class="p">
+                                <div class="note important note_important"><span class="note__title">Important:</span> You must type this value. DO NOT select it
+                                    from the drop-down list. </div>
+                            </div></td>
+                    </tr><tr class="strow chrow">
+                        <th style="vertical-align:top;" headers="d11573e377-option" id="d11573e423" class="stentry choption">Department</th>
+                        <td style="vertical-align:top;" headers="d11573e377-desc d11573e423" class="stentry chdesc">department<div class="p">
+                                <div class="note important note_important"><span class="note__title">Important:</span> You must type this value. DO NOT select it
+                                    from the drop-down list. </div>
+                            </div></td>
+                    </tr><tr class="strow chrow">
+                        <th style="vertical-align:top;" headers="d11573e377-option" id="d11573e437" class="stentry choption">Company</th>
+                        <td style="vertical-align:top;" headers="d11573e377-desc d11573e437" class="stentry chdesc">company<div class="p">
+                                <div class="note important note_important"><span class="note__title">Important:</span> You must type this value. DO NOT select it
+                                    from the drop-down list. </div>
+                            </div></td>
+                    </tr></tbody></table></div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Finish</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Edit Claim Rules</span> dialog box
+                    appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Apply</span>.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">OK</span>.</span>
+                <div class="itemgroup info">The <span class="keyword wintitle">AD FS</span> console appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Navigate to <span class="ph menucascade"><span class="ph uicontrol">AD FS</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Service</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Certificates</span></span>.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">In the <span class="keyword wintitle">Certificates</span> pane, under
+                        <span class="keyword wintitle">Token-signing</span>, double-click the certificate.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Certificate</span> dialog box appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click the <span class="ph uicontrol">Details</span> tab.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Copy to File</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Certificate Export Wizard</span> dialog box
+                    appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Next</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Export Private Key</span> pane appears, asking if you
+                    want to export the private key with the certificate.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click the <span class="ph uicontrol">No, do not export the private key</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Export File Format pane</span> appears, asking you to
+                    select the file format you want to use.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click the <span class="ph uicontrol">Base-64 encoded X.509 (.CER)</span> radio
+                    button.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Next</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">File to Export</span> pane appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Browse</span> to select the folder you want to save the
+                    certificate file to.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Type a file name for the certificate file.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Save</span>.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Next</span>.</span>
+                <div class="itemgroup stepresult">The <span class="keyword wintitle">Certificate Export Completion</span> information
+                    appears.</div>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Click <span class="ph uicontrol">Finish</span>.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Navigate to the certificate file, right-click and select <span class="ph menucascade"><span class="ph uicontrol">Open with</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Notepad</span></span>.</span>
+            </li><li class="li step stepexpand">
+                <span class="ph cmd">Copy and save the AD FS-related parameters for use during SkyDRM RMS
+                    installation.</span>
+                <ol type="a" class="ol substeps" id="task_wmd_vnk_r2b__substeps_hg3_dvy_q2b">
+                    <li class="li substep">
+                        <span class="ph cmd">Copy the relying party SAML 2.0 SSO Service URL to the
+                                <code class="ph codeph">spAcsUrl</code>.</span>
+                    </li>
+                    <li class="li substep">
+                        <span class="ph cmd">Copy the relying party trust identifier URL to the
+                                <code class="ph codeph">spEntityId</code>.</span>
+                    </li>
+                    <li class="li substep">
+                        <span class="ph cmd">Copy the X509 Certificate to <code class="ph codeph">idpX509Cert</code>.</span>
+                    </li>
+                </ol>
+                <div class="itemgroup info">Sample
+                    configuration<pre class="pre codeblock"><code>web.idp.saml.2.attributes={\"name":"ADFS",\
+				"spEntityId":"https://&lt;hostname&gt;:8444/rms/IdpManager/SamlAuth/SamlMetadata",\
+				"spAcsUrl":"https://&lt;hostname&gt;:8444/rms/IdpManager/SamlAuth/SamlAuthFinish",\
+				"idpEntityId":"http://&lt;AD server hostname&gt;/adfs/services/trust",\
+				"idpSsoUrl":"https://&lt;AD server hostname&gt;/adfs/ls/",\"spNameIdFormat":"",\"signAlgo":"",\"authNContext":"",\"buttonText":"ADFS",\
+				"idpX509Cert":"MIIC+jCCAeKgAwIBAgIQa3x9rx0q5LFOWqXl211"\}
+</code></pre></div>
+            </li></ol>
+    </div>
+</article></main></div>
+                        
+                        <div class=" wh_related_links "><nav role="navigation" class="related-links"><div class="linklist relinfo reltasks"><strong>Related tasks</strong><br /><div class="related_link"><a class="navheader_parent_path" href="configuring_saml.html" title="Configuring SAML">Configuring SAML</a></div><div class="related_link"><a class="navheader_parent_path" href="installing_skydrm.html" title="Installing SkyDRM RMS">Installing SkyDRM RMS</a></div><div class="related_link"><a class="navheader_parent_path" href="installing_skyrdm_high_availability.html" title="Installing SkyDRM RMS on multiple servers for high availability">Installing SkyDRM RMS on multiple servers for high availability</a></div></div></nav></div>
+                                                
+                    </div>
+                    
+                </div>
+            </div>
+        </div> 
+        
+        <div class="wh_navigation_links">
+            <div class=" wh_navigation_links "><span id="topic_navigation_links" class="navheader">
+  </span></div>
+        </div>
+        
+        <div class="wh_related_links">
+            <div class=" wh_related_links "><nav role="navigation" class="related-links"><div class="linklist relinfo reltasks"><strong>Related tasks</strong><br /><div class="related_link"><a class="navheader_parent_path" href="configuring_saml.html" title="Configuring SAML">Configuring SAML</a></div><div class="related_link"><a class="navheader_parent_path" href="installing_skydrm.html" title="Installing SkyDRM RMS">Installing SkyDRM RMS</a></div><div class="related_link"><a class="navheader_parent_path" href="installing_skyrdm_high_availability.html" title="Installing SkyDRM RMS on multiple servers for high availability">Installing SkyDRM RMS on multiple servers for high availability</a></div></div></nav></div>
+        </div>
+
+
+        <footer class="navbar navbar-default wh_footer">
+  <div class=" footer-container text-center ">
+    CONFIDENTIALITY NOTICE <div>THIS DOCUMENT IS CONFIDENTIAL AND PROPRIETARY TO NEXTLABS, INC. AND MAY NOT BE REPRODUCED, PUBLISHED OR DISCLOSED TO OTHERS WITHOUT COMPANY AUTHORIZATION.</div> <div> Copyright (C) 2019 NextLabs, Inc. All rights reserved.</div>
+  </div>
+</footer>
+
+        
+        <div id="go2top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        
+        <!-- The modal container for images -->
+        <div id="modal_img_large" class="modal">
+            <span class="close glyphicon glyphicon-remove"></span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal-img" />
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        
+        <script src="./oxygen-webhelp/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        
+    </body>
+</html>

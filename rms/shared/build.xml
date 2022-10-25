@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="rms_shared" default="compile" basedir=".">
+
+    <import file="../config.xml" optional="true"/>
+    <property environment="env"/>
+    <property name="src" value="src"/>
+    <property name="src.excludes" value=""/>
+    <condition property="lib_home" value="${env.LIB_HOME}" else="../../../libraries">
+        <available file="${env.LIB_HOME}" type="dir"/>
+    </condition>
+    <property name="lib" location="${lib_home}/libs/web"/>
+
+    <!-- defines output files -->
+    <property name="outdir" value="build"/>
+    <property name="outdir-classes" value="${outdir}/classes"/>
+    <property name="outjar" value="${outdir}/${ant.project.name}.jar"/>
+
+    <path id="sourcepath">
+        <path location="src"/>
+    </path>
+
+    <path id="project.classpath">
+        <fileset dir="${lib}" includes="**/*.jar"/>
+        <path location="../../shared/build/shared.jar"/>
+    	<path location="../../rmjavasdk-ng/build/rmjavasdk-ng.jar"/>
+    </path>
+
+    <!-- Create the output directories if they don't exist yet. -->
+    <target name="dirs">
+        <echo>Creating output directories if needed...</echo>
+        <mkdir dir="${outdir}"/>
+        <mkdir dir="${outdir-classes}"/>
+
+        <echo>Compiling shared project...</echo>
+        <ant dir="../../shared" target="debug" inheritAll="false"/>
+        <echo>Compiling rmjavasdk-ng project...</echo>
+        <ant dir="../../rmjavasdk-ng" target="debug" inheritAll="false"/>
+    </target>
+
+    <target name="debug" depends="compile"/>
+
+    <target name="release" depends="compile"/>
+
+    <!-- Compile java files. -->
+    <target name="compile" depends="dirs">
+        <property name="javac.arg" value="-Xlint -Xlint:-options -Xlint:-path -Werror"/>
+        <javac includeAntRuntime="false"
+               source="1.7"
+               target="1.7"
+               encoding="UTF-8"
+               debug="on"
+               sourcepath=""
+               sourcepathref="sourcepath"
+               srcdir="${src}"
+               destdir="${outdir-classes}"
+               excludes="${src.excludes}">
+            <compilerarg line="${javac.arg}"/>
+            <classpath refid="project.classpath"/>
+        </javac>
+        <copy todir="${outdir-classes}">
+            <fileset dir="${src}" excludes="${src.excludes}">
+                <include name="**/*.properties"/>
+                <include name="**/*.txt"/>
+                <include name="**/*.xml"/>
+                <include name="**/*.xsl"/>
+                <include name="**/*.xsd"/>
+                <include name="**/*.png"/>
+                <include name="**/*.jpg"/>
+                <include name="**/*.gif"/>
+                <include name="**/*.dic"/>
+                <include name="**/*.jks"/>
+                <include name="**/*.sql"/>
+            </fileset>
+        </copy>
+        <jar destfile="${outjar}" basedir="${outdir-classes}" update="true" duplicate="fail"/>
+    </target>
+
+    <target name="clean">
+        <echo>Deleting Output Files and Directories...</echo>
+        <delete dir="${outdir}"/>
+    </target>
+
+    <target name="install" if="env.CATALINA_HOME">
+        <echo>Deploying ${outjar} to ${env.CATALINA_HOME}/webapps/rms/WEB-INF/lib ...</echo>
+        <copy file="${outjar}" todir="${env.CATALINA_HOME}/webapps/rms/WEB-INF/lib"/>
+    </target>
+
+    <import file="${lib_home}/tools/validate.xml"/>
+</project>

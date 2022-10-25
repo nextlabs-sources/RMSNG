@@ -1,0 +1,208 @@
+project.ext {
+	bcfips_version = "1.0.2.1"
+	bcpkixfips_version = "1.0.5"
+	axis2_adb = "1.7.9"
+	axis2_version = "1.7.9"
+	commons_cli_version = "1.2"
+	commons_codec_version = "1.10"
+	commons_csv_version = "1.4"
+	commons_discovery_version = "0.2"
+	commons_file_upload_version = "1.4"
+	commons_io_version = "2.4"
+	commons_lang3_version = "3.5"
+	cxf_version = "3.4.3"
+	disruptor_version = "3.3.11"
+	dropbox_version = "3.0.4"
+	ehcache_version = "2.8.1"
+	flyway_version = "2.0.3"
+	google_api_version = "1.21.0"
+	google_drive_version = "v2-rev196-1.21.0"
+	googleOauth2Version = "v2-rev98-1.21.0"
+	gson_version = "2.3.1"
+	guava_version = "18.0"
+	hibernate_version = "4.3.11.Final"
+	http_client_version = "4.5.12"
+	http_async_client_version = "4.1.3"
+	http_core_version = "4.4.4"
+	infinispan_version = "9.4.18.Final"
+	jgroups_aws_version = "1.6.1"
+	jackson_version = "2.9.10"
+	jaxrpc_version = "1.1"
+	jersey_version = "2.22"
+	jhlabs_version = "2.0.235"
+	joda_version = "2.2"
+	jsp_version = "2.3.0"
+	log4j_version= "2.10.0"
+	mail_version = "1.4.7"
+	msal4j_version = "1.6.1"	
+	mssql_jdbc_version = "7.4.1.jre11"
+	onelogin_version = "2.2.0"
+	open_saml_version = "2.6.1"
+	ojdbc_version = "12.2.0.1"
+	pdfbox_version = "2.0.0"
+	postgresql_jdbc_version = "9.4-1204-jdbc42"
+	restlet_version = "2.3.5"
+	servlet_version = "3.1.0"
+	s3_version = "1.11.41"
+	tika_version = "1.24"
+	xml_apis_version = "1.4.01"
+	xmlbeans_version = "2.6.0"
+	zip4j_version = "1.3.2"
+	rabbitmq_version = "5.4.1"
+    jaxws_api_version = "2.3.0"
+    javax_api_version = "1.1"
+	javax_activation_version = "1.2.0"
+	libs = [
+	    'jaxws': "javax.xml.ws:jaxws-api:$jaxws_api_version",
+	    'javax': "javax.jws:javax.jws-api:$javax_api_version",
+	    'bouncycastle_fips': [
+            "org.bouncycastle:bc-fips:$bcfips_version",
+            "org.bouncycastle:bcpkix-fips:$bcpkixfips_version",
+        ],
+		'commons-cli': "commons-cli:commons-cli:$commons_cli_version",
+		'commons-codec': "commons-codec:commons-codec:$commons_codec_version",
+		'commons-csv': "org.apache.commons:commons-csv:$commons_csv_version",
+		'commons-discovery': "commons-discovery:commons-discovery:$commons_discovery_version",
+		'commons-file-upload': "commons-fileupload:commons-fileupload:$commons_file_upload_version",
+		'commons-io': "commons-io:commons-io:$commons_io_version",
+		'commons-lang3': "org.apache.commons:commons-lang3:$commons_lang3_version",
+
+		'javax-activation': "javax.activation:javax.activation-api:$javax_activation_version",
+		'axis2-adb': dependencies.create("org.apache.axis2:axis2-adb:$axis2_version") {
+			exclude group: 'org.apache.axis2', module: 'axis2-kernel'
+		},
+	   	'axis2-jaxws': dependencies.create("org.apache.axis2:axis2-jaxws:$axis2_version") {
+			exclude group: 'org.apache.axis2', module: 'axis2-kernel'
+		},
+	   	'axis2-kernel': "org.apache.axis2:axis2-kernel:$axis2_version",
+	    	'axis2-transport-http': dependencies.create("org.apache.axis2:axis2-transport-http:$axis2_version") {
+			exclude group: 'org.apache.axis2', module: 'axis2-kernel'
+		},
+	    	'axis2-transport-local': dependencies.create("org.apache.axis2:axis2-transport-local:$axis2_version") {
+			exclude group: 'org.apache.axis2', module: 'axis2-kernel'
+		},
+
+		'cxf': [
+			"org.apache.cxf:cxf-rt-frontend-jaxws:$cxf_version",
+			"org.apache.cxf:cxf-rt-transports-http:$cxf_version",
+		],
+		'disruptor': "com.lmax:disruptor:$disruptor_version",
+		'dropbox': dependencies.create("com.dropbox.core:dropbox-core-sdk:$dropbox_version") {
+			exclude group: 'com.fasterxml.jackson.core', module: 'jackson-core'
+		},
+		'ehcache': "net.sf.ehcache:ehcache:$ehcache_version",
+		'flyway': "com.googlecode.flyway:flyway-core:$flyway_version",
+		'google-drive': [
+			dependencies.create("com.google.api-client:google-api-client:$google_api_version") {
+				exclude group: 'commons-codec', module: 'commons-codec'
+				exclude group: 'commons-logging', module: 'commons-logging'
+				exclude group: 'org.apache.httpcomponents', module: 'httpcore'
+				exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+				exclude group: 'com.fasterxml.jackson.core', module: 'jackson-core'
+				exclude group: 'com.google.guava', module: 'guava-jdk5'
+				exclude group: 'com.google.code.findbugs', module: 'jsr305'
+			},
+			dependencies.create("com.google.api-client:google-api-client-jackson2:$google_api_version") {
+				exclude group: 'com.google.api-client', module: 'google-api-client'
+				exclude group: 'com.google.http-client', module: 'google-http-client-jackson2'
+			},
+			dependencies.create("com.google.apis:google-api-services-drive:$google_drive_version") {
+				exclude group: 'com.google.api-client', module: 'google-api-client'
+			},
+			dependencies.create("com.google.apis:google-api-services-oauth2:$googleOauth2Version") {
+				exclude group: 'com.google.api-client', module: 'google-api-client'
+			}
+		],
+		'gson': "com.google.code.gson:gson:$gson_version",
+		'guava':  "com.google.guava:guava:$guava_version",
+		'hibernate' : [
+			"org.hibernate:hibernate-core:$hibernate_version",
+			"org.hibernate:hibernate-c3p0:$hibernate_version"
+		],
+		'http-client': [
+			"org.apache.httpcomponents:httpclient:$http_client_version",
+			"org.apache.httpcomponents:httpmime:$http_client_version"
+		],
+		'http-async-client': [
+			dependencies.create("org.apache.httpcomponents:httpasyncclient:$http_async_client_version") {
+				exclude group: 'commons-logging', module: 'commons-logging'
+			}
+		],
+		'http-core': "org.apache.httpcomponents:httpcore:$http_core_version",
+		'infinispan': [
+			"org.infinispan:infinispan-core:$infinispan_version",
+			"org.infinispan:infinispan-client-hotrod:$infinispan_version",
+			"com.meltmedia.jgroups:jgroups-aws:$jgroups_aws_version"
+		],
+		'jackson': [
+			"com.fasterxml.jackson.core:jackson-annotations:$jackson_version",
+			"com.fasterxml.jackson.core:jackson-core:$jackson_version",
+			"com.fasterxml.jackson.core:jackson-databind:$jackson_version",
+		],
+		'jaxrpc': "javax.xml:jaxrpc-api:$jaxrpc_version",
+		'jersey': [
+			dependencies.create("org.glassfish.jersey.core:jersey-server:$jersey_version") {
+				exclude group: 'org.glassfish.hk2.external', module: 'javax.inject'
+				exclude group: 'org.glassfish.hk2', module: 'osgi-resource-locator'
+				exclude group: 'org.javassist', module: 'javassist'
+			},
+			dependencies.create("org.glassfish.jersey.containers:jersey-container-servlet-core:$jersey_version") {
+				exclude group: 'org.glassfish.hk2.external', module: 'javax.inject'
+				exclude group: 'org.glassfish.jersey.core', module: 'jersey-server'
+				exclude group: 'org.glassfish.jersey.core', module: 'jersey-common'
+			}
+		],
+		'jhlabs': "com.jhlabs:filters:$jhlabs_version",
+		'joda-time': "joda-time:joda-time:$joda_version",
+		'jsp-api': "javax.servlet.jsp:javax.servlet.jsp-api:$jsp_version",
+		'log4j': [
+			"org.apache.logging.log4j:log4j-core:$log4j_version",
+			"org.apache.logging.log4j:log4j-api:$log4j_version"
+		],
+		'log4j-web': "org.apache.logging.log4j:log4j-web:$log4j_version",
+		'mail': "javax.mail:mail:$mail_version",
+		'msal4j': "com.microsoft.azure:msal4j:$msal4j_version",		
+		'mssql-jdbc': "com.microsoft.sqlserver:mssql-jdbc:$mssql_jdbc_version",
+		'onelogin': "com.onelogin:java-saml:$onelogin_version",
+		'opensaml': [
+			dependencies.create("org.opensaml:opensaml:$open_saml_version") {
+				exclude group: 'commons-codec', module: 'commons-codec'
+				exclude group: 'commons-httpclient', module: 'commons-httpclient'
+				exclude group: 'commons-logging', module: 'commons-logging'
+				exclude group: 'joda-time', module: 'joda-time'
+				exclude group: 'org.bouncycastle', module: 'bcprov-jdk15'
+				exclude group: 'xml-apis', module: 'xml-apis'
+				exclude group: 'xml-resolver', module: 'xml-resolver'
+			},
+			"xml-apis:xml-apis:$xml_apis_version"
+		],
+		'ojdbc': dependencies.create("com.oracle.jdbc:ojdbc8:$ojdbc_version") {
+			exclude group: 'com.oracle.jdbc', module: 'xmlparserv2'
+		},
+		'pdfbox': dependencies.create("org.apache.pdfbox:pdfbox:$pdfbox_version") {
+			exclude group: 'commons-logging', module: 'commons-logging'
+		},
+		'postgresql-jdbc': "org.postgresql:postgresql:$postgresql_jdbc_version",
+		'restlet': [
+			"org.restlet.jee:org.restlet:$restlet_version",
+			"org.restlet.jee:org.restlet.ext.servlet:$restlet_version",
+		],
+		'servlet': "javax.servlet:javax.servlet-api:$servlet_version",
+		's3': dependencies.create("com.amazonaws:aws-java-sdk-s3:$s3_version") {
+			exclude group: 'commons-codec', module: 'commons-codec'
+			exclude group: 'commons-logging', module: 'commons-logging'
+			exclude group: 'org.apache.httpcomponents', module: 'httpcore'
+			exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+			exclude group: 'com.fasterxml.jackson.core', module: 'jackson-core'
+			exclude group: 'joda-time', module: 'joda-time'
+			exclude group: 'com.fasterxml.jackson.core', module: 'jackson-annotations'
+			exclude group: 'com.fasterxml.jackson.core', module: 'jackson-databind'
+		},
+		'xmlbeans' : "org.apache.xmlbeans:xmlbeans:$xmlbeans_version",
+		'zip4j': "net.lingala.zip4j:zip4j:$zip4j_version",
+		'tika': [
+			"org.apache.tika:tika-core:$tika_version",
+		],
+		'rabbitmq': "com.rabbitmq:amqp-client:$rabbitmq_version"
+	]
+}

@@ -1,0 +1,38 @@
+<div id="superadmin-body-section" style="position:absolute; left:9%; top:120px; width:81%">
+	<uib-tabset>
+        <div id="loading-background" data-ng-show="isLoading" style="top: 0px;left: 0px;width: 100%;height: 100%">
+            <div id="pgLoading-image">
+                <img  src="ui/img/loading-icon.gif" alt="Loading..." />
+            </div>
+        </div>
+        <uib-tab heading="{{'admin.tab_system_setting' | translate}}" select="setMenuFlag('setting')">
+            <div class="tab-content-header">{{'admin.tab_system_setting' | translate}}</div>
+            <div class="tab-content-description">{{'admin.system_setting_description' | translate}}</div>
+            <div class="col-sm-2 animate-hide tab-content-menu" ng-class="{'hidden-class':checked}" style="width: 220px">
+                <div class="menu-wrapper-div" style="height: 100%">
+                    <div ui-view="menuView" style="height: 100%"></div>
+                </div>
+            </div>
+            <div class="col-sm-10" style="width: calc(100% - 220px)" ng-if="isSetting">
+                <div class="no-padding cc-layout-full-width" data-ng-class="transition" >
+                    <div data-ng-class="transition" ui-view="contentView"></div>
+                </div>
+            </div>
+        </uib-tab>
+        <uib-tab heading="{{'admin.tab_user_mgmt' | translate}}" select="setMenuFlag('user')">
+            <div class="tab-content-header">{{'admin.tab_user_mgmt' | translate}}</div>
+            <div class="tab-content-description" style="width: 60%">{{'admin.user_mgmt_description' | translate}}</div>
+            <div class="col-sm-2 animate-hide tab-content-menu" ng-class="{'hidden-class':checked}"  style="width: 220px">
+                <div class="menu-wrapper-div" style="height: 100%">
+                    <div ui-view="menuView" style="height: 100%"></div>
+                </div>
+            </div>
+            <div class="col-sm-10" style="width: calc(100% - 220px)" ng-if="isUserMgmt">
+                <div class="no-padding cc-layout-full-width" data-ng-class="transition" >
+                    <div data-ng-class="transition" ui-view="contentView"></div>
+                </div>
+            </div>
+        </uib-tab>
+        <uib-tab heading="{{'admin.tab_system_overview' | translate}}" disable="true" select="setMenuFlag('overview')">{{"admin.tab_system_overview" | translate}}</uib-tab>
+    </uib-tabset>
+</div>

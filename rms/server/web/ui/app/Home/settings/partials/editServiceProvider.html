@@ -1,0 +1,54 @@
+<div id="providersLoading" data-ng-show="isLoading">
+    <div class="dialog-loading">
+       <img src="ui/img/loading-icon.gif" alt="Loading..." />
+    </div>
+</div>
+<div class="repository-class-selection">
+    <div class="main-title">
+        <img ng-src="{{'ui/img/service-provider-'+ providerName +'.svg'}}" alt="{{serviceProvider.providerTypeDisplayName}}">
+        <p>{{serviceProvider.providerTypeDisplayName}}</p>
+    </div>
+    <div class="cc-ps-menu">
+        <a class="cc-pc-menu-item cc-ps-menu-selected">
+            <span class="item-svg fill-green">
+                <i ng-if="serviceProvider.providerClass === 'PERSONAL'" ng-include="'ui/img/repository-personal-account.svg'"></i>
+                <i ng-if="serviceProvider.providerClass === 'APPLICATION'" ng-include="'ui/img/repository-application-account.svg'"></i>
+                <i ng-if="serviceProvider.providerClass === 'BUSINESS'" ng-include="'ui/img/repository-business-account.svg'"></i>
+            </span>
+            <span class="menu-item-title color-green">
+                <span ng-if="serviceProvider.providerClass === 'PERSONAL'" >{{"service-provider.class.personal-account" | translate}}</span>
+                <span ng-if="serviceProvider.providerClass === 'APPLICATION'">{{"service-provider.class.application-account" | translate}}</span>
+                <span ng-if="serviceProvider.providerClass === 'BUSINESS'">{{"service-provider.class.business-account" | translate}}</span>
+            </span>
+        </a>
+    </div>
+</div>
+<div class="configuration-panel right">
+	<div class="row modal-header main-title">
+		<div class="col-xs-6">
+			<div class="edit-text">
+				{{"service-provider.title.manage" | translate}}
+			</div>
+			<div class="dialog-title"> 
+				{{serviceProvider.providerTypeDisplayName}}
+			</div>
+		</div>
+		<div class="col-xs-6 actions">
+			<a class="btn btn-default rms-settings-button" data-ng-click="cancel()">{{"cancel" | translate}}</a>
+            <a class="btn btn-default rms-settings-button-color rms-settings-button" data-ng-disabled="configurationForm.$pristine || configurationForm.$invalid" data-ng-click="update()">{{"update" | translate}}</a> 
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 margin-top-10" id="display-error" data-ng-if="errorMessage">
+			<img src="ui/img/Alert_P.svg" alt="Error" />
+			{{errorMessage}}
+		</div>
+	</div>
+	<form name="configurationForm" class="configuration-form">
+        <div ng-if="serviceProvider.providerClass === 'PERSONAL'" ng-include="'ui/app/Home/settings/partials/forms/personalAccount.html'">
+        </div>
+        <div ng-if="serviceProvider.providerClass === 'APPLICATION'" ng-include="'ui/app/Home/settings/partials/forms/applicationAccount.html'">
+        </div>
+        <a class="btn btn-default rms-delete-button" ng-click="delete()">{{"delete" | translate}}</a>	
+	</form>
+</div>

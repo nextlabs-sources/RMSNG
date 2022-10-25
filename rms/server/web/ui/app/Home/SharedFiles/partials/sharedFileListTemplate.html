@@ -1,0 +1,60 @@
+<div class="cc-ps-policy">
+<div class="cc-layout-full-width">
+	<div title="{{eachFile.title}}" class="rms-shared-files">
+		<span class="inline-flex" data-ng-class="eachFile.revoked?'revoked revoked-icon':''">
+			<img ng-src="{{fileIconName(eachFile)}}" alt="icon">
+			<span data-ng-if="eachFile.favorited" class="favorited"></span>
+		</span>
+		<a class="rms-file-item" ng-class="{'revoked':eachFile.revoked, 'deleted':eachFile.deleted}" data-ng-click="eachFile.shared || eachFile.deleted ? viewFileDetails(eachFile) : onClickShare(eachFile)"> {{eachFile.name}} </a>
+	</div>
+	<div title="{{eachFile.title}}" data-ng-class="eachFile.revoked?'revoked':''">
+		<label title="{{'file.size'| translate}}" class="file-info-label" data-ng-if="eachFile.size != null">{{eachFile.size | filesize:2}}</label>
+		<label title="{{'protect.on.label'| translate}}" class="file-info-label" >
+			<friendly-date data-ng-if="eachFile.sharedOn!= null" data-date="{{eachFile.sharedOn}}"
+				data-content-class="friendly-date" data-full-format="d MMM yyyy,hh:mm a"
+				data-short-format="hh:mm a" />
+		</label>		
+		<label title="{{'shared.with'| translate}}" class="file-info-info">{{eachFile.sharedWith}}</label>
+		<label title="{{'file.origin'| translate}}" class="myvault-file-info-label file-info-label" data-ng-if="eachFile.customMetadata != null">
+			<i>{{ sourceTag(eachFile) }}</i>
+		</label>	
+	</div>
+	<div class="rms-file-menu shared-file-menu" data-ng-mouseleave="hideMenu(eachFile)" data-ng-mouseover="showMenu(eachFile)">
+		<div class="shared-file-menu-button">
+			<span>
+				<a title="{{'toolbar.menu'| translate}}" data-ng-click="onClickMenu(eachFile)" class="glyphicon glyphicon-option-vertical "></a>
+			</span>
+		</div>
+		<div class="shared-file-menu-operations">
+			<span data-ng-if ="(selectedFileId == eachFile.pathId && menuClickedMode)" >
+				<a class="fileListOption-info-icon" title="{{'favorite.mark'| translate}}" data-ng-click="markFavorite(eachFile)" data-ng-if ="!eachFile.deleted && !eachFile.favorited">
+					<i data-ng-include="'ui/img/Favorite_Filled.svg'"></i>
+				</a>
+				<a class="fileListOption-info-icon" title="{{'favorite.unmark'| translate}}" data-ng-click="unmarkFavorite(eachFile)" data-ng-if ="!eachFile.deleted && eachFile.favorited">
+					<i data-ng-include="'ui/img/Favorite.svg'"></i>
+				</a>
+				<a class="sharedFileListOption-manage-icon" title="{{'viewer.toolbar.info' | translate}}" data-ng-click="onClickNxlFileInfo(eachFile)">
+					<i data-ng-include="'ui/img/FileInfo_P.svg'"></i>
+				</a>
+				<a data-ng-show="!eachFile.deleted" class="sharedFileListOption-manage-icon" title="{{'share.file.viewFile' | translate}}" data-ng-click="onClickView(eachFile)">
+					<i data-ng-include="'ui/img/ViewButton_P.svg'"></i>
+				</a>
+				<a class="sharedFileListOption-activity-icon" title="{{'share.file.viewActivity'| translate}}" data-ng-click="viewFileActivity(eachFile)">
+					<i data-ng-include="'ui/img/Share_Activity_P.svg'"></i>
+				</a>
+				<a data-ng-show="eachFile.shared || eachFile.deleted || eachFile.revoked" class="fileListOption-share-icon" title="{{ (eachFile.deleted || eachFile.revoked) ? 'share.file.viewDetails' : 'share.file.manage'| translate}}" data-ng-click="viewFileDetails(eachFile)">
+					<i data-ng-include="'ui/img/Share_Manage_P.svg'"></i>
+				</a>
+				<a data-ng-show="!eachFile.shared && !eachFile.deleted && !eachFile.revoked" class="fileListOption-share-icon" title="{{'viewer.toolbar.share'| translate}}" data-ng-click="onClickShare(eachFile)">
+					<i data-ng-include="'ui/img/Share_P.svg'"></i>
+				</a>
+				<a data-ng-show="!eachFile.deleted" class="sharedFileListOption-manage-icon" title="{{'share.file.download' | translate}}" data-ng-click="onClickDownload(eachFile)">
+					<i data-ng-include="'ui/img/Download_Protected.svg'"></i>
+				</a>
+				<a data-ng-show="!eachFile.deleted" class="sharedFileListOption-manage-icon" title="{{'share.file.delete' | translate}}" data-ng-click="onClickDelete(eachFile)">
+					<i data-ng-include="'ui/img/Delete_P.svg'"></i>
+				</a>					
+			</span>
+		</div>
+	</div>
+</div>

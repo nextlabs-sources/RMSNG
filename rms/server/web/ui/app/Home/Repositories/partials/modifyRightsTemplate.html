@@ -1,0 +1,75 @@
+<div ng-controller="classificationSelectionController">
+	<div style="width:100%; height:100%; position: fixed; z-index: 99; text-align:center; opacity: 0.5; background-color: gray; margin: auto;" data-ng-show="isLoading">
+		<div id="pgLoading-image">
+			<img  src="ui/img/loading-icon.gif" alt="Loading..." />
+		</div>
+	</div>
+	<div class="row modal-header">
+		<div class="col-xs-6 overflow-hidden rms-break-word">
+			<b>{{"modify.rights" | translate}}</b>
+			<br>
+			{{fileDetails.fileName}}
+		</div>
+		<div class="col-xs-6 actions-right">
+			<a class="btn btn-default rms-settings-button" data-ng-click="cancel()">{{"cancel" | translate}}</a>
+			<button class="btn btn-default rms-settings-button-color rms-settings-button" data-ng-click="modifyRights(fileDetails)" ng-disabled="pristine()">{{"save" | translate}}</button>
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class="rms-popup-panel-div" style="overflow-y:auto;">
+		<span ng-show="showMandatoryErrorMessage">
+			<div id="statusContainer" class="alert alert-danger" style="margin-bottom:0px !important;">
+				<button type="button" class="close" data-ng-click="showMandatoryErrorMessage=false">x</button>
+				<center><p style="margin: 0">{{'widget.protect.file.error.category.mandatory' | translate}}</p></center>
+			</div>
+			<br>
+		</span>
+		<span ng-show="isModifiedFailure">
+			<div id="statusContainer" class="alert alert-danger" style="margin-bottom:0px !important;">
+				<button type="button" class="close" data-ng-click="isModifiedFailure=false">x</button>
+				<center><p style="margin: 0">{{errorMessage | translate}}</p></center>
+			</div>
+			<br>
+		</span>
+		<span ng-show="isModifiedSuccess">
+			<div id="statusContainer" class="alert alert-success" style="margin-bottom:0px !important;">
+				<button type="button" class="close" data-ng-click="isModifiedSuccess=false">x</button>
+				<center><p style="margin: 0">{{'modify.rights.success' | translate}}</p></center>
+			</div>
+			<br>
+		</span>
+		<div>
+			<label><b>{{"company.defined.rights" | translate}}</b></label>
+			<div>{{"company.defined.rights.description" | translate}}</div>
+		</div>
+		<br>
+		<div data-ng-repeat="category in categoryList">
+			<div class="col-xs-12 no-padding">
+				<div class="col-xs-12 inline-block" style="background-color:white; margin: 0 0 20px 0; padding: 10px 0px 5px 0px;">
+					<label style="margin-right:5px"><b>{{category.name}}</b></label>
+					<label class="color-gray" ng-if="category.mandatory">({{'project.classification.category.mandatory' | translate}})</label>
+				</div>
+				<div style="background-color: #ECECF1; padding: 20px; margin-bottom: 20px">
+					<div ng-if="category.labels.length < 5">
+						<span data-ng-repeat="label in category.labels">
+							<button style="margin-bottom: 5px" class="btn btn-default button-paddings" ng-class="label.isClassified ? 'rms-settings-button-color' : ''" ng-click="chooseClassifyLabels(category, label, 'clickBtn')">{{label.name}}</button>
+						</span>
+					</div>
+					<div ng-if="category.labels.length >= 5">
+						<span data-ng-repeat="label in category.labels">
+							<button style="margin-bottom: 5px" class="btn btn-default button-paddings" ng-if="label.isClassified" ng-class="'rms-settings-button-color'" ng-click="chooseClassifyLabels(category, label, 'clickBtn')">
+								<span>{{label.name}}</span>
+								<i style="margin-left:20px;" data-ng-include="'ui/img/CrossCircle.svg'"></i>
+							</button>
+						</span>
+						<br>
+						<select ng-disabled="!labelEnabledForModifyRightTemplate(category)" ng-class="!labelEnabledForModifyRightTemplate(category) ? 'disabled cursor-not-allowed': ''" class="form-control" ng-model="label" ng-click="label.isClassified=true;chooseClassifyLabels(category, label, 'clickDropDown')" ng-options="label.name for label in category.labels | filter: {isClassified: false}">
+							<option value="" selected disabled hidden>{{'managelocalfile.select.option.label' | translate}}</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,1 @@
+ALTER TABLE all_nxl ADD COLUMN owner varchar(150);

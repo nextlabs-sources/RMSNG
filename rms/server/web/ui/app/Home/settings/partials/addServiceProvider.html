@@ -1,0 +1,66 @@
+<div id="providersLoading" data-ng-show="isLoading">
+    <div class="dialog-loading">
+       <img src="ui/img/loading-icon.gif" alt="Loading..." />
+    </div>
+</div>
+<div class="repository-class-selection">
+    <div class="main-title">
+        <img ng-src="{{'ui/img/service-provider-'+ providerName +'.svg'}}" alt="{{serviceProvider.displayName}}">
+        <p>{{serviceProvider.displayName}}</p>
+    </div>
+    <div class="cc-ps-menu">
+        <a class="cc-pc-menu-item"
+        data-ng-class="{'cc-ps-menu-selected': selectedProviderClass === 'PERSONAL', 'disabled': serviceProvider.PERSONAL.configured}"
+        data-ng-click="switchProviderClass('PERSONAL')" ng-if="serviceProvider.PERSONAL">
+            <span class="item-svg" ng-class="selectedProviderClass === 'PERSONAL' ? 'fill-green' : 'fill-black'">
+                <i ng-include="'ui/img/repository-personal-account.svg'"></i>
+            </span>
+            <span class="menu-item-title" data-ng-class="selectedProviderClass === 'PERSONAL' ? 'color-green':'color-black'">{{"service-provider.class.personal-account" | translate}}</span>
+        </a>
+        <a class="cc-pc-menu-item"
+        data-ng-class="{'cc-ps-menu-selected': selectedProviderClass === 'APPLICATION'}"
+        data-ng-click="switchProviderClass('APPLICATION')" ng-if="serviceProvider.APPLICATION"> 
+            <span class="item-svg" ng-class="selectedProviderClass === 'APPLICATION' ? 'fill-green' : 'fill-black'">
+                <i ng-include="'ui/img/repository-application-account.svg'"></i>
+            </span>
+            <span class="menu-item-title" data-ng-class="selectedProviderClass === 'APPLICATION' ? 'color-green':'color-black'">{{"service-provider.class.application-account" | translate}}</span>
+        </a>
+        <a class="cc-pc-menu-item"
+        data-ng-class="{'cc-ps-menu-selected': selectedProviderClass === 'BUSINESS', 'disabled': serviceProvider.BUSINESS.configured}"
+        data-ng-click="switchProviderClass('BUSINESS')" ng-if="serviceProvider.BUSINESS">
+            <span class="item-svg" ng-class="selectedProviderClass === 'BUSINESS' ? 'fill-green' : 'fill-black'">
+                <i ng-include="'ui/img/repository-business-account.svg'"></i>
+            </span>
+            <span class="menu-item-title" data-ng-class="selectedProviderClass === 'BUSINESS' ? 'color-green':'color-black'">{{"service-provider.class.business-account" | translate}}</span>
+        </a>
+    </div>
+
+</div>
+<div class="configuration-panel right">
+	<div class="row modal-header main-title">
+		<div class="col-xs-6">
+			<div class="edit-text">
+				{{"service-provider.title.configure" | translate}}
+			</div>
+			<div class="dialog-title"> 
+				{{serviceProvider.displayName}}
+			</div>
+		</div>
+		<div class="col-xs-6 actions">
+			<a class="btn btn-default rms-settings-button" data-ng-click="cancel()">{{"cancel" | translate}}</a>
+            <a class="btn btn-default rms-settings-button-color rms-settings-button" data-ng-disabled="configurationForm.$pristine || configurationForm.$invalid" data-ng-click="save()">{{"save" | translate}}</a> 
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 margin-top-10" id="display-error" data-ng-if="errorMessage">
+			<img src="ui/img/Alert_P.svg" alt="Error" />
+			{{errorMessage}}
+		</div>
+	</div>
+	<form name="configurationForm" class="configuration-form">
+        <div ng-if="selectedProviderClass === 'PERSONAL' && !serviceProvider.PERSONAL.configured" ng-include="'ui/app/Home/settings/partials/forms/personalAccount.html'">
+        </div>
+        <div ng-if="selectedProviderClass === 'APPLICATION'" ng-include="'ui/app/Home/settings/partials/forms/applicationAccount.html'">
+        </div>
+	</form>
+</div>

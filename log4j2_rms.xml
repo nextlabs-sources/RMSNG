@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<Configuration status="WARN" monitorInterval="300">
+    <Properties>
+        <Property name="HOST">${env:COMPUTERNAME}</Property>
+        <Property name="LOG_HOME">${env:RMS_SHARED_DIR}/logs/${HOST}</Property>
+        <Property name="PATTERN">%d %p:%m%n</Property>
+    </Properties>
+    <Appenders>  
+        <Console name="Console" target="SYSTEM_OUT">  
+            <PatternLayout pattern="${PATTERN}" />
+        </Console>  
+        <RollingRandomAccessFile name="rms" fileName="${LOG_HOME}/rms.log" filePattern="${LOG_HOME}/rms.%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${PATTERN}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingRandomAccessFile>  
+        <RollingRandomAccessFile name="rms_audit" fileName="${LOG_HOME}/rms_audit.log" filePattern="${LOG_HOME}/rms_audit.%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${PATTERN}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingRandomAccessFile>
+    </Appenders>  
+    <Loggers>
+        <Logger name="com.nextlabs.rms" level="trace" additivity="true">  
+            <AppenderRef ref="rms" />  
+        </Logger>
+        <Logger name="com.nextlabs.rms.audit" level="trace" additivity="true">  
+            <AppenderRef ref="rms_audit" />  
+        </Logger>
+        <Root level="error">  
+            <AppenderRef ref="Console" />  
+        </Root>  
+    </Loggers>  
+</Configuration>  

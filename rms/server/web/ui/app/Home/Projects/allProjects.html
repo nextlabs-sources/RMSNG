@@ -1,0 +1,200 @@
+<div data-ng-controller="landingPageController">
+    <div id="banner" ui-view="bannerView"></div>
+    <div id="rms-right-panel" style="overflow:auto;">
+        <div id="statusContainer" class="margin-top-20 alert alert-danger" style="margin-bottom:0px !important;" data-ng-show="errorMessage && errorMessage.length>0">
+            <button type="button" class="close" data-ng-click="dismissMessage()">x</button>
+            <center><p>{{errorMessage | translate}}</p></center>
+        </div>
+        <div id="personal_summary_row" class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-sm-10 col-sm-offset-2 col-xs-12" style="max-width:960px; margin:auto">
+                <div class="project-card shadow" id="summary">
+                    <div data-ng-show="isLoadingSummary" class="loading-div"></div>
+                    <div data-ng-show="!isLoadingSummary">
+                        <div class="row display-block margin-bottom-10">
+                            <div class="col-xs-10 rms-break-word">
+                                <h4 id="welcome-title" class="margin-right-20"><span id="welcome">{{"landing.page.welcome" | translate}} </span>{{displayName}}</h4>
+                            </div>
+                            <div class="col-xs-2 col-sm-1 col-sm-offset-1 float-right">
+                                <!-- <img id="profile_photo" ng-src="{{profilePictureUrl}}" alt="profile_photo" class="img-circle float-right"> -->
+                                <div id="profileImageLandingPageTop" class="default_profile" data-ng-class="'profile_'+displayName[0].toLowerCase()" uib-tooltip="{{getUserFullDisplayName(displayName, email)}}" tooltip-enable="!mobile">
+                                    <div id="profileNameLandingPageTop">
+                                        {{displayName | initials}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row display-block">
+                            <div id="summary-repo-list" class="col-xs-12">
+                                <div class="col-md-4 col-xs-12 padding-5" ng-click="gotoAnchor('invitation_row')">
+                                    <div class="thumbnail" style="background-color: #FBDDC3;height: 125px;cursor: pointer; background-image:url('ui/img/pendingProjects.svg');background-repeat: no-repeat;background-position: right top; background-size: auto 100%;">
+                                        <div class="caption">
+                                            <div class="ng-scope">
+                                                <div class="row ng-scope" style="color: #F4A560;">
+                                                    <div class="all-projects-tile col-md-4">
+                                                        <span style="font-size: 35px; text-align: center">{{totalPendingInvitations}}</span>
+                                                        <span style="font-size: 15px; text-align: center">&nbsp; {{"projects.all.project" | translate}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row ng-scope" style="color: #FF7E0B;">
+                                                    <div class="all-projects-tile col-md-4">
+                                                        <span style="font-size: 15px; text-align: center">{{"projects.all.invitations" | translate}}</span>
+                                                        <span style="font-size: 25px; text-align: center">&nbsp; {{"projects.all.pending" | translate}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-xs-12 padding-5" ng-click="gotoAnchor('created_projects_row')">
+                                    <div class="thumbnail" style="background-color: #CDEEDB;height: 125px;cursor: pointer; background-image:url('ui/img/createdProjects.svg');background-repeat: no-repeat;background-position: right top; background-size: auto 100%;">
+                                        <div class="caption">
+                                            <div class="ng-scope">
+                                                <div class="row ng-scope" style="color: #57C184;">
+                                                    <div class="all-projects-tile col-md-4">
+                                                        <span style="font-size: 35px; text-align: center">{{totalProjectsCreated}}</span>
+                                                        <span style="font-size: 15px; text-align: center">&nbsp; {{"projects.all.projects" | translate}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row ng-scope" style="color: #0D8d44;">
+                                                    <div class="all-projects-tile col-md-4">
+                                                        <span style="font-size: 15px; text-align: center">{{"projects.all.created" | translate}}</span>
+                                                        <span style="font-size: 25px; text-align: center">&nbsp; {{"projects.all.me" | translate}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-xs-12 padding-5" ng-click="gotoAnchor('joint_projects_row')">
+                                    <div class="thumbnail" style="background-color: #D1F1FB;height: 125px;cursor: pointer; background-image:url('ui/img/invitedProjects.svg');background-repeat: no-repeat;background-position: right top; background-size: auto 100%;">
+                                        <div class="caption">
+                                            <div class="ng-scope">
+                                                <div class="row ng-scope" style="color: #5B9FF1;">
+                                                    <div class="all-projects-tile col-md-4">
+                                                        <span style="font-size: 35px; text-align: center">{{totalProjectsInvited}}</span>
+                                                        <span style="font-size: 15px; text-align: center">&nbsp; {{"projects.all.projects" | translate}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row ng-scope" style="color: #006DAB;">
+                                                    <div class="all-projects-tile col-md-4">
+                                                        <span style="font-size: 15px; text-align: center">{{"projects.all.invited" | translate}}</span>
+                                                        <span style="font-size: 25px; text-align: center">&nbsp; {{"projects.all.others" | translate}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="invitation_row" class="row" data-ng-if="hasInvitation" style="width: 100%">
+            <div class="col-lg-8 col-lg-offset-2 col-sm-10 col-sm-offset-2 col-xs-12" style="max-width:960px; margin:auto">
+                <div class="projects-created-title margin-10">
+                    <span class="color-gray">{{ 'project.pending.invitations' | translate}}</span>
+                </div>
+                <div class="project-card shadow rms-break-word" style="padding-bottom: 20px;">
+                    <div class="cc-layout-full-width rms-pending-invitations-row" style="padding-top: 15px;" data-ng-repeat="i in pendingInvitations">
+                        <div class="cc-layout-full-width inline-block">
+                            <div class="col-xs-12 col-md-9 rms-pending-invitations-label">
+                                <div class="vertical-align-table-cell">
+                                    <div data-ng-if="!pendingInvitations[$index].status">
+                                        <span class="color-light-blue pointer-click" uib-tooltip="{{i.inviterEmail}}">{{i.inviterDisplayName}}</span>
+                                        <span>{{'project.invite.invited.to.join' | translate}}</span>
+                                        <span class="color-light-blue pointer-click" uib-tooltip="{{i.project.description}}">{{i.project.displayName}}</span>
+                                    </div>
+                                    <div data-ng-if="pendingInvitations[$index].status">
+                                        <span class="color-green">{{pendingInvitations[$index].status === 'accepted' ? 'project.invite.accept.success' : 'project.invite.decline.success' | translate}}</span>
+                                        <span class="color-light-blue pointer-click" uib-tooltip="{{i.project.description}}">{{i.project.displayName}}</span>
+                                    </div>
+                                    <div data-ng-if="pendingInvitations[$index].invitationMsg">
+                                        <i class="color-gray word-break-all"><b>"</b>{{pendingInvitations[$index].invitationMsg}}<b>"</b></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="show-only-on-desktop col-md-3 rms-pending-invitations-button">
+                                <div data-ng-if="!pendingInvitations[$index].status">
+                                    <div data-ng-if="pendingInvitations[$index].isLoading" class="loading-div float-right" style="width: 32px; margin: 0px"></div>
+                                    <div data-ng-if="!pendingInvitations[$index].isLoading" class="row">
+                                        <button class="col-xs-6 btn btn-default" style="margin-right: 10px" data-ng-click="declineInvitation($index, i.invitationId, i.code)">{{'decline' | translate}}</button>
+                                        <button class="col-xs-6 btn btn-default rms-settings-button-color"  data-ng-click="acceptInvitation($index, i.invitationId, i.code)">{{'accept' | translate}}</button>
+                                    </div>
+                                </div>
+                                <div data-ng-if="pendingInvitations[$index].status  === 'accepted'">
+                                    <button class="btn btn-default float-right rms-settings-button-color" data-ng-click="goToProject(i.project.id)">{{'project.go.to.project' | translate}}</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mobile-tablet-display" style="padding: 0px 15px;">
+                            <div data-ng-if="!pendingInvitations[$index].status" class="cc-layout-full-width">
+                                <div data-ng-if="pendingInvitations[$index].isLoading" class="loading-div" style="width: 32px; margin: auto"></div>
+                                <div data-ng-if="!pendingInvitations[$index].isLoading" class="cc-layout-full-width row">
+                                    <button class="col-xs-6 btn btn-default" style="margin-right: 10px" data-ng-click="declineInvitation($index, i.invitationId, i.code)">{{'decline' | translate}}</button>
+                                    <button class="col-xs-6 btn btn-default rms-settings-button-color"  data-ng-click="acceptInvitation($index, i.invitationId, i.code)">{{'accept' | translate}}</button>
+                                </div>
+                            </div>
+                            <div data-ng-if="pendingInvitations[$index].status  === 'accepted'" class="cc-layout-full-width row">
+                                <button class="col-xs-12 btn btn-default float-right rms-settings-button-color" data-ng-click="goToProject(i.project.id)">{{'project.go.to.project' | translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="upgrade_row" class="row" data-ng-if="!isProjectAccount">
+            <div class="col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 margin-10">
+                <div class="project-card shadow rms-upgrade-panel" id="upgrade">
+                    <div class="row display-block">
+                        <div class="col-xs-12 col-sm-9 rms-upgrade-panel-maintext">{{'project.upgrade.main' | translate}}
+                            <ul>
+                                <li><span class="rms-upgrade-panel-subtext">{{'project.upgrade.sub.one' | translate}}</span></li>
+                                <li><span class="rms-upgrade-panel-subtext">{{'project.upgrade.sub.two' | translate}}</span></li>
+                                <li><span class="rms-upgrade-panel-subtext">{{'project.upgrade.sub.three' | translate}}</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 float-right rms-upgrade-button-div">
+                            <div class="vertical-align-table-cell">
+                                <button class="btn btn-default shadow btn-go-to-skydrm ng-binding" ng-click="goToUpgradeProject()">{{'project.upgrade' | translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="created_projects_row" class="row margin-top-10" data-ng-if="isProjectAccount" style="width: 100%">
+            <div class="col-lg-8 col-lg-offset-2 col-sm-10 col-sm-offset-2 col-xs-12" style="max-width:960px;margin:auto">
+                <div ng-show="projectsCreated != null && projectsCreated.length > 0" class="projects-created-title margin-10">
+                    <span class="color-gray">{{ 'project.created.by.label' | translate}}</span> <b>{{'project.me' | translate}}</b>
+                </div>
+                <div data-ng-show="isLoadingCreatedProjects" class="loading-div"></div>
+                <div id="projects-created" data-ng-include="'ui/app/Home/Projects/partials/projectsCreated.html'" style="width: 100%"></div>
+                <div class="col-xs-12">
+                <center>
+                    <button data-ng-class="'btn btn-default'" data-ng-if="!isLoading && projectsCreated.length!=0 && showMoreCreatedProjects" data-ng-click= "loadMoreCreatedProjects()">{{"share.file.loadmore"|translate}}</button>
+                    <label data-ng-if="projectsCreated.length!=0 && !showMoreCreatedProjects && createdPageOffset > 1">{{"projects.all.nomoreprojects"|translate}}</label>
+                </center>
+                </div>
+            </div>
+        </div>
+        <div id="joint_projects_row" class="row margin-top-10" data-ng-if="isProjectAccount && hasJointProjects">
+            <div class="col-lg-8 col-lg-offset-2 col-sm-10 col-sm-offset-2 col-xs-12" style="max-width:960px;margin:auto">
+                <div class="projects-invited-title margin-10">
+                    <span class="color-gray">{{ 'project.invited.by.label' | translate}}</span> <b>{{'project.others' | translate}}</b>
+                </div>
+                <div data-ng-show="isLoadingJointProjects" class="loading-div"></div>
+                <div id="projects-invited" data-ng-include="'ui/app/Home/Projects/partials/projectsInvited.html'" style="width: 100%"></div>
+                <div class="col-xs-12">
+                <center>
+                    <button data-ng-class="'btn btn-default'" data-ng-if="!isLoading && projectsInvited.length!=0 && showMoreInvitedProjects" data-ng-click= "loadMoreInvitedProjects()">{{"share.file.loadmore"|translate}}</button>
+                    <label data-ng-if="projectsInvited.length!=0 && !showMoreInvitedProjects && invitedPageOffset > 1">{{"projects.all.nomoreprojects"|translate}}</label>
+                </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-ng-include="'ui/app/Home/Projects/footerProject.html'"></div>
+</div>

@@ -1,0 +1,10 @@
+{
+    "text": "$(User)\n$(Date) $(Time)",
+    "transparentRatio": 70,
+    "fontName": "Sitka Text",
+    "fontSize": 26,
+    "fontColor": "#008000",
+    "rotation": "Anticlockwise",
+    "repeat": true,
+    "density": "dense"
+}

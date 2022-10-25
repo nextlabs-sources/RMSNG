@@ -1,0 +1,24 @@
+<div ng-controller="settingsController" id="tenant-configuration" style="background-color: white; width: 49%; margin-top: 30px; position:absolute; left:51%; top:365px;">
+	<div id="tenant-configuration-heading" class="admin-heading-border" style="position:relative;">
+		<span id="tenant-configuration-landing-page-icon" style="padding-left:10px;">
+			<i data-ng-include="'ui/img/gear.svg'"></i>
+		</span>
+		<span style="display:inline-block;padding:10px;">
+			<div class="admin-section-title">{{'config.tenant_config' | translate}}</div>
+			<div class="admin-section-description">{{'tenant.config.description' | translate}}</div>
+		</span>
+		<span style="position:absolute; right:3%; top:32%; cursor:pointer;" data-ng-click="onClickTab('tenantConfiguration')">
+			<i data-ng-include="'ui/img/Arrow_Grey.svg'"></i>
+		</span>
+	</div>
+	<div id="tenant-configuration-body" class="admin-body-border" style="position:relative; height:175px;">
+		<div id="tenant-management-section" class="inline-block">
+			<div ng-repeat="tenantManagement in tenantManagementList" class="padding-top-10">
+				<i ng-hide="tenantManagement.selected" data-ng-include="'ui/img/Circle-Grey.svg'" style="padding-right:5px;"></i>
+				<i ng-show="tenantManagement.selected" data-ng-include="'ui/img/Circle-Green.svg'" style="padding-right:5px;"></i>
+				<span ng-class="tenantManagement.selected ? 'dark-gray-text' : 'light-gray-text'">{{(tenantManagement.field) | translate}}</span>
+			</div>
+		</div>
+		<button type="button" class="btn-link" data-ng-click="onClickTab('tenantConfiguration')" style="position:absolute; right:0px; bottom:5px;">{{'update.tenant.configuration' | translate}}<i style="padding-left:5px;" data-ng-include="'ui/img/back arrow - black.svg'"></i></button>
+	</div>
+</div>

@@ -1,0 +1,1 @@
+ALTER TABLE activity_log DROP CONSTRAINT "fk_activity_log_repository";

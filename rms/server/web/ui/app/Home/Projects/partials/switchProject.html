@@ -1,0 +1,65 @@
+
+<div data-ng-click="dismiss()">
+    <div data-ng-show="projectsCreated.length + projectsInvited.length > 0" class="text-align-center padding-20">
+        <h4 class="inline-block">{{'project.switch' | translate}}</h4>
+    </div>
+    
+    <div class="text-align-center margin-bottom-10"  data-ng-show="projectsCreated !=null && projectsCreated.length>0">
+        <label class="inline-block">{{'project.created.by.label' | translate}} <b>{{'project.me' | translate}}</b></label>
+    </div>
+    <div class="row switch-project" style="clear: both;">
+        <div class="col-xs-12 text-align-center">
+            <div class="margin-bottom-10" data-ng-include="'ui/app/Home/Projects/partials/projectsCreated.html'" style="width: 100%"></div>
+        </div>
+    </div>
+    <br>
+
+    <div class="text-align-center margin-bottom-10"  data-ng-show="projectsInvited !=null && projectsInvited.length>0">
+        <label class="inline-block">{{'project.invited.by.label' | translate}} <b>{{'project.others' | translate}}</b></label>
+    </div>
+    <div class="row switch-project" style="clear: both;">
+        <div class="col-xs-12 text-align-center">
+            <div class="margin-bottom-10" data-ng-include="'ui/app/Home/Projects/partials/projectsInvited.html'" style="width: 100%"></div>
+        </div>
+    </div>
+    <div class="col-xs-12 text-align-center"><button type="button" class="btn-link" data-ng-click="gotoAllProjects()">{{'projects.all.view' | translate}}</button></div>
+    <div data-ng-show="projectsCreated.length + projectsInvited.length > 0 && (projectsCreatedNotFiltered.length > 0 || projectHomePage)" class = "row">
+        <h4 style="margin:auto; margin-bottom:20px">{{'or' | translate}}</h4>
+    </div>
+
+    <br>
+    <div class = "row switch-project" style="clear: both;">
+        <div class="col-xs-12 text-align-center">
+            <div class="row switch-project col-md-6 col-xs-12 inline-block" ng-click="goToWorkSpace()" style="padding: 0" data-ng-show="!workspaceHomePage && !saasMode">
+                <div class="rms-tile-shadow pointer-click text-align-center rms-tile-project margin-10" data-ng-class="{'rms-tile-project-hover': hovering1, 'rms-tile-project-no-hover': !hovering1 }" ng-mouseenter="hovering1=true" ng-mouseleave="hovering1=false">
+                    <div class="col-xs-1 no-padding" style="height: 100%;">
+                        <img alt="" src="ui/img/Arrow-Vector.svg" style="width: 70%; height: 75%; float: right;">
+                    </div>
+                    <div class="col-xs-6 no-padding" style="height: 100%;">
+                        <div class="legend-label" style="font-size: 20px; margin-left: 10px;float: left;margin-top: 35px">
+                            <span>{{ 'go.to' | translate }}</span>
+                        </div>
+                        <div class="legend-label" style="font-size: 30px; margin-left: 10px;float: left;">
+                            <span>{{ 'workspace.title' | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 no-padding" style="height: 100%;padding: 25px;">
+                        <img alt="" src="ui/img/WorkSpace-Icons.svg" style="width: 100%; height: 100%; float: right;">
+                    </div>
+                </div>
+            </div>
+            <div class= "col-md-6 col-xs-12 inline-block" ng-click="goToSkyDRM()" style="padding: 0" data-ng-show="projectHomePage || (workspaceHomePage && !saasMode)">
+                <div class="rms-tile-shadow pointer-click text-align-center rms-tile-project margin-10" data-ng-class="{'rms-tile-project-hover': hovering1, 'rms-tile-project-no-hover': !hovering1 }" ng-mouseenter="hovering1=true" ng-mouseleave="hovering1=false">
+                    <div class="myskydrm"></div>
+                    <h4 class="rms-tile-project-title-text">{{ 'project.go.to.skydrm' | translate }}</h4>
+                </div>
+            </div>
+            <div class= "col-md-6 col-xs-12 inline-block" ng-click="goToCreateProject()" style="padding: 0" data-ng-show="((saasMode && projectsCreatedNotFiltered.length>0) || !saasMode) && (saasMode || isSystemAdmin || isTenantAdmin || isProjectAdmin)">
+                <div class="rms-tile-shadow pointer-click text-align-center rms-tile-project margin-10" data-ng-class="{'rms-tile-project-hover': hovering2, 'rms-tile-project-no-hover': !hovering2 }" ng-mouseenter="hovering2=true" ng-mouseleave="hovering2=false">
+                    <div class="new-project"></div>
+                    <h4 class="rms-tile-project-title-text">{{ 'project.create.new.project' | translate }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

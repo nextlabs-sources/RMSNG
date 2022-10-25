@@ -1,0 +1,1 @@
+ALTER TABLE sharing_transaction ADD CONSTRAINT fk_sharing_nxl FOREIGN KEY (duid) REFERENCES all_nxl (duid);  

@@ -1,0 +1,63 @@
+<div data-ng-if ="!isSharedFromProject">
+	<div class="row modal-header">
+		<div id="fileSharing" data-ng-show="isLoading">
+			<div id="pgLoading-image">
+				<img src="ui/img/loading-icon.gif" alt="Loading..." />
+			</div>
+		</div>
+		<div data-ng-if="nxl" class="col-xs-6 overflow-hidden rms-break-word" uib-tooltip="{{filename}}" tooltip-placement="bottom">{{"share" | translate }}<br/><b>{{filename}}</b></div>
+		<div class="col-xs-6 text-align-right">
+			<a data-ng-if = "!shareSuccess" class="btn btn-default rms-settings-button" data-ng-click="cancel()">{{"cancel" | translate}}</a>
+			<a data-ng-if = "shareSuccess" class="btn btn-default rms-settings-button-color rms-settings-button float-right" data-ng-click="cancel()">{{"ok" | translate}}</a>
+			<a class="btn btn-default rms-settings-button-color rms-settings-button" data-ng-if = "!shareSuccess" data-ng-disabled="(isLoading || checkMailPristine())" data-ng-click="(isLoading || checkMailPristine()) || submitShareFile()">{{operation | translate}}</a>
+		</div>
+		<br />
+	</div>
+	<div class="modal-body no-padding">
+	<div>
+		<div data-ng-class="{'alert alert-success': messageStatus==2, 'alert alert-danger': messageStatus==1}"
+			style="margin: 2%">
+			<p>{{message}}</p>
+			<p>{{message2}}</p>
+		</div>
+	</div>
+	<br />
+	<div>
+		<form name="shareFileForm">
+			<div class="rms-popup-panel-div">
+				<div class="div-col-x2" data-ng-if="(sharedOn!= null)">
+					<label><b>{{nxl ? "share.on.label" : "protect.on.label" | translate}}:</b></label>
+					<br>
+					<friendly-date data-ng-if="sharedOn!= null" data-date="{{sharedOn}}"
+									data-content-class="friendly-date" data-full-format="d MMM yyyy,hh:mm a"
+									data-short-format="hh:mm a" />
+				</div>
+				<br/><br/>
+				<div data-ng-if ="(shareSuccess || nxl)">
+					<div class="text-align-center">
+						<label><b>{{(shareSuccess || nxl ? "right.granted.label" : "right.to.grant.label") | translate}}</b></label>
+						<i data-ng-controller="loginController" uib-tooltip="{{'file.rights.meaning' | translate}}" ng-click="help()" class="pointer-click glyphicon glyphicon-question-sign"></i>
+						<br/>
+					</div>
+					<div data-ng-include="'ui/app/Home/Repositories/partials/fileRightsTemplate.html'"></div>
+				</div>
+				<div data-ng-if="!shareSuccess ">
+					<div><label><b>{{"share.with.label" | translate}}:</b> </label></div>
+					<div>
+						<input  type="hidden" id="shareWith">
+						<ul id="mailIdTags" tag-it>
+						</ul>
+						<p id="error-label"></p>
+					</div>
+					<br>
+					<div><label><b>{{"comment.label" | translate}}</b><i> {{"optional.label" | translate}}</i></span><b>:</b> </label></div>
+					<textarea class="comment-textarea" ng-attr-placeholder="{{'comment.placeholder' | translate}}" data-ng-model="comment.text" data-ng-trim="false" maxlength="250"></textarea>
+					<span class="float-right">{{250 - comment.text.length}} / 250</span>
+				</div>
+				<br />
+			</div>
+		</form>
+	</div>
+	</div>
+</div>
+<div data-ng-include="'ui/app/Home/SharedFiles/partials/shareProjectFileTemplate.html'"></div>

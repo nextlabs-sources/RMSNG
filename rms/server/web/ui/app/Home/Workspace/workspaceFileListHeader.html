@@ -1,0 +1,40 @@
+<div class="project-file-list-header rms-repo-list-header">
+    <div class="project-file-list-title rms-repoTitle">
+        <div class="repo-info">
+            <span uib-tooltip="{{pageTitle}}" tooltip-placement="right" tooltip-enable="false"><b>{{ 'workspace.title' | translate}}</b></span>
+            <div class="inline-block margin-left-20" data-ng-show="pageTitle=='WorkSpace'">
+                <div class="myWorkSpaceUsage-text">
+                    <i>{{num}} {{num == 1 ? 'file' : 'files' | translate}}</i>
+                    <i data-ng-show="pageTitle=='WorkSpace' && storageExceeded" class="mandatory">{{'workspace.storage.full' | translate}}</i>
+                </div>
+            </div>
+        </div>
+        <div class="rms-file-search rms-file-search-custom">
+            <form ng-submit="search()">
+                <i class="fa fa-search"></i>
+                <input placeholder="{{'search.placeholder' | translate}}" type="text" ng-model="$parent.searchString" clear-input="clearSearch()">
+            </form>
+        </div>
+    </div>
+    <div class="rms-fileList-options">
+        <span ng-if="!searchActivated">
+            <a class="rms-breadCrumbItem" data-ng-click="onClickFile({folder: true, pathId: '/', pathDisplay:'/'})" ><b>Root</b></a>
+            <span data-ng-repeat="eachFolder in breadCrumbsContent"> 
+                <b> > </b>
+                <a class="rms-breadCrumbItem" data-ng-click="onClickFile(eachFolder)">
+                    <b>{{eachFolder.name}}</b>
+                </a>
+            </span>
+        </span>
+        <div class="rms-file-sort rms-file-sort-custom">
+            <img src="ui/img/CreateFolder_P.svg" uib-tooltip="{{'create.folder' | translate}}" tooltip-placement="bottom" data-ng-show="!searchActivated" data-ng-click="createFolderModal()" class="pointer-click" data-ng-if="isTenantAdmin" 
+            />
+            <span data-ng-show="!searchActivated"  data-ng-if="isTenantAdmin" >&nbsp; &nbsp;  | &nbsp;  &nbsp;</span>
+            <img src="ui/img/FileUpload_P.svg" uib-tooltip="{{'upload.file.workspace' | translate}}" tooltip-placement="bottom" data-ng-class="storageExceeded?'disableImage cursor-not-allowed':'pointer-click'" data-ng-show="!searchActivated" data-ng-click="!storageExceeded && uploadFileModal()" />
+            <span data-ng-show="!searchActivated">&nbsp; &nbsp;  | &nbsp;  &nbsp;</span>
+            <label class="rms-file-sort-label">{{'sort.by' | translate}}</label>&nbsp;
+            <select data-ng-options="sort.lookupCode as sort.description | translate for sort in sortOptions" data-ng-model="$parent.selectedSort"
+                data-ng-change="update()"></select>
+        </div>
+    </div>
+</div>

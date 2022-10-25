@@ -1,0 +1,22 @@
+<div class="rms-repo-list-header">
+	<div class="rms-repoTitle">
+		<div class="repo-info">
+			<span>
+				<b>{{"favorites" | translate}}</b>
+			</span>
+		</div>
+		<div data-ng-class="!isTreeOpen ? 'rms-file-search rms-file-search-custom' : 'rms-file-search tree'">
+			<form ng-submit="search()">
+				<i class="fa fa-search"></i>
+				<input style="max-width: 140px" placeholder="{{'search.file.placeholder' | translate}}" type="text" ng-model="$parent.searchString"
+				    clear-input="clearSearch()"></input>
+			</form>
+		</div>
+	</div>
+	<div>
+		<span class="rms-file-sort rms-file-sort-custom">
+			<label class="rms-file-sort-label">{{'sort.by' | translate}}&nbsp;</label>
+			<select data-ng-options="sort.lookupCode as sort.description | translate for sort in sortOptions" data-ng-model="$parent.selectedSort" data-ng-change="refreshCurrentPages()"></select>
+		</span>
+	</div>
+</div>

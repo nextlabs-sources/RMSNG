@@ -1,0 +1,39 @@
+<body ng-app="mainApp" ng-controller="shareFileController">
+    <div id="loading"><img id="loading-image" src=../ui/img/loading_48.gif alt="Loading..." /></div>
+	<div class="pageWrapper excelViewer" id="pageWrapper">
+		<div class="cc-header">
+			<div class="cc-header-logo"></div>
+			<button id="rms-help-button" title="Help" onclick="showHelp('/viewer/help_users/index.html')"
+				class="toolbar-button btn btn-default desktop-only spaced"></button>
+		</div>
+		<div class="toolbarContainerPlaceholder"></div>
+		<div class="toolbarContainer fade-div">
+			<div id="titleContainer" class="titleContainer">
+				<h5 class="titleText">
+					<b><span id="titleDesktop" data-toggle="tooltip" data-placement="top" class="hide-viewer-title-desktop">{{docName}}</span></b>
+					<b><span id="titleMobile" data-toggle="tooltip" data-placement="top" class="hide-viewer-title-mobile show-viewer-title-mobile">{{docName}}</span></b>
+				</h5>
+			</div>
+			<div id="toolBar">
+				<div class="toolbar-tools">
+					<button id="rms-print-button" title="Print" onclick="printFile()"
+						class="toolbar-button btn btn-default spaced" disabled="disabled" style="display: none;"></button>
+					<button id="rms-info-button" type="button" data-ng-click="onClickInfo(metaData)"
+						class="toolbar-button info btn btn-default spaced" title="View File Info" disabled="disabled" style="display: none;"></button>						
+					<!-- <button id="rms-protect-button" title="Protect File" type="button"
+						data-ng-click="onClickProtect(metaData)" class="toolbar-button protect btn btn-default spaced"
+						disabled="disabled" style="display: none;"></button>
+					<button id="rms-share-button" type="button" data-ng-click="onClickShare(metaData)"
+						class="toolbar-button info btn btn-default spaced" title="Share File" disabled="disabled" style="display: none;"></button> -->
+					<button id="rms-download-button" title="Download File" type="button"
+						onclick="downloadFile(metaData)" class="toolbar-button download btn btn-default spaced"
+						disabled="disabled" style="display: none;"></button>	
+					<button id="rms-extract-button" title="Extract Content" type="button"
+						onclick="decryptFile(metaData)" class="toolbar-button extract btn btn-default spaced"
+						disabled="disabled" style="display: none;"></button>	
+				</div>
+			</div>
+		</div>
+		<div id="viewer-dialog"></div>
+		{{watermark}}
+		<div id="rms-viewer-content">

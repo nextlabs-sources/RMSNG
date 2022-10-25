@@ -1,0 +1,1 @@
+ALTER TABLE rms.tenant ADD description NVARCHAR(2000);

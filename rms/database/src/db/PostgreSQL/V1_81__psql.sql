@@ -1,0 +1,1 @@
+alter table policy_component alter column component_json drop not null;

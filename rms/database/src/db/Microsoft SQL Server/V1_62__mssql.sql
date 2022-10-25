@@ -1,0 +1,1 @@
+ALTER TABLE rms.tenant ADD parent_id NVARCHAR(36);

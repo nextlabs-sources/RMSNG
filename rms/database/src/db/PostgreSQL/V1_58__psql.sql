@@ -1,0 +1,1 @@
+ALTER TABLE repository ADD COLUMN state character varying(1000);

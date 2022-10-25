@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://nextlabs.com/rms/rmc/types"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:types="http://nextlabs.com/rms/rmc/types">
+
+	<xs:attributeGroup name="RequestAttributes">
+		<xs:attribute name="deviceId" type="xs:string" use="required" />
+		<xs:attribute name="deviceType" type="types:DeviceTypeEnum"
+			use="required" /> <!-- add restriction -->
+		<xs:attribute name="deviceOS" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">
+					Example: ANDROID, IOS
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="APIVersion" type="xs:int" use="required" />
+		<xs:attribute name="operationTime" type="xs:dateTime"
+			use="required" />
+	</xs:attributeGroup>
+
+	<xs:simpleType name="DeviceTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="MOBILE" />
+			<xs:enumeration value="TABLET" />
+			<xs:enumeration value="PC" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:complexType name="StatusType">
+		<xs:sequence>
+			<xs:element name="code" type="xs:int" />
+			<xs:element name="message" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RepositoryType">
+		<xs:sequence>
+			<xs:element name="repoId" type="xs:string" minOccurs="0" />
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="type" type="types:StorageProviderTypeEnum" />
+			<xs:element name="isShared" type="xs:boolean" />
+			<xs:element name="accountName" type="xs:string" />
+			<xs:element name="accountId" type="xs:string" />
+			<xs:element name="token" type="xs:string" />
+			<xs:element name="preference" type="xs:string" minOccurs="0"/>
+			<xs:element name="creationTime" type="xs:long" />
+			<xs:element name="updatedTime" type="xs:long" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	<xs:simpleType name="StorageProviderTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SHAREPOINT_ONPREMISE" />
+			<xs:enumeration value="SHAREPOINT_ONLINE" />
+			<xs:enumeration value="DROPBOX" />
+			<xs:enumeration value="GOOGLE_DRIVE" />
+			<xs:enumeration value="ONE_DRIVE" />
+			<xs:enumeration value="BOX" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="RepositoryListType">
+		<xs:sequence>
+			<xs:element name="repository" type="types:RepositoryType"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="DeletedItemIdListType">
+		<xs:sequence>
+			<xs:element name="itemId" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

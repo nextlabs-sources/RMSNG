@@ -1,0 +1,17 @@
+<div class="padding-20">
+	<div class="float-left">
+		<div style="font-size: 18px;font-weight: 500;" class="ng-binding">{{'policies' | translate}}</div>
+		<div class="sort">
+			<label class="rms-file-sort-label">{{'sort.by' | translate}}</label>&nbsp;
+			<select data-ng-options="sort.lookupCode as sort.description | translate for sort in sortPolicyOptions" data-ng-model="policyFilter.orderPolicyBy" data-ng-change="getPolicies()"></select>
+		</div>
+	</div>
+	<div class="float-right">
+		<form ng-submit="getPolicies()" style="display:inline-block;">
+			<i class="fa fa-search"></i></input>
+			<input placeholder="{{'search.policies.placeholder' | translate}}"  type="text" ng-model="policyFilter.searchPolicyString" clear-input="clearPolicySearch()">
+		</form>
+		<a class="btn btn-default rms-settings-button" data-ng-click="disableAddPolicy || goToCreate()" data-ng-disabled="disableAddPolicy" style="width:140px;font-weight: 500;"> <span class="bold-large-font">+</span> {{'add.policy' | translate}}</a>
+	</div>
+</div>
+<div data-ng-include="'ui/app/Home/PolicyStudio/partials/policyListBase.html'" style="width: 100%"></div>

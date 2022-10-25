@@ -1,0 +1,28 @@
+<div id="project-tags" style="background-color: white; width: 100%; margin-top: 30px;">
+	<div id="project-tags-heading" class="admin-heading-border" style="position:relative;">
+		<span id="project-tags-landing-page-icon" style="padding-left:10px;">
+			<i data-ng-include="'ui/img/ProjectTags.svg'"></i>
+		</span>
+		<span style="display:inline-block;padding:10px;">
+			<div class="admin-section-title">{{'project.tags' | translate}}</div>
+			<div class="admin-section-description">{{'project.tags.description' | translate}}</div>
+		</span>
+		<span style="position:absolute; right:3%; top:32%; cursor:pointer;" data-ng-click="onClickTab('manageProjectTags')">
+			<i data-ng-include="'ui/img/Arrow_Grey.svg'"></i>
+		</span>
+	</div>
+	<div ng-controller="manageProjectTagsController" id="project-tags-body" class="admin-body-border" style="position:relative;">
+		<div ng-show="projectTagsList.length == 0" id="project-tags-section" class="inline-block" style="position:relative; width:245px; cursor:pointer;" data-ng-click="onClickTab('manageProjectTags')">	
+			<div style="position:relative;">
+				<i data-ng-include="'ui/img/Add_icon.svg'"></i>
+				<span class="light-gray-text" style="position:absolute; top:18px; right:0px;">{{'add.project.tags' | translate}}</span>
+			</div>
+		</div>
+		<div ng-show="projectTagsList.length != 0">
+			<span ng-repeat="tags in projectTagsList">
+				<button ng-class="'btn btn-default rms-settings-button-color button-paddings'" style="margin:10px; cursor:initial;">{{tags.name}}</button>
+			</span>
+		</div>
+		<button type="button" class="btn-link" data-ng-click="onClickTab('manageProjectTags')" style="position:absolute; right:0px; bottom:5px;">{{'add.manage.project.tags' | translate}}<i style="padding-left:5px;" data-ng-include="'ui/img/back arrow - black.svg'"></i></button>
+	</div>
+</div>

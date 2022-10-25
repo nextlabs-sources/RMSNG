@@ -1,0 +1,1 @@
+ALTER TABLE tenant ADD parent_id VARCHAR2(36);

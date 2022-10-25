@@ -1,0 +1,35 @@
+.login-left-column .logo{
+  background: url("../images/logo-black.svg") no-repeat;
+  background-size: 76% 80%;
+  height: 38px;
+  width: 200px;
+  display:inline-block;
+}
+
+#smaller-browser-control-partner-logos{
+    display:none;
+    visibility:hidden;   
+}
+@media only screen and (max-width:520px){
+  #smaller-browser-control-partner-logos{
+    display:block;
+    visibility: visible;
+    margin-bottom:10px;
+    padding-right: 15px;
+  }
+  
+  #browser-control-nxl-logo{
+	display:inline-block;
+	padding-top: 10px;
+  }
+  
+  #browser-control-solution-partner-logo{
+	display:inline-block;
+	float:right;
+  }
+
+  #nxl-logo-mobile{
+	width:105px;
+	height: 22px;
+  }
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="nextlabs" default="buildall">
+
+    <path id="base.build.files">
+        <pathelement location="shared/build.xml"/>
+        <pathelement location="captcha/build.xml"/>
+        <pathelement location="nxl/build.xml"/>
+        <pathelement location="router/database/build.xml"/>
+        <pathelement location="router/server/build.xml"/>
+        <pathelement location="rms/database/build.xml"/>
+        <pathelement location="rms/shared/build.xml"/>
+    	<pathelement location="rms/repository/build.xml"/>
+        <pathelement location="rms/server/build.xml"/>
+        <pathelement location="client/build.xml"/>
+        <pathelement location="viewer/build.xml"/>
+    </path>
+	
+    <path id="viewer.build.file">
+        <pathelement location="viewer/build.xml"/>
+    </path>
+    
+    <target name="buildall" depends="cleanall">
+        <echo>Building all projects...</echo>
+        <subant target="debug">
+            <path refid="base.build.files"/>
+        </subant>
+        <echo>Packaging viewer packages...</echo>
+        <subant target="package">
+             <path refid="viewer.build.file"/>
+        </subant>
+    </target>
+	
+	<target name="formatall">
+		<echo>Format all projects...</echo>
+		<subant target="formatxml">
+			<path refid="base.build.files"/>
+		</subant>
+		<subant target="formatjava">
+			<path refid="base.build.files"/>
+		</subant>
+	</target> 
+
+    <target name="validateall">
+        <echo>Building all projects...</echo>
+        <subant target="validate" failonerror="true">
+            <path refid="base.build.files"/>
+        </subant>
+    </target>
+
+    <target name="cleanall">
+        <echo>Cleaning all projects...</echo>
+        <subant target="clean">
+            <path refid="base.build.files"/>
+        </subant>
+    </target>
+</project>

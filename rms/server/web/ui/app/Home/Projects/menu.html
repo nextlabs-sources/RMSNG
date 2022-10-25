@@ -1,0 +1,61 @@
+<span class="close-menu-mobile big-screen-hide"><a class="glyphicon glyphicon-remove big-screen-hide toggle-close-button" data-ng-click="toggleSideBar()"></a></span>
+<div class="cc-ps-menu">
+	<div class="rms-settings-panel">
+		<div class="rms-system-settings-item">
+			<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('all_projects')}" data-ng-click="onClickTab('all_projects')">
+				<span class="icon rms-settings-entry" data-ng-class="isActiveTab('all_projects') ? 'fill-green' : 'fill-black'">
+					<i data-ng-include="'ui/img/AllProjects_P.svg'"></i>
+				</span>
+				<span class="menu-label" data-ng-class="isActiveTab('all_projects') ? 'color-green':'color-black'">{{'projects.all.title' | translate}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item">
+			<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('summary')}" data-ng-click="onClickTab('summary')">
+				<span class="icon rms-settings-entry" data-ng-class="isActiveTab('summary') ? 'fill-green' : 'fill-black'">
+					<i data-ng-include="'ui/img/Summary_P.svg'"></i>
+				</span>
+				<span class="menu-label" data-ng-class="isActiveTab('summary') ? 'color-green':'color-black'">{{'project.summary' | translate}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item">
+			<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('all_files')}" data-ng-click="onClickTab('all_files')">
+				<span class="icon rms-settings-entry" data-ng-class="isActiveTab('all_files') ? 'fill-green' : 'fill-black'">
+					<i data-ng-include="'ui/img/AllFiles_P.svg'"></i>
+				</span>
+				<span class="menu-label" data-ng-class="isActiveTab('all_files') ? 'color-green':'color-black'">{{'project.files' | translate}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item">
+			<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('users')}" data-ng-click="onClickTab('users')">
+				<span class="icon rms-settings-entry" data-ng-class="isActiveTab('users') ? 'fill-green' : 'fill-black'">
+					<i data-ng-include="'ui/img/Members_P.svg'"></i>
+				</span>
+				<span class="menu-label" data-ng-class="isActiveTab('users') ? 'color-green':'color-black'">{{'project.members' | translate}}</span>
+				<span class="badge position-right" data-ng-class="isActiveTab('users') ? 'badge-active':'badge-not-active'">{{totalMembers}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item" data-ng-if="((saasMode && project.ownedByMe) || (!saasMode && (project.ownedByMe || isSystemAdmin || isTenantAdmin || isProjectAdmin)))">
+			<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('policies')}" data-ng-click="onClickTab('policies')">
+				<span class="icon rms-settings-entry" data-ng-class="isActiveTab('policies') ? 'fill-green' : 'fill-black'">
+					<i data-ng-include="'ui/img/Policy.svg'"></i>
+				</span>
+				<span class="menu-label" data-ng-class="isActiveTab('policies') ? 'color-green':'color-black'">{{'policies' | translate}}</span>
+				<span class="badge position-right" data-ng-class="isActiveTab('policies') ? 'badge-active':'badge-not-active'">{{totalPolicies}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item" data-ng-if="project.ownedByMe">
+			<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('configuration')}" data-ng-click="onClickTab('configuration')">
+				<span class="icon rms-settings-entry" data-ng-class="isActiveTab('configuration') ? 'fill-green' : 'fill-black'">
+					<i data-ng-include="'ui/img/Settings_P.svg'"></i>
+				</span>
+				<span class="menu-label" data-ng-class="isActiveTab('configuration') ? 'color-green':'color-black'">{{'project.configuration' | translate}}</span>
+			</a>
+		</div>
+	</div>
+	<div class="rms-system-settings-item" data-ng-if="isRMCDownloadable">
+		<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('download_rmc')}" data-ng-click="onClickTab('download_rmc')">
+			<span class="icon rms-settings-entry" data-ng-class="isActiveTab('download_rmc') ? 'fill-green' : 'fill-black'"></span>
+			<span class="menu-label" data-ng-class="isActiveTab('download_rmc') ? 'color-green':'color-black'">{{'download.rmc.tab' | translate}}</span>
+		</a>
+	</div>
+</div>

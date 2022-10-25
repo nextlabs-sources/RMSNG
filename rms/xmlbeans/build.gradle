@@ -1,0 +1,42 @@
+configurations {
+	xmlbeans
+}
+
+dependencies {
+	compile libs.'xmlbeans'
+	xmlbeans libs.'xmlbeans'
+}
+
+def generatedSources = "$buildDir/xmlbeans"
+def generatedClassess = "${buildDir}/classes/xmlbeans"
+
+task compileXmlSchemas {
+	doLast{
+		ant.taskdef(
+			name:'xmlbean',
+			classname: 'org.apache.xmlbeans.impl.tool.XMLBean',
+			classpath: configurations.xmlbeans.asPath
+		)
+		ant.xmlbean(
+			javasource: sourceCompatibility,
+			schema: 'conf/xsd/',
+			srcgendir: generatedSources,
+			classgendir: generatedClassess,
+			classpath: configurations.xmlbeans.asPath
+		)
+	}
+}
+
+sourceSets {
+	main {
+		output.dir(generatedSources, builtBy: 'compileXmlSchemas')
+		java {
+			srcDirs = [generatedSources]
+		}
+	}
+}
+
+jar {
+	baseName 'repository_xmlbeans'
+	from generatedClassess
+}

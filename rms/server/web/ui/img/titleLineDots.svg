@@ -1,0 +1,24 @@
+<svg width="87" height="4" viewBox="0 0 87 4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>title - lines dots</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(15503 -204)" figma:type="canvas">
+<g id="title - lines dots" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Rectangle 33" style="mix-blend-mode:normal;" figma:type="rounded-rectangle">
+<use xlink:href="#path0_fill" transform="translate(-15502.8 204)" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Rectangle 33" style="mix-blend-mode:normal;" figma:type="rounded-rectangle">
+<use xlink:href="#path1_fill" transform="translate(-15448 204)" fill="#828282" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Rectangle 33" style="mix-blend-mode:normal;" figma:type="rounded-rectangle">
+<use xlink:href="#path1_fill" transform="translate(-15434.2 204)" fill="#828282" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Rectangle 33" style="mix-blend-mode:normal;" figma:type="rounded-rectangle">
+<use xlink:href="#path1_fill" transform="translate(-15420.5 204)" fill="#828282" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 0 2C 0 0.89543 0.89543 0 2 0L 43 0C 44.1046 0 45 0.895431 45 2C 45 3.10457 44.1046 4 43 4L 2 4C 0.89543 4 0 3.10457 0 2Z"/>
+<path id="path1_fill" d="M 0 2C 0 0.89543 0.89543 0 2 0C 3.10457 0 4 0.895431 4 2C 4 3.10457 3.10457 4 2 4C 0.89543 4 0 3.10457 0 2Z"/>
+</defs>
+</svg>

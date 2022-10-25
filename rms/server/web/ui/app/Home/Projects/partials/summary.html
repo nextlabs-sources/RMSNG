@@ -1,0 +1,84 @@
+<div id="pgLoading-image" data-ng-show="isLoading">
+    <img src="ui/img/loading-icon.gif" alt="Loading..." />
+</div>
+<div class="file-list-icons big-screen-hide ipad-potrait-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></div>
+<div class = "row-desktop" style="margin-top: 30px;">
+    <div class="col-lg-8 col-lg-offset-2 col-xs-12">
+        <div class="padding-20 margin-10 rms-tile-shadow summary-recent-files rms-break-word">
+            <div class = "rms-tile-title-bar">
+                <label class="rms-tile-title-text"><b>{{'project.description' | translate}}</b></label>
+                <!-- <div class="float-right" data-ng-if="project.accountType==='PROJECT_TRIAL'">
+                    <label class="ng-binding ng-scope trial-project-label">
+                        {{'project.trial' | translate}}
+                    </label> 
+                    <label style="font-style:italic; padding:5px;" class="ng-binding ng-scope">
+                        {{getExpireDateText(project.trialEndTime)}}
+                    </label>
+                </div> -->
+                <div class="mobile-tablet-display">
+                    <br/><br/>
+                </div>
+            </div>
+            <div data-ng-show="isLoadingDesc" class="loading-div"></div>
+            <div>{{project.description ? project.description : ('project.desc.empty' | translate)}}</div>   
+        </div>
+    </div>
+</div>
+<div class = "row-desktop" style="margin-top: 30px; margin-bottom: 30px;">
+    <div class="col-lg-8 col-lg-offset-2 col-xs-12">
+        <div class="row-desktop">
+            <div class="col-md-6 col-xs-12 no-padding">
+                <div class="padding-20 margin-10 rms-tile-shadow prj-summary-card">
+                    <div class = "rms-tile-title-bar">
+                        <label class="rms-tile-title-text"><b>{{'project.recent.files' | translate}}</b></label>
+                        <button class="btn btn-default float-right rms-settings-button-color" data-ng-click="uploadFileModal()" type="button">{{'project.add.file' | translate}}</button>
+                    </div>
+                    <div data-ng-show="isLoadingFiles" class="loading-div"></div>
+                    <div data-ng-show = "(recentFiles!=null && recentFiles.length>0)">
+                        <ul class="padding-left-0" id="unordered-fileList-id">
+                            <li class="list-group-item rms-file-list padding-5" data-ng-repeat="file in recentFiles">
+                                <div style="height: 25px"><label class="file-info-label text-ellipsis margin-bottom-0 pointer-click" data-ng-click="onClickFile(file)">{{file.name}}</label></div>
+                                <div>
+                                    <label class="color-grey">{{'summary.label.added'|translate}}</label>
+                                    <label title="{{file.creationTime | date:'d MMM yyyy,hh:mm a'}}" class="file-info-label" >
+                                        <friendly-date data-ng-if="file.creationTime != null" data-date="{{file.creationTime}}" data-content-class="friendly-date" data-full-format="d MMM yyyy,hh:mm a"
+                                            data-short-format="hh:mm a" />
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div data-ng-show = "(recentFiles==null || recentFiles.length==0)" class="margin-bottom-20">
+                        <div><label class="file-info-label">{{'project.no.file' | translate}}</label></div>
+                    </div>
+                    <div id="view-all-files" class="summary-members">
+                        <button type="button" class="btn btn-link no-padding" data-ng-click="onClickTab('all_files', true)" type="button">{{"project.view.all.files" | translate}} ({{totalFiles}})</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12 no-padding">
+                <div class="padding-20 margin-10 rms-tile-shadow prj-summary-card">
+                    <div class = "rms-tile-title-bar">
+                        <label class=" rms-tile-title-text"><b>{{'project.members' | translate}}</b></label>
+                        <button class="btn btn-default float-right rms-settings-button-color" data-ng-click="openInvitationModal()" type="button">{{'project.invite' | translate}}</button>
+                    </div>
+                    <div data-ng-show="isLoadingMembers" class="loading-div"></div>
+                    <ul class="padding-left-0" id="unordered-fileList-id">
+                        <li class="list-group-item rms-file-list no-border padding-5" data-ng-repeat="member in members">
+                            <div style="height: 25px"><label data-ng-attr-title="{{member.email}}" class="file-info-label text-ellipsis margin-bottom-0">{{member.displayName}}</label></div>
+                            <div>
+                                <label class="color-grey">{{'summary.label.joined'|translate}}</label>
+                                <label class="file-info-label" title="{{member.creationTime | date: 'd MMM yyyy,hh:mm a'}}">
+                                    <friendly-date data-date="{{member.creationTime}}" data-content-class="friendly-date" data-full-format="d MMM yyyy,hh:mm a" data-short-format="hh:mm a" />
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                    <div id="view-all-members" class="summary-members">
+                        <button type="button" class="btn btn-link no-padding" data-ng-click="onClickTab('users', true)" type="button">{{"project.view.all.members" | translate}} ({{totalMembers}})</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

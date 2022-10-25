@@ -1,0 +1,19 @@
+<div class="rms-upload-file">
+    <div class="modalheader" style="height:auto; line-height: 2em; margin-top: 2em">
+        <a data-ng-click="cancel()">x</a>
+        <div style="max-width: 80%">
+            <label>{{'project.invite.decline.confirm'| translate}}</label> 
+        </div>
+    </div>
+    <hr/>
+    <div ng-form name="declineForm" class="form-group-project-creation" style="margin: 0 auto 25px auto; width: 90%">
+        <div class="padding-10">
+            <textarea name="declineInput" id="declineReason" class="form-control" ng-attr-placeholder="{{'project.invite.decline.reason' | translate}}" ng-maxlength="250" ng-model="declinedReason" style="resize: none;"></textarea><br>
+            <span class="mandatory" ng-show="declineForm.declineInput.$error.maxlength">{{"project.invite.decline.maxlength" | translate}}</span>
+        </div>
+    </div>  
+    <div class="modal-footer">
+        <a class="btn btn-default rms-settings-button" type="button" data-ng-click="cancel()" style="margin-bottom:0px;">{{"cancel" | translate}}</a>
+        <a class="btn btn-default rms-settings-button rms-settings-button-color" type="button" data-ng-disabled="declineForm.declineInput.$error.maxlength" data-ng-click="declineForm.declineInput.$error.maxlength || decline()">{{"decline" | translate}}</a>
+    </div>
+</div>

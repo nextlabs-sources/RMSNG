@@ -1,0 +1,33 @@
+<div class="tab-content-item-header">{{'config.admin_dashboard' | translate | uppercase}}</div>
+<div class="tab-content-item-description">{{'tenant.tenant_list_description' | translate}}</div>
+<div id="tenant-list-section">
+    <div data-ng-include="'ui/app/Admin/Super/AddManageTenantLandingPage.html'"></div>
+</div>
+<div id="system-configuration-section">
+    <div data-ng-include="'ui/app/Admin/Super/SystemConfigurationLandingPage.html'"></div>
+</div>
+<div id="domain-level-settings-section" style="margin-top: 30px; border: 1px solid #D4D4DF;">
+    <div id="domain-level-settings-section-heading"
+         style="background-color: #ECECF1; border-bottom: 1px solid #D4D4DF; position: relative;">
+        <span id="domain-level-settings-landing-page-icon" style="padding:5px;">
+            <i data-ng-include="'ui/img/domain-level-settings-icon.svg'"></i>
+        </span>
+        <span style="display:inline-block;padding:10px;position:absolute;top:0px;">
+           <div style="font-size:18px">{{'domain.settings' | translate}}</div>
+           <div style="font-size:14px">{{'domain.settings.description' | translate}}</div>
+        </span>
+    </div>
+    <div id="domain-level-settings-section-body" style="background-color: white; padding: 10px;">
+        <div style="border:1px solid #F2C94C; background-color: #FFFFF6; padding:10px; margin:10px;">
+            <div id="user-attribute-mapping-section">
+                <div data-ng-include="'ui/app/Admin/Common/UserAttributeMappingLandingPage.html'"></div>
+            </div>
+            <div id="document-classification-section">
+                <div data-ng-include="'ui/app/Admin/Common/DocumentClassificationLandingPage.html'"></div>
+            </div>
+            <div id="policy-list-section">
+                <div data-ng-include="'ui/app/Admin/Common/PolicyListLandingPage.html'"></div>
+            </div>
+        </div>
+    </div>
+</div>

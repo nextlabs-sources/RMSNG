@@ -1,0 +1,61 @@
+<div>
+	<div class="row modal-header" style="width:100%;">
+		<div id="fileUploading" data-ng-show="isLoading">
+		<div id="pgLoading-image">
+           <img src="ui/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+		<div class="col-xs-4">{{"user.feedback.title" | translate}}<br/></div><br/>
+		<div class="col-xs-8">
+		</div>
+		<div class="col-xs-7">
+			<a class="btn btn-default rms-settings-button" data-ng-click="cancel()">{{"cancel" | translate}}</a>
+			<a class="btn btn-default rms-settings-button-color rms-settings-button" data-ng-disabled="feedbackForm.$pristine || feedbackForm.$invalid" data-ng-click="feedbackForm.$pristine || feedbackForm.$invalid || submitFeedback(feedbackForm)">{{"submit" | translate}}</a> 
+		</div>
+		<br/>
+	</div>
+	<div class="alert alert-danger" style="margin:2%"  data-ng-if="messageStatus==1">
+		{{message}}
+	</div>
+	<div class="alert alert-success" style="margin:2%" data-ng-if="messageStatus==2">
+		{{message}}
+	</div>
+	<br/>
+	<br/>
+	<form name="feedbackForm">
+		<div class="rms-popup-panel-div">
+			<div>
+				<label>{{"user.feedback.type.label" | translate}}</label><br/>
+				<div class="btn-group" uib-dropdown is-open="status.isopen">
+				      <button id="single-button" data-ng-model="button" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+				        {{feedbackSelectedType}} <span class="caret"></span>
+				      </button>
+				      <ul class="uib-dropdown-menu" role="menu" aria-labelledby="single-button">
+				        <li role="menuitem">
+				          <a href="" ng-click="changeType(options)" ng-repeat="options in feedbackType">{{options}}</a>
+				        </li>
+				      </ul>
+			    </div>
+			</div>
+			<br/>
+			<div>
+				<label>{{"user.feedback.summary" | translate}}</label><span class="mandatory"> * </span><br/>
+				<input type="text" data-ng-model="summary" name="SUMMARY" data-ng-required="true"  data-ng-trim="true" ng-maxlength="100"/>
+				<span class="mandatory" data-ng-show="feedbackForm.SUMMARY.$touched && (feedbackForm.SUMMARY.$error.required)">{{"user.feedback_summary.required" | translate}}</span>
+				<span class="mandatory" data-ng-show="feedbackForm.SUMMARY.$touched && (feedbackForm.SUMMARY.$error.maxlength)">{{"user.feedback_summary.maxlength" | translate}}</span>
+
+			</div>
+			<br/>
+			<div>
+				<label>{{"user.feedback.description" | translate}}</label><span class="mandatory"> * </span><br/>
+				<textarea class="rms-full-max-width" rows="4" cols="50" data-ng-model="description" name="DESCRIPTION" data-ng-required="true" data-ng-trim="true" ng-maxlength="2000"  />
+				<span class="mandatory" data-ng-show="feedbackForm.DESCRIPTION.$touched && (feedbackForm.DESCRIPTION.$error.required )">{{"user.feedback_description.required" | translate}}</span>
+				<span class="mandatory" data-ng-show="feedbackForm.DESCRIPTION.$touched && (feedbackForm.DESCRIPTION.$error.maxlength )">{{"user.feedback_description.maxlength" | translate}}</span>
+			</div>
+			<br/>
+ 			<br/>
+ 			<br/>
+			<label>{{"user.feedback.response.statement" | translate}}</label>	
+		</div>
+	</form>
+</div>

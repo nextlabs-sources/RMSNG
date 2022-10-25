@@ -1,0 +1,43 @@
+<div data-ng-controller="sharedFileListController">
+    <div id="loading-background" data-ng-show="isLoading">
+        <div id="pgLoading-image">
+            <img  src="ui/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+    <div id="fileListHeader" class="show-only-on-desktop" data-ng-include="'ui/app/Home/SharedFiles/partials/deletedFileListHeader.html'"></div>
+    <div class="mobile-tablet-display" data-ng-include="'ui/app/Home/SharedFiles/partials/deletedFileListHeaderForMobile.html'"></div>
+    <div data-ng-class="rms-fileList">
+        <div class="row full-width">
+            <div id="fileList-col-id" class="col-md-10">
+                <div class="rms-error-messages" data-ng-class="{'alert' : true, 'alert-danger' : true}" data-ng-if="messages.length" >
+                    <button type="button" class="close" data-ng-click="dismissMessage()">x</button>
+                    <center><p ng-repeat="msg in messages">{{msg}}</p></center>
+                </div>
+                <div class="rms-error-messages" data-ng-class="{'alert alert-success': isOperationSuccess, 'alert alert-danger': !isOperationSuccess}"  ng-show="displayOperationMsg">
+                    <button type="button" class="close" data-ng-click="cancelMessage()">x</button>
+                    <center><p>{{msg}}</p></center>
+                </div>
+                <div data-ng-if="emptyFileList">
+                    <div data-ng-if="!showWidgetIfEmpty" class="empty-file-container" style="padding-top: 10px">
+                        <center>
+                            <div class="padding-10" style="font-style: italic">{{isDeletedFilter ? "myvault.nofiles.deleted" : "myvault.nofiles.revoked" | translate}}</div>
+                        </center>
+                    </div>
+
+                </div>
+                <div style="min-height: 350px;">
+                    <ul id="unordered-fileList-id">
+                        <li data-ng-class="eachFile.isRevoked?'rms-share-revoked-transaction':''"class="list-group-item rms-file-list" data-ng-repeat="eachFile in repoContents "> 
+                            <div data-ng-include="'ui/app/Home/SharedFiles/partials/deletedFileListTemplate.html'"></div>
+                        </li>
+                    </ul>   
+                </div>
+            </div>
+
+        </div>
+        <center>
+            <button data-ng-class="'btn btn-default'" data-ng-if="!isLoading && repoContents.length!=0 && showMore" data-ng-click= "loadMoreSharedFiles()">{{"share.file.loadmore"|translate}}</button>
+          	<label data-ng-if="repoContents.length!=0 && !showMore">{{"view.shared.file.nomorefiles"|translate}}</label>
+        </center>  
+    </div>
+</div>

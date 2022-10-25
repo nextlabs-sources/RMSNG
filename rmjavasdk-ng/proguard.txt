@@ -1,0 +1,41 @@
+-renamesourcefileattribute SourceFile 
+-keepattributes Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,*Annotation*,EnclosingMethod 
+            
+-keep public class * {
+    public *;
+}
+
+-keepclassmembers class com.nextlabs.nxl.FileInfo {
+    private <fields>; 
+}
+
+-keepclassmembers class com.nextlabs.nxl.FilePolicy* {
+    private <fields>; 
+}
+
+-keepclassmembernames class * { 
+    java.lang.Class class$(java.lang.String); 
+    java.lang.Class class$(java.lang.String, boolean); 
+} 
+
+-keepclasseswithmembernames,includedescriptorclasses class * { 
+    native <methods>; 
+} 
+
+-keepclassmembers,allowoptimization enum * { 
+    public static **[] values(); public static ** valueOf(java.lang.String); 
+} 
+
+-keepclassmembers class * implements java.io.Serializable { 
+    static final long serialVersionUID; 
+    private static final java.io.ObjectStreamField[] serialPersistentFields; 
+    private void writeObject(java.io.ObjectOutputStream); 
+    private void readObject(java.io.ObjectInputStream); 
+    java.lang.Object writeReplace(); 
+    java.lang.Object readResolve(); 
+} 
+ 
+# For log4j2. Since ProGuard can only process a single version of the code,
+# some log4j2 classes have different version compiled by different JREs
+# Add dontwarn to skip ProGuard build fail
+-dontwarn org.apache.logging.log4j.**

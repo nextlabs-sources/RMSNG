@@ -1,0 +1,1 @@
+ALTER TABLE tenant ADD description VARCHAR2(2000);

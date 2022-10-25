@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="tab-content-item-header">{{'menu.manage_user' | translate | uppercase}}</div>
+</div>
+<div class="row">
+    <div class="col-md-2 col-md-offset-10">
+        <form ng-submit="getUserList()" style="position: relative;margin-bottom: 10px;">
+            <i class="fa fa-search"></i></input>
+            <input placeholder="{{'search.user.placeholder' | translate}}" type="text" ng-model="formData.searchString" clear-input="clearSearch()">
+        </form>
+    </div>
+</div>

@@ -1,0 +1,164 @@
+Message-ID: <{{uid}}@{{domain}}>
+From: SkyDRM<{{sender}}@{{domain}}>
+To: "{{B:fullName}}"<{{recipient}}>
+Date: {{date}}
+MIME-Version: 1.0
+Subject: SkyDRM - New Account Activation
+Content-Type: multipart/alternative; boundary=nextlabs19540c58ea040508132956
+
+--nextlabs19540c58ea040508132956
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: base64
+
+[[B:
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+
+<head>
+	<style type="text/css">
+		html,
+		body {
+			margin: 0;
+			display: block;
+			font-family: 'Fira Sans' !important;
+			font-size: 12px !important;
+		}
+
+		table {
+			font-size: 12px !important;
+		}
+
+		p {
+			font-size: 14px;
+		}
+
+		#mainWrapper {
+			background-color: #F2F3F5;
+			width: 100%;
+			padding-top: 50px;
+			padding-bottom: 50px;
+		}
+
+		#innerWrapper {
+			background-color: white;
+			width: 600px;
+			margin: auto;
+			padding-top: 30px;
+			padding-bottom: 30px;
+			border-radius: 30px;
+		}
+
+		a {
+			font-size: 14px;
+			cursor: pointer;
+			color: #89b2ec;
+			word-break: break-all;
+		}
+
+		#banner {
+			background-color: #f1faf6;
+			padding: 50px 10px;
+			color: black;
+		}
+
+		.promo p {
+			color: #555;
+			font-size: 16px;
+		}
+
+		.color-gray {
+			color: gray;
+		}
+
+		.color-blue {
+			color: #89b2ec;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="mainWrapper">
+		<div id="innerWrapper">
+			<table width="600" border="0" cellpadding="10" cellspacing="0">
+				<tr>
+					<td align="center" valign="middle" bgcolor="#ffffff"><img height="50" vspace="5" alt="SkyDRM Logo" src="{{baseUrl}}/rms-logo-with-text.png" /></td>
+				</tr>
+			</table>
+			<table width="600" border="0" cellpadding="10" cellspacing="0">
+				<tr>
+					<td align="center" colspan="3">
+						<p>&nbsp;<br></p>
+						<p>Hi {{fullName}},</p>
+						<p>Thank you for signing up for SkyDRM.</p>
+						<p>In order to access the SkyDRM platform, you will first need to activate your user account {{recipient}} by clicking
+							on the button below:</p>
+					</td>
+				</tr>
+			</table>
+			<table width="600" border="0" cellpadding="10" cellspacing="0">
+				<tr>
+					<td width="125"></td>
+					<td width="150" align="center" style="background-color: #39974a; width: 150px; height: 20px; line-height: 20px; padding: 10px; border-radius: 3px;">
+						<a style="color:#ffffff; font-size: 16px; text-decoration:none; cursor:pointer;" href="{{web}}/activate?account_id={{accountId}}&otp={{otp}}&invitationId={{invitationId}}&invitationCode={{invitationCode}}&suc_url=%2Flogin">Activate Account</a>
+					</td>
+					<td width="125"></td>
+				</tr>
+			</table>
+			<table width="600" border="0" cellpadding="10" cellspacing="0">
+				<tr>
+					<td align="center" colspan="3">
+						<p>Alternatively you can copy and paste the following link in the browser.</p>
+						<a href="{{web}}/activate?account_id={{accountId}}&otp={{otp}}&invitationId={{invitationId}}&invitationCode={{invitationCode}}&suc_url=%2Flogin">{{web}}/activate?account_id={{accountId}}&otp={{otp}}&invitationId={{invitationId}}&invitationCode={{invitationCode}}&suc_url=%2Flogin</a>
+					</td>
+				</tr>
+			</table>
+			<table width="600" border="0" cellpadding="10" cellspacing="0">
+				<tr>
+					<td colspan="3">
+						<hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));"
+						/> </td>
+				</tr>
+			</table>
+			<table width="600" border="0" cellpadding="10" cellspacing="0">
+				<tr>
+					<td align="center" colspan="3">
+						<p>If you didn't register for the account, you can unregister this account by clicking the button below:</p>
+					</td>
+				</tr>
+			</table>
+			<table width="600" border="0" cellpadding="10" cellspacing="0">
+				<tr>
+					<td width="125"></td>
+					<td width="150" align="center" style="background-color: #39974a; width: 150px; height: 20px; line-height: 20px; padding: 10px; border-radius: 3px;">
+						<a style="color:#ffffff; font-size: 16px; text-decoration:none; cursor:pointer;" href="{{web}}/unregister?account_id={{accountId}}&otp={{otp}}&suc_url=%2Flogin">Unregister</a>
+					</td>
+					<td width="125"></td>
+				</tr>
+			</table>
+			<table width="600" border="0" cellpadding="10" cellspacing="0">
+				<tr>
+					<td align="center" colspan="3">
+						<p>If clicking the button doesn't seem to work, you can copy-paste the below link into your browser's address bar.</p>
+						<a href="{{web}}/unregister?account_id={{accountId}}&otp={{otp}}&suc_url=%2Flogin">{{web}}/unregister?account_id={{accountId}}&otp={{otp}}&suc_url=%2Flogin</a>
+					</td>
+				</tr>
+			</table>
+			<table width="600" border="0" cellpadding="10" cellspacing="0">
+				<tr>
+					<td align="center" colspan="3">
+						<p>&nbsp;<br></p>
+						<p>
+							--<br/>
+							<b>SkyDRM Team</b><br/>
+							<a alt="SkyDRM" href="https://skydrm.com">https://skydrm.com</a><br/>
+						</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+
+</html>
+]]
+--nextlabs19540c58ea040508132956--

@@ -1,0 +1,147 @@
+<div data-ng-if="isSharedFromProject">
+	<div class="rms-info-filedetails">
+		<div>
+			<a class="rms-info-closeLink" data-ng-click="cancel()">x</a>
+			<div class="rms-info-fileName">{{file.name}}
+			</div>
+			<br></br>
+			<table class="rms-info-fileProperties">
+				<tr>
+					<td width="30%">{{"file.type" | translate}}</td>
+					<td width="30%">{{"file.size" | translate}}</td>
+					<td width="40%" data-ng-if="!isReshare">{{"protect.on.label" | translate}}</td>
+					<td width="40%" data-ng-if="isReshare">{{"share.on.label" | translate}}</td>
+				</tr>
+				<tr>
+					<td><b>{{file.fileType}}</b></td>
+					<td><b>{{file.size | filesize:2}}</b></td>
+					<td data-ng-if="!isReshare"><b>
+						<friendly-date data-ng-if="file.lastModified != null" data-date="{{file.lastModified}}"
+							data-content-class="friendly-date" data-full-format="d MMM yyyy, h:mm a"
+							data-short-format="h:mm a" /></b></td>
+					<td data-ng-if="isReshare"><b>
+						<friendly-date data-ng-if="file.sharedDate != null" data-date="{{file.sharedDate}}"
+									data-content-class="friendly-date" data-full-format="d MMM yyyy, h:mm a"
+									data-short-format="h:mm a" /></b></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="no-padding">
+		<div style="height:10%">
+			<div data-ng-class="{'alert alert-success': messageStatus==2, 'alert alert-danger': messageStatus==1}"
+				style="margin: 2%">
+				<p>{{message}}</p>
+				<p>{{message2}}</p>
+			</div>
+		</div>
+		<div style="padding-bottom:15vh">
+			<form name="shareFileForm">
+				<div class="rms-popup-panel-div" style="padding:3%">
+					<div class="rms-info-rights" style="margin-bottom: 10px;"><label><b>{{"project.share.with.label" | translate}}</b>
+						</label>
+					</div>
+					<div data-ng-if ="(shareSuccess)">
+						<br/>
+						<div data-ng-if="!tagsExist">
+							<div class="text-align-center">
+								<label><b>{{"file.rights" | translate}}</b></label>
+								<i data-ng-controller="loginController" uib-tooltip="{{'file.rights.meaning' | translate}}" ng-click="help()" class="pointer-click glyphicon glyphicon-question-sign"></i>
+								<br />
+							</div>
+							<div data-ng-include="'ui/app/Home/Repositories/partials/fileRightsTemplate.html'"></div>
+						</div>
+						<div data-ng-if="tagsExist">
+							<div class="text-align-center ">
+								<label><b>{{"company.defined.rights" | translate }}</b></label>
+								<br />
+							</div>
+							<div class="file-rights-container" >
+								<div class="padding-10 admin-section-description">{{'company.defined.rights.description' | translate}}</div>
+								<div class="padding-10" style="text-align:left;" ng-repeat="(key, value) in tags">
+									<span class="padding-bottom-10" style="padding-left:3%;"><b>{{key}} :</b></span>
+									<span class="color-grey-text" style="padding-left:2%;" ng-repeat="v in value">{{v}}<span ng-hide="$last">,
+										</span></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div data-ng-if="operation == 'share' && !shareSuccess" >
+						<div >
+							<span>
+								<button type="button" ng-class="'btn btn-default rms-settings-button-color rms-share-space-button'" style="border-bottom: none; text-align: left;">
+									<span class="inline-flex">
+										<img ng-src="ui/img/Share_Project_Space_P.svg" alt="icon">
+									</span>
+									<span class="inline-flex">
+										{{'projects.all.project'  | translate}}
+									</span>
+								</button>
+								<button type="button" ng-class="'btn btn-default rms-settings-button rms-share-space-button'" style="border-bottom: none; text-align: left;" data-ng-if="false">
+									<span class="inline-flex">
+										<img ng-src="ui/img/Share_User_Space_P.svg" alt="icon">
+									</span>
+									<span class="inline-flex">
+										{{'share.file.user'  | translate}}
+									</span>
+								</button>
+								<button type="button" ng-class="'btn btn-default rms-settings-button rms-share-space-button'" style="border-bottom: none; text-align: left;" data-ng-if="false">
+									<span class="inline-flex">
+										<img ng-src="ui/img/WorkSpace.svg" alt="icon">
+									</span>
+									<span class="inline-flex">
+										{{'workspace.title' | translate}}
+									</span>
+								</button>
+							</span>
+						</div>
+						<div class="rms-share-panel" id="style-scroll">
+							<ul class="padding-left-0" id="unordered-fileList-id">
+								<li class="col-xs-12 list-group-item rms-file-list"
+									data-ng-repeat="project in allProjectList">
+									<div class="col-xs-1">
+										<input type="checkbox" data-ng-model="project.selected"
+											data-ng-checked="project.selected"></input>
+									</div>
+									<div class="col-xs-1">
+										<span class="inline-flex" data-ng-show="project.ownedByMe">
+											<img ng-src="ui/img/Project-by-me.svg" alt="icon">
+										</span>
+										<span class="inline-flex" data-ng-show="!project.ownedByMe">
+											<img ng-src="ui/img/Project-by-others.svg" alt="icon">
+										</span>
+									</div>
+									<div class="col-xs-10">
+										<div rms-files" style="text-align: left;">
+											<label title="{{'project.name' | translate}}"
+												class="file-info-label">{{project.name}}</label>
+										</div>
+										<div style="text-align: left;">
+											<label class="col-xs-4 file-info-label">{{project.totalFiles}}
+												files</label>
+											<label title="{{'project.owner' | translate}}"
+												class="file-info-label">{{project.owner.email}}</label>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="col-xs-6 text-align-right footer-buttons">
+			<a data-ng-if="!shareSuccess" class="btn btn-default rms-settings-button" data-ng-click="cancel()"
+				tabindex="1">{{"cancel" | translate}}</a>
+			<a class="btn btn-default rms-settings-button-color rms-settings-button"
+				data-ng-if="operation == 'share' && !shareSuccess && !isReshare"
+				data-ng-disabled="isLoading || forbidden || editWatermark || checkNoProjectSelected()"
+				data-ng-click="(isLoading || forbidden || editWatermark || checkNoProjectSelected()) || submitShareFile()"
+				tabindex="2">{{operation | translate}}</a>
+			<a class="btn btn-default rms-settings-button-color rms-settings-button"
+				data-ng-if="operation == 'share' && !shareSuccess && isReshare"
+				data-ng-disabled="isLoading || forbidden || editWatermark || checkNoProjectSelected()"
+				data-ng-click="(isLoading || forbidden || editWatermark || checkNoProjectSelected()) || submitShareFile()"
+				tabindex="2">{{operation | translate}}</a>
+		</div>
+	</div>

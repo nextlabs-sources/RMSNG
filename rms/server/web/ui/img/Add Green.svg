@@ -1,0 +1,29 @@
+<svg width="48" height="48" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Add Green</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(28705 -1672)">
+<g id="Button/Add Green">
+<g id="Button">
+<g id="Rectangle 3" filter="url(#filter0_d)">
+<use xlink:href="#path0_fill_add" transform="translate(-28701 1675)" fill="#399649"/>
+</g>
+</g>
+<g id="Union">
+<use xlink:href="#path1_fill_add" transform="matrix(0.707107 0.707107 -0.707107 0.707107 -28680.9 1685.29)" fill="#FFFFFF"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d" filterUnits="userSpaceOnUse" x="-28705" y="1672" width="48" height="48" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 0"/>
+<feOffset dx="0" dy="1"/>
+<feGaussianBlur stdDeviation="2"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.24 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<path id="path0_fill_add" d="M 0 4C 0 1.79086 1.79086 0 4 0L 36 0C 38.2091 0 40 1.79086 40 4L 40 36C 40 38.2091 38.2091 40 36 40L 4 40C 1.79086 40 0 38.2091 0 36L 0 4Z"/>
+<path id="path1_fill_add" fill-rule="evenodd" d="M 2.56166 0.439352C 1.97591 -0.146393 1.02574 -0.146393 0.439991 0.439007C 0.102924 0.775901 -0.0401026 1.23226 0.00961584 1.67144C 0.046991 1.99607 0.190449 2.31079 0.439646 2.55998L 4.52234 6.64544L 0.439819 10.725C -0.145927 11.3104 -0.146359 12.2602 0.439473 12.846C 1.02522 13.4317 1.97539 13.4317 2.56114 12.8463L 6.64228 8.76814L 10.7176 12.8463C 11.3034 13.432 12.2536 13.432 12.8393 12.8466C 13.4251 12.2613 13.4255 11.3115 12.8397 10.7256L 8.76429 6.64751L 12.8468 2.56792C 13.4326 1.98261 13.433 1.03278 12.8472 0.447034C 12.2614 -0.138797 11.3113 -0.138711 10.7255 0.446603L 6.64435 4.52481L 2.56166 0.439352Z"/>
+</defs>
+</svg>

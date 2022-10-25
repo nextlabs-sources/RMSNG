@@ -1,0 +1,1 @@
+ALTER TABLE rms.project_space_item ALTER COLUMN last_modified_user_id INT NULL;

@@ -1,0 +1,107 @@
+<div ng-controller="userAttributeMappingController" class="col-xs-12 padding-20" style="background-color: white;">
+	<div ng-show="selectUserAttribute">
+		<div ng-show="saml_ldap_idps.length > 0">
+			<div id="workflow-bar">
+				<div id="workflow-bar-position">
+					<button class="button-workflow green-button-workflow">1</button>
+					<span style="display:inline-block;" class="arrow">
+						<span class="arrow-line" style="background-color:#27AE60;"></span>
+						<span class="arrow-head" style="border-left-color:#27AE60;"></span>
+					</span>
+					<button class="button-workflow gray-button-workflow">2</button>
+				</div>
+			</div>
+			<div class="text-align-center">
+				<span style="font-size: 18px;font-weight: 500;">{{'step.one' | translate}} : {{ 'config.attributes_select' | translate }}</span><br>
+				<span style="font-size: 13px;font-style: italic;color: #828282;line-height: 45px;">{{ 'config.attr_mapping.select_info' | translate }}</span><br>
+				<span style="font-size: 14px;font-weight: 500;">{{selectMaxValue}}</span><br>
+				<span class="error-text" ng-show="selectedAttributes.length >= max">{{maxSelected}}</span><br>
+			</div>
+			<div style="text-align: center">
+				<span ng-repeat="attr in attributeList">
+					<button ng-class="attr.selected == false ? 'btn btn-default button-paddings' : 'btn btn-default rms-settings-button-color button-paddings'" style="margin:10px;" ng-click="toggleAttribute(attr)" ng-disabled="attr.selected == false && selectedAttributes.length >= max">{{attr.name}}</button>
+				</span>
+			</div>
+			<div id="custom-attributes">
+				<span class="row">
+					<input type="text" class="input" placeholder="{{ 'config.custom_user_attribute_name' | translate}}" ng-model="formData.customAttributes" ng-disabled="selectedAttributes.length >= max" style="padding: 8px;width: 100%;height:45px;" required/>
+					<button class="btn btn-default rms-settings-button-color add-button" ng-click="addCustomAttributes()" ng-disabled="formData.customAttributes == '' || formData.customAttributes == undefined || selectedAttributes.length >= max || attributeNamingError || formData.customAttributes.length > 50"></button>
+				</span>
+				<p class="mandatory" data-ng-show="attributeNamingError">{{'config.custom_attribute_validation_pattern'| translate}}</p>
+				<p class="mandatory" data-ng-show="formData.customAttributes.length > 50">{{'config.custom_attribute_exceed_length' | translate}}</p>
+			</div>
+			<div id="button-align">
+				<span class="float-right">
+					<button type="button" class="btn btn-default rms-settings-button-color button-paddings" ng-click="proceed()" ng-disabled="selectedAttributes.length == 0">{{'proceed'| translate}}</button>
+				</span>
+			</div>
+		</div>
+		<div class="text-align-center" ng-show="saml_ldap_idps.length == 0">
+			<i data-ng-include="'ui/img/WarningIcon.svg'"></i>
+			<div>
+				<span style="font-size: 15px;line-height: 45px;">{{ 'config.attr_mapping.select.no_samp_ldap' | translate }}</span><br>
+			</div>
+		</div>
+	</div>
+	<div ng-show="!selectUserAttribute">
+		<div id="workflow-bar">
+			<div id="workflow-bar-position">
+		        <button class="button-workflow blue-button-workflow">1</button>
+		        <span style="display:inline-block;" class="arrow">
+		            <span class="arrow-line" style="background-color:#2D9CDB;"></span>
+		            <span class="arrow-head" style="border-left-color:#2D9CDB;"></span>
+		        </span>
+		        <button class="button-workflow green-button-workflow">2</button>
+			</div>
+		</div>
+		<h4 class="text-center">{{'step.two' | translate}} :  {{'config.user_attr_mapping'  | translate}}</h4>
+		<h5 class="text-center font-italic color-grey-text"> {{'config.attr_mapping.description'  | translate}}</h5><br/>
+		<div class="container col-xs-12">
+		        <div class="row col-xs-12" style="overflow: auto">
+		            <div class="col-xs-12" style="overflow: auto; padding: 0;border: 1px solid #D4D4DF; border-radius: 2px">
+		                <div class="panel-body panel-body-user-attr col-xs-12">
+		                    <div class="panel-body panel-body-user-attr">
+		                        <form ng-submit="updateUserAttrMapping()">
+		                            <table class="table table-user-attr">
+		                                <thead style="border-bottom: 1px solid #ddd; background-color: #F7F7F7">
+		                                    <tr>
+		                                        <th>{{'config.attr_mapping.attr_name' | translate}}</th>
+		                                        <th ng-repeat="idp in saml_ldap_idps">{{idp.name}}</th>
+		                                        <th></th>
+		                                    </tr>
+		                                </thead>
+		                                <tbody>
+		                                    <tr ng-repeat="attr in selectedAttributes">
+		                                         <td>
+		                                    		<input type="text" class="form-control form-control-user-mapping" ng-model="attr.name" readonly/>
+		                                		</td>
+		                                		<td ng-repeat="idp in saml_ldap_idps">
+		                                    		<input type="text" class="form-control form-control-user-mapping" ng-model="idp.userAttrMap[attr.name]" required/>
+		                                		</td>
+		                                		<td>
+		                                    		<i data-ng-include="'ui/img/CrossButton.svg'" ng-click="removeUserAttribute(attr)" class="pointer-click"></i>
+		                                		</td>
+		                                    </tr>
+		                                </tbody>
+		                            </table>
+		                        </form>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		</div>
+		<div class="row col-xs-12 text-align-left">
+			<h6 class="col-xs-12 font-italic color-grey-text margin-bottom-0">{{'config.attr_mapping.empty_declare' | translate}}</h6>
+		</div>
+		<div class="row col-xs-12 text-align-left" ng-show="non_saml_ldap_idps.length > 0">
+			<h6 class="col-xs-12 font-italic color-grey-text">{{'config.attr_mapping.other_idps.declaration' | translate}} <a>{{non_saml_ldap_idps_text}}</a></h6>
+		</div>
+		<div id="button-align">
+			<button type="button" class="btn btn-default button-paddings" style="float: left;" ng-click="goBackToSelectingAttributePage()">{{'back' | translate}}</button>
+			<span class="float-right">
+				<button type="button" class="btn btn-default button-paddings" ng-click="cancel()">{{'cancel'| translate}}</button>
+				<button type="button" class="btn btn-default rms-settings-button-color button-paddings" ng-click="save()" >{{'save'| translate}}</button>
+			</span>
+		</div>
+	</div>
+</div>

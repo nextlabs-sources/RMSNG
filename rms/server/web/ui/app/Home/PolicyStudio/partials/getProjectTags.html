@@ -1,0 +1,27 @@
+<div class="margin-top-10 policy-components-container">
+	<div class="components-container-header">
+		<div class="col-xs-8">
+			<h4 class="col-xs-12 margin-bottom-0">{{'project.tags' | translate}}</h4>
+			<label class="col-xs-12">{{'create.new.project.tags.description' | translate}}</label>
+		</div>
+	</div>
+	<div class="component-set">
+		<div style="padding: 20px 0 0 30px;">
+			<div class="text-align-center" ng-show="projectTagsList.length != 0">
+				<div>
+					<span ng-repeat="tags in projectTagsList">
+						<button ng-class="tags.selected ? 'btn btn-default rms-settings-button-color button-paddings' : 'btn btn-default button-paddings'" ng-click="toggleProjectTags(tags)" style="margin:10px;" title="{{tags.name}}">
+							<span class="text-ellipsis">{{tags.name}}</span>
+						</button>
+					</span>
+				</div>
+			</div>
+			<div class="text-align-center" ng-show="projectTagsList.length == 0">
+				<i data-ng-include="'ui/img/WarningIcon.svg'"></i>
+				<div>
+					<span style="font-size: 15px;line-height: 45px;">{{ 'tenant.admin.project.tags.pending' | translate }}</span><br>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

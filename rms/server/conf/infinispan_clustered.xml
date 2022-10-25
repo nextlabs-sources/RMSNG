@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<infinispan xsi:schemaLocation="urn:infinispan:config:9.1 http://www.infinispan.org/schemas/infinispan-config-9.1.xsd"
+        xmlns="urn:infinispan:config:9.1"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <jgroups>
+        <stack-file name="external-file" path="${rms.ispn.jgroups.conf.location}"/>
+    </jgroups>
+    <cache-container>
+        <!-- transport configuration -->
+        <transport cluster="RMS_JGROUPS" stack="external-file"/>
+        
+        <!-- template configurations -->
+        <distributed-cache-configuration name="rms-template" mode="SYNC">
+            <expiration lifespan="-1"/>
+            <persistence passivation="false">
+                <file-store path="${rms.ispn.file.store}" max-entries="-1" purge="false"/>
+            </persistence>
+            <memory>
+                <binary size="100000000" eviction="MEMORY"/>
+            </memory>
+        </distributed-cache-configuration>
+        
+        <!-- cache definitions -->
+        <distributed-cache owners="3" name="USER_CACHE" configuration="rms-template" />
+        <distributed-cache owners="3" name="IDP_CACHE" configuration="rms-template" />
+        <distributed-cache owners="3" name="APPLOGIN_NONCE_CACHE" configuration="rms-template" />
+        <distributed-cache owners="3" name="TOKEN_GROUP_MAP_CACHE" configuration="rms-template" />
+        
+    </cache-container>
+</infinispan>

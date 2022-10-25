@@ -1,0 +1,62 @@
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+dependencies {
+	compile libs.'commons-cli'
+	compile libs.'commons-codec'
+	compile libs.'commons-lang3'
+	compile libs.'gson'
+	compile libs.'log4j'
+	compile libs.'bouncycastle_fips'
+	compile libs.'javax-activation'
+	compile libs.'http-client'
+	compile libs.'servlet'
+	compile files("$library/platform/crypt.jar")
+	compile files("$library/platform/common-framework.jar")
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src']
+		}
+	}
+}
+
+task setVersion {
+	doLast {
+		def majorVersion = System.getenv("VERSION_RMS_STR_MAJOR") != null ? System.getenv("VERSION_RMS_STR_MAJOR") : "10" 
+		def minorVersion = System.getenv("VERSION_RMS_STR_MINOR") != null ? System.getenv("VERSION_RMS_STR_MINOR") : "1" 
+		def buildVersion = System.getenv("RMSNG_BUILD_NUMBER") != null ? System.getenv("RMSNG_BUILD_NUMBER") : "001"
+		println "Setting version to $majorVersion.$minorVersion.$buildVersion"
+		ant.replace (
+			file: 'src/com/nextlabs/common/BuildConfig.java',
+			token: '9.1.001',
+			value: "$majorVersion.$minorVersion.$buildVersion"	
+		)
+	}
+}
+
+task setRelease {
+	doLast {
+		ant.replace (
+			file: 'src/com/nextlabs/common/BuildConfig.java',
+			token: 'boolean DEBUG = true',
+			value: 'boolean DEBUG = false'	
+		)
+	}
+}
+
+clean {
+	doLast {
+		ant.replace (
+			file: 'src/com/nextlabs/common/BuildConfig.java',
+			token: 'boolean DEBUG = false',
+			value: 'boolean DEBUG = true'
+		)
+		ant.replaceregexp (
+			file: 'src/com/nextlabs/common/BuildConfig.java',
+			match: "9\\.1\\.\\d\\d\\d\\d?",
+			replace: '9.1.001'
+		)
+	}
+}

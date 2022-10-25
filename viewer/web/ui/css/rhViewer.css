@@ -1,0 +1,88 @@
+	h1 {
+		text-align:center;
+		border-bottom:1px solid #AAA;
+		margin-bottom:10px;
+		color:#666;
+	}
+
+	h3 {
+		font-size:12px;
+		font-weight:bold;
+		margin: 0;
+		padding: 0 0 4px 0;
+		color: #666;
+	}
+
+	#all {
+		width:100%;
+		padding-bottom: 10px;
+		position: absolute;
+		top: 80px;		
+	}
+
+	#DeepViewDiv {
+		width: 100%;
+		height: 900px;
+		float:left;
+		text-align:center;
+	}
+
+	#DeepView {
+		width: 100%;
+		height: 100%;
+	}
+
+	#right {
+		padding-left: 620px;
+		height:400px;
+	}
+
+	#Results {
+		height:311px;
+		overflow-y: scroll;
+		padding: 4px;
+		font-size: 10pt;
+	}
+
+	#MouseMove {
+		text-align: center;
+		padding: 4px 0 4px 0;
+		font-size: 14pt;
+		margin-bottom: 10px;
+	}
+
+	.output {
+		background-color: #EEE;
+		border: 1px solid #E0E0E0;
+	}
+
+	#bottom {
+		clear: both;
+		text-align:center;
+	}
+	
+	#bottom input {margin-top: 10px;}
+
+	#rms-snackbar {
+		top: 20px;
+	}
+
+	@-webkit-keyframes fadein {
+		from {top: 0; opacity: 0;}
+		to {top: 20px; opacity: 1;}
+	}
+
+	@keyframes fadein {
+		from {top: 0; opacity: 0;}
+		to {top: 20px; opacity: 1;}
+	}
+
+	@-webkit-keyframes fadeout {
+		from {top: 20px; opacity: 1;}
+		to {top: 0; opacity: 0;}
+	}
+
+	@keyframes fadeout {
+		from {top: 20px; opacity: 1;}
+		to {top: 0; opacity: 0;}
+	}

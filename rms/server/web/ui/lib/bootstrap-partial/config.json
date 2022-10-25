@@ -1,0 +1,14 @@
+{
+  "vars": {},
+  "css": [
+    "grid.less",
+    "tables.less",
+    "forms.less",
+    "buttons.less",
+    "responsive-utilities.less",
+    "alerts.less",
+    "close.less"
+  ],
+  "js": [],
+  "customizerUrl": "http://getbootstrap.com/customize/?id=2fe6bbd2a898bf93c18b7c8c1ad3b028"
+}

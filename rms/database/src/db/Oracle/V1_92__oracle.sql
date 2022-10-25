@@ -1,0 +1,1 @@
+ALTER TABLE external_repository_nxl ADD size_in_bytes NUMBER(19,0) DEFAULT 0;

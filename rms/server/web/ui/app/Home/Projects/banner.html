@@ -1,0 +1,13 @@
+<div class="banner margin-bottom-0" data-ng-controller="homeController">
+    <div>
+	    <a class="project-navigator" ng-click="goToLanding()">{{ 'landing.page' | translate }}</a>
+    </div>
+    <div class="project-name">
+        <div class="project-name-content project-name-title">
+            <h4 class="text-ellipsis">{{getProjectName()}}</h4>
+        </div>
+        <div class="project-name-content">
+            <i data-ng-click="switchProject()" class="glyphicon project-switcher" data-ng-class="{'glyphicon-chevron-up': collapseStatus,'glyphicon-chevron-down': !collapseStatus}"></i>
+        </div>
+    </div>
+</div>

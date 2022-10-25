@@ -1,0 +1,32 @@
+<svg width="56" height="56" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>print</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(19445 9569)">
+<g id="print">
+<g id="Ellipse 2" filter="url(#filter0_d)">
+<use xlink:href="#path0_fill" transform="translate(-19441 -9567)" fill="url(#paint0_linear)"/>
+<use xlink:href="#path0_fill" transform="translate(-19441 -9567)" fill="#FFFFFF"/>
+</g>
+<g id="print - black">
+<use xlink:href="#path1_fill" transform="translate(-19428 -9553)"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d" filterUnits="userSpaceOnUse" x="-19445" y="-9569" width="56" height="56" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 0"/>
+<feOffset dx="0" dy="2"/>
+<feGaussianBlur stdDeviation="2"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(2.93915e-15 48 -48 2.93915e-15 48 -2.93915e-15)">
+<stop offset="0" stop-color="#34994C"/>
+<stop offset="1" stop-color="#70B55B"/>
+</linearGradient>
+<path id="path0_fill" d="M 48 24C 48 37.2548 37.2548 48 24 48C 10.7452 48 0 37.2548 0 24C 0 10.7452 10.7452 0 24 0C 37.2548 0 48 10.7452 48 24Z"/>
+<path id="path1_fill" fill-rule="evenodd" d="M 5.2381 2.09524L 5.2381 3.14286L 5.2381 5.2381L 3.14286 5.2381L 2.09524 5.2381C 0.938023 5.2381 0 6.17617 0 7.33333L 0 15.7143C 0 16.8715 0.938023 17.8095 2.09524 17.8095L 3.14286 17.8095L 5.2381 17.8095L 5.2381 18.8571C 5.2381 20.0143 6.17612 20.9524 7.33333 20.9524L 14.6667 20.9524C 15.8239 20.9524 16.7619 20.0143 16.7619 18.8571L 16.7619 17.8095L 18.8571 17.8095L 19.9048 17.8095C 21.062 17.8095 22 16.8715 22 15.7143L 22 7.33333C 22 6.17617 21.062 5.2381 19.9048 5.2381L 18.8571 5.2381L 16.7619 5.2381L 16.7619 3.14286L 16.7619 2.09524C 16.7619 0.938071 15.8239 0 14.6667 0L 7.33333 0C 6.17612 0 5.2381 0.938071 5.2381 2.09524ZM 7.33333 17.8095L 7.33333 15.7143L 7.33333 13.619L 14.6667 13.619L 14.6667 15.7143L 14.6667 17.8095L 14.6667 18.8571L 7.33333 18.8571L 7.33333 17.8095ZM 7.33333 5.2381L 14.6667 5.2381L 14.6667 2.09524L 7.33333 2.09524L 7.33333 5.2381ZM 15.7143 8.38095L 17.8095 8.38095L 17.8095 10.4762L 15.7143 10.4762L 15.7143 8.38095Z"/>
+</defs>
+</svg>

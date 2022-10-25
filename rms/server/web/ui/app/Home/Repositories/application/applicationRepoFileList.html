@@ -1,0 +1,35 @@
+<div ng-controller="applicationRepoController">
+    <div id="loading-background" data-ng-show="isLoading" class="loading-div" />
+    <div id="fileListHeader"  class="show-only-on-desktop" data-ng-include="'ui/app/Home/Repositories/application/applicationRepoFileListHeader.html'"></div>
+    <div class="mobile-tablet-display" data-ng-include="'ui/app/Home/Repositories/application/applicationRepoFileListHeaderForMobile.html'"></div>
+    <div data-ng-class="rms-fileList">
+        <div class="row full-width">
+            <div id="fileList-col-id" class="col-md-10">
+                <center>
+                    <label data-ng-if="contents.length === 0 && searchActivated">{{"err.no.search.results"|translate}}</label>
+                </center>
+                <div id="drag-and-drop-container">
+                    <ul class="padding-left-0" id="unordered-fileList-id">
+                        <li class="list-group-item rms-file-list mobile-tablet-display" ng-show="parentFolder">
+                            <div id="fileList-col-id">
+                                <div class="rms-files file-list-parent-folder-name" data-ng-click="onClickFile(parentFolder)">
+                                    <i data-ng-include="'ui/img/FolderUP_P.svg'" />
+                                    <a class="rms-file-item">..</a>
+                                </div>
+                                <div><label class="file-info-label" /></div>
+                            </div>
+                        </li>
+                        <li class="list-group-item rms-file-list" data-ng-repeat="eachFile in contents">
+                            <div data-ng-include="'ui/app/Home/Repositories/application/applicationRepoFileListTemplate.html'"></div>
+                        </li>
+                    </ul>
+                    <div data-ng-if="emptyFolderExists" class="empty-file-container" style="padding-top: 10px">
+						<center>
+							<div class="padding-10" style="font-style: italic">{{"widget.source.no.items" | translate}}</div>
+						</center>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

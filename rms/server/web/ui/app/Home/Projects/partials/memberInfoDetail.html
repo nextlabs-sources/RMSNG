@@ -1,0 +1,43 @@
+<div class="rms-upload-file">
+	<div id="fileUploading" data-ng-show="isLoading">
+		<div id="pgLoading-image">
+           <img src="ui/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+	<div class="modalheader">
+		<a data-ng-click="ok()">x</a>
+	</div>
+    <div>
+        <div id="profileImageInfo" class="default_profile" data-ng-class="'profile_'+member.displayName[0].toLowerCase()">
+             <div id="profileName">
+                {{member.displayName | initials}}
+             </div>
+        </div>
+        <div class="col-xs-12 user-profile-detail">
+        	<div class="rms-shareFile-title margin-20 padding-50" style="width: 100%">
+                <span >{{member.displayName}}</span>
+
+            </div>
+            <span data-ng-if="member.displayName != member.email" class="color-gray" style="font-style: italic">({{member.email}})</span>
+            <div class="margin-20" style="padding: 10px 0 50px 0;">
+            	<span class="color-gray" data-ng-if="timeBeforeYesterDay(member.creationTime)">{{'projects.users.joined.on' | translate}}</span> 
+                <span class="color-gray" data-ng-if="!timeBeforeYesterDay(member.creationTime)">{{'projects.users.joined.on.friendly' | translate}}</span> 
+            	<label class="file-info-label" title="{{member.creationTime | date: 'd MMM yyyy, hh:mm a'}}">
+                        <friendly-date data-date="{{member.creationTime}}" data-content-class="friendly-date" data-full-format="d MMM yyyy, hh:mm a" data-short-format="hh:mm a" />
+                </label>
+            </div>
+            <div>
+            	<span data-ng-show="modalLoading" class="loading-icon"></span>
+            </div>
+            <div class="text-align-center" style="margin: 0 auto; float: none;">
+	            <a class="btn btn-default  rms-delete-button"  data-ng-click="deleteUser()" data-ng-if="isLoggedInUserAdmin() && !isMemberAdmin()" data-ng-disabled="deleteUserLoading">{{'projects.users.delete.button' | translate}}</a>
+	            <span data-ng-show="deleteUserLoading" class="loading-icon"></span>
+	            <div class="margin-20 padding-10" data-ng-if="!isMemberAdmin()" style="margin: 0 auto">
+	            	<span class="color-gray">{{'projects.users.invited.by' | translate}}</span> 
+	            	<b>{{inviterDisplayName}}</b>
+	            </div>
+            </div>
+            <br>
+     	</div>
+ 	</div>    
+</div>

@@ -1,0 +1,27 @@
+apply plugin: 'war'
+
+dependencies {
+	compile project(':shared')
+	compile project(':router-database')
+	compile libs.'jersey'
+	compile libs.'log4j'
+	compile libs.'log4j-web'
+	compile libs.'jaxws'
+	compile libs.'javax'
+	compileOnly libs.'servlet'
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src']
+		}
+	}
+}
+
+war {
+	from 'web'
+	archiveName 'router.war'
+	rootSpec.exclude('**/WEB-INF/lib/*')
+	rootSpec.exclude('**/WEB-INF/classes/*')
+}

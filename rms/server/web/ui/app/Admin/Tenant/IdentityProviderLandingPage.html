@@ -1,0 +1,52 @@
+<div id="identity-provider" style="background-color: white; width: 49%; margin-top: 30px; position:absolute; left:51%; top:0px;">
+	<div id="identity-provider-heading" class="admin-heading-border" style="position:relative;">
+		<span id="identity-provider-landing-page-icon" style="padding-left:10px;">
+			<i data-ng-include="'ui/img/IdentityProvider_P.svg'"></i>
+		</span>
+		<span style="display:inline-block;padding:10px;">
+			<div class="admin-section-title">{{'config.manage.identity.providers.heading' | translate}}</div>
+			<div class="admin-section-description">{{'add.manage.identity.providers' | translate}}</div>
+		</span>
+		<span style="position:absolute; right:3%; top:32%; cursor:pointer;" data-ng-click="onClickTab('configureIdentityProvider')">
+			<i data-ng-include="'ui/img/Arrow_Grey.svg'"></i>
+		</span>
+	</div>
+	<div ng-controller="IdentityProvidersController" id="identity-provider-body" class="admin-body-border" style="position:relative; height:275px;">
+		<div ng-show="idps.length == 0" id="identity-provider-section" class="inline-block" style="position:relative; width:245px; cursor:pointer;" data-ng-click="onClickTab('configureIdentityProvider')">
+			<div style="position:relative;">
+				<i data-ng-include="'ui/img/Add_icon.svg'"></i>
+				<span class="light-gray-text" style="position:absolute; top:18px; right:0px;">{{'add.identity.provider' | translate}}</span>
+			</div>
+		</div>
+		<div ng-show="idps.length != 0">
+			<span data-ng-repeat="setting in identityProviderSettingsMap" ng-if="identityProviderSettingsMap.length != 5 ? $index < 4 : $index < 5">
+				<div style="display:inline-block; margin: 10px 25px; text-align:center;">
+					<span ng-switch="setting.providerType">
+						<img ng-switch-when="GOOGLE" src="ui/img/GOOGLE.svg" alt="Google" >
+						<img ng-switch-when="FACEBOOK" src="ui/img/FACEBOOK.svg" alt="Facebook">
+						<img ng-switch-when="SAML" src="ui/img/SAML.svg" alt="SAML">
+						<img ng-switch-when="LDAP" src="ui/img/LDAP.svg" alt="LDAP">
+						<img ng-switch-when="AZUREAD" src="ui/img/AZUREAD.svg" width="68" alt="AzureAD">
+					</span>
+					<br>
+					<a class="rms-configured-identity-provider">
+						<span>{{setting.providerTypeDisplayName}}</span> 
+						<br/>
+					</a>
+				</div>
+			</span>
+			<!--
+			<div ng-show="identityProviderSettingsMap.length != 5 && identityProviderSettingsMap.length > 4" style="position:relative; display:inline-block;">
+			
+			<div ng-show="identityProviderSettingsMap.length != 6 style="position:relative; display:inline-block;">
+				<div id="profileImageLandingPageTop" class="default_profile" style="position:absolute; bottom:28px; left:10px;">
+					<div id="profileNameLandingPageTop">
+						+{{ identityProviderSettingsMap.length - 6 }}
+					</div>
+				</div>
+			</div>
+			-->
+		</div>
+		<button type="button" class="btn-link" data-ng-click="onClickTab('configureIdentityProvider')" style="position:absolute; right:0px; bottom:5px;">{{'add.manage.identity.providers' | translate}}<i style="padding-left:5px;" data-ng-include="'ui/img/back arrow - black.svg'"></i></button>
+	</div>
+</div>

@@ -1,0 +1,16 @@
+<svg width="24" height="24" viewBox="0 0 33 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>Add-icon</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(1479 -1890)" figma:type="canvas">
+<g id="Add-icon" style="mix-blend-mode:normal;" figma:type="vector-operation">
+<use xlink:href="#path0_fill" transform="translate(-1478.5 1890)" fill="url(#paint0_linear)" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(32 0.5 -0.516129 33.0323 0.258065 -1.01613)">
+<stop offset="0" stop-color="#34994C"/>
+<stop offset="1" stop-color="#70B55B"/>
+</linearGradient>
+<path id="path0_fill" fill-rule="evenodd" d="M 13 18.5L 13 31L 19 31L 19 18.5L 32 18.5L 32 12.5L 19 12.5L 19 0L 13 0L 13 12.5L 0 12.5L 0 18.5L 13 18.5Z"/>
+</defs>
+</svg>

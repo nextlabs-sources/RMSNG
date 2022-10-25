@@ -1,0 +1,22 @@
+<div class="rms-repo-list-header">
+    <div id="rms-repoTitle-id" class="rms-repoTitle" data-ng-show="showRepoTitle">
+        <div class="file-list-icons big-screen-hide ipad-potrait-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></div>
+        <div class="file-list-icons"><b>{{ 'project.members' | translate}}</b></div>
+        <div class="file-list-icons file-list-icons-float-right" data-ng-click="toggleSort()"><i class="fa fa-sort file-list-icons-size"></i></div>
+        <div class="file-list-icons file-list-icons-float-right"  data-ng-click="toggleSearch()"><i class="fa fa-search file-list-icons-size"></i></div>
+        <button class="btn btn-default float-right rms-settings-button-color" style="margin-right:10px" data-ng-click="openInvitationModal()">{{'project.invite' | translate}}</button>
+    </div>
+    <div id="fileSearchDivId" class="fileListOptions-div-mobile" data-ng-show="showSearch">
+        <form ng-submit="searchMember()" >
+            <i class="fa fa-search"></i></input>
+            <input placeholder="{{'project.user.search.placeholder' | translate}}"  type="text" ng-model="$parent.searchMemberString" clear-input="clearMemberSearch()">
+            <span class="file-options-icon-padding" data-ng-click="closeFileListOptions()"><i class="fa fa-times"></i></span>
+        </form>
+    </div>
+    <div id="fileSortId" class="fileListOptions-div-mobile" data-ng-show="showSort">
+
+        <label class="rms-file-sort-label">{{'sort.by' | translate}}</label>&nbsp;
+        <select data-ng-options="sort.lookupCode as sort.description | translate for sort in sortProjectOptions" data-ng-model="$parent.selectedProjectSort" data-ng-change="refreshUsersPage()"></select>
+        <span class="file-options-icon-padding" data-ng-click="closeFileListOptions()"><i class="fa fa-times"></i></span>
+    </div>
+</div>

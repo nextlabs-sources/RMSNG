@@ -1,0 +1,26 @@
+<head>
+<title>SkyDRM</title>
+<link rel="shortcut icon" href="../ui/img/favicon.ico" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1, IE=edge">
+<meta name="format-detection" content="date=no">
+<meta name="format-detection" content="address=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../ui/lib/bootstrap/3.3.5/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="../ui/css/style.css?v={{version}}">
+<link rel="stylesheet" href="../ui/css/viewer.css?v={{version}}">
+<link rel="stylesheet" href="../ui/css/font/fira.css">
+<link href="../ui/lib/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="../ui/lib/tag-it/css/jquery.tagit.css" rel="stylesheet">
+<link href="../ui/lib/tag-it/css/tagit.ui-zendesk.css" rel="stylesheet">
+<script src="../ui/lib/3rdParty/shortcut.js"></script>
+<script src="../ui/lib/3rdParty/js-joda.min.js"></script>
+<script src="../ui/lib/rms/clientDetector.js?v={{version}}"></script>
+<script src="../ui/lib/3rdParty/dateformat.js"></script><script src="../ui/lib/3rdParty/jquery-1.10.2.min.js"></script>
+<script src="../ui/lib/jquery-ui/1.11.4/jquery-ui.min.js"></script><script src="../ui/lib/3rdParty/bootstrap.min.js"></script>
+<script>var version="{{version}}"; var VERSION = version;</script><script src="../ui/lib/rms/protect.js?v={{version}}"></script>
+<script src="../ui/lib/3rdParty/jquery.blockUI.js"></script><script src="../ui/app/viewers/Viewer.js?v={{version}}"></script>
+<script src="../ui/app/viewers/ExcelViewer.js?v={{version}}"></script>
+<script type="text/javascript" src="../ui/app/viewers/viewer.min.js"></script>
+<script type="text/javascript" src="../ui/app/viewers/angular/shareFileController.js"></script>
+<script type="text/javascript" src="../ui/app/viewers/angular/watermarkController.js"></script>
+<script type="text/javascript" src="../ui/app/viewers/angular/digitalRightsExpiryDateController.js"></script>

@@ -1,0 +1,40 @@
+<div data-ng-controller="manageProjectPoliciesController" id="project-policies" style="background-color: white; width: 100%; margin-top: 30px;">
+    <div id="project-policies-heading" class="admin-heading-border" style="position:relative;">
+		<span id="project-policies-landing-page-icon" style="padding-left:10px;">
+			<i data-ng-include="'ui/img/proj-policies.svg'"></i>
+		</span>
+        <span style="display:inline-block;padding:10px;">
+			<div class="admin-section-title">{{'project.policies.title' | translate}}</div>
+			<div class="admin-section-description">{{'project.policies.description' | translate}}</div>
+		</span>
+        <span style="position:absolute; right:3%; top:32%; cursor:pointer;" data-ng-click="onClickTab('manageProjectPolicies')">
+			<i data-ng-include="'ui/img/Arrow_Grey.svg'"></i>
+		</span>
+    </div>
+    <div id="project-policies-body" class="admin-body-border" style="position:relative;">
+        <div data-ng-show="projectPoliciesList.length == 0" id="project-policies-section" class="inline-block" style="position:relative; width:245px; cursor:pointer;" data-ng-click="onClickTab('manageProjectPolicies')">
+            <div style="position:relative;">
+                <i data-ng-include="'ui/img/Add_icon.svg'"></i>
+                <span class="light-gray-text" style="position:absolute; top:18px; right:0px;">{{'project.policies.create' | translate}}</span>
+            </div>
+        </div>
+        <li data-ng-if="projectPoliciesList.length > 0" data-ng-repeat="policy in projectPoliciesList" class="list-group-item rms-file-list ng-scope">
+            <div class="cc-ps-policy">
+                <div id="rms-file-details">
+                    <div class="rms-files padding-bottom-5">
+                        <a class="rms-file-item" data-ng-click="editPolicy(policy.id)" style="font-weight: bold;font-size:16px;"> {{policy.name}} </a>
+                    </div>
+                    <div class="file-info-label padding-bottom-5" style="color:#828282;">{{policy.description}}</div>
+                    <label title="{{'last.modified'| translate}}" class="file-info-label" >
+                        <friendly-date data-ng-if="policy.lastUpdatedDate != null" data-date="{{policy.lastUpdatedDate}}"
+                                       data-content-class="friendly-date" data-full-format="d MMM yyyy,hh:mm a"
+                                       data-short-format="hh:mm a" />
+                    </label>
+                    <span style="font-weight:500; padding-right: 5px;" data-ng-class=" policy.deployed ? 'green-text file-info-label' : 'file-info-label' " title="{{'policy.status' | translate}}">{{policy.deployed ? 'policy.depolyed' : 'policy.not.deployed' | translate }}</span>
+                    <span style="text-align: center; background-color: #8C8E9D; color: white; padding: 2px 8px; border-radius: 3px; font-size: 12px" data-ng-if="policy.status.toUpperCase() === 'DRAFT'" title="{{'policy.status' | translate}}">{{'policy.draft' | translate }}</span>
+                </div>
+            </div>
+        </li>
+        <button type="button" class="btn-link" data-ng-click="onClickTab('manageProjectPolicies')" style="position:absolute; right:0px; bottom:5px;">{{'project.policies.create.link' | translate}}<i style="padding-left:5px;" data-ng-include="'ui/img/back arrow - black.svg'"></i></button>
+    </div>
+</div>

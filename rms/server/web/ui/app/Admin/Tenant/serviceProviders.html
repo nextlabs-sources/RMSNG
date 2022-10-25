@@ -1,0 +1,59 @@
+<div id="service-providers-pane" data-ng-controller="serviceProvidersController">
+	<div id="loading-background" data-ng-show="isLoading">
+		<div id="pgLoading-image">
+           <img src="ui/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+	<div class="service-provider-title">
+		<div class="setting-sidebar-toggle-div">
+			<div class="file-list-icons big-screen-hide ipad-potrait-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></div>	
+			<div class="small-screen-hide">
+				<h3 style="font-weight: 700;" class="padding-mobile">{{"config.manage.providers.heading" | translate}}</h3>
+			</div>
+			<div class="mobile-only">
+				<h3 class="padding-mobile">{{"config.manage.providers.heading" | translate}}</h3>
+			</div>
+		</div>
+		<div data-ng-class="{'alert alert-success': isSuccess() == true, 'alert alert-danger': isSuccess() == false}" style="margin-bottom:0px !important;text-align:center;" ng-show="shouldDisplay()">
+	        <button type="button" class="close" data-ng-click="dismissMessage()">x</button>
+	        {{getMessage()}}
+	    </div>
+	</div>
+	
+	<div id="configured" class="service-provider-section">
+		<div class="service-provider-subtitle">
+			<h5 class="no-vertical-margin">{{"config.configured.providers.heading" | translate}}</h5>
+		</div>
+		<div ng-hide="configuredServiceProviders.length"><br><center>{{"err.add.service.provider.admin" | translate}}</center></div>
+		<div data-ng-repeat="setting in configuredServiceProviders" class="rms-provider service-provider center-service-provider-tile" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false" id="configuredServiceProviderContent">
+			<div class="tile-container">
+                <span class="class-ribbon" ng-class="{'application': setting.providerClass === 'APPLICATION', 'personal': setting.providerClass === 'PERSONAL'}">
+                    <i ng-if="setting.providerClass === 'PERSONAL'" ng-include="'ui/img/repository-personal-account.svg'"></i>
+					<i ng-if="setting.providerClass === 'APPLICATION'" ng-include="'ui/img/repository-application-account.svg'"></i>
+                    {{setting.providerClass}}
+                </span>
+                <img class="provider-logo" ng-src="{{'ui/img/service-provider-' + setting.provider + '.svg'}}" alt="{{setting.providerTypeDisplayName}}">
+                <span class="provider-type">{{setting.providerTypeDisplayName}}</span>
+                <span class="provider-display-name" ng-if="setting.providerClass === 'APPLICATION'">{{setting.attributes.DISPLAY_NAME}}</span>
+			</div>
+			<div class="overlayDiv" data-ng-class="{'keep-hidden' : !hovering}" >
+				<a class="btn btn-default configure-button-hover" ng-click="editServiceProviderConfiguration(setting)">{{"config.manage.label" | translate}}</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="remaining" class="service-provider-section">
+		<div class="service-provider-subtitle">
+			<h5 class="no-vertical-margin">{{"config.available.providers.heading" | translate}}</h5>
+		</div>
+		<div data-ng-repeat="(providerName, serviceProvider) in serviceProviders" ng-if="isConfigurable(serviceProvider)" class="service-provider center-service-provider-tile" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false">
+			<div class="tile-container">
+                <img class="provider-logo" ng-src="{{'ui/img/service-provider-' + providerName + '.svg'}}" alt="{{serviceProvider.displayName}}">
+                <span class="provider-name">{{serviceProvider.displayName}}</span>
+			</div>
+			<div class="overlayDiv" data-ng-class="{'keep-hidden' : !hovering}" >
+				<a class="btn btn-default configure-button-hover" ng-click="addServiceProviderConfiguration(serviceProvider, providerName)">{{"config.configure.label" | translate}}</a>
+			</div>
+		</div>
+	</div>
+</div>

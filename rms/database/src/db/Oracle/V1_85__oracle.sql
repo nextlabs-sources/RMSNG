@@ -1,0 +1,1 @@
+INSERT INTO users (id, display_name, creation_time) VALUES (0, 'SYSTEM', CURRENT_TIMESTAMP );

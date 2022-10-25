@@ -1,0 +1,83 @@
+<div class="rms-repo-list-header">
+	<div class = "rms-repoTitle">
+		<div class="repo-info">
+			<span uib-tooltip="{{pageTitle}}" tooltip-placement="right" tooltip-enable="false"><b>{{pageTitleDesktopShortened | translate}}</b></span>
+			<div class="class-icon personal">
+				<span class="dot"> &bull; </span>
+                <img ng-src="{{'ui/img/repository-personal-account.svg'}}" alt="{{'service-provider.class.personal-account' | translate}}">
+			</div>
+			<div class="inline-block margin-left-20" data-ng-show="pageTitle=='MyDrive'">
+				<div class="myDriveUsage-text">
+					<i data-ng-show = "pageTitle=='MyDrive' && driveExceeded" class="mandatory">{{'drive.storage.full' | translate}}</i>
+				</div>
+			</div>
+		</div>
+		<div data-ng-class="!isTreeOpen ? 'rms-file-search rms-file-search-custom' : 'rms-file-search tree'">
+			<form ng-submit="search()" >
+				<i class="fa fa-search"></i></input>
+				<input placeholder="{{'search.placeholder' | translate}}"  type="text" ng-model="$parent.searchString" clear-input="clearSearch()">
+			</form>
+		</div> 
+	</div>
+	<div class="rms-fileList-options">
+		<!--
+		<span class="rms-padding-treebutton-and-breadcrumbs show-only-on-desktop" data-ng-click="toggleTreeView()" data-ng-show="!showAllServices && showTree &&!searchActivated">
+			<button type="button" class="btn btn-default rms-repo-btn rms-repo-btn-big"><i data-ng-class="isTreeOpen ? 'glyphicon glyphicon-indent-right' : 'glyphicon glyphicon-indent-left'"></i></button>
+		</span>
+		-->
+ 		<!--<span class="show-only-on-desktop" ng-if="!showAllServices && !isTreeOpen && showTree && !searchActivated" >|</span>-->
+		<span ng-if="!showAllServices && !isTreeOpen &&!searchActivated">
+  			<span>
+  				<a class="rms-breadCrumbItem" data-ng-click="onClickFile(rootFolder)" ><b>Root</b></a>
+  				<span data-ng-repeat="eachFolder in breadCrumbsContent"> 
+  					<b> > </b>
+	  				<a class="rms-breadCrumbItem" data-ng-click="onClickFile(eachFolder)">
+	  					<b>{{eachFolder.name}}</b>
+	  				</a>
+  				</span>
+  			</span>
+	    </span>	    
+	    <span class="btn-group btn-block rms-repo-filter-btn-grp" ng-if="showAllServices && !searchActivated" id="repo-list-in-mainView" data-uib-dropdown>	    	
+            <button id="btn-append-to-single-button" type="button" class="form-control" uib-dropdown-toggle data-ng-disabled="disabled">
+              <span style="float:left" >
+	              <span data-ng-if="displaySelectedRepos.length === 0 || displaySelectedRepos.length === undefined">{{'all.repo' | translate}}</span>
+                  <span>{{displaySelectedRepos}}</span>
+              </span>
+              <span class="rms-caret"><span class="caret"></span></span>
+            </button>
+            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button" data-ng-click="dropdownClicked($event)">	          
+	          <li role="menuitem" data-ng-click="selectAllRepos()">
+              	<div class="checkbox">
+				  <label><input type="checkbox" data-ng-model="filterData['all']">
+				  	<span>{{'all.repo' | translate}}</span>
+				  </label>
+				</div>
+			  </li>
+			  <li class="divider"></li>
+			  <div data-ng-repeat="repo in repos">	              
+	              <li role="menuitem" data-ng-click="clickCheckbox()">
+	              	<div class="checkbox">
+					  <label><input type="checkbox" data-ng-model="filterData[repo.repoObj.repoId]">{{repo.repoObj.repoName}}</label>
+					</div>
+				  </li>
+			  </div>       
+              <li class="divider"></li>
+              <li role="menuitem" >
+              	<span data-ng-class="selectedReposValidationStatus ? 'pointer-click rms-dropdown-applyButton' : 'rms-repo-filter-disable rms-dropdown-applyButton' " data-propagation="true" data-ng-click="filterRepo()">Apply</span>
+			  </li>
+            </ul>   
+        </span>
+
+        <div data-ng-class="!isTreeOpen ? 'rms-file-sort rms-file-sort-custom' : 'rms-file-sort tree'">
+			<span data-ng-if="!searchActivated&&!isRepoReadOnly()&&!inMyVaultFolder()">
+         		<img data-ng-if="!showAllServices" src="ui/img/CreateFolder_P.svg" uib-tooltip="{{'create.folder' | translate}}" tooltip-placement="bottom" data-ng-click="createFolderModal()" class="pointer-click"/>
+         		<span data-ng-if="!showAllServices">&nbsp; &nbsp;  | &nbsp;  &nbsp;</span>
+         		<img data-ng-if="!showAllServices" src="ui/img/FileUpload_P.svg" uib-tooltip="{{'upload.file.with.repo.name' | translate : {repoName: pageTitle} }}" tooltip-placement="bottom" data-ng-click="(!(pageTitle=='MyDrive' && driveExceeded)) && !vaultExceeded && uploadFileModal()" data-ng-class="pageTitle=='MyDrive' && driveExceeded ?'disableImage cursor-not-allowed':'pointer-click'"/>
+         		<span data-ng-if="!showAllServices">&nbsp; &nbsp;  | &nbsp;  &nbsp;</span>
+			</span>
+			<label class="rms-file-sort-label">{{'sort.by' | translate}}</label>&nbsp;
+        	<select 
+           	 data-ng-options="sort.lookupCode as sort.description | translate for sort in sortOptions" data-ng-model="$parent.selectedSort" data-ng-change="update()"></select> 	
+        </div> 
+	</div>  		
+</div>

@@ -1,0 +1,12 @@
+<svg width="848" height="700" viewBox="0 0 848 700" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>gray bg</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(15052 573)" figma:type="canvas">
+<g id="gray bg" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(-15052 -573)" fill="#F2F3F5" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 0 700L 251 0L 848 0L 629 700L 0 700Z"/>
+</defs>
+</svg>

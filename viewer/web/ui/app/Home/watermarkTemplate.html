@@ -1,0 +1,26 @@
+<div style="padding-bottom:15px;">
+	<i style="color:#399649;" class="glyphicon glyphicon-info-sign"></i>
+	<span style="color: darkgrey; margin: 0 auto; font-size: 14px;">{{'watermark.info.message' | translate}}</span>
+</div>
+<div>
+	<div ng-keypress="keypress($event)" ng-keyup="keyup($event)" id="watermark-div" contenteditable="true"></div>
+</div>
+<div class="float-right">
+	<span ng-class="watermarkLength > watermarkMaxLen ? 'mandatory': ''">{{watermarkMaxLen - watermarkLength}}</span>
+	<span> / {{watermarkMaxLen}}</span>
+</div>
+<div class="float-left" ng-if="!isLoading">
+	<p class="mandatory" data-ng-show="watermarkLength == 0">{{'watermark.empty'| translate}}</p>
+	<p class="mandatory" data-ng-show="watermarkLength > watermarkMaxLen">{{'watermark.too.long'| translate}}</p>
+</div>
+<div style="padding-bottom: 15px; clear:both"></div>
+<div>	
+	<div class="display">
+		<span data-ng-show="!hideTagLabel">{{'add.preset.values' | translate}}</span>
+		<input type="button" ng-repeat="(key,value) in watermarkTags" id="watermark-tags-label" value="{{key}}" ng-click="addTags(key)" ng-hide="value"></input>
+	</div>
+	<a ng-click="addNewLine('Line Break')" class="add-newline">
+		<i data-ng-include="'/viewer/ui/img/Newline.svg'"></i>
+		<span style="color: #0a0a0a;margin-left:5px;user-select: none">{{'add.line.break' | translate}}</span>
+	</a>
+</div>

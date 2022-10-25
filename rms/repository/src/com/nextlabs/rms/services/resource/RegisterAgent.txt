@@ -1,0 +1,56 @@
+<RegisterAgentResponse>
+   <StartupConfiguration>
+      <id>16619</id>
+      <commProfile>
+         <id>3</id>
+         <name>Desktop Enforcer Default Profile</name>
+         <createdDate>{{now}}</createdDate>
+         <modifiedDate>{{now}}</modifiedDate>
+         <heartBeatFrequency>
+            <time>1</time>
+            <time-unit>hours</time-unit>
+         </heartBeatFrequency>
+         <logLimit>2</logLimit>
+         <logFrequency>
+            <time>30</time>
+            <time-unit>seconds</time-unit>
+         </logFrequency>
+         <passwordHash>W6ph5Mm5Pz8GgiULbPgzG37mj9g=</passwordHash>
+         <currentActivityJournalingSettings>
+            <loggedActivities/>
+         </currentActivityJournalingSettings>
+         <customActivityJournalingSettings>
+            <loggedActivities/>
+         </customActivityJournalingSettings>
+      </commProfile>
+      <agentProfile>
+         <id>1</id>
+         <name>Default_Profile</name>
+         <createdDate>{{now}}</createdDate>
+         <modifiedDate>{{now}}</modifiedDate>
+         <logViewingEnabled>false</logViewingEnabled>
+         <trayIconEnabled>false</trayIconEnabled>
+      </agentProfile>
+      <ClassificationProfile>
+         <Classify>
+            <Profiles>
+               <Default>0</Default>
+            </Profiles>
+            <LabelList>
+               <Label id="0" name="owner_tenant_id" display-name="Owner's Tenant Id" mandatory="true" multi-select="false" default-value="0">
+                  <VALUE priority="0" value="jt2go.plm.siemens.skydrm.com"/>
+               </Label>
+            </LabelList>
+            <WhiteList>
+               <Applications/>
+               <Extensions>.*\.NO_ENCRYPTION_ALLOWED$</Extensions>
+            </WhiteList>
+         </Classify>
+      </ClassificationProfile>
+      <registrationId>16633</registrationId>
+   </StartupConfiguration>
+   <certificate>MIIDkTCCAnmgAwIBAgIEUUgJizANBgkqhkiG9w0BAQsFADB5MQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExEjAQBgNVBAcTCVNhbiBNYXRlbzERMA8GA1UEChMITmV4dExhYnMxGjAYBgNVBAsTEVJpZ2h0cyBNYW5hZ2VtZW50MRowGAYDVQQDExFSaWdodHMgTWFuYWdlbWVudDAeFw0xNTA1MjcxNDAzNTBaFw0yNTA1MjQxNDAzNTBaMHkxCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTESMBAGA1UEBxMJU2FuIE1hdGVvMREwDwYDVQQKEwhOZXh0TGFiczEaMBgGA1UECxMRUmlnaHRzIE1hbmFnZW1lbnQxGjAYBgNVBAMTEVJpZ2h0cyBNYW5hZ2VtZW50MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl5HKn8BZ0yyY0JxpvQT0IkRPfKeXnvR53L0y5Nu1DkdAwc8mcd4H7ePUe3QiToKgzVZUJatUQ+bOlCDIQB/bgBO88Pi5ozNGEk4iobpIR0NYi5PHuYqNlsiUXD3IARle1XpiE3m4JU6lk1p9y8YimX3dE+B05lS58MEVya998Q1yh2C0NYOfECkQv4w8FtbPJbn4VTfqanokKjcx0L5aSpS/q06AG24SruwU4sX6pMspHME8fOUbBTm+VnhpArZ35FyJj1o+BoCVt4Pp0UG+lIiBMj3E50m/Ii/YnuWrtozsUZhd6w7/QIfpTn51ZehKOhHAhsRgWjeDvp7EOp45WwIDAQABoyEwHzAdBgNVHQ4EFgQUWnITlK2cVYTVHF2J1mEns/BOP38wDQYJKoZIhvcNAQELBQADggEBAAndNhd3Shu6b1sk69LsLMccxttFP+43gfapDsyefdqdybwQwdw8vgJOikbMgJFhPHNR+0HX0Oh/u3nIqYxjGTwE5jFy6fu/P1iAyinYECuGmj1MCpsjEtLjIClaWDRKETlk5mGeRxtHtexMHITkJv/6Qunh7rYC+RvwBGAAvgIlQQbMzMRAzAY4ttnscmIVPaU+ofED8YOE+pR8MWkYLG9EJViDIVDKZO9w9PLSqFu2wvLOg58Bg7sEfHXEvikYR0SQdm2Teouw0iQCYJipbMtCl6EwzgjuZtKGEAy2w5WareoTkvQdHr8Gp7lkofRwPjdUWHqfI7GOVLZwiKLdkhg=</certificate>
+   <fault>
+      <ErrorCode>0</ErrorCode>
+   </fault>
+</RegisterAgentResponse>

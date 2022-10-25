@@ -1,0 +1,123 @@
+version: "3"
+services:
+  db:
+    image: skydrm-db:LATEST
+    volumes:
+      - "dbdata:/var/lib/postgresql/data"
+      - "/opt/nextlabs/rms/shared/db/:/docker-entrypoint-initdb.d/"
+    ports:
+      - "5432:5432"
+    networks:
+      - webnet
+    deploy:
+      resources:
+        limits:
+          cpus: '3.00'
+          memory: 2G
+
+  cacheserver:
+    image: jboss/infinispan-server:9.4.0.Final
+    command: standalone -c skydrm/infinispan_server.xml
+    volumes:
+      - "/opt/nextlabs/rms/shared/cache/:/opt/jboss/infinispan-server/standalone/configuration/skydrm/"
+      - "/opt/nextlabs/rms/shared/cachestore/:/var/tmp/"
+    networks:
+      - webnet
+    deploy:
+      resources:
+        limits:
+          cpus: '3.00'
+          memory: 1G
+
+  messagequeue:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - "rabbitmq_data:/var/lib/rabbitmq/data"
+    networks:
+      - webnet
+    deploy:
+      resources:
+        limits:
+          cpus: '3.00'
+          memory: 1G
+
+  rmsweb:
+    image: skydrm-web:LATEST
+    ports:
+      - "443:8443"
+    environment:
+      - RMS_CONTEXT_URL=https://skydrm_hostname/rms 
+      - ROUTER_PROXY_URL=https://router:8443/router
+      - RMS_PROXY_URL=https://rms:8443/rms
+      - VIEWER_PROXY_URL=https://viewer:8443/viewer
+      - DAP_PROXY_URL=https://viewer:8443/viewer
+    volumes:
+      - "/opt/nextlabs/rms/shared/:/var/opt/nextlabs/rms/shared/"  
+    networks:
+      - webnet
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '3.00'
+          memory: 1G
+
+  router:
+    image: skydrm-router:LATEST
+    ports:
+      - "8443:8443"
+    volumes:
+      - "/opt/nextlabs/rms/shared/:/var/opt/nextlabs/rms/shared/"
+      - "/dev/urandom:/dev/random"
+    networks:
+      - webnet
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '3.00'
+          memory: 1G
+
+  rms:
+    image: skydrm-rms:LATEST
+    ports:
+      - "8444:8443"
+    volumes:
+      - "/opt/nextlabs/rms/shared/:/var/opt/nextlabs/rms/shared/"
+      - "/dev/urandom:/dev/random"
+    networks:
+      - webnet
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '3.00'
+          memory: 5G
+
+  viewer:
+    image: skydrm-viewer:LATEST
+    ports:
+      - "8445:8443"
+    volumes:
+      - "/opt/nextlabs/rms/shared/:/var/opt/nextlabs/rms/shared/"
+      - "/opt/nextlabs/rms/shared/viewerPackages/:/opt/nextlabs/rms/viewer/viewers/"
+      - "/dev/urandom:/dev/random"
+    networks:
+      - webnet
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '3.00'
+          memory: 5G
+
+volumes:
+   dbdata:
+   rabbitmq_data:
+
+networks:
+   webnet:
+

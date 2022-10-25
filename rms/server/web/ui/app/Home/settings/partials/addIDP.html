@@ -1,0 +1,215 @@
+<div>
+    <div id="providersLoading" data-ng-show="isLoading">
+        <div id="pgLoading-image">
+            <img src="ui/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+    <div class="row modal-header dialog-title-div">
+        <div class="col-xs-6" data-ng-if="isAdd">
+            <div class="dialog-title">
+                {{"add.identity.provider" | translate}}
+            </div>
+        </div>
+        <div class="col-xs-6" data-ng-if="!isAdd">
+            <div class="edit-text">
+                {{"edit"| translate}}
+            </div>
+            <div class="dialog-title">
+                {{selectedIDP.name}}
+            </div>
+        </div>
+        <div class="col-xs-6 text-align-right">
+            <a class="btn btn-default rms-settings-button" data-ng-click="cancel()">{{"cancel" | translate}}</a>
+            <a class="btn btn-default rms-settings-button-color rms-settings-button" 
+            	data-ng-disabled="idpForm.$pristine || idpForm.$invalid || (isAdd && !selectedIDP.name)" 
+            	data-ng-click="idpForm.$pristine || idpForm.$invalid || (isAdd && !selectedIDP.name) || save()">{{"save" | translate}}</a>
+        </div>
+    </div>
+    <div class="no-padding">
+        <div>
+            <div data-ng-class="{'alert alert-success': messageStatus==2, 'alert alert-danger': messageStatus==1}"
+                 style="margin: 2%">
+                <p>{{message}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row" data-ng-if="isAdd">
+        <div style="padding-left:60px;padding-top:20px;">
+            <label>{{"choose.idp.label" | translate}}</label><br/>
+            <div tabindex="1" class="btn-group" uib-dropdown is-open="status.isopen">
+                <button id="single-button" data-ng-model="button" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+                    {{selectedIDP && selectedIDP.name ? selectedIDP.name : "dropdown.placeholder" | translate}} <span class="caret"></span>
+                </button>
+                <ul class="uib-dropdown-menu" role="menu" aria-labelledby="single-button">
+                    <li role="menuitem">
+                        <a href="" ng-click="change($index)" ng-repeat="idp in allowedIDPList">{{idp.name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <form name="idpForm" style="padding-top:35px;">
+        <div style="padding-left:60px;padding-right:60px">
+            <!--For any repository except SharePoint-->
+            <div data-ng-if="selectedIDP.name == 'Azure'">
+                <div class="dialog-control-group">
+                    <label>{{"azuread.parameter.label.app.id" | translate}}<span class="mandatory"> * </span></label><br/>
+                    <input type="text" data-ng-model="idpFormData.Azure.appId" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"azuread.parameter.label.directory.id" | translate}}<span class="mandatory"> * </span></label><br/>
+                    <input type="text" data-ng-model="idpFormData.Azure.directoryId" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"azuread.parameter.label.app.secret" | translate}}<span class="mandatory"> * </span></label><br/>
+                    <input type="password" data-ng-model="idpFormData.Azure.appSecret" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"idp.parameter.label.signup.approval" | translate}}</label><br/>
+                    <div class="toggle-directive" style="margin: 0;">
+                        <input type="checkbox" style="display: none" data-ng-model="idpFormData.Azure.enableApproval" data-ng-checked="idpFormData.Azure.enableApproval"> 
+                        <label data-ng-click="idpFormData.Azure.enableApproval = !idpFormData.Azure.enableApproval;idpForm.$setDirty();" 
+                        		data-ng-class=""> <span class="label-left"><i class="fa fa-check"></i></span> </label>
+                    </div>
+                </div>
+                <div class="dialog-control-group" data-ng-if="idpFormData.Azure.enableApproval">
+                    <label>{{"idp.parameter.label.signup.url" | translate}}<span class="mandatory"> * </span></label><br/>
+                    <input type="text" data-ng-model="idpFormData.Azure.signupUrl" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+            </div>
+            <div data-ng-if="selectedIDP.name == 'Facebook'">
+                <div class="dialog-control-group">
+                    <label>{{"facebook.parameter.label.app.id" | translate}}<span class="mandatory"> * </span></label><br/>
+                    <input type="text" data-ng-model="idpFormData.Facebook.appId" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"facebook.parameter.label.app.secret" | translate}}<span class="mandatory"> * </span></label><br/>
+                    <input type="password" data-ng-model="idpFormData.Facebook.appSecret" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"idp.parameter.label.signup.approval" | translate}}</label><br/>
+                    <div class="toggle-directive" style="margin: 0;">
+                        <input type="checkbox" style="display: none" data-ng-model="idpFormData.Facebook.enableApproval" data-ng-checked="idpFormData.Facebook.enableApproval"> 
+                        <label data-ng-click="idpFormData.Facebook.enableApproval = !idpFormData.Facebook.enableApproval;idpForm.$setDirty();" data-ng-class=""> <span class="label-left"><i class="fa fa-check"></i></span> </label>
+                    </div>
+                </div>
+                <div class="dialog-contol-group" data-ng-if="idpFormData.Facebook.enableApproval">
+                    <label>{{"idp.parameter.label.signup.url" | translate}}<span class="mandatory"> * </span></label><br/>
+                    <input type="text" data-ng-model="idpFormData.Facebook.signupUrl" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+            </div>
+            <div data-ng-if="selectedIDP.name == 'Google'">
+                <div class="dialog-control-group">
+                    <label>{{"google.parameter.label.app.id" | translate}}<span class="mandatory"> * </span></label><br/>
+                    <input type="text" data-ng-model="idpFormData.Google.appId" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"google.parameter.label.app.secret" | translate}}<span class="mandatory"> * </span></label><br/>
+                    <input type="password" data-ng-model="idpFormData.Google.appSecret" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"idp.parameter.label.signup.approval" | translate}}</label><br/>
+                    <div class="toggle-directive" style="margin: 0;">
+                        <input type="checkbox" style="display: none" data-ng-model="idpFormData.Google.enableApproval" data-ng-checked="idpFormData.Google.enableApproval"> 
+                        <label data-ng-click="idpFormData.Google.enableApproval = !idpFormData.Google.enableApproval;idpForm.$setDirty();" data-ng-class=""> <span class="label-left"><i class="fa fa-check"></i></span> </label>
+                    </div>
+                </div>
+                <div class="dialog-contol-group" data-ng-if="idpFormData.Google.enableApproval">
+                    <label>{{"idp.parameter.label.signup.url" | translate}}<span class="mandatory"> * </span></label><br/>
+                    <input type="text" data-ng-model="idpFormData.Google.signupUrl" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+            </div>
+            <div data-ng-if="selectedIDP.name == 'LDAP'">
+                <div class="dialog-control-group">
+                    <label>{{"ldap.parameter.label.type" | translate:count}}<span class="mandatory"> * </span></label><br/>
+                    <label class="color-grey-text">{{"ldap.parameter.label.type.example" | translate}}</label><br/>
+                    <input type="text" data-ng-model="idpFormData.LDAP.ldapType" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"ldap.parameter.label.display.name" | translate:count}}<span class="mandatory"> * </span></label><br/>
+                    <label class="color-grey-text">{{"ldap.parameter.label.display.name.example" | translate}}</label><br/>
+                    <input type="text" data-ng-model="idpFormData.LDAP.name" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"ldap.parameter.label.host.name" | translate:count}}<span class="mandatory"> * </span></label><br/>
+                    <label class="color-grey-text">{{"ldap.parameter.label.host.name.example" | translate}}</label><br/>
+                    <input type="text" data-ng-model="idpFormData.LDAP.hostName" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"ldap.parameter.label.domain.name" | translate:count}}<span class="mandatory"> * </span></label><br/>
+                    <label class="color-grey-text">{{"ldap.parameter.label.domain.name.example" | translate}}</label><br/>
+                    <input type="text" data-ng-model="idpFormData.LDAP.domain" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"ldap.parameter.label.search.base" | translate:count}}<span class="mandatory"> * </span></label><br/>
+                    <label class="color-grey-text">{{"ldap.parameter.label.search.base.example" | translate}}</label><br/>
+                    <input type="text" data-ng-model="idpFormData.LDAP.searchBase" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"ldap.parameter.label.search.query" | translate:count}}<span class="mandatory"> * </span></label><br/>
+                    <label class="color-grey-text">{{"ldap.parameter.label.search.query.example" | translate}}</label><br/>
+                    <input type="text" data-ng-model="idpFormData.LDAP.userSearchQuery" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"ldap.parameter.label.user.group" | translate:count}}</label><br/>
+                    <label class="color-grey-text">{{"ldap.parameter.label.user.group.example" | translate}}</label><br/>
+                    <input type="text" data-ng-model="idpFormData.LDAP.rmsGroup" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"ldap.parameter.label.ssl" | translate:count}}</label><br/>
+                    <div class="toggle-directive" style="margin: 0;">
+                        <input type="checkbox" style="display: none" data-ng-model="idpFormData.ldap.ldapSSL" data-ng-checked="idpFormData.LDAP.ldapSSL"> <label data-ng-click="idpFormData.LDAP.ldapSSL = !idpFormData.LDAP.ldapSSL;" data-ng-class=""> <span class="label-left"><i class="fa fa-check"></i></span> </label>
+                    </div>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"ldap.parameter.label.security" | translate:count}}</label><br/>
+                    <div class="toggle-directive" style="margin: 0;">
+                        <input type="checkbox" style="display: none" data-ng-model="idpFormData.ldap.securityPrincipalUseUserID" data-ng-checked="idpFormData.LDAP.securityPrincipalUseUserID"> <label data-ng-click="idpFormData.LDAP.securityPrincipalUseUserID = !idpFormData.LDAP.securityPrincipalUseUserID;" data-ng-class=""> <span class="label-left"><i class="fa fa-check"></i></span> </label>
+                    </div>
+                </div>
+            </div>
+            <div data-ng-if="selectedIDP.name == 'SAML'">
+                <div class="dialog-control-group">
+                    <label>{{"saml.parameter.label.name" | translate:count}}<span class="mandatory"> * </span></label><br/>
+                    <input type="text" data-ng-model="idpFormData.SAML.name" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"saml.parameter.label.sp.entity.id" | translate:count}}<span class="mandatory"> * </span></label><br/>
+                    <input type="text" data-ng-model="idpFormData.SAML.spEntityId" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"saml.parameter.label.acs.url" | translate:count}}<span class="mandatory"> * </span></label><br/>
+                    <input type="text" data-ng-model="idpFormData.SAML.spAcsUrl" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"saml.parameter.label.idp.entity.id" | translate:count}}<span class="mandatory"> * </span></label><br/>
+                    <input type="text" data-ng-model="idpFormData.SAML.idpEntityId" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"saml.parameter.label.idp.sso.url" | translate:count}}<span class="mandatory"> * </span></label><br/>
+                    <input type="text" data-ng-model="idpFormData.SAML.idpSsoUrl" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"saml.parameter.label.idp.cert" | translate:count}}<span class="mandatory"> * </span></label><br/>
+                    <input type="password" data-ng-model="idpFormData.SAML.idpX509Cert" data-ng-required="true" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"saml.parameter.label.name.format" | translate:count}}</label><br/>
+                    <input type="text" data-ng-model="idpFormData.SAML.spNameIdFormat" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"saml.parameter.label.signature.algo" | translate:count}}</label><br/>
+                    <input type="text" data-ng-model="idpFormData.SAML.signAlgo" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"saml.parameter.label.auth.ctx" | translate:count}}</label><br/>
+                    <input type="text" data-ng-model="idpFormData.SAML.authNContext" data-ng-trim="true" style="width: 100%"/>
+                </div>
+                <div class="dialog-control-group">
+                    <label>{{"saml.parameter.label.btn.txt" | translate:count}}</label><br/>
+                    <input type="text" data-ng-model="idpFormData.SAML.loginBtnText" data-ng-trim="true" style="width: 100%"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

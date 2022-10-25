@@ -1,0 +1,25 @@
+<div class="rms-repo-list-header">
+    <div id="rms-repoTitle-id" class = "rms-repoTitle">
+        <div class="file-list-icons big-screen-hide ipad-potrait-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></div>
+        <div class="file-list-icons">
+            <span>
+               <button type="button" ng-click="toggleShareTab(false)" ng-class="!showSharedWithMe ? 'btn btn-default rms-settings-button-color' : 'btn btn-default rms-settings-button' " style="width:120px;border-radius:0px;margin-right:-10px;">{{'shared.files'  | translate}}</button>
+               <button type="button" ng-click="toggleShareTab(true)" ng-class="showSharedWithMe ? 'btn btn-default rms-settings-button-color' : 'btn btn-default rms-settings-button' " style="width:120px;border-radius:0px;">{{'shared.with.me' | translate}}</button>
+            </span>
+        </div>
+        <div class="file-list-icons file-list-icons-float-right" data-ng-click="toggleSort()"><i class="fa fa-sort file-list-icons-size"></i></div>
+        <div class="file-list-icons file-list-icons-float-right"  data-ng-click="toggleSearch()"><i class="fa fa-search file-list-icons-size"></i></div>
+    </div>
+    <div id="fileSearchDivId" class="fileListOptions-div-mobile" data-ng-show="showSearch">
+        <form ng-submit="search()" >
+            <i class="fa fa-search"></i>
+            <input placeholder="{{'search.file.placeholder' | translate}}"  type="text" ng-model="$parent.searchString" clear-input="clearSearch()"></input>
+            <span class="file-options-icon-padding" data-ng-click="closeFileListOptions()"><i class="fa fa-times"></i></span>
+        </form>
+    </div>
+    <div id="fileSortId" class="fileListOptions-div-mobile" data-ng-show="showSort">
+        <label class="rms-file-sort-label">{{'sort.by' | translate}}</label>&nbsp;
+        <select data-ng-options="sort.lookupCode as sort.description | translate for sort in sortOptions" data-ng-model="$parent.selectedSort" data-ng-change="sortChanged($parent.selectedSort)"></select>
+        <span class="file-options-icon-padding" data-ng-click="closeFileListOptions()"><i class="fa fa-times"></i></span>
+    </div>
+</div>

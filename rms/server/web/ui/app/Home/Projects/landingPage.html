@@ -1,0 +1,250 @@
+<div data-ng-controller="landingPageController">
+    <div id="rms-right-panel" style="overflow:auto;">
+        <div id="statusContainer" class="margin-top-20 alert alert-danger" style="margin-bottom:0px !important;" data-ng-show="errorMessage && errorMessage.length>0">
+            <button type="button" class="close" data-ng-click="dismissMessage()">x</button>
+            <center><p>{{errorMessage | translate}}</p></center>
+        </div>
+        <div id="personal_summary_row" class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-sm-10 col-sm-offset-2 col-xs-12" style="max-width:960px; margin:auto">
+                <div class="project-card shadow" id="summary">
+                    <div data-ng-show="isLoadingSummary" class="loading-div"></div>
+                    <div data-ng-show="!isLoadingSummary">
+                        <div class="subsection header">
+                            <h4><span class="color-gray">{{"landing.page.welcome" | translate}}</span> <span>{{displayName}}</span></h4>
+                            <div class="default_profile round-initial" data-ng-class="'profile_'+displayName[0].toLowerCase()" uib-tooltip="{{getUserFullDisplayName(displayName, email)}}" tooltip-enable="!mobile">
+                                <span>
+                                    {{displayName | initials}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="subsection">
+                            <div class="row display-block">
+                                <div class="col-xs-12 card-tiles no-padding">
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="row card-tile" data-ng-click="onClickTab('myspace')" id="myspace-btn">
+                                            <div class="col-xs-8 no-padding">
+                                                <div class="details">
+                                                    <div>
+                                                        <div>
+                                                            <div class="inline-block legend-icon mySpace-usage-color"></div>
+                                                            <span>{{"myspace" | translate}}</span>
+                                                        </div>
+                                                        <div class="info">
+                                                            <span>{{mySpaceFileCount}}</span><span class="color-gray"> {{ mySpaceFileCount == 1 ? 'file' : 'files' | translate}}</span><br><br>
+                                                            <button type="button" class="btn-link" >{{"view.files" | translate}}</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4 logo">
+                                                <img alt="{{'myspace' | translate}}" src="ui/img/MyDrive_P.svg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6" data-ng-if="!hideWorkspace">
+                                        <div class="row card-tile" data-ng-click="onClickTab('workspace_files')" id="workspace-btn">
+                                            <div class="col-xs-8 no-padding">
+                                                <div class="details">
+                                                    <div>
+                                                        <div>
+                                                            <div class="inline-block legend-icon workspace-usage-color"></div>
+                                                            <span>{{"workspace.title" | translate}}</span>
+                                                        </div>
+                                                        <div class="info" ng-controller="workSpaceController">
+                                                            <span>{{num}}</span><span class="color-gray"> {{ num == 1 ? 'file' : 'files' | translate}}</span><br><br>
+                                                            <button type="button" class="btn-link" >{{"view.files" | translate}}</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4 logo">
+                                                <img alt="{{'workspace.title' | translate}}" src="ui/img/WorkSpace-Icons.svg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- repo list -->
+                        <div class="row display-block margin-bottom-20" >
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h4>{{"landing.page.repo.title" | translate}}</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-12" data-ng-show="repoList.length == 0">
+                                <div class="inline-block padding-right-10px"><span>{{"landing.page.no.repo" | translate}}</span></div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-xs-12 inline-block" data-ng-repeat="repo in repoList">
+                                <div class="col-xs-12 pointer-click no-padding margin-top-10" data-ng-click="onClickTab(repo)">
+                                    <div class="repo-tile row" ng-class="{'personal': repo.providerClass === 'PERSONAL', 'application': repo.providerClass === 'APPLICATION'}">
+                                        <div class="landing-menuicon" aria-hidden="true">
+                                            <img ng-src="{{'ui/img/service-provider-'+ repo.provider +'.svg'}}" alt="{{repo.name}}">
+                                        </div>
+                                        <div class="repo-details">
+                                            <div class="repo-name">
+                                                <span class="truncate" uib-tooltip="{{repo.name}}" tooltip-placement="auto" tooltip-enable="!mobile">{{repo.name}}</span>
+                                                <div ng-class="{'class-icon': true, 'personal': repo.providerClass === 'PERSONAL', 'application': repo.providerClass === 'APPLICATION'}">
+                                                    <span class="dot"> &bull; </span>
+                                                    <i ng-if="repo.providerClass === 'PERSONAL'" ng-include="'ui/img/repository-personal-account.svg'"></i>
+                                                    <i ng-if="repo.providerClass === 'APPLICATION'" ng-include="'ui/img/repository-application-account.svg'"></i>
+                                                </div>
+                                            </div>
+                                            <div class="subdetails truncate" ng-if="repo.providerClass != 'APPLICATION'">
+                                                <span ng-if="repo.accountName" uib-tooltip="{{repo.accountName}}" tooltip-placement="auto" tooltip-enable="!mobile">{{repo.accountName}}</span>
+                                                <span ng-if="repo.accountName === '' && repo.accountId" uib-tooltip="{{repo.accountId}}" tooltip-placement="auto" tooltip-enable="!mobile">{{repo.accountId}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- widgets -->
+                        <div class="widget row display-block">
+                            <div class="row-desktop ipad-flex padding-10">
+                                <div id="protect-widget" class="col-xs-12 col-sm-3 padding-5">
+                                    <div class="protect-widget pointer-click" data-ng-click="openProtectWidget()">
+                                        <div class="rms-tile-shadow rms-widget-green" style="padding:10px 0px;">
+                                            <div class="protect-file-widget-icon"></div>
+                                            <h5>{{'widget.protect.file.label' | translate}}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="share-widget" class="col-xs-12 col-sm-3 padding-5">
+                                    <div class="share-widget pointer-click" data-ng-click="openShareWidget()">
+                                        <div class="rms-tile-shadow rms-widget-green" style="padding:10px 0px;">
+                                            <div class="share-file-widget-icon"></div>
+                                            <h5>{{'widget.share.file.label' | translate}}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="add-repo-widget" class="col-xs-12 col-sm-3 padding-5">
+                                    <div class="add-repo-widget pointer-click" data-ng-click="goToRepoConfig()">
+                                        <div class="rms-tile-shadow rms-widget-green" style="padding:10px 0px;">
+                                            <span class="add-repo-widget-icon">
+                                                <i data-ng-include="'ui/img/icon_plus-black.svg'"></i>
+                                            </span>
+                                            <h5>{{'widget.add.repo.label' | translate}}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-xs-12 margin-auto padding-5" style="height: 100%; line-height: 100%;">
+                                    <div class="inline-block pointer-click float-right margin-top-20 margin-bottom-20" data-ng-click="onClickTab('myspace')">
+                                        <div class="margin-auto">
+                                            <a class="btn-link" style="font-size:medium;">{{"project.go.to.skydrm" | translate}}</a>
+                                            <img alt="" src="ui/img/rightArrowBlack.svg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="invitation_row" class="row" data-ng-if="hasInvitation" style="width: 100%">
+            <div class="col-lg-8 col-lg-offset-2 col-sm-10 col-sm-offset-2 col-xs-12" style="max-width:960px; margin:auto">
+                <div class="projects-created-title margin-10">
+                    <span class="color-gray">{{ 'project.pending.invitations' | translate}}</span>
+                </div>
+                <div class="project-card shadow rms-break-word" style="padding-bottom: 20px;">
+                    <div class="cc-layout-full-width rms-pending-invitations-row" style="padding-top: 15px; padding-bottom: 15px;" data-ng-class="{'border-bottom-sperator': $index != pendingInvitations.length - 1 }" data-ng-repeat="i in pendingInvitations">
+                        <div class="cc-layout-full-width inline-block">
+                            <div class="col-xs-12 col-md-9 rms-pending-invitations-label">
+                                <div class="vertical-align-table-cell">
+                                    <div data-ng-if="!pendingInvitations[$index].status">
+                                        <span class="color-light-blue pointer-click" uib-tooltip="{{i.inviterEmail}}">{{i.inviterDisplayName}}</span>
+                                        <span>{{'project.invite.invited.to.join' | translate}}</span>
+                                        <span class="color-light-blue pointer-click" uib-tooltip="{{i.project.description}}">{{i.project.displayName}}</span>
+                                    </div>
+                                    <div data-ng-if="pendingInvitations[$index].status">
+                                        <span class="color-green">{{pendingInvitations[$index].status === 'accepted' ? 'project.invite.accept.success' : 'project.invite.decline.success' | translate}}</span>
+                                        <span class="color-light-blue pointer-click" uib-tooltip="{{i.project.description}}">{{i.project.displayName}}</span>
+                                    </div>
+                                    <div data-ng-if="pendingInvitations[$index].invitationMsg">
+                                        <i class="color-gray word-break-all"><b>"</b>{{pendingInvitations[$index].invitationMsg}}<b>"</b></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="show-only-on-desktop cc-layout-full-height col-md-3 rms-pending-invitations-button">
+                                <div class="cc-layout-full-height" style="display:table;">
+                                    <div class="vertical-align-table-cell">
+                                        <div data-ng-if="!pendingInvitations[$index].status">
+                                            <div data-ng-if="pendingInvitations[$index].isLoading" class="loading-div float-right" style="width: 32px; margin: 0px"></div>
+                                            <div data-ng-if="!pendingInvitations[$index].isLoading" class="row">
+                                                <button class="col-xs-6 btn btn-default" style="margin-right: 10px" data-ng-click="declineInvitation($index, i.invitationId, i.code)">{{'decline' | translate}}</button>
+                                                <button class="col-xs-6 btn btn-default rms-settings-button-color"  data-ng-click="acceptInvitation($index, i.invitationId, i.code)">{{'accept' | translate}}</button>
+                                            </div>
+                                        </div>
+                                        <div data-ng-if="pendingInvitations[$index].status  === 'accepted'">
+                                            <button class="btn btn-default float-right rms-settings-button-color" data-ng-click="goToProject(i.project.id)">{{'project.go.to.project' | translate}}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mobile-tablet-display" style="padding: 0px 15px;">
+                            <div data-ng-if="!pendingInvitations[$index].status" class="cc-layout-full-width">
+                                <div data-ng-if="pendingInvitations[$index].isLoading" class="loading-div" style="width: 32px; margin: auto"></div>
+                                <div data-ng-if="!pendingInvitations[$index].isLoading" class="cc-layout-full-width row">
+                                    <button class="col-xs-6 btn btn-default" style="margin-right: 10px" data-ng-click="declineInvitation($index, i.invitationId, i.code)">{{'decline' | translate}}</button>
+                                    <button class="col-xs-6 btn btn-default rms-settings-button-color"  data-ng-click="acceptInvitation($index, i.invitationId, i.code)">{{'accept' | translate}}</button>
+                                </div>
+                            </div>
+                            <div data-ng-if="pendingInvitations[$index].status  === 'accepted'" class="cc-layout-full-width row">
+                                <button class="col-xs-12 btn btn-default float-right rms-settings-button-color" data-ng-click="goToProject(i.project.id)">{{'project.go.to.project' | translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="upgrade_row" class="row" data-ng-if="!isProjectAccount">
+            <div class="col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 margin-10">
+                <div class="project-card shadow rms-upgrade-panel" id="upgrade">
+                    <div class="row display-block">
+                        <div class="col-xs-12 col-sm-9 rms-upgrade-panel-maintext">{{'project.upgrade.main' | translate}}
+                            <ul>
+                                <li><span class="rms-upgrade-panel-subtext">{{'project.upgrade.sub.one' | translate}}</span></li>
+                                <li><span class="rms-upgrade-panel-subtext">{{'project.upgrade.sub.two' | translate}}</span></li>
+                                <li><span class="rms-upgrade-panel-subtext">{{'project.upgrade.sub.three' | translate}}</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 float-right rms-upgrade-button-div">
+                            <div class="vertical-align-table-cell">
+                                <button class="btn btn-default shadow btn-go-to-skydrm ng-binding" ng-click="goToUpgradeProject()">{{'project.upgrade' | translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="created_projects_row margin-top-10" class="row" data-ng-if="isProjectAccount" style="width: 100%">
+            <div class="col-lg-8 col-lg-offset-2 col-sm-10 col-sm-offset-2 col-xs-12" style="max-width:960px;margin:auto">
+                <div ng-show="projectsCreated != null && projectsCreated.length > 0" class="projects-created-title margin-10">
+                    <span class="color-gray">{{ 'project.created.by.label' | translate}}</span> <b>{{'project.me' | translate}}</b>
+                    <span class="color-light-blue">({{totalProjectsCreated}})</span>
+                </div>
+                <div data-ng-show="isLoadingCreatedProjects" class="loading-div"></div>
+                <div id="projects-created" data-ng-include="'ui/app/Home/Projects/partials/projectsCreated.html'" style="width: 100%"></div>
+                <div ng-show="projectsCreated != null && projectsCreated.length > 0" class="col-xs-12"><button type="button" class="btn-link" style="float: right;" data-ng-click="gotoAllProjects()">{{'projects.all.view' | translate}}</button></div>
+            </div>
+        </div>
+        
+        <div id="joint_projects_row margin-top-10" class="row" data-ng-if="isProjectAccount && hasJointProjects">
+            <div class="col-lg-8 col-lg-offset-2 col-sm-10 col-sm-offset-2 col-xs-12" style="max-width:960px;margin:auto">
+                <div class="projects-invited-title margin-10">
+                    <span class="color-gray">{{ 'project.invited.by.label' | translate}}</span> <b>{{'project.others' | translate}}</b>
+                    <span class="color-light-blue">({{totalProjectsInvited}})</span>
+                </div>
+                <div data-ng-show="isLoadingJointProjects" class="loading-div"></div>
+                <div id="projects-invited" data-ng-include="'ui/app/Home/Projects/partials/projectsInvited.html'" style="width: 100%"></div>
+                <div class="col-xs-12"><button type="button" class="btn-link" style="float: right;" data-ng-click="gotoAllProjects()">{{'projects.all.view' | translate}}</button></div>
+            </div>
+            
+        </div>
+    </div>
+    <div data-ng-include="'ui/app/Home/Projects/footerProject.html'"></div>
+</div>

@@ -1,0 +1,25 @@
+dependencies {
+	compile project(':shared')
+	compile libs.'flyway'
+	compile libs.'hibernate'
+	compile libs.'log4j'
+	runtimeOnly libs.'mssql-jdbc'
+	runtimeOnly libs.'postgresql-jdbc'
+	runtimeOnly libs.'ojdbc'
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src']
+		}
+		resources {
+			srcDirs = ["src/"]
+			includes = ["**/*.xml", "**/*.sql"]
+		}
+	}
+}
+
+jar {
+	baseName 'database'
+}

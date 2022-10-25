@@ -1,0 +1,1 @@
+ALTER TABLE rms.activity_log ALTER COLUMN activity_data TYPE text;

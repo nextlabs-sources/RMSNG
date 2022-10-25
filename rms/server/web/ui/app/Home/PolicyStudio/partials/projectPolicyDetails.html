@@ -1,0 +1,33 @@
+<div class="col-lg-8 col-lg-offset-2 col-xs-12">
+<div class="float-left">
+	<div style="font-size: 18px;font-weight: 500;">{{policy.id ? policyNameCopy : 'project.policy.new' | translate}}</div>
+</div>
+<div class="float-right">
+	<a class="btn btn-default rms-settings-button" data-ng-click="goToList()">{{'cancel' | translate}}</a>
+	<a class="btn btn-default rms-settings-button" data-ng-click="createOrUpdatePolicy(false)">{{'save' | translate}}</a>
+	<a class="btn btn-default rms-settings-button rms-settings-button-color" style="width: auto" data-ng-click="createOrUpdatePolicy(true)">Save & Deploy</a>
+</div>
+<div style="clear: both"></div>
+<div class="margin-top-10" style="padding: 50px; background-color: white; overflow: auto">
+	<label>{{'policy.name' | translate}}</label>
+	<input class="form-control" style="width:70%" maxlength="255" id="policyName" placeholder="{{'policy.name.placeholder' | translate}}" data-ng-model="policy.name" autofocus>
+	<label class="margin-top-20">{{'policy.description' | translate}}</label>
+	<textarea class="form-control" style="width:70%" id="policyDescription" placeholder="{{'policy.description.placeholder' | translate}}" data-ng-model="policy.description" autofocus></textarea>
+	<br>
+	<div data-ng-controller="manageProjectTagsController" data-ng-include="'ui/app/Home/PolicyStudio/partials/getProjectTags.html'"></div>
+	<br>
+	<div data-ng-controller="policyStudioComponentsController" data-ng-include="'ui/app/Home/PolicyStudio/partials/policyComponents.html'" ng-init="initComponents('SUBJECT')" >
+	</div>
+	<br>
+	<br>
+	<div data-ng-controller="policyStudioComponentsController" data-ng-include="'ui/app/Home/PolicyStudio/partials/policyScheduleConfig.html'" ng-init="initComponents('SUBJECT')" >
+	</div>
+	<br>
+	<br>
+	<div class="float-right">
+		<a class="btn btn-default rms-settings-button" data-ng-click="goToList()">{{'cancel' | translate}}</a>
+		<a class="btn btn-default rms-settings-button" data-ng-click="createOrUpdatePolicy(false)">{{'save' | translate}}</a>
+		<a class="btn btn-default rms-settings-button rms-settings-button-color" style="width: auto" data-ng-click="createOrUpdatePolicy(true)">Save & Deploy</a>
+	</div>
+</div>
+</div>

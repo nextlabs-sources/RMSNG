@@ -1,0 +1,124 @@
+<div data-ng-controller="classificationController" class="col-xs-12 padding-20" style="background-color: white;" >
+	
+	<div class="rms-repoTitle mobile-tablet-display" data-ng-show="showRepoTitle">
+		<div class="file-list-icons big-screen-hide ipad-potrait-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></div>
+	</div>
+
+	<div id="loading-background" data-ng-show="isClassificationLoading" class="loading-div ng-hide"></div>
+
+	<div ng-if="fromCreateProject">
+		<div id="workflow-bar">
+			<div id="workflow-bar-position">
+				<button class="button-workflow blue-button-workflow">1</button>
+				<span style="display:inline-block;" class="arrow">
+					<span class="arrow-line" style="background-color:#2D9CDB;"></span>
+					<span class="arrow-head" style="border-left-color:#2D9CDB;"></span>
+				</span>
+				<button class="button-workflow blue-button-workflow">2</button>
+				<span style="display:inline-block;" class="arrow">
+					<span class="arrow-line" style="background-color:#2D9CDB;"></span>
+					<span class="arrow-head" style="border-left-color:#2D9CDB;"></span>
+				</span>
+				<button class="button-workflow green-button-workflow">3</button>
+				<span style="display:inline-block;" class="arrow">
+					<span class="arrow-line" style="background-color:#27AE60;"></span>
+					<span class="arrow-head" style="border-left-color:#27AE60;"></span>
+				</span>
+				<button class="button-workflow gray-button-workflow">4</button>
+			</div>
+		</div>
+		<div style="font-size:1.5em" class="text-align-center">{{'step.three' | translate}} : {{'document.classification' | translate}}</div>
+	</div>
+
+	<div ng-if="!fromCreateProject" class="mobile-tablet-display col-md-8 col-md-offset-2 col-sm-12" style="margin-top:10px;">
+		<span>
+			<button type="button" ng-click="onClickTab('configuration', true)" class='btn btn-default col-md-3 col-xs-12' ng-class="configTabId == 0 ? 'rms-settings-button-color' : '' " style="margin-bottom:10px; border-radius:0px;height:34px;font-size:90%;">{{'project.info' | translate}}</button>
+			<button type="button" ng-click="onClickTab('accessPermission', true)" class='btn btn-default col-md-3 col-xs-12' ng-class="configTabId == 3 ? 'rms-settings-button-color' : '' " style="margin-bottom:10px; border-radius:0px;height:34px;font-size:90%;">{{'project.access.permission' | translate}}</button>			
+			<button type="button" ng-click="onClickTab('classification', true)" class='btn btn-default col-md-3 col-xs-12' ng-class="configTabId == 1 ? 'rms-settings-button-color' : '' " style="margin-bottom:10px; border-radius:0px;height:34px;font-size:90%;">{{'project.classification' | translate}}</button>
+			<button type="button" ng-click="onClickTab('preference', true)" class='btn btn-default col-md-3 col-xs-12' ng-class="configTabId == 2 ? 'rms-settings-button-color' : '' " style="margin-bottom:10px; border-radius:0px;height:34px;font-size:90%;">{{'advanced' | translate}}</button>
+		</span>
+		<div class="col-xs-12" style="height: 30px"></div>
+	</div>
+	
+	<div class="text-align-center" style="margin-top: 30px">
+		<span style="font-size: 18px;font-weight: 500;">{{ 'project.classification' | translate }}</span><br>
+		<span style="font-size: 13px;font-style: italic;color: #828282;line-height: 45px;">{{ 'project.classification.description' | translate }}</span><br>
+		<span style="font-size: 13px;font-style: italic;color: #828282;line-height: 45px;">{{ 'project.classification.char.support' | translate }}</span><br>
+		<span style="font-size: 14px;font-weight: 500;">{{ 'project.classification.max' | translate:maxNumCategories }}</span><br>
+		<span class="error-text" data-ng-show="inheritParent"> {{ 'project.classification.inherit.warning' | translate}} </span><br>
+	</div>
+
+	<div class="classification-border" style="margin: 30px">
+		<div class="classification-border" style="background-color: #ECECF1; padding: 30px;">
+			<form name="classificationForm">
+				<span class="row">
+					<input type="text" maxlength="60" class="input col-xs-11" name="CLASSIFICATION_NAME" placeholder="{{ 'project.classification.category.name' | translate}}" ng-model="categoryInput" data-ng-pattern="/^[\w -]*$/"/>
+					<p class="error-text" data-ng-show="classificationForm.CLASSIFICATION_NAME.$error.pattern">{{"project.classification.category.name.validation.pattern" | translate}}</p><br>
+					<button class="btn btn-default rms-settings-button-color add-button" ng-click="addCategory()" ng-disabled="!categoryInput || categoryInput == '' || selectedCategories.length >= maxNumCategories.max"></button>
+				</span>
+			</form>
+		</div>
+		<div dnd-list="selectedCategories">
+			<div id="cat{{categoryIdx}}" data-ng-repeat="(categoryIdx, category) in selectedCategories" dnd-draggable="category" dnd-moved="selectedCategories.splice($index, 1)" dnd-effect-allowed="move">	
+				<div dnd-nodrag class="classification-border" style="background-color:#F7F7F7; margin: 20px;">
+					<div dnd-handle class="row classification-border cursor-move" style="padding: 10px 20px; overflow: auto">
+						<div class="col-xs-12 col-sm-8">
+							<span class="word-break-all" style="font-size: 20px; font-weight:500; margin-right: 5px">{{category.name}}</span> 
+							<span class="mandatory pointer-click" data-ng-click="removeCategory(category)">({{ 'remove' | translate }})</span>
+						</div>
+						<div class="col-xs-6 float-right" style="min-width: 160px;">
+							<div class="float-right" style="cursor: default;">
+								<label class="classification-checkbox noselect word-break-all" style="margin-right: 10px">
+									<div class="inline-block float-right" style="min-width: 70px; margin: 5px 0 0 10px">{{'project.classification.category.multi-select' | translate}}</div>
+									<input type="checkbox" data-ng-change="updateMultiSelect(category)" data-ng-model="category.multiSelect" data-ng-checked="category.multiSelect"></input>
+									<span></span>
+								</label>
+								<label class="classification-checkbox noselect word-break-all">
+									<div class="inline-block float-right" style="min-width: 70px; margin: 5px 0 0 10px">{{'project.classification.category.mandatory' | translate}}</div>
+									<input type="checkbox" data-ng-model="category.mandatory" data-ng-checked="category.mandatory"></input>
+									<span></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div style="background-color: white">
+						<div style="padding-bottom:15px;"></div>
+						<div id="cat{{categoryIdx}}lbl{{labelIdx}}" style="padding: 10px 20px; overflow: auto" data-ng-repeat="(labelIdx, label) in category.labels">
+							<div class="row">
+									<input dnd-nodrag-mouseover type="text" maxlength="60" class="lbl-name-input input col-xs-12 col-sm-7" style="max-height: 40px;" placeholder="{{ 'project.classification.label.name' | translate}}" ng-model="label.name" ng-blur="checkDuplicateLabels(category, label)" />
+								<div class="input col-xs-6 col-sm-5">
+									<label class="classification-checkbox noselect padding-left-20 float-right" ng-class="allowLabelDefault(category, label) ? '' : 'color-gray'" style="margin-top: 2px">
+										<div class="inline-block float-right" style="margin: 5px 0 0 10px">{{'project.classification.label.default' | translate}}</div>
+										<input ng-disabled="!allowLabelDefault(category, label)" type="checkbox" data-ng-model="label.default" data-ng-checked="label.default"></input>
+										<span></span>
+									</label>
+									<div ng-if="hasMoreThanOneLabel(category)" ng-click="removeLabel(category, label)" class=" float-right pointer-click inline-block">
+										<i data-ng-include="'ui/img/CrossButton.svg'"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div style="padding: 15px;">
+							<button ng-show="category.labels.length < maxNumLabels" type="button" class="btn-link" data-ng-click="addLabel(category, categoryIdx)">{{"project.classification.label.add" | translate}}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div ng-if="fromCreateProject" id="button-align">
+		<button type="button" class="btn btn-default button-paddings" ng-click="back()">{{'back' | translate}}</button>
+		<span class="float-right">
+			<button type="button" class="btn btn-default button-paddings" ng-click="skip()">{{'skip'| translate}}</button>
+			<button type="button" class="btn btn-default rms-settings-button-color button-paddings" ng-click="proceed()" ng-disabled="pristine()">{{'save'| translate}}</button>
+			<span data-ng-show="isClassificationLoading" class="loading-icon"></span>
+		</span>
+	</div>
+
+	<div ng-if="!fromCreateProject" id="button-align">
+		<span class="float-right">
+			<button type="button" class="btn btn-default rms-settings-button-color button-paddings" ng-click="proceed()" ng-disabled="pristine()">{{'save'| translate}}</button>
+		</span>
+	</div>
+</div>

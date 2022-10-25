@@ -1,0 +1,182 @@
+<div id="settings-pane" data-ng-controller="settingsController">
+	<div id="loading-background" data-ng-show="isLoading">
+		<div id="pgLoading-image">
+           <img src="ui/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+	<div class="rms-repoTitle row" data-ng-if="isDefaultTenant">
+		<div class="col-md-10" style="padding: 0px">
+			<div class="tab-content-item-header">{{'config.client.management.heading' | translate | uppercase}}</div>
+			<div class="tab-content-item-description">{{'config.client.management.description' | translate}}</div>
+		</div>
+		<div class="col-md-2">
+			<div style="width: fit-content; float: right">
+				<a class="btn btn-default rms-settings-button" data-ng-click="doReset()">{{"reset" | translate}}</a>
+				<a class="btn btn-default rms-settings-button rms-settings-button-color" data-ng-disabled="clientMgmtForm.$pristine" data-ng-click="clientMgmtForm.$pristine || doSave()">{{"save" | translate}}</a>
+			</div>
+		</div>
+	</div>
+	<div class="row service-provider-title display-block" data-ng-if="!isDefaultTenant">
+		<div class="setting-sidebar-toggle-div float-left">
+			<div class="file-list-icons big-screen-hide ipad-potrait-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></div>	
+			<div class="small-screen-hide">
+				<h3 style="font-weight: 700;" class="padding-mobile">{{(isDefaultTenant) ? 'config.system_config' : 'config.tenant_config' | translate}}</h3>
+			</div>
+			<div class="mobile-only">
+				<h3 class="padding-mobile">{{(isDefaultTenant) ? 'config.system_config' : 'config.tenant_config' | translate}}</h3>
+			</div>
+		</div>
+		<div class="float-right" >
+			<nav class="bs-docs-sidebar margin-top-20 hidden-print small-screen-hide">
+				<a class="btn btn-default rms-settings-button" data-ng-click="doReset()">{{"reset" | translate}}</a>
+				<a class="btn btn-default rms-settings-button rms-settings-button-color" data-ng-disabled="clientMgmtForm.$pristine" data-ng-click="clientMgmtForm.$pristine || doSave()">{{"save" | translate}}</a>
+			</nav>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-8">
+			<div id="statusContainer" data-ng-class="{'alert alert-success': messageStatus==2, 'alert alert-danger': messageStatus==1}" style="margin-bottom:0px !important;" ng-show="messageStatus==1 || messageStatus==2">
+		        <button type="button" class="close" data-ng-click="dismissStatus()">x</button>
+		        {{message}}
+		    </div>
+		</div>
+	</div>
+	<div class="row" style="background-color: white;">
+		<div class="col-xs-9 settings-root-div text-align-left">
+			<section id="client_mgmt" class="group settings-section">
+				<form name="clientMgmtForm">
+				<div data-ng-if="isDefaultTenant">
+					<h5>{{"config.client.management.heading" | translate}}</h5>
+					<hr style="height:1px;border:none;color:#333;background-color:#333;"/>
+				        <div class="form-group">
+				            <label for="RMC_CURRENT_VERSION" class="control-label">{{"config.win_client_version_number.label" | translate}}</label>
+				            <label class="display-block color-grey font-12">{{'config.win_client_version_number.info' | translate}}</label>
+				            <div >	 
+				                <input class="input-configuration-margin" type="text" data-ng-model="configurations.RMC_CURRENT_VERSION" name="RMC_CURRENT_VERSION" id="RMC_CURRENT_VERSION" required/>
+				            </div>
+				        </div>
+						<hr/>
+				        <div class="form-group">
+				            <label for="RMC_UPDATE_URL_32BITS" class="control-label">{{'config.client_package_download_url_32.label' | translate}}</label>
+				            <div>
+				                <input class="input-configuration-margin" type="text" data-ng-model="configurations.RMC_UPDATE_URL_32BITS" name="RMC_UPDATE_URL_32BITS" id="RMC_UPDATE_URL_32BITS" required/>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label for="RMC_CRC_CHECKSUM_32BITS" class="control-label">{{'config.rmc_crc_checksum_32.label' | translate}}</label>
+				            <div>
+				                <input class="input-configuration-margin" type="text" data-ng-model="configurations.RMC_CRC_CHECKSUM_32BITS" name="RMC_CRC_CHECKSUM_32BITS" id="RMC_CRC_CHECKSUM_32BITS" required/>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label for="RMC_SHA1_CHECKSUM_32BITS" class="control-label">{{'config.rmc_sha1_checksum_32.label' | translate}}</label>
+				            <div>
+				                <input class="input-configuration-margin" type="text" data-ng-model="configurations.RMC_SHA1_CHECKSUM_32BITS" name="RMC_SHA1_CHECKSUM_32BITS" id="RMC_SHA1_CHECKSUM_32BITS" required/>
+				            </div>
+				        </div>
+						<hr/>
+						<div class="form-group">
+				            <label for="RMC_UPDATE_URL_64BITS" class="control-label">{{'config.client_package_download_url_64.label' | translate}}</label>
+				            <div>
+				                <input class="input-configuration-margin" type="text" data-ng-model="configurations.RMC_UPDATE_URL_64BITS" name="RMC_UPDATE_URL_64BITS" id="RMC_UPDATE_URL_64BITS" required/>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label for="RMC_CRC_CHECKSUM_64BITS" class="control-label">{{'config.rmc_crc_checksum_64.label' | translate}}	</label>
+				            <div>
+				                <input class="input-configuration-margin" type="text" data-ng-model="configurations.RMC_CRC_CHECKSUM_64BITS" name="RMC_CRC_CHECKSUM_64BITS" id="RMC_CRC_CHECKSUM_64BITS" required/>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label for="RMC_SHA1_CHECKSUM_64BITS" class="control-label">{{'config.rmc_sha1_checksum_64.label' | translate}}</label>
+				            <div>
+				                <input class="input-configuration-margin" type="text" data-ng-model="configurations.RMC_SHA1_CHECKSUM_64BITS" name="RMC_SHA1_CHECKSUM_64BITS" id="RMC_SHA1_CHECKSUM_64BITS" required/>
+				            </div>
+						</div>
+						<hr/>
+				        <div class="form-group">
+							<label for="RMC_FORCE_DOWNGRADE" class="control-label">{{'config.rmc_force_downgrade.label' | translate}}</label>
+							<label class="display-block color-grey font-12">{{'config.rmc_force_downgrade.info' | translate}}</label>
+				            <div>
+								<switch data-ng-model="configurations.RMC_FORCE_DOWNGRADE" name="RMC_FORCE_DOWNGRADE" id="RMC_FORCE_DOWNGRADE" class="green" data-ng-change="clientMgmtForm.$setDirty()" required></switch>
+				            </div>
+				        </div>
+						<hr/>
+						<div class="form-group">
+				            <label for="RMC_MAC_CURRENT_VERSION" class="control-label">{{'config.mac_client_version_number.label' | translate}}</label>
+				            <label class="display-block color-grey font-12">{{'config.mac_client_version_number.info' | translate}}</label>
+				            <div>
+				                <input class="input-configuration-margin" type="text" data-ng-model="configurations.RMC_MAC_CURRENT_VERSION" name="RMC_MAC_CURRENT_VERSION" id="RMC_MAC_CURRENT_VERSION" required/>
+				            </div>
+				        </div>
+						<div class="form-group">
+							<label for="RMC_CRC_CHECKSUM_MAC" class="control-label">{{'config.rmc_crc_checksum_mac.label' | translate}}	</label>
+							<div>
+								<input class="input-configuration-margin" type="text" data-ng-model="configurations.RMC_CRC_CHECKSUM_MAC" name="RMC_CRC_CHECKSUM_MAC" id="RMC_CRC_CHECKSUM_MAC" required/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="RMC_SHA1_CHECKSUM_MAC" class="control-label">{{'config.rmc_sha1_checksum_mac.label' | translate}}</label>
+							<div>
+								<input class="input-configuration-margin" type="text" data-ng-model="configurations.RMC_SHA1_CHECKSUM_MAC" name="RMC_SHA1_CHECKSUM_MAC" id="RMC_SHA1_CHECKSUM_MAC" required/>
+							</div>
+						</div>
+						 <br>
+						 <br>
+						 <h5>{{"config.client.downloadlinks.heading" | translate}}</h5>
+					     <hr style="height:1px;border:none;color:#333;background-color:#333;"/>
+				         <div class="form-group">
+				            <label for="RMD_WIN_32_DOWNLOAD_URL" class="control-label">{{"config.download.rm.rmd.win32" | translate}}</label>
+				            <div>
+				                <input class="input-configuration-margin" type="text" data-ng-model="configurations.RMD_WIN_32_DOWNLOAD_URL" name="RMD_WIN_32_DOWNLOAD_URL" id="RMD_WIN_32_DOWNLOAD_URL" required/>
+				            </div>
+						</div>
+						<div class="form-group">
+				            <label for="RMD_WIN_64_DOWNLOAD_URL" class="control-label">{{'config.download.rm.rmd.win64' | translate}}</label>
+				            <div>
+				                <input class="input-configuration-margin" type="text" data-ng-model="configurations.RMD_WIN_64_DOWNLOAD_URL" name="RMD_WIN_64_DOWNLOAD_URL" id="RMD_WIN_64_DOWNLOAD_URL" required/>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label for="RMD_MAC_DOWNLOAD_URL" class="control-label">{{'config.download.rm.rmd.mac' | translate}}</label>
+				            <div>
+				                <input class="input-configuration-margin" type="text" data-ng-model="configurations.RMD_MAC_DOWNLOAD_URL" name="RMD_MAC_DOWNLOAD_URL" id="RMD_MAC_DOWNLOAD_URL" required/>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label for="RMC_IOS_DOWNLOAD_URL" class="control-label">{{'config.download.rm.rmc.iOS' | translate}}</label>
+				            <div>
+				                <input class="input-configuration-margin" type="text" data-ng-model="configurations.RMC_IOS_DOWNLOAD_URL" name="RMC_IOS_DOWNLOAD_URL" id="RMC_IOS_DOWNLOAD_URL" required/>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label for="RMC_ANDROID_DOWNLOAD_URL" class="control-label">{{'config.download.rm.rmc.Android' | translate}}</label>
+				            <div>
+				                <input class="input-configuration-margin" type="text" data-ng-model="configurations.RMC_ANDROID_DOWNLOAD_URL" name="RMC_ANDROID_DOWNLOAD_URL" id="RMC_ANDROID_DOWNLOAD_URL" required/>
+				            </div>
+				        </div> 
+			    </div>
+			    <br>
+			    <br>
+			    <div>
+			        <h5>{{"config.tenant.management.heading" | translate}}</h5>
+			        <hr style="height:1px;border:none;color:#333;background-color:#333;"/>
+			        <div class="form-group">
+			            <label for="CLIENT_HEARTBEAT_FREQUENCY" class="control-label">{{'config.client_heartbeat_frequency' | translate}}</label>
+			            <label class="display-block color-grey font-12">{{'config.client_heartbeat_frequency.info' | translate}}</label>
+			            <div>
+			                <input class="input-configuration-margin" type="text" data-ng-model="configurations.CLIENT_HEARTBEAT_FREQUENCY" name="CLIENT_HEARTBEAT_FREQUENCY" id="CLIENT_HEARTBEAT_FREQUENCY" required/>
+			            </div>
+			        </div>
+			    </div>
+				</form>
+			</section>
+		</div>
+	</div>
+	<div class="float-right" data-ng-if="isSystemAdmin">
+			<nav class="bs-docs-sidebar margin-top-20 hidden-print">
+				<a class="btn btn-default rms-settings-button" data-ng-click="doReset()">{{"reset" | translate}}</a>
+				<a class="btn btn-default rms-settings-button rms-settings-button-color" data-ng-disabled="clientMgmtForm.$pristine" data-ng-click="clientMgmtForm.$pristine || doSave()">{{"save" | translate}}</a>
+			</nav>
+	</div>
+</div>

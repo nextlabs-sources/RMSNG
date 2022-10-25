@@ -1,0 +1,45 @@
+#propertywindow {
+	border-radius: 0px;
+	font-family: 'Fira Sans' !important;
+}
+
+.propertyWindowHeader {
+	padding: 10px;
+	cursor: move;
+}
+
+#propertyWindowMinimize {
+    width:25px;
+    margin-right:15px;
+    cursor: pointer;
+    float:right;       
+    background-repeat: no-repeat;
+}
+
+#propertyWindowMinimize.maximized{
+    background-image: url("../../../../img/viewer-minimize.png");
+    margin-top: 5px;
+    height: 17px;
+}
+
+#propertyWindowMinimize.minimized{
+    background-image: url("../../../../img/viewer-maximize.png");
+    margin-top: 0px;
+    height: 27px;
+}
+
+#propertyWindowTitle {
+    font-family: 'Fira Sans' !important;
+    font-size: 14px;
+    font-weight: bold;
+    color: #222222;
+    float:left;
+}
+
+.propertyWindow .propertyArea {
+    font-family: 'Fira Sans' !important;
+}
+
+#propertywindow select {
+    font-size: 12px;
+}

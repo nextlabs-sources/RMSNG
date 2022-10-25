@@ -1,0 +1,38 @@
+<div>
+	<b>{{"company.defined.rights" | translate}}</b>
+	<i ng-show="operation=='uploadProjectFile'" data-ng-controller="loginController" uib-tooltip="{{'file.rights.meaning' | translate}}" ng-click="help()" class="pointer-click glyphicon glyphicon-question-sign"></i>
+</div>
+<div>{{"company.defined.rights.description" | translate}}</div>
+<div ng-if="categoryList.length == 0">
+	<span class="mandatory">{{'upload.without.document.classification.warning' | translate}}</span>
+</div>
+<div ng-if="categoryList.length != 0" class="rights-selection company-defined">
+	<div data-ng-repeat="category in categoryList">
+		<div class="col-xs-12 no-padding">
+			<div class="col-xs-12 inline-block" style="background-color: #FFFCDE; margin: 0 0 20px 0; padding: 10px 0px 5px 0px;">
+				<label style="margin-right:5px"><b>{{category.name}}</b></label>
+				<label class="color-gray" ng-if="category.mandatory">({{'project.classification.category.mandatory' | translate}})</label>
+			</div>
+			<div style="background-color: #ECECF1; padding: 20px; margin-bottom: 20px">
+				<div ng-if="showAllLabels">
+					<span data-ng-repeat="label in category.labels" >
+						<button ng-disabled="label.selected == false && !labelEnabled(category)" style="margin-bottom: 5px" class="btn btn-default button-paddings" ng-class="label.selected ? 'rms-settings-button-color' : ''" ng-click="label.selected = !label.selected" ng-disabled="">{{label.name}}</button>
+					</span>
+				</div>
+				<div ng-if="!showAllLabels">
+					<span data-ng-repeat="label in category.labels | filter:{selected: true}" >
+						<button style="margin-bottom: 5px; padding-right: 10px" class="btn btn-default button-paddings" ng-class="label.selected ? 'rms-settings-button-color' : ''" ng-click="label.selected = !label.selected" ng-disabled="">
+							<span>{{label.name}}</span>
+							<i style="margin-left:20px;" data-ng-include="'ui/img/CrossCircle.svg'"></i>
+						</button>
+					</span>
+					<br>
+					<select ng-show="showDropDown(category)" ng-disabled="!labelEnabled(category)" ng-class="!labelEnabled(category) ? 'disabled cursor-not-allowed': ''" class="form-control"
+						ng-model="label" ng-change="label.selected=true" ng-options="label.name for label in category.labels | filter:{selected: false}" >
+						<option value="" selected disabled hidden>{{'managelocalfile.select.option.label' | translate}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

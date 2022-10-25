@@ -1,0 +1,10 @@
+<div class="classifications-list">
+	<img src="ui/img/BG.png">
+	<div class="rms-info-tags">
+		<label>{{"document.classification" | translate}}</label>
+	</div>
+	<div class="padding-10" style="text-align:left;" ng-repeat="(key, value) in tags">
+		<span class="padding-bottom-10" style="padding-left:3%;"><b>{{key}} :</b></span>
+		<span class="color-grey-text" style="padding-left:2%;" ng-repeat="v in value">{{v}}<span ng-hide="$last">, </span></span>
+	</div>
+</div>

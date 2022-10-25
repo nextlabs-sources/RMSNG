@@ -1,0 +1,26 @@
+web/WEB-INF/classes
+web/WEB-INF/deploy
+web/WEB-INF/lib
+webapp/ui/deploy
+webapp/ui/node_modules
+web/ui/node_modules
+web/ui/app/viewers/viewer.min.js
+web/ui/app/i18n/rms_en.json
+
+# Files and directories created by pub
+.packages
+.pub/
+build/
+lib/
+packages
+pubspec.lock
+
+# Files created by dart2js
+*.dart.js
+*.part.js
+*.js.deps
+*.js.map
+*.info.json
+
+#exclude
+!/webapp/ui/lib

@@ -1,0 +1,178 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jpr:project xmlns:jpr="http://xmlns.oracle.com/ide/project">
+   <hash n="component-versions">
+      <value n="oracle.ide.model.Project" v="11.1.2.0.0;12.1.2.0.0;12.1.3.0.0;12.2.1.0.0"/>
+      <value n="oracle.ide.model.ResourcePathsMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.ideimpl.model.TechnologyScopeUpdateMigrator" v="11.1.2.0.0.4;11.1.2.0.0.5;11.1.2.0.0.6"/>
+      <value n="oracle.jdeveloper.library.ProjectLibraryMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jdeveloper.maven.migrator.POMNodeMigrator" v="12.2.1.0.0"/>
+      <value n="oracle.jdeveloper.model.OutputDirectoryMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jdevimpl.deploy.DeploymentProfilesMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jdevimpl.deploy.migrators.DeploymentMigrator" v="12.1.2.0.1"/>
+   </hash>
+   <list n="contentSets">
+      <string v="oracle.jdeveloper.model.PathsConfiguration/javaContentSet"/>
+      <string v="oracle.ide.model.ResourcePaths/resourcesContentSet"/>
+   </list>
+   <value n="defaultPackage" v="com.nextlabs.client"/>
+   <hash n="oracle.ide.model.DependencyConfiguration">
+      <list n="dependencyList">
+         <hash>
+            <hash n="dependable">
+               <url n="sourceOwnerURL" path="nextlabs.jws"/>
+               <url n="sourceURL" path="shared.jpr"/>
+            </hash>
+            <value n="recognizerId" v="oracle.jdeveloper.library"/>
+         </hash>
+         <hash>
+            <hash n="dependable">
+               <url n="sourceOwnerURL" path="nextlabs.jws"/>
+               <url n="sourceURL" path="nxl.jpr"/>
+            </hash>
+            <value n="recognizerId" v="oracle.jdeveloper.library"/>
+         </hash>
+      </list>
+   </hash>
+   <hash n="oracle.ide.model.ResourcePaths">
+      <hash n="resourcesContentSet">
+         <list n="pattern-filters">
+            <string v="+build.xml"/>
+            <string v="+build.gradle"/>
+         </list>
+         <list n="url-path">
+            <url path="../client/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.ide.model.TechnologyScopeConfiguration">
+      <list n="technologyScope">
+         <string v="Ant"/>
+         <string v="Java"/>
+         <string v="XML"/>
+      </list>
+   </hash>
+   <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
+      <list n="copyRes">
+         <string v=".GIF"/>
+         <string v=".JPEG"/>
+         <string v=".JPG"/>
+         <string v=".PNG"/>
+         <string v=".cpx"/>
+         <string v=".dcx"/>
+         <string v=".ejx"/>
+         <string v=".gif"/>
+         <string v=".ini"/>
+         <string v=".jpeg"/>
+         <string v=".jpg"/>
+         <string v=".png"/>
+         <string v=".properties"/>
+         <string v=".sva"/>
+         <string v=".tag"/>
+         <string v=".tld"/>
+         <string v=".wsdl"/>
+         <string v=".xcfg"/>
+         <string v=".xlf"/>
+         <string v=".xml"/>
+         <string v=".xsd"/>
+         <string v=".xsl"/>
+         <string v=".sql"/>
+      </list>
+      <value n="internalEncoding" v="UTF-8"/>
+      <list n="Javac.commandline.optionlist">
+         <string v="-g"/>
+         <string v="-Xlint:all"/>
+      </list>
+      <value n="Javac.-Xlint:-cast" v="false"/>
+      <value n="Javac.-Xlint:-empty" v="false"/>
+      <value n="Javac.-Xlint:-fallthrough" v="false"/>
+      <value n="Javac.-Xlint:-path" v="false"/>
+      <value n="Javac.-Xlint:-processing" v="false"/>
+      <value n="Javac.-Xlint:-serial" v="false"/>
+      <value n="Javac.-Xlint:-unchecked" v="false"/>
+      <value n="webIANAEncoding" v="UTF-8"/>
+   </hash>
+   <hash n="oracle.jdeveloper.model.J2eeSettings">
+      <hash n="webContentSet">
+         <list n="url-path">
+            <url path="public_html/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.model.PathsConfiguration">
+      <hash n="javaContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="../client/src/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.runner.RunConfigurations">
+      <hash n="runConfigurationDefinitions">
+         <hash n="decrypt">
+            <value n="custom" v="false"/>
+            <value n="name" v="decrypt"/>
+            <value n="programArguments" v="-c Decrypt -s enc.nxl -d dec.txt"/>
+            <url n="runDirectoryURL" path="."/>
+            <url n="targetURL" path="../client/src/com/nextlabs/rmc/Main.java"/>
+         </hash>
+         <hash n="Default">
+            <value n="custom" v="false"/>
+            <value n="name" v="Default"/>
+            <url n="runDirectoryURL" path="."/>
+            <url n="targetURL" path="../client/src/com/nextlabs/rmc/Main.java"/>
+         </hash>
+         <hash n="encrypt">
+            <value n="custom" v="false"/>
+            <value n="name" v="encrypt"/>
+            <value n="programArguments" v="-c Encrypt -s test.txt -d enc.nxl"/>
+            <url n="runDirectoryURL" path="."/>
+            <url n="targetURL" path="../client/src/com/nextlabs/rmc/Main.java"/>
+         </hash>
+         <hash n="loadtest">
+            <value n="custom" v="false"/>
+            <value n="name" v="loadtest"/>
+            <value n="programArguments" v="--cmd LoadTest -cc 40 -m 20"/>
+            <url n="runDirectoryURL" path="."/>
+            <url n="targetURL" path="../client/src/com/nextlabs/rmc/Main.java"/>
+         </hash>
+      </hash>
+      <list n="runConfigurationList">
+         <string v="Default"/>
+         <string v="decrypt"/>
+         <string v="encrypt"/>
+         <string v="loadtest"/>
+      </list>
+   </hash>
+   <hash n="oracle.jdevimpl.config.JProjectLibraries">
+      <list n="exportedReferences">
+         <hash>
+            <value n="id" v="client"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
+      <hash n="internalDefinitions">
+         <list n="libraryDefinitions">
+            <hash>
+               <list n="classPath">
+                  <url path="../../libraries/libs/web/gson-2.3.1.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/system/bcprov-jdk16-1.46.jar" jar-entry=""/>
+                  <url path="../../libraries/libs/web/commons-cli-1.2.jar" jar-entry=""/>
+               </list>
+               <value n="description" v="client"/>
+               <value n="id" v="client"/>
+            </hash>
+         </list>
+      </hash>
+      <list n="libraryReferences">
+         <hash>
+            <value n="id" v="client"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
+   </hash>
+   <hash n="oracle.jdevimpl.config.JProjectPaths">
+      <url n="outputDirectory" path="../client/build/classes/"/>
+   </hash>
+</jpr:project>

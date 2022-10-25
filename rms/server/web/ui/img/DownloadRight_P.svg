@@ -1,0 +1,32 @@
+<svg width="56" height="56" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Download</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(19633 9570)">
+<g id="Download">
+<g id="Ellipse 2" filter="url(#filter0_d)">
+<use xlink:href="#path0_fill" transform="translate(-19629 -9568)" fill="url(#paint0_linear)"/>
+<use xlink:href="#path0_fill" transform="translate(-19629 -9568)" fill="#FFFFFF"/>
+</g>
+<g id="Union">
+<use xlink:href="#path1_fill" transform="translate(-19612 -9554)"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d" filterUnits="userSpaceOnUse" x="-19633" y="-9570" width="56" height="56" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 0"/>
+<feOffset dx="0" dy="2"/>
+<feGaussianBlur stdDeviation="2"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(2.93915e-15 48 -48 2.93915e-15 48 -2.93915e-15)">
+<stop offset="0" stop-color="#34994C"/>
+<stop offset="1" stop-color="#70B55B"/>
+</linearGradient>
+<path id="path0_fill" d="M 48 24C 48 37.2548 37.2548 48 24 48C 10.7452 48 0 37.2548 0 24C 0 10.7452 10.7452 0 24 0C 37.2548 0 48 10.7452 48 24Z"/>
+<path id="path1_fill" fill-rule="evenodd" d="M 3.56055 7.93945C 2.97461 7.35352 2.02539 7.35352 1.43945 7.93945C 0.853516 8.52539 0.853516 9.47461 1.43945 10.0605L 6.43945 15.0605C 6.7793 15.3994 7.24023 15.543 7.68164 15.4893C 8.00195 15.4502 8.31445 15.3076 8.56055 15.0605L 13.5605 10.0605C 14.1465 9.47461 14.1465 8.52539 13.5605 7.93945C 12.9746 7.35352 12.0254 7.35352 11.4395 7.93945L 9 10.3789L 9 1.5C 9 0.671875 8.32812 0 7.5 0C 6.67188 0 6 0.671875 6 1.5L 6 10.3789L 3.56055 7.93945ZM 1.5 17C 0.671875 17 0 17.6719 0 18.5C 0 19.1689 0.439453 19.7363 1.04492 19.9297C 1.18945 19.9756 1.3418 20 1.5 20L 13.5 20C 13.9941 20 14.4316 19.7617 14.7051 19.3945C 14.8906 19.1445 15 18.835 15 18.5C 15 17.6719 14.3281 17 13.5 17L 1.5 17Z"/>
+</defs>
+</svg>

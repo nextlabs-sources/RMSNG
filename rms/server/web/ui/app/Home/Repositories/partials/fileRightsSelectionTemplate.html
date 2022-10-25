@@ -1,0 +1,73 @@
+<div ng-show="operation=='uploadProjectFile'">
+	<div>
+		<b>{{"user.defined.rights" | translate}}</b>
+		<i data-ng-controller="loginController" uib-tooltip="{{'file.rights.meaning' | translate}}" ng-click="help()" class="pointer-click glyphicon glyphicon-question-sign"></i>
+	</div>
+	<div>{{"user.defined.rights.description" | translate}}</div>
+</div>
+<div ng-show="operation!='uploadProjectFile'">
+	<b><a class="underline">{{"managelocalfile.apply.digital.rights" | translate}}</a></b>
+	<i data-ng-controller="loginController" uib-tooltip="{{'file.rights.meaning' | translate}}" ng-click="help()" class="pointer-click glyphicon glyphicon-question-sign"></i>
+</div>
+<div class="rights-selection">
+	<div class="col-xs-12 no-padding" style="position: relative;">
+		<div class="col-xs-12 inline-block padding-top-10 padding-bottom-5">
+			<label class="rms-upload-file-rights-label margin-bottom-0"><a style="font-style: italic; color: #828282;">{{"share.file.rights.content" | translate}}</a></label>
+		</div>
+		<div class="col-xs-3 text-align-center no-padding" style="width: 20%; margin-bottom: 20px;" data-ng-repeat="right in contentRightsAvailable">
+			<a class="">{{right.name}}</a>
+			<div class="toggle-directive" ng-class="(right.id == 'VIEW') ? 'toggle-directive-disabled' : 'toggle-directive'" data-ng-disabled="right.id == 'VIEW'">
+			<input type="checkbox" style="display: none" data-ng-model="rightsModel[right.id]" data-ng-checked="rights.indexOf(right.id) > -1"> <label data-ng-disabled="right.id == 'VIEW'" ng-click="right.id != 'VIEW' && toggleSelection(right.id)"> <span class="label-left"><i class="fa fa-check"></i></span> </label> 
+			</div>
+		</div>
+		<div class="col-xs-3 text-align-center no-padding" style="width: 20%; margin-bottom: 20px;" data-ng-repeat="right in collaborationRightsAvailable">
+			<a class="">{{right.name}}</a>
+			<div class="toggle-directive">
+			<input type="checkbox" style="display: none" data-ng-model="rightsModel[right.id]" data-ng-checked="rights.indexOf(right.id) > -1"> <label ng-click="toggleSelection(right.id)"> <span class="label-left"><i class="fa fa-check"></i></span> </label>
+			</div>
+		</div>
+		<span ng-show="toProjectSpace">
+			<hr class="col-xs-3 text-align-center no-padding" style="width:100%;border: 0.1px solid #BDBDBD;">
+			<a class="btn btn-default" style="position:absolute; background-color:#249FF4; color:white; padding:4px; top:101px; left:39%;" data-ng-click="showOptions = !showOptions">
+				{{"more.options" | translate}}
+				<i ng-show="showOptions" class="fa fa-chevron-right"></i>
+				<i ng-show="!showOptions" class="fa fa-chevron-down"></i>
+			</a>
+		</span>
+		<div ng-show="toProjectSpace && !showOptions" class="col-xs-3 text-align-center no-padding" style="width: 20%; margin-bottom: 20px;" data-ng-repeat="right in hiddenSectionRights">
+			<a class="">{{right.name}}</a>
+			<div class="toggle-directive">
+			<input type="checkbox" style="display: none" data-ng-model="rightsModel[right.id]" data-ng-checked="rights.indexOf(right.id) > -1"> <label ng-click="toggleSelection(right.id)"> <span class="label-left"><i class="fa fa-check"></i></span> </label>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 no-padding" ng-show="policy == undefined">
+		<div class="col-xs-12 inline-block padding-top-10 padding-bottom-5">
+			<label class="rms-upload-file-rights-label margin-bottom-0"><a style="font-style: italic; color: #828282;">{{"share.file.rights.effect" | translate}}</a></label>
+		</div>
+		<div class="col-xs-12 text-align-center no-padding" data-ng-repeat="right in effectRightsAvailable">
+			<div class="col-xs-3 no-padding" style="width: 20%; margin-bottom: 20px;">
+				<a class="no-padding">{{right.name}}</a>
+				<div class="toggle-directive">
+					<input type="checkbox" style="display: none" data-ng-model="rightsModel[right.id]" data-ng-checked="rights.indexOf(right.id) > -1"> <label ng-click="toggleSelection(right.id)"> <span class="label-left"><i class="fa fa-check"></i></span> </label> 
+				</div>
+			</div>
+			<label class="text-align-left col-xs-9 margin-bottom-0 watermark-expiry-sample" data-ng-show="!shareSuccess && showWatermark"><br/><span class="watermarkResult"></span><i><span class="pointer-click padding-left-20 btn-change" data-ng-show="!editWatermark" data-ng-click="openEdit('watermark')">{{"change" | translate}}</span></i></label>
+		</div>
+	</div>
+	<div class="col-xs-12 no-padding" data-ng-hide="hideValidity">
+		<div class="col-xs-12 inline-block padding-top-10 padding-bottom-5">
+			<label class="rms-upload-file-rights-label margin-bottom-0"><a style="font-style: italic; color: #828282;">{{"share.file.rights.expiration" | translate}}</a></label>
+		</div>
+		<div class="col-xs-12 text-align-center no-padding">
+			<div class="col-xs-3 no-padding" style="width: 20%">
+				<a>{{"validity" | translate}}</a>
+				<div class="toggle-directive toggle-directive-disabled">
+					<input type="checkbox" style="display: none" data-ng-checked="true"> <label> <span class="label-left"><i class="fa fa-check"></i></span> </label>
+				</div>
+			</div>
+			<label class="text-align-left col-xs-9 watermark-expiry-sample" data-ng-show="!shareSuccess"><br/><i>{{expiryStr}}<span class="pointer-click padding-left-20 btn-change" data-ng-click="openEdit('expiry')">{{"change" | translate}}</span></i></label>
+		</div>
+	</div>
+	<br/>
+</div>

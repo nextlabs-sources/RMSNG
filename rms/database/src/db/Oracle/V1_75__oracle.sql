@@ -1,0 +1,28 @@
+CREATE SEQUENCE  "TAG_ID_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+CREATE SEQUENCE  "PROJECT_TAG_ID_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+
+CREATE TABLE tag (
+  id NUMBER(19,0) NOT NULL,
+  tenant_id VARCHAR2(36) NOT NULL,
+  name VARCHAR2(150) NOT NULL,
+  type NUMBER(10,0),
+  description VARCHAR2(2000),
+  order_id NUMBER(10,0) NOT NULL,
+  creation_time TIMESTAMP(6) NOT NULL,
+  last_modified TIMESTAMP(6) NOT NULL,
+  CONSTRAINT tag_pkey PRIMARY KEY (id),
+  CONSTRAINT u_tag_name UNIQUE (name, tenant_id,type),
+  CONSTRAINT u_tag_order UNIQUE (tenant_id, order_id,type),
+  CONSTRAINT fk_tags_tenant FOREIGN KEY (tenant_id) REFERENCES tenant (id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE project_tag (
+  id NUMBER(19,0) NOT NULL,
+  tag_id NUMBER(19,0) not null,
+  project_id NUMBER(19,0) not null,
+  CONSTRAINT project_tag_pkey PRIMARY KEY (id),
+  CONSTRAINT u_tag_project_id UNIQUE (tag_id, project_id),
+  CONSTRAINT fk_project_tags_project FOREIGN KEY (project_id) REFERENCES project (id) ON DELETE CASCADE,
+  CONSTRAINT fk_project_tags_tag FOREIGN KEY (tag_id) REFERENCES tag (id) ON DELETE CASCADE
+);

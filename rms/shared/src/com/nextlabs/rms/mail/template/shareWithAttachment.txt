@@ -1,0 +1,52 @@
+Message-ID: <{{uid}}@{{domain}}>
+From: SkyDRM<{{sender}}@{{domain}}>
+To: <{{recipient}}>
+Date: {{date}}
+MIME-Version: 1.0
+Subject: {{B:ownerFullName}} has shared '{{B:fileName}}' with you.
+Content-Type: multipart/mixed; boundary=nextlabs19540c58ea040508132956
+
+--nextlabs19540c58ea040508132956
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: base64
+
+[[B:
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<body>
+<table width="600" border="0" cellpadding="0" cellspacing="0">
+	<tr>   
+		<td align="center" valign="middle" bgcolor="#ffffff" width="60"><img width="50" height="50" vspace="5" alt="SkyDRM Logo" 
+		src="{{baseUrl}}/rms-logo.png"/></td> 
+		<td style="background-color:#39974a; font-size:20px; padding-left:20px; color:#ffffff; font-weight:500;"><h3>SkyDRM</h3></td>
+	</tr>
+</table>
+<table width="600" border="0" cellpadding="0" cellspacing="0">	
+	<tr>
+		<td colspan="3">
+			<p>&nbsp;<br></p>
+			<p>Hi,</p>
+			<p>{{ownerFullName}} ({{ownerEmail}}) has shared the file - '{{fileName}}' with you. Please see the attachment in the email.</p>
+			<p>Validity:{{validity}}</p>
+			<p>You can view the file by logging in to <a href="{{baseUrl}}">SkyDRM</a> or by using SkyDRM Desktop/ SkyDRM Mobile App.</p>
+			<p>&nbsp;<br></p>
+		</td>
+	</tr>
+	<tr>
+ 		<td colspan="3">
+			Regards,<br/>
+			SkyDRM Team<br/>
+			https://skydrm.com<br/>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
+]]
+--nextlabs19540c58ea040508132956
+Content-Type: application/octet-stream; name={{B:attachmentFilename}}
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename={{B:attachmentFilename}}
+
+{{attachment}}
+--nextlabs19540c58ea040508132956--

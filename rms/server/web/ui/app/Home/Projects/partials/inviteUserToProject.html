@@ -1,0 +1,34 @@
+<div class="rms-upload-file">
+	<div id="fileUploading" data-ng-show="isLoading">
+		<div id="pgLoading-image">
+           <img src="ui/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+	<div class="modalheader">
+		<label class="text-ellipsis" style="max-width: 80%;" uib-tooltip="{{project.name}}" tooltip-placement="bottom">{{'project.users.invite'| translate: {projectName:project.name} }}</label> <a data-ng-click="ok()">x</a>
+	</div>
+	<hr/>
+	<div class="form-group-project-creation padding-10 cc-layout-full-width">
+		<form name="INVITE">
+			<div class="padding-10 margin-auto" style="min-width: 150px; max-width:400px;">
+				<input id="shareWith" class="form-control" type="hidden" name="project-users" placeholder="{{'share.email.placeholder'| translate}}" required/>
+				<ul id="mailShareTags" tag-it /></ul>
+				<p id="error-label"></p>
+				<a style="color: darkgrey; margin: 0 auto; font-size: 14px; font-style: italic">{{'project.invite.email.placehoder'| translate}}</a>
+				<br>
+				<br>
+				<div>
+					<label>{{'project.invite.message.title'| translate}}</label>
+					<a style="color: darkgrey; margin: 0 auto; font-size: 14px; font-style: italic">{{'project.invite.message.optional'| translate}}</a>
+					<textarea id="invitationMessage" class="form-control" name="MSG" placeholder="{{'project.user.invitemsg.placeholder'| translate}}" ng-model="invitationMsg" style="width:100%;" data-ng-trim="false" maxlength="250"></textarea>
+					<span class="float-right">{{250 - invitationMsg.length}} / 250</span>
+				</div>
+
+				<div style="padding-top:10px;">
+					<button class="btn btn-default rms-settings-button-color" data-ng-disabled="mailPristine || INVITE.$invalid || inviteUserLoading" data-ng-click="mailPristine || INVITE.$invalid || inviteUserLoading || invite()">{{'project.invite'| translate}}</button>
+					<span data-ng-show="inviteUserLoading" class="loading-icon"></span>
+				</div>
+			</div>
+		</form>  
+	</div>
+</div>

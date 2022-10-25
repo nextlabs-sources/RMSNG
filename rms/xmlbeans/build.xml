@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="xmlbeans" default="xmlbeans" basedir=".">
+
+    <import file="../config.xml" optional="true"/>
+    <property environment="env"/>
+    <property name="xmlbeans_schemas_dir" value="./conf/xsd"/>
+    <property name="src.excludes" value=""/>
+    <condition property="lib_home" value="${env.LIB_HOME}" else="../../../libraries">
+        <available file="${env.LIB_HOME}" type="dir"/>
+    </condition>
+    <property name="lib" location="${lib_home}/libs/web"/>
+
+    <!-- defines output files -->
+    <property name="outdir" value="build"/>
+    <property name="outjar" value="${outdir}/${ant.project.name}.jar"/>
+
+    <path id="project.classpath">
+        <fileset dir="${lib}" includes="**/*.jar"/>
+        <fileset dir="${outdir}" includes="repository_xmlbeans.jar"/>
+    </path>
+
+    <!-- Create the output directories if they don't exist yet. -->
+    <target name="dirs">
+        <echo>Creating output directories if needed...</echo>
+        <mkdir dir="${outdir}"/>
+    </target>
+
+    <path id="classpath.xmlbeans">
+        <fileset dir="${lib}" includes="xmlbeans/xmlbeans*.jar"/>
+    </path>
+
+    <taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean">
+        <classpath>
+            <path refid="classpath.xmlbeans"/>
+        </classpath>
+    </taskdef>
+
+    <target name="xmlbeans">
+        <echo>Compiling xml schemas</echo>
+        <echo message="${xmlbeans_schemas_dir}   ${basedir}"/>
+        <xmlbean destfile="${outdir}/repository_xmlbeans.jar"
+                srcgendir="${outdir}/xmlbeans_src">
+            <classpath>
+                <path refid="classpath.xmlbeans"/>
+            </classpath>
+            <fileset dir="${xmlbeans_schemas_dir}" includes="**/*.xsd"/>
+        </xmlbean>
+
+        <copy todir="${outdir}" overwrite="true">
+            <fileset file="${outdir}/${ant.project.name}_xmlbeans.jar"/>
+        </copy>
+    </target>
+
+    <target name="clean">
+        <echo>Deleting Output Files and Directories...</echo>
+        <delete dir="${outdir}"/>
+    </target>
+</project>

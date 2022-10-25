@@ -1,0 +1,16 @@
+configurations {
+	pmd
+}
+
+dependencies {
+	compile libs.'jhlabs'
+	compile libs.'jaxws'
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src']
+		}
+	}
+}

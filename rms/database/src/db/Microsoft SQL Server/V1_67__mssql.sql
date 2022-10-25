@@ -1,0 +1,1 @@
+EXEC sp_rename 'rms.project.classification_modified', 'configuration_modified', 'COLUMN';

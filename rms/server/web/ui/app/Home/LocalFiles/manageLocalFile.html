@@ -1,0 +1,93 @@
+<div data-ng-controller="manageLocalFileController">
+    <div id="loading-background" data-ng-show="isLoading">
+        <div id="pgLoading-image">
+            <img  src="ui/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+    <div id="drag-and-drop-container">
+		<div id="fileListHeader" class="show-only-on-desktop">
+			<br>
+	        <div class="rms-shareFile-title"><b style="padding-left:10px;">{{"managelocalfile.title" | translate}}</b></div>
+		</div>
+		
+		<div class="mobile-tablet-display small-screen-hide">
+			<span class="file-list-icons ipad-potrait-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></span>
+			<span class="rms-shareFile-title"><h3 style="font-weight:700;" class="padding-mobile">{{"managelocalfile.title" | translate}}</h3></span>
+    	</div>
+
+		<div class="mobile-only">
+			<span class="file-list-icons ipad-potrait-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></span>
+			<span class="rms-shareFile-title"><h4 style="font-weight:700;" class="padding-mobile">{{"managelocalfile.title" | translate}}</h4></span>
+		</div>
+		
+		<hr class="hr.manage-local">
+        <div class="manage-local"><b>Step 1:</b> {{"managelocalfile.select.file.label" | translate}}.</div>
+        <div ngf-drop="" ng-model="files" class="manage-local manage-local-drop-box" ngf-drag-over-class="'manage-local-dragover'" ngf-allow-dir="false">
+            {{"managelocalfile.select.file.inst.first" | translate}}<br>
+            {{"managelocalfile.select.file.inst.second" | translate}}
+            <br><br>
+            <div style="word-wrap: break-word">
+                <span ng-show="!filePristine">{{"managelocalfile.file.chosen.label" | translate}}: <b>{{files.name}}</b></span>
+                <button class="btn btn-default rms-settings-button rms-settings-button-color ng-pristine ng-valid
+                               ng-touched" ng-model="files" ngf-multiple="false" ngf-select=""
+                               style="cursor: pointer;" type="button">{{fileButtonName | translate}}</button>
+            </div>
+            <br>
+            <b>Note: </b>{{"managelocalfile.select.file.note" | translate}}
+        </div>
+        <hr class="hr.manage-local" ng-show="!filePristine">
+        <div ng-show="fileChosen" class="manage-local">
+            <b>Step 2:</b> {{"managelocalfile.select.option.label" | translate}}.
+            <br/>
+            <form>
+                <label ng-click="switchSelection()" class="noselect" data-ng-class="checkNXL()? 'disabled': ''"><input type="radio" value="protect" name="manageOptions" ng-model="manageOption" data-ng-disabled="checkNXL()"> {{"managelocalfile.manage.button.protect" | translate}}</label><br>
+                <label ng-click="switchSelection()"class="noselect" data-ng-class="!canShare()? 'disabled': ''"><input type="radio" value="protectAndShare" name="manageOptions" ng-model="manageOption" data-ng-disabled="!canShare()"> {{"managelocalfile.manage.button.protect.and.share" | translate}}</label><br>
+                <label ng-click="switchSelection()" class="noselect"><input type="radio" value="view" name="manageOptions" ng-model="manageOption"> {{"managelocalfile.manage.button.view" | translate}}</label><br>
+            </form>
+        </div>
+        <hr class="hr.manage-local" ng-show="fileChosen">
+        <div ng-show="fileChosen && rightsFound && !finished" class="manage-local">
+            <b>Step 3:</b> {{getLastStepText() | translate}}:
+            <br/><br/>
+            <div ng-show="showRights() && !checkNXL()">
+                <div data-ng-include="'ui/app/Home/Repositories/partials/fileRightsSelectionTemplate.html'"></div>
+            </div>
+            <div ng-show="manageOption == 'protectAndShare' && !checkNXL()">
+                <label>and</label><br/>
+            </div>
+            <div ng-show="manageOption == 'protectAndShare'">
+                <b>{{"share.with.label" | translate}}:</b>
+                <br/>
+                <input type="hidden" id="shareWith">
+                <ul id="mailShareTags" tag-it />
+                <p id="error-label"></p>
+                <br>
+                <div><label><b>{{"comment.label" | translate}}</b><i> {{"optional.label" | translate}}</i></span><b>:</b> </label></div>
+                <textarea ng-attr-placeholder="{{'comment.placeholder' | translate}}" class="comment-textarea" data-ng-model="comment.text" data-ng-trim="false" maxlength="250"></textarea>
+                <span class="float-right">{{250 - comment.text.length}} / 250</span>
+            </div>
+            <button class="btn btn-default rms-settings-button" data-ng-click="reset()" type="button">{{"cancel" | translate}}</button>
+            <button class="btn btn-default rms-settings-button rms-settings-button-color" data-ng-click="checkMailPristine() || editWatermark || manageFile()" data-ng-disabled="checkMailPristine() || editWatermark" type="button">{{getManageButtonName() | translate}}</button>
+        </div>
+        <div class="manage-local" style="padding:20px 10px;" ng-show="error || successMessage">
+            <div class="alert alert-danger rms-break-word" data-ng-show="error">{{error}} <div ng-show="showFileTypesHelp" data-ng-include="'ui/app/Home/LocalFiles/supportedFileListHelp.html'"></div></div>
+            <div class="alert alert-success rms-break-word" data-ng-show="successMessage">
+                <p>{{successMessage}}</p>
+                <p data-ng-if="successMessage2">{{successMessage2}}</p>
+                <span data-ng-show="manageOption == 'protect' || manageOption == 'protectAndShare'" data-ng-if="successLink"><br><a class="pointer-click underline" data-ng-click="onClickMyVault()">{{successLink}}</a></span>
+                
+            </div>
+        </div>
+        <div class="manage-local" ng-show="finished && successMessage">
+            <div ng-show="successMessage && showRights()"> 
+                <div class="text-align-center"><span><b>{{"right.granted.label" | translate}} </b><i data-ng-controller="loginController" uib-tooltip="{{'file.rights.meaning' | translate}}" ng-click="help()" class="pointer-click glyphicon glyphicon-question-sign"></i></span></div>
+                <div data-ng-include="'ui/app/Home/Repositories/partials/fileRightsTemplate.html'"></div>
+            </div>
+            <button class="btn btn-default rms-settings-button" data-ng-click="reset()" type="button">{{"done" | translate}}</button>
+            <button class="btn btn-default rms-settings-button rms-settings-button-color" ng-show="isOwner && manageOption === 'protectAndShare'"
+                    ng-click="viewSharedFileDetails()" type="button">{{"manage" | translate}}</button>
+            <button class="btn btn-default rms-settings-button rms-settings-button-color" style="width:auto" ng-show="manageOption === 'view'" ng-click="manageFile()" type="button">{{"view.shared.file.link.text" | translate}}</button>
+        </div>
+    </div>
+    <br>
+</div>

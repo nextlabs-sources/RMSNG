@@ -1,0 +1,51 @@
+<div data-ng-controller="manageRepoController">
+	<div id="loading-background" data-ng-show="isLoading">
+		<div id="pgLoading-image" >
+           <img src="ui/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>	
+
+	<div class="manage-repository-title">
+		<div class="col-xs-6 setting-sidebar-toggle-div">
+			<div class="file-list-icons big-screen-hide ipad-potrait-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></div>
+			<div class="small-screen-hide">
+				<h3 style="font-weight: 700;" class="padding-mobile">{{"managerepo.label" | translate}}</h3>
+			</div>
+			<div class="mobile-only">
+				<h3 class="padding-mobile">{{"managerepo.label" | translate}}</h3>
+			</div>
+		</div>
+		<button class="btn btn-default manage-repository-add-btn rms-settings-button-color" data-ng-disabled="!serviceProviderPresent" ng-click="addRepository()">
+			<span><b>＋</b>  {{"managerepo.add.repository" | translate }}</span>
+		</button>	
+	</div>
+	<hr/>
+
+	<div data-ng-class="{'alert alert-success': isSuccess() == true, 'alert alert-danger': isSuccess() == false}" ng-show="shouldDisplay()" style="text-align:center;">
+        <button type="button" class="close" data-ng-click="dismissMessage()">x</button>
+        {{getMessage()}}
+    </div>
+
+	<div id="configured">
+		<div data-ng-if="$parent.isAdmin">
+			<h5 class="padding-mobile no-vertical-margin">{{"managerepo.personal" | translate}}</h5>
+		</div>
+		<div data-ng-repeat="repository in repositories" class="rms-provider center-service-provider-tile service-provider" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false" id="configuredServiceProviderContent">
+			<div class="tile-container">
+                <img class="provider-logo" ng-src="{{'ui/img/' + repository.repoType + '_Original_P.svg'}}" alt="{{setting.providerTypeDisplayName}}">
+                <span class="provider-name">{{repository.repoName}}</span>
+			</div>
+			<div class="overlayDiv" data-ng-class="{'keep-hidden' : !hovering}" >
+				<a class="btn btn-default configure-button-hover" ng-click="editRepository(repository)">{{"config.manage.label" | translate}}</a>
+			</div>
+		</div>
+		<div data-ng-if="!hasPersonalRepository && !isLoading">
+			<center>
+				{{"managerepo.no.personal.repository" | translate}}
+				{{serviceProviderPresent ? "managerepo.no_repo.configured" : "managerepo.no_repo.not_configured" | translate}}
+			</center>
+		</div>
+		<br/>
+		<br/>
+	</div>
+</div>

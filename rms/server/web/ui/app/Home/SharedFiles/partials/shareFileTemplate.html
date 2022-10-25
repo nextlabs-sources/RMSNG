@@ -1,0 +1,178 @@
+<div data-ng-if ="!isSharedFromProject">
+	<div class="row modal-header">
+		<div id="fileSharing" data-ng-show="isLoading">
+			<div id="pgLoading-image">
+				<img src="ui/img/loading-icon.gif" alt="Loading..." />
+			</div>
+		</div>
+		<div data-ng-if="(!nxl && operation == 'share')" class="col-xs-6 overflow-hidden rms-break-word" uib-tooltip="{{file.name}}" tooltip-placement="bottom">{{"protect.and.share" | translate }}<br/><b>{{file.name}}</b></div>
+		<div data-ng-if="(!nxl && operation == 'protect')" class="col-xs-6 overflow-hidden rms-break-word" uib-tooltip="{{file.name}}" tooltip-placement="bottom">{{"protect" | translate }}<br/><b>{{file.name}}</b></div>
+		<div data-ng-if="nxl" class="col-xs-6 overflow-hidden rms-break-word" uib-tooltip="{{file.name}}" tooltip-placement="bottom">{{"share" | translate }}<br/><b>{{file.name}}</b></div>
+		<div class="col-xs-6 text-align-right">
+			<a data-ng-if = "!shareSuccess" class="btn btn-default rms-settings-button" data-ng-click="cancel()" tabindex="1">{{"cancel" | translate}}</a>
+			<a data-ng-if = "shareSuccess" class="btn btn-default rms-settings-button-color rms-settings-button float-right" data-ng-click="cancel()" tabindex="2">{{"ok" | translate}}</a>
+			<a class="btn btn-default rms-settings-button-color rms-settings-button" data-ng-if="saveFileLocationConfirmed && operation == 'share' && !shareSuccess" data-ng-disabled="isLoading || forbidden || checkMailPristine() || editWatermark" data-ng-click="(isLoading || forbidden || editWatermark || checkMailPristine()) || checkFileExistsThenShareFile()"  tabindex="2">{{operation | translate}}</a>
+			<a class="btn btn-default rms-settings-button-color rms-settings-button" data-ng-if="!saveFileLocationConfirmed && operation == 'protect' && !shareSuccess" data-ng-disabled="isLoading || forbidden || editWatermark" data-ng-click="confirmSaveFileLocation()">{{"share.file.select-button" | translate}}</a>
+			<a class="btn btn-default rms-settings-button-color rms-settings-button" data-ng-if="saveFileLocationConfirmed && protectInPlaceAllowed && saveFileLocation == 'inplace' && operation == 'protect' && !shareSuccess" data-ng-disabled="isLoading || forbidden || editWatermark" data-ng-click="isLoading || forbidden || editWatermark || checkIfInPlaceFileExistsThenProtect()">{{operation | translate}}</a>
+			<a class="btn btn-default rms-settings-button-color rms-settings-button" data-ng-if="saveFileLocationConfirmed && saveFileLocation == 'myvault' && operation == 'protect' && !shareSuccess" data-ng-disabled="isLoading || forbidden || editWatermark" data-ng-click="isLoading || forbidden || editWatermark || checkFileExistsThenShareFile()">{{operation | translate}}</a>
+		</div>
+		<br />
+	</div>
+	<div class="no-padding">
+	<div>
+		<div data-ng-class="{'alert alert-success': messageStatus==2, 'alert alert-danger': messageStatus==1}"
+			style="margin: 2%">
+			<p>{{message}}</p>
+			<p>{{message2}}</p>
+            <span ng-show="shareSuccess && !isMyVault && (owner || !nxl) && saveFileLocation != 'inplace'"><a class="pointer-click underline" data-ng-click="onClickMyVault()">{{"managelocalfile.message.myvault.link" | translate}}</a></span>
+            <span ng-show="shareSuccess && !isMyVault && (owner || !nxl) && saveFileLocation == 'inplace'"><a class="pointer-click underline" data-ng-click="onClickRepo()">{{"rights.protected.file.click-to-go-to" | translate}}{{file.repoName}}</a></span>
+		</div>
+	</div>
+	<div>
+		<form name="shareFileForm">
+			<div class="rms-popup-panel-div">
+				<div class="div-col-x2" data-ng-if="steward && (file.sharedOn!= null || file.protectedOn!= null)">
+						<label><b>{{nxl ? "share.on.label" : "protect.on.label" | translate}}:</b></label>
+						<br>
+						<friendly-date data-ng-if="file.sharedOn!= null" data-date="{{file.sharedOn}}"
+						                  data-content-class="friendly-date" data-full-format="d MMM yyyy,hh:mm a"
+						                  data-short-format="hh:mm a" />
+				</div>
+				<span class="inline-block" data-ng-show="linkAvailable">
+                    <div class="file-link-div">
+    					<span class="fileLinkLabel"><b>{{"share.file.link" | translate}}:</b></span>
+                        <span id="fileLinkCopied" data-ng-show="copyLinkClicked" class="alert-success text-fade float-right file-link-span">{{"share.file.link.copied" | translate}}</span>
+                    </div>
+					<input class="fileLinkInput" type="text" id="fileLinkId" value="{{fileLink}}" data-ng-click="selectText()" readonly>
+					<button class="btn" ngclipboard data-clipboard-target="#fileLinkId" data-ng-click="clickAfterCopy()">Copy Link</button>
+				</span>
+				<div data-ng-if ="saveFileLocationConfirmed && !shareSuccess && !nxl">
+					<div ng-if="!nxl">
+						<div class="margin-bottom-20" ng-show="protectInPlaceAllowed && saveFileLocation == 'inplace'">
+							<b>{{'specify.rights.type' | translate}}</b>
+						</div>
+						<div ng-show="protectInPlaceAllowed && saveFileLocation == 'inplace'" class="margin-bottom-20">
+							<a ng-class="protectUsing.mode=='rights' ? 'btn btn-default rms-settings-button-color':'btn btn-default'" ng-click="toggleRightType('rights')" style="width:150px;" data-ng-show="isAdhocRightEnabled || saveFileLocation == 'myvault'">{{'user.defined' |  translate}}</a>
+							<a ng-class="protectUsing.mode=='classification' ? 'btn btn-default rms-settings-button-color':'btn btn-default'" ng-click="toggleRightType('classification')" style="width:150px;">{{'company.defined' |  translate}}</a>
+						</div>
+					</div>
+					<div ng-if="protectUsing.mode=='rights'">
+						<label><b>{{"right.to.grant.label" | translate}}</b></label>
+						<i data-ng-controller="loginController" uib-tooltip="{{'file.rights.meaning' | translate}}" ng-click="help()" class="pointer-click glyphicon glyphicon-question-sign"></i>
+					</div>
+					<div class="digital-rights-container" ng-if="protectUsing.mode=='rights'">
+						<div class="col-xs-12 no-padding">
+							<div class="col-xs-12 inline-block margin-top-20 padding-bottom-5">
+								<label class="rms-upload-file-rights-label margin-bottom-0"><a style="font-style: italic; color: #828282;">{{"share.file.rights.content" | translate}}</a></label>
+							</div>
+							<div class="col-xs-3 text-align-center no-padding" data-ng-repeat="right in contentRightsAvailable">
+								<a class="">{{right.name}}</a>
+								<div class="toggle-directive" ng-class="(right.id == 'VIEW') ? 'toggle-directive-disabled' : 'toggle-directive'" data-ng-disabled="right.id == 'VIEW'">
+								<input type="checkbox" style="display: none" data-ng-model="rightsGranted[right.id]" data-ng-checked="right.id == 'VIEW' || rightsGranted[right.id]"> <label data-ng-disabled="right.id == 'VIEW'" ng-click="right.id != 'VIEW' && toggleSelection(right.id)"> <span class="label-left" ng-class="(right.id == 'VIEW') ? 'toggle-directive-disabled' : ''"><i class="fa fa-check"></i></span> </label> 
+								</div>
+							</div>
+							<div class="col-xs-3 text-align-center no-padding" data-ng-repeat="right in collaborationRightsAvailable">
+								<a class="">{{right.name}}</a>
+								<div class="toggle-directive">
+								<input type="checkbox" style="display: none" data-ng-model="rightsGranted[right.id]" data-ng-checked="rightsGranted[right.id]"> <label ng-click="toggleSelection(right.id)" data-ng-class="right.id == 'SHARE' && toProjectSpace? 'cursor-not-allowed' : ''"> <span class="label-left"><i class="fa fa-check"></i></span> </label> 
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 no-padding">
+							<div class="col-xs-12 inline-block margin-top-20 padding-bottom-5">
+								<label class="rms-upload-file-rights-label margin-bottom-0"><a style="font-style: italic; color: #828282;">{{"share.file.rights.effect" | translate}}</a></label>
+							</div>
+							<div class="col-xs-12 text-align-center no-padding" data-ng-repeat="right in effectRightsAvailable">
+								<div class="col-xs-3 no-padding">
+									<a class="no-padding">{{right.name}}</a>
+									<div class="toggle-directive">
+										<input type="checkbox" style="display: none" data-ng-model="rightsGranted[right.id]" data-ng-checked="rightsGranted[right.id]"> <label ng-click="toggleSelection(right.id)"> <span class="label-left"><i class="fa fa-check"></i></span> </label> 
+									</div>
+								</div>
+								<label class="text-align-left col-xs-9 margin-bottom-0 watermark-expiry-sample" data-ng-show="!projectId && !shareSuccess && showWatermark"><br/><span class="watermarkResult"></span><i><span class="pointer-click padding-left-20 btn-change" data-ng-show="!editWatermark" data-ng-click="openEdit('watermark')">{{"change" | translate}}</span></i></label>
+							</div>
+						</div>
+						<div ng-show="!projectId" class="col-xs-12 no-padding">
+							<div class="col-xs-12 inline-block margin-top-20 padding-bottom-5">
+								<label class="rms-upload-file-rights-label margin-bottom-0"><a style="font-style: italic; color: #828282;">{{"share.file.rights.expiration" | translate}}</a></label>
+							</div>
+							<div class="col-xs-12 text-align-center no-padding">
+								<div class="col-xs-3 no-padding">
+									<a>{{"validity" | translate}}</a>
+									<div class="toggle-directive toggle-directive-disabled">
+										<input type="checkbox" style="display: none" data-ng-checked="true"> <label> <span class="label-left"><i class="fa fa-check"></i></span> </label>
+									</div>
+								</div>
+								<label class="text-align-left col-xs-9 watermark-expiry-sample" data-ng-show="!shareSuccess"><br/><i>{{expiryStr}}<span class="pointer-click padding-left-20 btn-change" data-ng-click="openEdit('expiry')">{{"change" | translate}}</span></i></label>
+							</div>
+						</div>
+					</div>
+					<div ng-if="protectUsing.mode=='classification'" style="max-width: 500px; margin:auto;" data-ng-include="'ui/app/Home/Repositories/partials/classificationSelectionTemplate.html'"></div>
+					<div class="save-location-info">
+						<img src="ui/img/info_icon.svg" alt="Info"> <span>{{"widget.protect.file.the-file-will-be-saved-to" | translate}}</span>
+						<span class="color-light-blue" ng-if="saveFileLocation == 'inplace'"> {{file.repoName}}</span>
+						<span class="color-light-blue" ng-if="saveFileLocation == 'myvault'"> {{"myvault.title" | translate}}</span>
+					</div>		
+					<br/>
+				</div>
+				<div data-ng-if ="(shareSuccess || nxl)">
+					<br/>
+					<div class="text-align-center" data-ng-if="rights.length > 0">
+						<label><b>{{(shareSuccess || nxl ? "right.granted.label" : "right.to.grant.label") | translate}}</b></label>
+						<i data-ng-controller="loginController" uib-tooltip="{{'file.rights.meaning' | translate}}" ng-click="help()" class="pointer-click glyphicon glyphicon-question-sign"></i>
+						<br/>
+					</div>
+					<div data-ng-if="rights.length > 0" data-ng-include="'ui/app/Home/Repositories/partials/fileRightsTemplate.html'"></div>
+					<div data-ng-if="tagsExist" data-ng-include="'ui/app/Home/Repositories/partials/fileClassificationsTemplate.html'"></div>
+				</div>
+				<div data-ng-if="operation == 'share' && !shareSuccess ">
+						<div data-ng-if="!nxl" >
+							<label>and</label>
+						</div>
+						<div><label><b>{{"share.with.label" | translate}}:</b> </label></div>
+						<div>
+							<input tabindex="1" type="hidden" id="shareWith">
+							<ul id="mailIdTags" tag-it>
+							</ul>
+							<p id="error-label"></p>
+						</div>
+						<br>
+						<div><label><b>{{"comment.label" | translate}}</b><i> {{"optional.label" | translate}}</i></span><b>:</b></label></div>
+						<textarea class="comment-textarea" ng-attr-placeholder="{{'comment.placeholder' | translate}}" data-ng-model="comment.text" data-ng-trim="false" maxlength="250"></textarea>
+						<span class="float-right">{{250 - comment.text.length}} / 250</span>
+				</div>
+				<br />
+				<!--Uncomment this to enable share as attachment
+				<div data-ng-show ="(!shareSuccess && operation == 'share')" >
+					<label>
+				    	<input type="radio" ng-model="mode" value="link">
+				    	{{"share.as.link" | translate}}
+				  	</label><br/>
+				  	<label>
+				    	<input type="radio" ng-model="mode" value="attachment">
+				    	{{"share.as.attachment" | translate}}
+				  	</label><br/>
+			  	</div>
+				<br />-->
+
+				<div data-ng-if="(shareSuccess && owner)">
+			 		<a class="btn btn-default  rms-settings-button-color"  data-ng-click="manageShareFile()" tabindex="1">{{"share.file.manage" | translate}}</a>
+				</div>
+				<!--<div>
+					<div><label>{{"valid.until.label" | translate}}: </label></div>
+					<div>
+						<p class="input-group">
+				          <input type="text" class="form-control" data-uib-datepicker-popup="{{format}}" data-ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats" />
+				          <span class="input-group-btn">
+				            <button type="button" class="btn btn-default" data-ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+				          </span>
+				        </p>
+					</div>
+				</div>-->
+			</div>
+			</div>
+		</form>
+	</div>
+	</div>
+	<div data-ng-include="'ui/app/Home/SharedFiles/partials/shareProjectFileTemplate.html'"></div>
+</div>

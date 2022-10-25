@@ -1,0 +1,52 @@
+<div class="rms-info-filedetails">
+	<div>
+		<a class="rms-info-closeLink" id="fileInfoCloseBtn" data-ng-click="ok()">x</a>
+		<div class="rms-info-fileName"><span id="fileTitle" style="font-family: fira sans;">{{originalFileName}}</span>
+		</div>
+		<br><br>
+		<table class="rms-info-fileProperties">
+			<tr>
+				<td width="30%"><span id="fileTypeSpan">{{"file.type" | translate}}</span></td>
+				<td width="30%"><span id="fileSizeSpan">{{"file.size" | translate}}</span></td>
+				<td width="40%"><span id="fileDateSpan">{{"file.modified.time" | translate}}</span></td>
+			</tr>
+			<tr>
+				<td><b><span id="fileTypeValue">{{fileType}}</span></b></td>
+				<td><b><span id="fileSizeValue">{{fileSize}}</span></b></td>
+				<td><b><span id="fileDateValue">{{lastModifiedDate}}</span></b></td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div data-ng-show="metaData.showPathInfo" class="rms-info-repoDetails">
+	<h4><span id="fileRepoNameValue">{{repoName}}</span></h4>
+	<h5><span id="fileRepoPathValue">{{filePathDisplay}}</span></h5>
+</div>
+<div data-ng-if="isNxl || tagsExist" class="rights-granted">
+	<div data-ng-if="isNxl" class="rms-info-rights">
+		<br>
+		<br> 
+		<label>
+			<span id="fileRightsSpan">{{fileRightsSpan}}</span>
+			<i data-ng-show="isNxl && protectionType === 0" style="font-size: 14px" class="pointer-click glyphicon glyphicon-question-sign" uib-tooltip="{{'file.rights.meaning' | translate}}" onclick="showHelp('/viewer/help_users/index.html')"></i>	
+			<i data-ng-show="isNxl && protectionType === 1 && isProjectFile" style="font-size: 14px" class="pointer-click glyphicon glyphicon-question-sign" uib-tooltip="{{'file.rights.meaning' | translate}}" onclick="showHelp('/viewer/help_users/index.html')"></i>	
+		</label>
+		<br>
+		<div id="fileRightsValue" data-ng-bind-html="fileRightsValue">{{fileRightsValue}}</div>
+		<div class="expiry-info" data-ng-show="expiryInfo && protectionType == 0">
+			<p>{{'validity' | translate}} : {{expiration}}</p>
+		</div>
+		<br>
+	</div>
+	<div data-ng-if="tagsExist">
+		<div class="classification-divider"></div>
+		<div class="rms-info-tags">
+			<label>{{"document.classification" | translate}}</label>
+		</div>
+		<div class="padding-10" style="text-align:left;" ng-repeat="(key, value) in tags">
+			<span class="padding-bottom-10" style="padding-left:3%;"><b>{{key}} :</b></span>
+			<span class="color-grey-text" style="padding-left:2%;" ng-repeat="v in value">{{v}}<span ng-hide="$last">, </span></span>
+		</div>
+	</div>
+</div>
+<div><br><br><br></div>

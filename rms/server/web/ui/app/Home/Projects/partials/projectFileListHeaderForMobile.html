@@ -1,0 +1,38 @@
+<div class="rms-repo-list-header">
+    <div id="rms-repoTitle-id" class="rms-repoTitle">
+        <div class="file-list-icons big-screen-hide ipad-potrait-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></div>
+        <div class="file-list-icons"><b>{{ 'project.files' | translate}}</b></div>
+        <div class="file-list-icons file-list-icons-float-right" data-ng-click="toggleSort()"><i class="fa fa-sort file-list-icons-size"></i></div>
+        <div class="file-list-icons file-list-icons-float-right"  data-ng-click="toggleSearch()"><i class="fa fa-search file-list-icons-size"></i></div>
+        <div class="file-list-icons file-list-icons-float-right" data-ng-if="(selectedTab === 'allFiles')" >
+            <img src="ui/img/CreateFolder_P.svg" data-ng-show="!showAllServices&&!searchActivated" data-ng-click="createFolderModal()" class="pointer-click"/>
+            <img src="ui/img/FileUpload_P.svg" data-ng-show="!showAllServices&&!searchActivated" data-ng-click="!storageExceeded && uploadFileModal()" data-ng-class="storageExceeded?'disableImage cursor-not-allowed':'pointer-click'"/>
+        </div>
+        <div>
+            <i style="font-size:small" data-ng-show = "storageExceeded" class="mandatory">{{'project.storage.full' | translate}}</i>
+        </div>
+    </div>
+    <div id="fileSearchDivId" class="fileListOptions-div-mobile" data-ng-show="showSearch">
+        <form ng-submit="search()" >
+            <i class="fa fa-search"></i></input>
+            <input placeholder="{{'search.placeholder' | translate}}"  type="text" ng-model="$parent.searchString" clear-input="clearSearch()">
+            <span class="file-options-icon-padding" data-ng-click="closeFileListOptions()"><i class="fa fa-times"></i></span>
+        </form>
+    </div>
+    <div id="fileSortId" class="fileListOptions-div-mobile" data-ng-show="showSort">
+
+        <label class="rms-file-sort-label">{{'sort.by' | translate}}</label>&nbsp;
+        <select data-ng-options="sort.lookupCode as sort.description | translate for sort in sortOptions" data-ng-model="$parent.selectedSort" data-ng-change="update()"></select>
+        <span class="file-options-icon-padding" data-ng-click="closeFileListOptions()"><i class="fa fa-times"></i></span>
+    </div>
+</div>
+<div class="repo-info" style="margin-left: 0px;" ng-show="projectSharingEnabled">
+    <span>
+        <button type="button" ng-click="toggleTabs('allFiles')" ng-class="(selectedTab === 'allFiles') ? 'btn btn-default rms-settings-button-color rms-share-space-button' : 'btn btn-default rms-settings-button rms-share-space-button'" >{{'all.files.project'  | translate}}</button>
+        <button type="button" ng-click="toggleTabs('sharedWithProject')" ng-class="(selectedTab === 'sharedWithProject') ? 'btn btn-default rms-settings-button-color rms-share-space-button' : 'btn btn-default rms-settings-button rms-share-space-button'" >{{'shared.with.project'  | translate}}</button>
+        <button type="button" ng-click="toggleTabs('allShared')" ng-class="(selectedTab === 'allShared') ? 'btn btn-default rms-settings-button-color rms-share-space-button' : 'btn btn-default rms-settings-button rms-share-space-button'">{{'shared.by.project' | translate}}</button>
+    </span>
+</div>
+<div style="margin-top: 10px;padding-top: 10px;margin-left: 1px;">
+    <label class="file-list-cur-folder-name" ng-show="parentFolder"><b>{{currentFolder.name}}</b></label>
+</div>

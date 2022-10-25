@@ -1,0 +1,10 @@
+<div ng-if="!fromCreateProject" class="show-only-on-desktop col-md-8 col-md-offset-2 col-sm-12 inline-block" style="padding: 0; margin-top:30px;">
+    <span>
+        <button type="button" ng-click="onClickTab('configuration', true)" class='btn btn-default col-md-3 col-xs-12' ng-class="configTabId == 0 ? 'rms-settings-button-color' : '' " style="margin-bottom:10px; border-radius:0px;height:34px;font-size:90%;">{{'project.info' | translate}}</button>
+        <button type="button" ng-click="onClickTab('accessPermission', true)" class='btn btn-default col-md-3 col-xs-12' ng-class="configTabId == 3 ? 'rms-settings-button-color' : '' " style="margin-bottom:10px; border-radius:0px;height:34px;font-size:90%;">{{'project.access.permission' | translate}}</button>
+        <button type="button" ng-click="onClickTab('classification', true)" class='btn btn-default col-md-3 col-xs-12' ng-class="configTabId == 1 ? 'rms-settings-button-color' : '' " style="margin-bottom:10px; border-radius:0px;height:34px;font-size:90%;">{{'project.classification' | translate}}</button>
+        <button type="button" ng-click="onClickTab('preference', true)" class='btn btn-default col-md-3 col-xs-12' ng-class="configTabId == 2 ? 'rms-settings-button-color' : '' " style="margin-bottom:10px; border-radius:0px;height:34px;font-size:90%;">{{'advanced' | translate}}</button>
+    </span>
+</div>
+
+<div id="rms-main-view" data-ui-view="configView" class="col-xs-12 col-md-8 col-md-offset-2 rms-main-view" style="padding: 30px 0"></div>

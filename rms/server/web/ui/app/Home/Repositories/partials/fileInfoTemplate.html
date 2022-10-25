@@ -1,0 +1,102 @@
+<div class="rms-info-filedetails">
+	<div>
+		<a class="rms-info-closeLink" data-ng-click="ok()">x</a>
+		<div class="rms-info-fileName" >{{fileDetails.fileName}}
+		</div>
+		<br></br>
+		<table style="" class="rms-info-fileProperties">
+			<tr>
+				<td width="30%">{{"file.type" | translate}}</td>
+				<td width="30%">{{"file.size" | translate}}</td>
+				<td width="40%" data-ng-if="!nxl">{{"file.modified.time" | translate}}</td>
+				<td width="40%" data-ng-if="nxl&&shared">{{"share.on.label" | translate}}</td>
+				<td width="40%" data-ng-if="nxl&&!shared">{{"protect.on.label" | translate}}</td>
+			</tr>
+			<tr>
+				<td><b>{{fileDetails.fileType}}</b></td>
+				<td><b>{{fileDetails.fileSize | filesize:2}}</b></td>
+				<td><b><friendly-date data-ng-if="fileDetails.lastModifiedTime != null" data-date="{{fileDetails.lastModifiedTime}}"
+				data-content-class="friendly-date" data-full-format="d MMM yyyy, h:mm a"
+				data-short-format="h:mm a" /></b></td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="rms-info-repoDetails" data-ng-if="owner">
+  <h4>{{fileDetails.fromMyVault ? ('myvault.title' | translate) : fileDetails.repoName}}</h4>
+  <h5>{{fileDetails.path}}</h5>
+</div>
+<!--
+<div id="rms-info-tags" class="rms-info-tags">
+	<br><br>
+	<center>
+	  	<label>{{"file.classification" | translate}}</label><br>
+		<span data-ng-if="!tagsExist">
+			{{"file.noclassification" | translate}}
+		</span>
+		<li data-ng-if="tagsExist" data-ng-repeat="(key,value) in tags">
+			<span>{{key}}</span>
+			<br>
+			<b class="rms-break-word">{{value}}</b>
+			<br>
+		</li>
+	</center>
+</div>
+-->
+<div class="file-info-toggler" ng-if="isSharedFromProjectTab">
+	<span>
+		<button type="button" ng-click="toggleTab('fileInfo')" ng-class="selectedTab == 'fileInfo' ? 'btn btn-default rms-settings-button-color' : 'btn btn-default'" >{{'title.file.info'  | translate}}</button>
+		<button type="button" ng-click="toggleTab('sharedWith')" ng-class="selectedTab == 'sharedWith' ? 'btn btn-default rms-settings-button-color' : 'btn btn-default'" >{{'title.shared.with'  | translate}}</button>
+	</span>
+</div>
+<div class="rms-info-rights" ng-if="selectedTab == 'fileInfo'">
+	<br><br>
+	<center data-ng-if="nxl && rights.length > 0">
+		<label data-ng-if="protectionType === 0">
+			{{"user.defined.rights" | translate}}
+			<i data-ng-controller="loginController" uib-tooltip="{{'file.rights.meaning' | translate}}" ng-click="help()" style="font-size: 14px" class="pointer-click glyphicon glyphicon-question-sign"></i>
+		</label>
+		<label data-ng-if="protectionType === 1">
+			{{"company.defined.rights" | translate}}
+			<i data-ng-controller="loginController" ng-show="isProjectFile" uib-tooltip="{{'file.rights.meaning' | translate}}" ng-click="help()" style="font-size: 14px" class="pointer-click glyphicon glyphicon-question-sign"></i>
+		</label>
+		<br>
+	</center>
+	<center data-ng-if="!nxl">
+		<label>{{"file.unprotected.description" | translate}}</label><br/>
+	</center>
+	<center data-ng-if="rights && rights.length == 0">
+		<label>{{"file.no.right" | translate}}</label><br/>
+	</center>
+</div>
+
+<center data-ng-if="nxl && selectedTab == 'fileInfo'">
+	<div data-ng-if="rights.length > 0" data-ng-include="'ui/app/Home/Repositories/partials/fileRightsTemplate.html'"></div>
+	<div data-ng-if="tagsExist" data-ng-include="'ui/app/Home/Repositories/partials/fileClassificationsTemplate.html'"></div>
+</center>
+
+<div class="rms-shared-with-projects" ng-if="selectedTab == 'sharedWith'">
+	<h2>{{'shared-projects' | translate}}</h2>
+	<div class="rms-table-header col-xs-12">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-5">{{'project-name' | translate}}</div>
+		<div class="col-xs-5">{{'shared-by' | translate}}</div>
+	</div>
+	<ul class="rms-table padding-left-0" id="style-scroll">
+		<li class="col-xs-12"
+			data-ng-repeat="project in shareWithProjects">
+			<div class="col-xs-2">
+				<span class="inline-flex">
+					<img ng-src="ui/img/ProjectFolder.svg" alt="icon">
+				</span>
+			</div>
+			<div class="project-title col-xs-5">				
+				<span title="{{'project.name' | translate}}">{{project.name}}</span>
+			</div>
+			<div class="shared-by col-xs-5">				
+				<span title="{{'shared-by' | translate}}">{{project.sharedByUserEmail}}</span>
+			</div>
+		</li>			
+	</ul>
+</div>
+

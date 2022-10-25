@@ -1,0 +1,33 @@
+<div ng-controller="adminHomeController" >
+	<div id="banner" ui-view="bannerView"></div>
+	<div id="rms-inner-container" scroll-top-on-refresh>
+	<div class="col-sm-2 rms-left-panel animate-hide" ng-class="{'hidden-class':checked}">
+		<div class="menu-wrapper-div" style="height: 100%">
+			<div ui-view="menuView" style="height: 100%"></div>
+		</div>
+	</div>	
+	<div  id="rms-right-panel" class="col-sm-10 rms-content-view" ng-class="{'show-sidebar':!checked}">
+		<div class="no-padding cc-layout-full-width" data-ng-class="transition" >
+		   	<div data-ng-class="transition" ui-view="contentView"></div>			
+		</div>	
+	</div>
+	<footer id="rms-home-footer-desktop" class="footer rms-footer-override small-screen-hide">
+	    <div class="container-fluid ">
+	      <div id="footer" class="rms-footer">
+	        <div class="text-align-center">
+				<p class="text-muted">Copyright © {{'copyright-year' | translate}} <a href="http://www.nextlabs.com" target="_blank">NextLabs, Inc.</a> All rights reserved.</p>
+	        </div>       
+	        
+	      </div>
+	 	</div> 
+	</footer>
+	<footer id="rms-home-footer-mobile" class="footer rms-footer-override big-screen-hide">
+	    <div class="container-fluid ">
+	      <div id="footer" class="rms-footer">               
+	        <div class="text-align-center">
+				<p class="text-muted">Copyright © {{'copyright-year' | translate}} <a href="http://www.nextlabs.com" target="_blank">NextLabs, Inc.</a> All rights reserved.</p>
+	        </div>                            
+	      </div>
+	 	</div> 
+	</footer>
+</div>

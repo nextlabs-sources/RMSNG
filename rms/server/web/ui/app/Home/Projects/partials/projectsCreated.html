@@ -1,0 +1,73 @@
+    <div id="create-project-card">
+        <div class= "col-xs-12 col-md-4 inline-block" style="padding: 0" data-ng-show="inLandingPage && ((saasMode && projectsCreated.length>0) || !saasMode) && (saasMode || isSystemAdmin || isTenantAdmin || isProjectAdmin)" ng-click="goToCreateProject()">
+            <div class="rms-tile-shadow rms-tile-project pointer-click text-align-center margin-10" data-ng-class="{'rms-tile-project-hover': hovering2, 'rms-tile-project-no-hover': !hovering2 }" ng-mouseenter="hovering2=true" ng-mouseleave="hovering2=false">
+                <div class="new-project"></div>
+                <h4 class="rms-tile-project-title-text">{{ 'project.create.new.project' | translate }}</h4>
+            </div>
+        </div>
+        <div class= "col-xs-12 inline-block" style="padding: 0;" data-ng-hide="isLoadingCreatedProjects || !inLandingPage || projectsCreated.length>0 || !saasMode" >
+            <div class="rms-tile-shadow text-align-center margin-10 rms-upgrade-panel-main-div">
+                <div class="col-xs-12 no-padding">
+                    <div class="row-desktop">
+                        <div class="col-xs-12 col-md-10 rms-upgrade-panel-text-div">
+                            <h4>{{'project.upgrade.learn-more' | translate}}<a class="green-bold-cta" data-ng-click="goToUpgradeProject()">{{'project.title' | translate}}</a></h4>
+                        </div>
+                        <div class="col-xs-12 col-md-2 rms-upgrade-panel-button-div">
+                            <button type="button" class="btn borderless-shadow" data-ng-click="goToCreateProject()">{{'project.create'| translate}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <div data-ng-repeat="project in projectsCreated" class ="col-xs-12 inline-block col-md-4" style="padding: 0; vertical-align: top" data-ng-show="(projectsCreated!=null && projectsCreated.length>0)" >
+        <div class="pointer-click rms-tile-shadow rms-tile-project text-align-left margin-10" data-ng-click="goToProject(projectsCreated[$index].id)" data-ng-class="{'rms-tile-project-hover': hovering, 'rms-tile-project-no-hover': !hovering }" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false">
+            <h4 class="rms-tile-project-title-text margin-bottom-10 mobile-text-align-center">{{projectsCreated[$index].displayName}}</h4>
+            <div class="margin-auto mobile-text-align-center">
+                <div id="profileImageLandingPage" class="inline-block default_profile" data-ng-class="'profile_'+member.displayName[0].toLowerCase()" data-ng-repeat="member in projectsCreated[$index].projectMembers.members" uib-tooltip="{{getUserFullDisplayName(member.displayName, member.email)}}">
+                     <div id="profileNameLandingPage" class="inline-block">
+                       {{member.displayName | initials}}
+                     </div>
+                </div>
+                <div id="profileImageLandingPage" style="background-color:#399649;" class="inline-block" data-ng-show="projectsCreated[$index].totalMembers > 6">
+                     <div id="profileNameLandingPage" class="inline-block">
+                        <a style="color:white">+{{projectsCreated[$index].totalMembers - 5}}</a>
+                     </div>
+                </div>
+            </div>
+            <div class="margin-top-10 mobile-tablet-display ipad-landscape-show text-align-center">
+                <div class="" style="padding:0">
+                    <div>
+                        <span><b>{{projectsCreated[$index].totalFiles}}</b></span>
+                        <span class="color-gray">{{(projectsCreated[$index].totalFiles == 1 ? 'project.file' : 'project.files') |translate }}</span>
+                    </div>
+                    <!-- <div class="padding-10">
+                        <span class="trial-project-label">
+                            {{'project.trial' | translate}}
+                        </span>
+                    </div>
+                    <div class="padding-5">
+                        <span style="font-style:italic; padding:5px;">
+                            {{getExpireDateText(project.trialEndTime)}}
+                        </span>
+                    </div> -->
+                </div>
+            </div>
+            <div class="margin-top-10 show-only-on-desktop">
+                <div class="" style="padding:0">
+                    <span><b>{{projectsCreated[$index].totalFiles}}</b></span>
+                    <span class="color-gray">{{(projectsCreated[$index].totalFiles == 1 ? 'project.file' : 'project.files') |translate }}</span>
+                    <!-- <div class="text-align-right float-right">
+                        <span style="font-style:italic; padding:5px;">
+                            {{getExpireDateText(project.trialEndTime)}}
+                        </span>
+                    </div>
+                    <div class="text-align-right float-right">
+                        <span class="trial-project-label">
+                            {{'project.trial' | translate}}
+                        </span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>

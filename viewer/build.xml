@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="viewer" default="all" basedir=".">
+    <import file="../config.xml" optional="true"/>
+    <property file="${basedir}/build.properties"/>
+    <property environment="env"/>
+    <property name="src" value="src"/>
+    <property name="xmlbeans_schemas_dir" value="./conf/xsd"/>
+    <condition property="lib_home" value="${env.LIB_HOME}" else="../../libraries">
+        <available file="${env.LIB_HOME}" type="dir"/>
+    </condition>
+
+    <property name="lib" location="${lib_home}/libs/viewer"/>
+
+    <condition property="catalina.home" value="${env.CATALINA_HOME}">
+        <and>
+            <isset property="env.CATALINA_HOME"/>
+            <isset property="develper"/>
+        </and>
+    </condition>
+
+    <property name="webapps" value="web"/>
+	<property name="docs" value="../docs/onlinehelp/output"/>
+
+    <!-- defines output files -->
+    <property name="outdir" value="build"/>
+    <property name="outdir-classes" value="${webapps}/WEB-INF/classes"/>
+    <property name="outwar" value="${outdir}/${ant.project.name}.war"/>
+
+    <path id="project.classpath">
+        <!-- libraries provided by web container -->
+        <fileset dir="${lib}" includes="**/*.jar"/>
+        <path location="../rmjavasdk-ng/build/rmjavasdk-ng.jar"/>
+        <path location="../shared/build/shared.jar"/>
+        <!-- Add any additional application libs -->
+        <fileset dir="${webapps}/WEB-INF/lib" includes="**/*.jar"/>
+        <pathelement location="${webapps}/WEB-INF/classes"/>
+    </path>
+
+    <!-- Create the output directories if they don't exist yet. -->
+    <target name="dirs" depends="set_debug">
+        <echo>Compiling shared project...</echo>
+        <ant dir="../shared" target="${mode}" inheritAll="false"/>
+
+        <echo>Compiling rmjavasdk-ng project...</echo>
+        <ant dir="../rmjavasdk-ng" target="${mode}" inheritAll="false"/>
+
+        <echo>Compiling client project...</echo>
+        <ant dir="../client" target="${mode}" inheritAll="false"/>
+
+        <echo>Compiling rms_shared project...</echo>
+        <ant dir="../rms/shared" target="${mode}" inheritAll="false"/>
+
+        <echo>Creating output directories if needed...</echo>
+        <mkdir dir="${outdir}"/>
+        <mkdir dir="${outdir-classes}"/>
+        <mkdir dir="${webapps}/WEB-INF/lib"/>
+        <copy todir="${webapps}/WEB-INF/lib" file="../shared/build/shared.jar"/>
+        <copy todir="${webapps}/WEB-INF/lib" file="../rmjavasdk-ng/build/rmjavasdk-ng.jar"/>
+        <copy todir="${webapps}/WEB-INF/lib" file="../rms/shared/build/rms_shared.jar"/>
+        <copy todir="${webapps}/WEB-INF/lib">
+            <fileset dir="${lib}" includes="*.jar" excludes="javax.servlet-api*.jar,ISYS11df.jar"/>
+        </copy>
+    </target>
+
+    <!-- Compile java files. -->
+    <target name="compile" depends="dirs">
+        <javac srcdir="${src}"
+               destdir="${outdir-classes}"
+               sourcepath=""
+               source="1.7"
+               target="1.7"
+               debug="on"
+               includeantruntime="false"
+               encoding="UTF-8">
+            <compilerarg line="-Xlint -Xlint:-serial"/>
+            <classpath refid="project.classpath"/>
+        </javac>
+        <copy todir="${outdir-classes}">
+            <fileset dir="${src}">
+                <include name="**/*.properties"/>
+                <include name="**/*.xml"/>
+                <include name="**/*.xsl"/>
+                <include name="**/*.xsd"/>
+                <include name="**/*.png"/>
+                <include name="**/*.jpg"/>
+                <include name="**/*.gif"/>
+                <include name="**/*.txt"/>
+            </fileset>
+        </copy>
+
+        <jar destfile="${outdir}/${ant.project.name}.jar">
+            <fileset dir="${outdir-classes}">
+                <exclude name="**/sharedutil/**"/>
+                <exclude name="com/nextlabs/rms/viewer/conversion/MemoryStream*"/>
+            </fileset>
+            <manifest>
+                <attribute name="Java-Version" value="${java.version}"/>
+                <attribute name="Implementation-Vendor" value="NextLabs, Inc."/>
+                <attribute name="Implementation-Title" value="${product_name}"/>
+                <attribute name="Implementation-Version" value="${version_str} (${build_number})"/>
+                <attribute name="Implementation-Time" value="${local.now}"/>
+            </manifest>
+        </jar>
+        <jar destfile="${outdir}/RMS-Perceptive-Lib.jar">
+            <fileset dir="${outdir-classes}">
+                <include name="com/nextlabs/rms/viewer/conversion/MemoryStream*"/>
+            </fileset>
+            <manifest>
+                <attribute name="Java-Version" value="${java.version}"/>
+                <attribute name="Implementation-Vendor" value="NextLabs, Inc."/>
+                <attribute name="Implementation-Title" value="${perceptive_doc}"/>
+                <attribute name="Implementation-Version" value="${version_str} (${build_number})"/>
+                <!--attribute name="Implementation-Time" value="${local.now}"/-->
+            </manifest>
+        </jar>
+
+    </target>
+
+    <target name="set_debug">
+        <property name="mode" value="debug"/>
+    </target>
+    <target name="set_release">
+        <property name="mode" value="release"/>
+    </target>
+
+    <target name="debug" depends="set_debug,war"/>
+
+    <target name="release" depends="set_release,war"/>
+
+    <!-- Targets -->
+    <target name="all" description="Default for all" depends="clean, compile, war"/>
+
+    <!-- Generate war file -->
+    <target name="war" depends="compile">
+        <copy todir="${webapps}/WEB-INF/lib" file="${outdir}/${ant.project.name}.jar"/>
+        <zip destfile="${outwar}">
+            <fileset dir="${webapps}">
+                <exclude name="WEB-INF/classes/**"/>
+            </fileset>
+        	<zipfileset dir="${docs}" prefix="help"/>
+            <exclude name="**/packages/**"/>
+        </zip>
+    </target>
+
+    <target name="clean" depends="clean-symlink,cleanTomcat">
+        <echo>Deleting Output Files and Directories...</echo>
+        <condition property="tomcat.shutdown"
+                value="${catalina.home}/bin/shutdown.bat"
+                else="${catalina.home}/bin/shutdown.sh">
+            <os family="windows"/>
+        </condition>
+        <delete dir="${outdir}"/>
+        <delete dir="${webapps}/WEB-INF/lib"/>
+        <delete dir="${webapps}/WEB-INF/classes"/>
+    </target>
+
+    <target name="cleanTomcat" if="catalina.home" depends="shutdownTomcat">
+        <delete dir="${catalina.home}/webapps/${ant.project.name}"/>
+        <delete file="${catalina.home}/webapps/${ant.project.name}.war"/>
+        <delete includeemptydirs="true">
+            <!--fileset dir="${catalina.home}/logs" includes="**/*"/-->
+            <fileset dir="${catalina.home}/temp" includes="**/*"/>
+            <fileset dir="${catalina.home}/work" includes="**/*"/>
+        </delete>
+    </target>
+
+    <target name="shutdownTomcat" if="catalina.home">
+        <condition property="tomcat.shutdown"
+                value="${catalina.home}/bin/shutdown.bat"
+                else="${catalina.home}/bin/shutdown.sh">
+            <os family="windows"/>
+        </condition>
+        <exec executable="${tomcat.shutdown}" failifexecutionfails="false" failonerror="false"/>
+    </target>
+
+    <target name="install" if="catalina.home" depends="shutdownTomcat">
+        <echo>Deploying ${outwar} to ${catalina.home}/webapps/ ...</echo>
+        <copy file="${outwar}" todir="${catalina.home}/webapps/"/>
+        <delete dir="${catalina.home}/webapps/${ant.project.name}"/>
+        <!--delete includeemptydirs="true">
+            <fileset dir="${catalina.home}/logs" includes="**/*"/>
+        </delete
+        -->
+    </target>
+	
+	<target name="package" description="Generate viewer packages" depends="debug">
+		<mkdir dir="${outdir}/staging/hoops_converter" />
+		<copy todir="${outdir}/staging/hoops_converter">
+			<fileset dir="${env.NLEXTERNALDIR2}/HOOPSCADViewer/2017_SP1_U1" />
+		</copy>
+		<echo file="${outdir}/staging/hoops_converter/bin/rms-cad-version.txt" message="RightsManagementServer-CADViewer-${env.BUILD_NUMBER}.zip" />
+
+		<zip destfile="${outdir}/RightsManagementServer-CADViewer-${env.BUILD_NUMBER}.zip" encoding="UTF-8">
+			<fileset dir="${outdir}/staging/hoops_converter"/>
+		</zip>
+
+		<mkdir dir="${outdir}/staging/vds_viewer" />
+		<copy todir="${outdir}/staging/vds_viewer">
+			<fileset dir="${env.NLEXTERNALDIR2}/VDSViewer/8.3.0" />
+		</copy>
+		<echo file="${outdir}/staging/vds_viewer/SAPViewer/rms-sap-version.txt" message="RightsManagementServer-SAPViewer-${env.BUILD_NUMBER}.zip" />
+			
+		<zip destfile="${outdir}/RightsManagementServer-SAPViewer-${env.BUILD_NUMBER}.zip" encoding="UTF-8">
+			<fileset dir="${outdir}/staging/vds_viewer">
+				<exclude name="**/RHViewer.jsp"/>
+				<exclude name="**/VDSViewer.jsp"/>
+			</fileset>
+		</zip>
+
+		<mkdir dir="${outdir}/staging/perceptive" />
+		<copy todir="${outdir}/staging/perceptive">
+			<fileset dir="${env.NLEXTERNALDIR2}/perceptive/perceptive-11.2_Build_1858/">
+				<exclude name="**/intel-32/**"/>
+			</fileset>
+			<fileset dir="${outdir}">
+				<include name ="RMS-Perceptive-Lib.jar"/>
+			</fileset>			
+		</copy>
+		<echo file="${outdir}/staging/perceptive/rms-perceptive-version.txt" message="RightsManagementServer-DocViewer-${env.BUILD_NUMBER}.zip" />
+
+		<zip destfile="${outdir}/RightsManagementServer-DocViewer-${env.BUILD_NUMBER}.zip" encoding="UTF-8">
+			<fileset dir="${outdir}/staging/perceptive"/>
+		</zip>
+
+		<delete dir="${outdir}/staging"/>
+	</target>
+
+    <import file="${lib_home}/tools/validate.xml"/>
+</project>

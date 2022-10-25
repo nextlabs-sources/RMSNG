@@ -1,0 +1,53 @@
+<div id="identity-providers-pane" data-ng-controller="IdentityProvidersController">
+	<div id="loading-background" data-ng-show="isLoading">
+		<div id="pgLoading-image">
+           <img src="ui/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+	<div class="identity-provider-title">
+		<div class="setting-sidebar-toggle-div">
+			<div class="file-list-icons big-screen-hide ipad-potrait-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></div>	
+			<div class="small-screen-hide">
+				<h3 style="font-weight: 700;" class="padding-mobile">{{"config.manage.identity.providers.heading" | translate}}</h3>
+			</div>
+			<div class="mobile-only">
+				<h3 class="padding-mobile">{{"config.manage.identity.providers.heading" | translate}}</h3>
+			</div>
+		</div>
+	</div>	
+	<div id="configured" class="identity-provider-section">
+		<div ng-hide="idps.length"><br><center>{{"err.add.identity.provider.admin" | translate}}</center></div>
+		<div class="rms-provider service-provider center-service-provider-tile" data-ng-click="showAddIDPDialog()">
+			<div class="overlayContainer gear-background">
+				<div>
+					<i data-ng-include="'ui/img/Add-icon.svg'"></i>
+				</div>
+				<a class="rms-identity-service-provider">
+					<span>{{"add.identity.provider" | translate}}</span>
+					<br/>
+				</a>
+			</div>
+		</div>
+		<div data-ng-repeat="setting in identityProviderSettingsMap" class="rms-provider service-provider center-service-provider-tile" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false" id="configuredServiceProviderContent">
+			<div class="provider-tile" ng-switch="setting.providerType">
+				<img ng-switch-when="GOOGLE" src="ui/img/GOOGLE.svg" alt="Google" >
+				<img ng-switch-when="FACEBOOK" src="ui/img/FACEBOOK.svg" alt="Facebook">
+				<img ng-switch-when="SAML" src="ui/img/SAML.svg" alt="SAML">
+				<img ng-switch-when="LDAP" src="ui/img/LDAP.svg" alt="LDAP">
+				<img ng-switch-when="AZUREAD" src="ui/img/AZUREAD.svg" alt="Azure AD">
+				<a class="rms-identity-service-provider">
+					<span>{{setting.providerTypeDisplayName}}</span> 
+					<br/>
+				</a>
+			</div>
+			<div class="overlayDiv" data-ng-class="{'keep-hidden' : !hovering}" >
+				<div class="glyphicon-div" ng-mouseenter="hoverEdit=true" ng-mouseleave="hoverEdit=false" ng-class="{'glyphicon-div-hover':hoverEdit}" ng-click="showEditIDPDialog(setting)">
+					<span class="glyphicon glyphicon-edit" ></span>
+				</div>
+				<div class="glyphicon-div" ng-mouseenter="hoverDelete=true" ng-mouseleave="hoverDelete=false" ng-class="{'glyphicon-div-hover':hoverDelete}" ng-click="deleteIDP(setting)">
+					<span class="glyphicon glyphicon-trash"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

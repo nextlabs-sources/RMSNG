@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="rms" default="debug" basedir=".">
+
+    <import file="../../config.xml" optional="true"/>
+    <property environment="env"/>
+    <property name="src" value="src"/>
+    <condition property="lib_home" value="${env.LIB_HOME}" else="../../../libraries">
+        <available file="${env.LIB_HOME}" type="dir"/>
+    </condition>
+    <property name="lib" location="${lib_home}/libs/web"/>
+    <condition property="catalina.home" value="${env.CATALINA_HOME}">
+        <and>
+            <isset property="env.CATALINA_HOME"/>
+            <isset property="develper"/>
+        </and>
+    </condition>
+
+    <property name="webapps" value="web"/>
+	<property name="docs" value="../../docs/onlinehelp/output"/>
+
+    <!-- defines output files -->
+    <property name="outdir" value="build"/>
+    <property name="outdir-classes" value="${outdir}/classes"/>
+    <property name="outdir-lib" value="${outdir}/lib"/>
+    <property name="outjar" value="${outdir}/${ant.project.name}.jar"/>
+    <property name="outwar" value="${outdir}/${ant.project.name}.war"/>
+
+    <path id="project.classpath">
+        <!-- libraries provided by web container -->
+        <fileset dir="${lib}" includes="**/*.jar"/>
+
+        <!-- Add any additional application libs -->
+        <fileset dir="${outdir-lib}" includes="**/*.jar"/>
+    </path>
+
+    <!-- Create the output directories if they don't exist yet. -->
+    <target name="dirs" depends="set_debug">
+        <echo>Compiling shared project...</echo>
+        <ant dir="../../shared" target="${mode}" inheritAll="false"/>
+
+        <echo>Compiling rmjavasdk-ng project...</echo>
+        <ant dir="../../rmjavasdk-ng" target="${mode}" inheritAll="false"/>
+
+        <echo>Compiling captcha project...</echo>
+        <ant dir="../../captcha" target="${mode}" inheritAll="false"/>
+
+        <echo>Compiling database project...</echo>
+        <ant dir="../database" target="${mode}" inheritAll="false"/>
+
+    	<echo>Compiling rms_shared project...</echo>
+		<ant dir="../shared" target="${mode}" inheritAll="false"/>
+
+    	<echo>Compiling xmlbeans project...</echo>
+    	<ant dir="../xmlbeans" inheritAll="false"/>
+    	
+        <echo>Compiling repository project...</echo>
+        <ant dir="../repository" target="${mode}" inheritAll="false"/>
+    	
+		<echo>Compiling saml2 project...</echo>
+        <ant dir="../saml2" target="${mode}" inheritAll="false"/>
+
+        <echo>Creating output directories if needed...</echo>
+        <mkdir dir="${outdir}"/>
+        <mkdir dir="${outdir-classes}"/>
+        <mkdir dir="${outdir-lib}"/>
+        <copy todir="${outdir-lib}" file="../../shared/build/shared.jar"/>
+        <copy todir="${outdir-lib}" file="../../rmjavasdk-ng/build/rmjavasdk-ng.jar"/>
+        <copy todir="${outdir-lib}" file="../../captcha/build/captcha.jar"/>
+        <copy todir="${outdir-lib}" file="../xmlbeans/build/repository_xmlbeans.jar"/>
+        <copy todir="${outdir-lib}" file="../repository/build/repository.jar"/>
+        <copy todir="${outdir-lib}" file="../database/build/database.jar"/>
+    	<copy todir="${outdir-lib}" file="../shared/build/rms_shared.jar"/>
+        <copy todir="${outdir-lib}" file="../saml2/build/saml2.jar"/>
+        <copy todir="${outdir-lib}">
+            <fileset dir="${lib}" includes="*.jar"/>
+            <fileset dir="${lib}/hibernate" includes="*.jar"/>
+            <fileset dir="${lib}/jersey" includes="*.jar"/>
+            <fileset dir="${lib}/captcha" includes="*.jar"/>
+            <fileset dir="${lib}/opensaml" includes="*.jar"/>
+            <fileset dir="${lib}/dropbox" includes="*.jar"/>
+            <fileset dir="${lib}/googledrive" includes="*.jar"/>
+            <fileset dir="${lib}/restlet" includes="*.jar"/>
+            <fileset dir="${lib}/xmlbeans" includes="*.jar"/>
+            <fileset dir="${lib}/jackson" includes="*.jar"/>
+            <fileset dir="${lib}/S3" includes="*.jar"/>
+            <fileset dir="${lib}/zip4j" includes="*.jar"/>
+            <fileset dir="${lib}/platform" includes="*.jar" excludes="embeddedpdp.jar"/>
+            <fileset dir="${lib}/axis" includes="*.jar"/>
+            <fileset dir="${lib}/cxf" includes="*.jar"/>
+            <fileset dir="${lib}/jaxrpc" includes="*.jar"/>
+            <fileset dir="${lib}/mail" includes="*.jar"/>
+            <fileset dir="${lib}/bouncycastle" includes="*.jar"/>
+            <fileset dir="${lib}/jaxws" includes="*.jar"/>   
+            <fileset dir="${lib}/javax" includes="*.jar"/>   
+         </copy>
+    </target>
+
+    <!-- Compile java files. -->
+    <target name="compile" depends="dirs,set_debug">
+        <javac srcdir="${src}"
+               destdir="${outdir-classes}"
+               sourcepath=""
+               source="1.7"
+               target="1.7"
+               debug="on"
+               includeantruntime="false"
+               encoding="UTF-8">
+            <compilerarg line="-Xlint -Xlint:-serial -Xlint:-options -Xlint:-path -Werror"/>
+            <classpath refid="project.classpath"/>
+        </javac>
+        <copy todir="${outdir-classes}">
+            <fileset dir="${src}">
+                <include name="**/*.properties"/>
+                <include name="**/*.txt"/>
+                <include name="**/*.xml"/>
+                <include name="**/*.xsl"/>
+                <include name="**/*.xsd"/>
+                <include name="**/*.png"/>
+                <include name="**/*.jpg"/>
+                <include name="**/*.gif"/>
+            </fileset>
+        </copy>
+        <jar destfile="${outjar}" basedir="${outdir-classes}" update="true" duplicate="fail" />
+    </target>
+
+    <target name="set_debug">
+        <property name="mode" value="debug"/>
+    </target>
+    <target name="set_release">
+        <property name="mode" value="release"/>
+    </target>
+
+    <target name="debug" depends="set_debug,war"/>
+
+    <target name="release" depends="set_release,war"/>
+
+    <target name="prepare-angular-npm-install">
+        <exec executable="cmd" dir="${webapps}/ui" osfamily="windows">
+            <arg value="/c"/>
+            <arg value="npm"/>
+            <arg value="install"/>
+        </exec>
+        <exec executable="npm" dir="${webapps}/ui" osfamily="mac">
+            <arg value="install"/>
+        </exec>
+        <exec executable="npm" dir="${webapps}/ui" osfamily="unix">
+            <arg value="install"/>
+        </exec>
+    </target>
+
+    <target name="compileAngularHandlebars"
+            description="Compile Angular Handlebar templates"
+            depends="prepare-angular-npm-install">
+        <exec-node module="grunt">
+            <arg value="--gruntfile"/>
+            <arg value="${webapps}/ui/Gruntfile.js"/>
+            <arg value="default"/>
+        </exec-node>
+        <mkdir dir="${outdir}/web"/>
+        <copy todir="${outdir}/web" overwrite="true">
+            <fileset dir="${webapps}/ui/deploy" includes="**"/>
+        </copy>
+    </target>
+
+    <macrodef name="exec-node">
+        <attribute name="module" description="The name of the NodeJS module to execute"/>
+        <attribute name="failonerror" default="true" description="Fail if the exit code is not 0"/>
+        <element name="args" implicit="yes" description="Argument to pass to the exec task"/>
+        <sequential>
+            <exec executable="cmd.exe" failonerror="@{failonerror}" osfamily="winnt">
+                <arg line="/c  @{module}"/>
+                <args/>
+                <!-- Forces node's stderror and stdout to a temporary file -->
+                <arg line=" &gt; _tempfile.out 2&lt;&amp;1"/>
+                <!-- If command exits with an error, then output the temporary file        -->
+                <!-- to stdout delete the temporary file and finally exit with error level 1  -->
+                <!-- so that the apply task can catch the error if @failonerror="true"        -->
+                <arg line=" || (type _tempfile.out &amp; del _tempfile.out &amp; exit /b 1)"/>
+                <!-- Otherwise, just type the temporary file and delete it-->
+                <arg line=" &amp; type _tempfile.out &amp; del _tempfile.out &amp;"/>
+            </exec>
+            <exec executable="@{module}" failonerror="@{failonerror}" osfamily="unix">
+                <args/>
+            </exec>
+        </sequential>
+    </macrodef>
+
+    <!-- Generate war file -->
+    <target name="war" depends="compile, compileAngularHandlebars">
+    	<mkdir dir="${outdir}/web/WEB-INF"/>
+    	<mkdir dir="${outdir}/web/WEB-INF/lib"/>
+    	<copy todir="${outdir}/web/WEB-INF" overwrite="true">
+            <fileset dir="${webapps}/WEB-INF" includes="**"/>
+        </copy>
+    	<copy todir="${outdir}/web/WEB-INF/lib" overwrite="true">
+            <fileset dir="${outdir-lib}" includes="**"/>
+            <fileset file="${outjar}"/>
+        </copy>
+        <zip destfile="${outwar}">
+        	<fileset dir="${outdir}/web"/>
+        	<zipfileset dir="${docs}" prefix="help"/>
+        </zip>
+    </target>
+
+    <target name="clean" depends="clean-symlink,cleanTomcat">
+        <echo>Deleting Output Files and Directories...</echo>
+        <condition property="tomcat.shutdown"
+                value="${catalina.home}/bin/shutdown.bat"
+                else="${catalina.home}/bin/shutdown.sh">
+            <os family="windows"/>
+        </condition>
+
+        <delete dir="${outdir}"/>
+        <delete dir="${webapps}/WEB-INF/lib"/>
+        <delete dir="${webapps}/WEB-INF/classes"/>
+        <delete dir="${webapps}/ui/deploy"/>
+        <delete dir="${webapps}/ui/build"/>
+        <delete dir="${webapps}/ui/node_modules"/>
+        <ant dir="../../shared" target="clean" inheritAll="false"/>
+        <ant dir="../../captcha" target="clean" inheritAll="false"/>
+        <ant dir="../repository" target="clean" inheritAll="false"/>
+        <ant dir="../xmlbeans" target="clean" inheritAll="false"/>
+        <ant dir="../database" target="clean" inheritAll="false"/>
+    	<ant dir="../shared" target="clean" inheritAll="false"/>
+        <ant dir="../saml2" target="clean" inheritAll="false"/>
+    </target>
+
+    <target name="cleanTomcat" if="catalina.home" depends="shutdownTomcat">
+        <delete dir="${catalina.home}/webapps/${ant.project.name}"/>
+        <delete file="${catalina.home}/webapps/${ant.project.name}.war"/>
+        <delete includeemptydirs="true">
+            <fileset dir="${catalina.home}/logs" includes="**/*"/>
+            <fileset dir="${catalina.home}/temp" includes="**/*"/>
+            <fileset dir="${catalina.home}/work" includes="**/*"/>
+        </delete>
+    </target>
+
+    <target name="shutdownTomcat" if="catalina.home">
+        <condition property="tomcat.shutdown"
+                value="${catalina.home}/bin/shutdown.bat"
+                else="${catalina.home}/bin/shutdown.sh">
+            <os family="windows"/>
+        </condition>
+        <exec executable="${tomcat.shutdown}" failifexecutionfails="false" failonerror="false"/>
+    </target>
+
+    <target name="install" if="catalina.home" depends="shutdownTomcat">
+        <echo>Deploying ${outwar} to ${catalina.home}/webapps/ ...</echo>
+        <copy file="${outwar}" todir="${catalina.home}/webapps/"/>
+        <delete dir="${catalina.home}/webapps/${ant.project.name}"/>
+        <delete includeemptydirs="true">
+            <fileset dir="${catalina.home}/logs" includes="**/*"/>
+        </delete>
+    </target>
+
+    <import file="${lib_home}/tools/validate.xml"/>
+</project>

@@ -1,0 +1,101 @@
+<div class="margin-top-10 policy-components-container">
+    <div class="components-container-header">
+        <div class="col-xs-8">
+            <h4 class="col-xs-12 margin-bottom-0">{{'policy.effective.duration' | translate}}</h4>
+            <label class="col-xs-12">{{'policy.effective.duration.description' | translate}}</label>
+        </div>
+    </div>
+    <div style="padding: 10px 30px; position: relative">
+        <button ng-class="effect_type == true ? 'btn btn-default rms-settings-button-color button-paddings' : 'btn btn-default button-paddings'"
+                ng-click="policyEffect(true)"
+                style="margin:10px;">{{'policy.effective.duration.always' | translate}}
+        </button>
+        <button ng-class="effect_type == false ? 'btn btn-default rms-settings-button-color button-paddings' : 'btn btn-default button-paddings'"
+                ng-click="policyEffect(false)"
+                style="margin:10px;">{{'policy.effective.duration.specific.days' | translate}}
+        </button>
+        <div ng-if='effect_type == false' style="padding: 10px 30px; font-weight: normal">
+            <div class="policy-valid-period">
+                <div class="policy-valid-period-title-from">
+                    <label class="ng-binding"> {{'policy.effective.valid.from' | translate}}</label>
+                </div>
+                <div class="policy-valid-period-date">
+                    <div class="input-group">
+                        <input class="form-control" close-text="Close" datepicker-options="dateOptions"
+                               is-open="policyValidity.from.popupOpen" max-date="policyValidity.to.date"
+                               name="policyValidityFrom" ng-model="policyValidity.from.date"
+                               ng-required="true" readonly
+                               type="text" uib-datepicker-popup="mediumDate">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" ng-click="policyValidity.from.popupOpen = true"
+                                    type="button">
+                                <img ng-src='ui/img/Calendar-Icon.svg'/>
+
+                  </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="policy-valid-period-title-to">
+                    <label class="ng-binding"> {{'policy.effective.valid.to' | translate}}</label>
+                </div>
+                <div class="policy-valid-period-date">
+                    <div class="input-group">
+                        <input class="form-control" close-text="Close" datepicker-options="dateOptions"
+                               is-open="policyValidity.to.popupOpen" max-date="lastDateOfThisCentury"
+                               min-date="policyValidity.from.date" name="policyValidityTo"
+                               ng-model="policyValidity.to.date" ng-required="true"
+                               readonly type="text" uib-datepicker-popup="mediumDate">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" ng-click="policyValidity.to.popupOpen = true"
+                                    type="button">
+                      <img src='ui/img/Calendar-Icon.svg'/>
+                  </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="policy-valid-period">
+                <div>
+                    <div class="btn btn-default policy-recur-by-date"
+                         data-ng-class="{checked:recurBy.checked}"
+                         data-ng-click="recurBy.checked = !recurBy.checked"
+                         data-ng-repeat="recurBy in recurByDaysOptions">{{recurBy.label}}
+                    </div>
+                </div>
+
+            </div>
+            <div class="clear"></div>
+            <div class="policy-valid-period">
+                <div>
+                    <div class="policy-valid-period-title-from">
+                        <label>{{"policy.effective.starting.from" | translate}}
+                        </label>
+                    </div>
+                    <div class="policy-valid-period-date">
+                        <div>
+                            <uib-timepicker hour-step="1" minute-step="10" ng-model="policyRecur.from"
+                                            show-meridian="true" show-spinners="false"></uib-timepicker>
+                        </div>
+                    </div>
+                    <div class="policy-valid-period-title-to">
+                        <label>{{"policy.effective.valid.to" | translate}}
+                        </label>
+                    </div>
+                    <div class="policy-valid-period-date">
+                        <div>
+                            <uib-timepicker hour-step="1" minute-step="10" ng-model="policyRecur.to"
+                                            show-meridian="true" show-spinners="false"></uib-timepicker>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<br>
+</div>
+
+
+

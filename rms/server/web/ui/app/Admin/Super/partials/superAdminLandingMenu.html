@@ -1,0 +1,52 @@
+<div class="cc-ps-menu" style="width: 100%">
+    <div class="rms-settings-panel">
+        <div data-ng-if="isSetting">
+            <div class="rms-system-settings-item" data-ng-if="isSystemAdmin">
+                <a class="admin-menu-item" data-ng-class="{'admin-menu-item-active':isActiveTab('adminDashboard')}" data-ng-click="onClickTab('adminDashboard')">
+                    <span class="color-black">{{'config.admin_dashboard' | translate}}</span>
+                </a>
+            </div>
+            <div class="rms-system-settings-item" data-ng-if="(isSystemAdmin)">
+                <a class="admin-menu-item" data-ng-class="{'admin-menu-item-active':isActiveTab('tenantList')}" data-ng-click="onClickTab('tenantList')">
+                    <span class="color-black">{{'config.tenant.management.heading' | translate}}</span>
+                </a>
+            </div>
+            <div class="rms-system-settings-item" data-ng-if="(isSystemAdmin)">
+                <a ng-if="isDefaultTenant" class="admin-menu-item" data-ng-class="{'admin-menu-item-active':isActiveTab('systemConfiguration')}" data-ng-click="onClickTab('systemConfiguration')">
+                    <span class="color-black">{{'config.client.management.heading' | translate}}</span>
+                </a>
+            </div>
+            <div class="rms-system-settings-item" data-ng-if="isSystemAdmin">
+                <a class="admin-menu-item" data-ng-class="{'admin-menu-item-active':isActiveTab('userAttributeMapping')}" data-ng-click="onClickTab('userAttributeMapping')">
+                    <span class="color-black">{{'config.user_attr_mapping' | translate}}</span>
+                </a>
+            </div>
+            <div class="rms-system-settings-item" ng-if="!isDefaultTenant">
+                <a class="admin-menu-item" data-ng-class="{'admin-menu-item-active':isActiveTab('assignProjectAdmin')}" data-ng-click="onClickTab('assignProjectAdmin')">
+                    <span class="color-black">{{'config.project_admin' | translate}}</span>
+                </a>
+            </div>
+            <div class="rms-system-settings-item">
+                <a class="admin-menu-item" data-ng-class="{'admin-menu-item-active':isActiveTab('classification')}" data-ng-click="onClickTab('classification')">
+                    <span class="color-black">{{'project.classification' | translate}}</span>
+                </a>
+            </div>
+            <div class="rms-system-settings-item" data-ng-if="(isSystemAdmin || isTenantAdmin)">
+                <a class="admin-menu-item" data-ng-class="{'admin-menu-item-active':isActiveTab('policies')}" data-ng-click="onClickTab('policies')">
+                    <span class="color-black">{{'config.domain.policies.heading' | translate}}</span>
+                    <span class="badge float-right" data-ng-class="isActiveTab('policies') ? 'badge-active':'badge-not-active'">{{totalPolicies}}</span>
+                </a>
+            </div>
+        </div>
+        <div data-ng-if="isUserMgmt">
+            <div class="rms-system-settings-item" data-ng-if="isSystemAdmin">
+                <a class="admin-menu-item admin-menu-item-active" data-ng-class="{'admin-menu-item-active':isActiveTab('manageUser')}" data-ng-click="onClickTab('manageUser')">
+                    <span class="color-black">{{'menu.manage_user' | translate}}</span>
+                </a>
+            </div>
+        </div>
+        <div data-ng-if="isOverview">
+
+        </div>
+    </div>
+</div>

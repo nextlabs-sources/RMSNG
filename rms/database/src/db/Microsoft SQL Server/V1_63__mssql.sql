@@ -1,0 +1,1 @@
+ALTER TABLE rms.user_session ADD login_tenant NVARCHAR(36);

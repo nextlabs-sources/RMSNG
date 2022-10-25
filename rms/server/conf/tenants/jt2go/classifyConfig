@@ -1,0 +1,10 @@
+<Classify>
+    <Profiles>
+        <Default>0</Default>
+    </Profiles>
+    <LabelList>
+        <Label default-value="0" multi-select="false" mandatory="true" display-name="Owner's Tenant Id" name="owner_tenant_id" id="0">
+            <VALUE value="jt2go" priority="0"/>
+        </Label>
+    </LabelList>
+</Classify>

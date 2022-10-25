@@ -1,0 +1,71 @@
+<div class="col-lg-8 col-lg-offset-2 col-xs-12">
+<div class="float-left">
+	<div style="font-size: 18px;font-weight: 500;">{{policy.id ? policyNameCopy : 'policy.new' | translate}}</div>
+</div>
+<div class="float-right">
+	<a class="btn btn-default rms-settings-button" data-ng-click="goToList()">{{'cancel' | translate}}</a>
+	<a class="btn btn-default rms-settings-button" data-ng-click="createOrUpdatePolicy(false)">{{'save' | translate}}</a>
+	<a class="btn btn-default rms-settings-button rms-settings-button-color" style="width: auto" data-ng-click="createOrUpdatePolicy(true)">Save & Deploy</a>
+</div>
+<div style="clear: both"></div>
+<div class="margin-top-10" style="padding: 50px; background-color: white; overflow: auto">
+	<label>{{'policy.name' | translate}}</label>
+	<input class="form-control" style="width:70%" maxlength="255" id="policyName" placeholder="{{'policy.name.placeholder' | translate}}" data-ng-model="policy.name"  autofocus>
+	<label class="margin-top-20">{{'policy.description' | translate}}</label>
+	<textarea class="form-control" style="width:70%" id="policyDescription" placeholder="{{'policy.description.placeholder' | translate}}" data-ng-model="policy.description"  autofocus></textarea>
+	<br>
+
+	<div data-ng-controller="policyStudioComponentsController" data-ng-include="'ui/app/Home/PolicyStudio/partials/policyComponents.html'" ng-init="initComponents('RESOURCE')" >
+	</div>
+	<br>
+	<div data-ng-controller="policyStudioComponentsController" data-ng-include="'ui/app/Home/PolicyStudio/partials/policyComponents.html'" ng-init="initComponents('SUBJECT')" >
+	</div>
+	<br>
+	<div class="margin-top-10" style="max-width: 600px;" data-ng-include="'ui/app/Home/Repositories/partials/fileRightsSelectionTemplate.html'"></div>
+	<br>
+
+	<div style="cursor: pointer; display: flex" ng-click="toggleAdvance()">
+		<div style="float: left;" data-ng-if="!showAdvance">
+			<a style="position: relative; border-bottom-left-radius: 6px; border-top-left-radius: 6px; background-color: #888888; color: white; padding: 1px 5px; display: inline-block" ><i class="glyphicon glyphicon-plus"></i></a>
+			<a style="position: relative; left: -2px; border-bottom-right-radius: 6px; border-top-right-radius: 6px; background-color: #888888; color: white; padding: 1px 10px; display: inline-block" >{{'policy.advanced.show' | translate}}</a>
+		</div>
+		<div style="float: left;" data-ng-if="showAdvance">
+			<a style="position: relative; border-bottom-left-radius: 6px; border-top-left-radius: 6px; background-color: #888888; color: white; padding: 1px 5px; display: inline-block" ><i class="glyphicon glyphicon-minus"></i></a>
+			<a style="position: relative; left: -2px; border-bottom-right-radius: 6px; border-top-right-radius: 6px; background-color: #888888; color: white; padding: 1px 10px; display: inline-block" >{{'policy.advanced.hide' | translate}}</a>
+		</div>
+		<div style="position: relative; top: 5px; height: 10px; background-color: #E0E0E0; display: inline-block; flex-grow: 1"></div>
+	</div>
+	<br><br>
+	<div data-ng-show="showAdvance">
+		<div data-ng-controller="policyStudioComponentsController" data-ng-include="'ui/app/Home/PolicyStudio/partials/policyComponents.html'" ng-init="initComponents('APPLICATION')" >
+		</div>
+		<br><br>
+		<div data-ng-controller="policyStudioComponentsController" data-ng-include="'ui/app/Home/PolicyStudio/partials/policyScheduleConfig.html'" ng-init="initComponents('APPLICATION')" >
+		</div>
+		<br><br>
+		<div class="margin-top-10 policy-components-container">
+			<div class="components-container-header">
+				<div class="col-xs-8">
+					<h4 class="col-xs-12 margin-bottom-0">{{'policy.advanced.condition' | translate}}</h4>
+				</div>
+			</div>
+			<div id="advanced" style="padding: 20px 30px">
+				<textarea class="form-control" style="min-height: 100px"  data-ng-model="policy.advancedConditions" placeholder="{{'policy.advanced.condition.placeholder'| translate}}" data-ng-trim="false"></textarea>
+				<br>
+				<a class="btn btn-default rms-settings-button" style="font-weight:bold; width: 120px" data-ng-click="validate()">
+					<i class="fa fa-check-circle-o" style="color: #399649; font-size: 1.25em" data-ng-show="advancedValidated && advancedValid"></i>
+					<i class="fa fa-times-circle-o" style="color: red; font-size: 1.25em" data-ng-show="advancedValidated && !advancedValid"></i>
+					{{'policy.advanced.validate' | translate}}
+				</a>
+				<a data-ng-show="advancedValidated && !advancedValid" style="color: red; padding-left: 20px">{{'policy.advanced.invalid' | translate}}</a>
+			</div>
+		</div>
+		<br><br>
+	</div>
+	<div class="float-right">
+		<a class="btn btn-default rms-settings-button" data-ng-click="goToList()">{{'cancel' | translate}}</a>
+		<a class="btn btn-default rms-settings-button" data-ng-click="createOrUpdatePolicy(false)">{{'save' | translate}}</a>
+		<a class="btn btn-default rms-settings-button rms-settings-button-color" style="width: auto" data-ng-click="createOrUpdatePolicy(true)">Save & Deploy</a>
+	</div>
+</div>
+</div>

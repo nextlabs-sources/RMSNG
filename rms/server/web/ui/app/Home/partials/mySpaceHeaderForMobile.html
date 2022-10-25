@@ -1,0 +1,46 @@
+<div class="rms-repo-list-header">
+	<div id="rms-repoTitle-id" class="rms-repoTitle mySpace">
+        <div class="file-list-icons big-screen-hide ipad-potrait-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></div>
+        <div class="file-list-icons"><b>{{pageTitleMobileShortened | translate}}</b></div>
+    </div>
+	<div id="repoFilterDivId" class="fileListOptions-div-mobile" data-ng-show="showRepoFilter">
+		<span class="btn-group btn-block rms-repo-filter-btn-grp" ng-if="showAllServices && !searchActivated" id="repo-list-in-mainView" data-uib-dropdown>	    	
+	           <button id="btn-append-to-single-button" type="button" class="form-control" uib-dropdown-toggle data-ng-disabled="disabled">
+	             <span class="selected-repos" >
+	              <span data-ng-if="displaySelectedRepos.length === 0 || displaySelectedRepos.length === undefined">{{'all.repo' | translate}}</span>
+	                 <span>{{displaySelectedRepos}}</span>
+	             </span>
+	             <span class="rms-caret"><span class="caret"></span></span>
+	           </button>
+	           <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button" data-ng-click="dropdownClicked($event)">	          
+	          <li role="menuitem" data-ng-click="selectAllRepos()">
+	             	<div class="checkbox">
+				  <label><input type="checkbox" data-ng-model="filterData['all']">
+				  	<span>{{'all.repo' | translate}}</span>
+				  </label>
+				</div>
+			  </li>
+			  <li class="divider"></li>
+			  <div data-ng-repeat="repo in repos">	              
+	              <li role="menuitem" data-ng-click="clickCheckbox()">
+	              	<div class="checkbox">
+					  <label><input type="checkbox" data-ng-model="filterData[repo.repoObj.repoId]">{{repo.repoObj.repoName}}</label>
+					</div>
+				  </li>
+			  </div>       
+	             <li class="divider"></li>
+	             <li role="menuitem" >
+	             	<span data-ng-class="selectedReposValidationStatus ? 'pointer-click rms-dropdown-applyButton' : 'rms-repo-filter-disable rms-dropdown-applyButton' " data-propagation="true" data-ng-click="filterRepo()">Apply</span>
+			  </li>
+	           </ul>   
+	     </span>
+	     <span class="file-options-icon-padding" data-ng-click="closeFileListOptions()"><i class="fa fa-times"></i></span>
+     </div>
+     <div id="fileSortId" class="fileListOptions-div-mobile" data-ng-show="showSort">
+
+      	<label class="rms-file-sort-label">{{'sort.by' | translate}}</label>&nbsp;
+       	<select data-ng-options="sort.lookupCode as sort.description | translate for sort in sortOptions" data-ng-model="$parent.selectedSort" data-ng-change="update()"></select>
+         <span class="file-options-icon-padding" data-ng-click="closeFileListOptions()"><i class="fa fa-times"></i></span> 	
+     </div> 		
+</div>
+<label class="file-list-cur-folder-name" ng-show="currentFolderName"><b>{{currentFolderName}}</b></label>

@@ -1,0 +1,116 @@
+buildscript {
+	repositories {
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+  	}
+	dependencies {
+		classpath "com.moowork.gradle:gradle-node-plugin:1.1.1"
+	}
+}
+
+apply plugin: "com.moowork.node"
+apply plugin: "com.moowork.grunt"
+apply plugin: 'war'
+
+dependencies {
+	compile project(':captcha')
+	compile project(':rmjavasdk-ng')
+	compile project(':rms-shared')
+	compile project(':rms-repository')
+	compile project(':shared')
+	compile project(':rms-cc-stubs')
+
+	compile libs.'msal4j'
+	compile libs.'axis2-adb'
+	compile (libs.'axis2-kernel') {
+		exclude group: 'javax.ws.rs', module: 'jsr311-api'
+	}
+	compile libs.'cxf'
+	compile libs.'commons-csv'
+	compile libs.'commons-discovery'
+	compile libs.'jaxrpc'
+	compile libs.'jersey'
+	compile libs.'mail'
+	compile libs.'onelogin'
+
+    compile libs.'http-async-client'
+	compile libs.'log4j'
+	compile libs.'log4j-web'
+	compile libs.'jaxws'  
+	compile libs.'javax'  
+
+	compileOnly libs.'jsp-api'
+	compileOnly libs.'servlet'
+
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src']
+		}
+	}
+}
+
+def moduleDir = "${project.projectDir}/web/ui"
+node {
+	version = '6.9.4'
+	npmVersion = '4.1.2'
+	nodeModulesDir = file(moduleDir)
+	download = true
+}
+
+grunt {
+    workDir = file(moduleDir)
+    colors = false
+    bufferOutput = false
+}
+
+jar.enabled = true
+jar {
+	baseName = 'rms'
+}
+
+clean {
+	delete moduleDir + File.separator + "build"
+	delete moduleDir + File.separator + "deploy"
+}
+
+def devMode = project.hasProperty('dev') ? project.getProperty('dev').toBoolean() : false;
+
+task gruntTask (type: NodeTask) {
+    def localGrunt = new File(this.project.node.nodeModulesDir, 'node_modules/grunt-cli/bin/grunt')
+    def gruntFileName = devMode ? "GruntFile-dev.js" : "Gruntfile.js"
+    setArgs(["--gruntfile", gruntFileName])
+    setWorkingDir(this.project.grunt.workDir)
+    setScript(localGrunt)
+}
+
+gruntTask.dependsOn 'npmInstall'
+gruntTask.dependsOn 'installGrunt'
+war.dependsOn gruntTask
+
+war {
+	from 'web/ui/deploy'
+	archiveName 'rms.war'
+	dependsOn jar
+	classpath jar.archivePath
+	rootSpec.exclude('**/WEB-INF/lib/*')
+	rootSpec.exclude('**/WEB-INF/classes/*')
+	webInf {
+		into ('classes') 
+		exclude '**/*.class'
+	}
+	webXml = file('web/WEB-INF/web.xml')
+	from ("$docsHome/help") {
+		into 'help'
+	}
+	from ("$docsHome/help_clients/ios") {
+		into 'help_clients/ios'
+	}
+	from ("$docsHome/help_users") {
+		into 'help_users'
+	}
+	classpath -= sourceSets.main.output
+}

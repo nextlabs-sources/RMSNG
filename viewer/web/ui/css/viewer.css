@@ -1,0 +1,664 @@
+/****************************** Common Viewer CSS ****************************************/
+
+.pageWrapper{
+    display: block;
+    width: 100%;
+    height: 100%; 
+    visibility: visible;
+}
+
+.titleContainer{
+	position: fixed;
+	left: 0px;
+	float:left;
+	padding: 5px;
+	padding-left: 20px;
+	width: 40%;
+}
+
+#title{
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: default;
+}
+
+#toolBar{
+	position: fixed;
+	right: 0px;
+	float: right;
+	margin: 2px;
+}
+
+.toolbarContainer{
+	position: fixed;
+	top: 30px;
+	width: 100%;
+	margin: 0px;
+	padding: 0px !important;
+	border-bottom: 3px solid #ccc !important;
+	background-color:white;
+	z-index: 40000;
+	min-height: 47px;
+}
+
+.toolbarContainerPlaceholder{
+	position: fixed;
+	top: 30px;
+	width: 100%;
+	margin: 0px;
+	padding: 0px !important;
+	border-bottom: 3px solid #F7F7FA !important;
+	background-color: #F7F7FA;
+	z-index: 30000;
+	min-height: 47px;
+}
+
+
+.toolbar-tools {
+	height: 42px;
+}
+
+.toolbar-button {
+	vertical-align: top;
+	margin: 7px;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+}
+
+.disabled{
+    opacity: 0.3;
+	border: none;
+}
+
+.full-opacity{
+   opacity: 1;
+}
+
+.tool-seperator  {
+	width: 1px;
+	height: 80%;
+	vertical-align: middle;
+	background-color: #ccc;
+	top: 10%;
+	pointer-events: none;
+	position: relative;
+	display: inline-block;
+}
+
+.cc-header {
+	position: fixed;
+}
+
+#error{
+	z-index: 1011;
+	position: absolute;
+	width: 50%; 
+	top: 45%;
+	left:25%;
+	text-align: center;
+}
+
+.close{
+	opacity:0.6;
+	color:black !important;
+}
+
+.close:hover{
+	opacity:1.0;
+}
+
+#viewer-dialog-inner-container, .rh-viewer-dialog{
+	top: 50px; 
+	right: 0px; 
+	width: 600px;
+	margin-top: 30px;
+	padding: 0px;
+	position: fixed;
+	z-index: 40001;
+	display: none;
+	overflow-y: auto;
+}
+
+.rms-shareFile-rights {
+  display: inline-block;
+  padding-right: 30px;
+}
+
+#rms-sharefile-downArrow{
+	display: inline-block;
+    width: 0px;
+    height: 0px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid #030303;
+}
+#rms-sharefile-upArrow{
+	display: inline-block;
+    width: 0px;
+    height: 0px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #030303;
+}
+
+.rms-shareFile-title{
+	font-size: x-large;
+    word-break: break-all;
+}
+
+#rms-print-button{
+    background: url('../img/Print_P.svg') no-repeat;
+	background-position: center;
+}
+#rms-help-button{
+    background: url('../img/Help_P.svg') no-repeat;
+	background-position: center;
+	float: right;
+	margin: 0px;
+}
+#rms-download-button{
+    background: url('../img/Download_Protected.svg') no-repeat;
+	background-position: center;
+}
+#rms-protect-button{
+    background: url('../img/Protect_P.svg') no-repeat;
+	background-position: center;
+}
+#rms-protect-button.loading{
+    background: url('../img/loading-icon.gif') no-repeat;   
+	background-position: center;
+}
+#rms-info-button{
+    background: url('../img/FileInfo_P.svg') no-repeat;
+	background-position: center;
+}
+#rms-share-button{
+	background: url('../img/Share_P.svg') no-repeat;
+	background-position: center;
+}
+#rms-extract-button{
+	background: url('../img/ExtractButton_P.svg') no-repeat;
+	background-position: center;
+}
+.rms-sharefile-icon-50px{
+  height:50px;
+  width:50px;
+}
+.file-rights-container {
+  background-color: #F2F2F2;
+  padding-top: 15px;
+  border-radius: 4px;
+}
+
+.rms-info-repoDetails + .rights-granted {
+	margin:	0 32px;
+}
+
+.rms-settings-button{
+	border-color: #ccc !important;
+}
+
+/* overwriting bootstrap defaults to get back original hoops look and feel  */
+div, ::before, ::after {
+	-webkit-box-sizing: initial;
+	-moz-box-sizing: initial;
+	box-sizing: content-box;	/* IE doesn't support initial */
+	line-height: normal;		/* IE doesn't support initial */
+}
+
+.btn-default {
+	border-color: transparent;
+}
+
+.hide-viewer-title-mobile {
+    display: none;
+}
+
+/****************************** CADViewer CSS ****************************************/
+
+body {
+	background-color: rgb(247,247,250);
+}
+
+#viewerContainer{
+	position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.toolbar-home, .toolbar-home.hover{
+	background: url('../img/ResetView_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-camera, .toolbar-camera.hover {
+	background: url('../img/Camera_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-explode, .toolbar-explode.hover{
+	background: url('../img/Explode_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-cuttingplane, .toolbar-cuttingplane.hover{
+	background: url('../img/Splice_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-settings, .toolbar-settings.hover{
+	background: url('../img/Settings_P.svg') no-repeat;         
+	background-position: center;
+}
+
+.toolbar-walk, .toolbar-walk.hover{
+	background: url('../img/WalkOver_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-turntable, .toolbar-turntable.hover{
+	background: url('../img/Orbit_P.svg') no-repeat;      
+	background-position: center;
+}
+
+.toolbar-orbit, .toolbar-orbit.hover{
+	background: url('../img/Rotate_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-wireframe, .toolbar-wireframe.hover {
+	background: url('../img/WireframeMode_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-shaded, .toolbar-shaded.hover{
+	background: url('../img/TransparentMode_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-wireframeshaded, .toolbar-wireframeshaded.hover{
+	background: url('../img/SolidMode_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-hidden-line, .toolbar-hidden-line.hover{
+	background: url('../img/ColoredMode_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-left, .toolbar-left.hover{
+	background: url('../img/LeftView_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-right, .toolbar-right.hover{
+	background: url('../img/RightView_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-bottom, .toolbar-bottom.hover{
+	background: url('../img/BottomView_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-front, .toolbar-front.hover{
+	background: url('../img/FrontView_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-back, .toolbar-back.hover{
+	background: url('../img/BackView_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-top, .toolbar-top.hover{
+	background: url('../img/TopView_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-iso, .toolbar-iso.hover{
+	background: url('../img/SolidMode_P.svg') no-repeat;   
+	background-position: center;
+}
+
+.toolbar-measure-angle, .toolbar-measure-angle.hover{
+	background: url('../img/MeasureFaces_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-measure-distance, .toolbar-measure-distance.hover{
+	background: url('../img/MeasureEdges_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-measure-edge, .toolbar-measure-edge.hover{
+	background: url('../img/MeasureLength_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-measure-point, .toolbar-measure-point.hover{
+	background: url('../img/Measure-Point2Point_P.svg') no-repeat;
+	background-position: center;
+}
+
+.toolbar-select, .toolbar-select.hover{
+	background: url('../img/Select_P.svg') no-repeat;
+	background-position: center;
+}
+
+/********************************* VDSViewer CSS ***************************************/
+
+#vds-playAll{
+	background: url('../img/PlayAll_P.svg') no-repeat;
+	background-position: center;
+}
+#vds-pauseStep{
+	background: url('../img/Pause_P.svg') -286px 2px no-repeat;
+	background-position: center;
+}
+#vds-stopStep{
+	background: url('../img/Stop_P.svg') -286px 2px no-repeat;
+	background-position: center;
+}
+#vds-resetStep{
+	background: url('../img/ResetView_P.svg') no-repeat;
+	background-position: center;
+}
+#vds-play{
+	background: url('../img/Play_P.svg') no-repeat;
+	background-position: center;
+}
+
+#vds-toggleStepInFo{
+	background: url('../img/ViewerDescription_P.svg') no-repeat;   
+	background-position: center;
+}
+#vds-toggleStepInFo.infoHide{
+	background: url('../img/ViewerNoDescription_P.svg') no-repeat;  
+	background-position: center;
+}
+.sapUiShd{
+	top: 100px !important;
+}
+.sapVeViewerStepNavigationToolbarRight{
+    visibility: hidden;
+}
+
+/********************************* ExcelViewer CSS *************************************/
+
+td{
+  -webkit-print-color-adjust: exact;
+}
+
+ul.ISYS_TOC {
+	top: 80px !important;
+	z-index: 100 !important;
+	overflow-y: hidden !important;
+}
+
+/********************************* DocViewer CSS *************************************/
+
+#rms-rotate-left-button{
+    background:white url('../img/RotateAntiClockwise_P.svg') no-repeat;      
+	background-position: center;
+}
+
+#rms-rotate-right-button{
+    background: white url('../img/RotateClockwise_P.svg') no-repeat;         
+	background-position: center;
+}
+
+#rms-prev-button{
+    background: white url('../img/ArrowLeft_P.svg') no-repeat;             
+	background-position: center;
+}
+
+#rms-next-button{
+    background: white url('../img/ArrowRight_P.svg') no-repeat;             
+	background-position: center;
+}
+
+#rms-fit-height-button{
+    background: white url('../img/FittoView_P.svg') no-repeat;
+	background-position: center;
+}
+
+#rms-fit-width-button{
+    background: white url('../img/FittoPage_P.svg') no-repeat;             
+	background-position: center;
+}
+
+#rms-zoom-in-button{
+    background: white url('../img/ViewZoomIn_P.svg') no-repeat;              
+	background-position: center;
+}
+
+#rms-zoom-out-button{
+    background: white url('../img/ViewZoomOut_P.svg') no-repeat;              
+	background-position: center;
+}
+
+.custom-viewer-dialog { 
+	opacity: 1.0 !important;
+	outline:none !important;
+	font-family: "Fira Sans" !important;
+	z-index: 20000;
+}
+
+.imageWrapper{
+    background:#F7F7FA;
+	position: relative;
+    overflow: auto;
+    visibility: hidden;
+}
+
+#mainImg{
+    margin: auto;
+	position: relative; 
+	vertical-align: middle;
+}
+
+#pageNumContainer {
+	position: fixed;
+	right: 45%;
+	margin: 12px;
+	font-size: 16px;
+}
+
+#pageNumberDisplay{
+	cursor: pointer;
+}
+
+#loading-image {
+	position: absolute;
+	top: 48%;
+	left: 48%;
+	z-index: 99;
+}
+
+#printDiv {
+	position: absolute;
+	margin: auto;
+	visibility: hidden;
+}
+
+/*************************************************************************************/
+
+@media print {
+  #pageWrapper{
+    display: none; 
+  }
+  
+  .cc-header, .toolbarContainer, .toolbarContainerPlaceholder, ul.ISYS_TOC, #rms-snackbar {
+    display: none !important; 
+  }
+  
+  #pageWrapper.excelViewer{
+	display: block !important;
+  }
+  
+  img {
+    margin: auto;
+    border-style: solid;
+    border-width: medium;
+    visibility: visible;
+    height:1048px;
+  }  
+  html, body {
+    height: 99%;    
+  }
+}
+
+@media screen and (min-width:0\0) {  
+    /* IE rule sets go here */  
+	.modal-dialog .modal-header .col-xs-2{
+		display: none;
+	}
+}
+
+@media only screen and (max-width:650px){
+    ul.ISYS_TOC   {
+		display: none !important; 
+	}
+}
+
+@media only screen and (max-width:300px){
+    #pageNumContainer   {
+		display: none !important; 
+	}
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 767px) {
+    .desktop-only{
+        display:none !important;
+    }
+    span.glyphicon {
+        font-size: 30px;
+    }
+    i.fa {
+        font-size: 30px;
+    }
+    .spaced{
+        margin-left:5px;
+        margin-right:5px;
+    }
+    .titleText{
+        font-size:20px;
+    }
+   
+	#waterMarkContainer{
+		clip: auto !important;
+	}
+   
+    #imageWrapper, .ISYS_BODY_DIV{
+     -webkit-touch-callout: none !important;
+     -webkit-user-select: none !important;
+    }
+}
+
+/**
+ *  Snackbar / Toast
+ */
+#rms-snackbar {
+	visibility: hidden;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: absolute;
+	z-index: 99999;
+	top: 80px;
+	display: flex;
+	display: -ms-flexbox;
+	align-items: center;
+	-ms-flex-align: center;
+}
+
+#rms-snackbar.success {
+	color: #3c763d;
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+}
+
+#rms-snackbar.error {
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+
+#rms-snackbar.display {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 9.5s;
+	animation: fadein 0.5s, fadeout 0.5s 9.5s;
+}
+
+#rms-snackbar > button {
+	margin-left: 10px;
+}
+
+@-webkit-keyframes fadein {
+	from {top: 50px; opacity: 0;}
+	to {top: 80px; opacity: 1;}
+}
+
+@keyframes fadein {
+	from {top: 50px; opacity: 0;}
+	to {top: 80px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+	from {top: 80px; opacity: 1;}
+	to {top: 50px; opacity: 0;}
+}
+
+@keyframes fadeout {
+	from {top: 80px; opacity: 1;}
+	to {top: 50px; opacity: 0;}
+}
+/**
+ *  End Snackbar / Toast
+ */
+
+/* Only for mobile, no tablets */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+	ul.ISYS_TOC {
+		z-index: 29999 !important;
+	}
+
+	#rms-snackbar {
+		width: 80%;
+	}
+}
+
+@media only screen and (max-width:980px) {
+    .hide-viewer-title-desktop {
+        display: none;
+    }
+    .show-viewer-title-mobile {
+        display: inline;
+    }
+}
+
+@media only screen and (max-width:650px) {
+    .dont-show-toolbar-doc {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width:710px) {
+    .dont-show-toolbar-cad {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width:512px) {
+    .dont-show-toolbar-vds {
+        display: none !important;
+    }
+}

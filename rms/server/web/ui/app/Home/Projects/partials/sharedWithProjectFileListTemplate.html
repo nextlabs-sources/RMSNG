@@ -1,0 +1,42 @@
+<div class="cc-ps-policy">
+<div class="cc-layout-full-width">
+	<div title="{{eachFile.title}}" class="rms-shared-files">
+		<span class="inline-flex" data-ng-class="eachFile.revoked?'revoked revoked-icon':''">
+			<img src="{{fileIconName(eachFile)}}" alt="icon">
+		</span>
+		<a class="rms-file-item" data-ng-click="onClickViewForSharedWithMe(eachFile, projectId, 'PROJECTSPACE')"> {{eachFile.name}} </a>
+	</div>
+	<div title="{{eachFile.title}}">
+		<label title="{{'file.size'| translate}}" class="file-info-label" data-ng-if="eachFile.size != null">{{eachFile.size | filesize:2}}</label>
+		<label title="{{'share.on.label'| translate}}" class="file-info-label">
+			<friendly-date data-ng-if="eachFile.sharedDate!= null" data-date="{{eachFile.sharedDate}}"
+				data-content-class="friendly-date" data-full-format="d MMM yyyy,hh:mm a"
+				data-short-format="hh:mm a" />
+		</label>		
+		<label title="{{'shared.by'| translate}}" class="file-info-label">{{eachFile.sharedBy}}</label>
+		<label title="{{'shared.from'| translate}}" class="file-info-label">{{eachFile.sharedByProjectName}}</label>
+	</div>
+	<div class="rms-file-menu shared-file-menu">
+		<div class="shared-file-menu-button">
+			<span>
+				<a title="{{'toolbar.menu'| translate}}" data-ng-click="onClickMenuGetPermissions(eachFile, projectId,'PROJECTSPACE')" class="glyphicon glyphicon-option-vertical "></a>
+			</span>
+		</div>
+		<div class="shared-file-menu-operations">
+			<span data-ng-if="(selectedFileId == eachFile.duid && eachFile.isMenuClicked)" >
+				<a class="sharedFileListOption-manage-icon" title="{{'viewer.toolbar.info' | translate}}" data-ng-click="onClickSharedWithMeFileInfo(eachFile, projectId, 'PROJECTSPACE')">
+					<i data-ng-include="'ui/img/FileInfo_P.svg'"></i>
+				</a>
+				<a class="fileListOption-share-icon" title="{{'viewer.toolbar.share'| translate}}" data-ng-click="onClickReshare(eachFile, projectId, 'PROJECTSPACE')" data-ng-if ="isProjectAdmin || rights.indexOf('SHARE') > -1">
+					<i data-ng-include="'ui/img/Share_P.svg'"></i>
+				</a>
+				<a class="sharedFileListOption-manage-icon" title="{{'share.file.download' | translate}}" data-ng-click="onClickDownload(eachFile, projectId, 'PROJECTSPACE')" data-ng-if ="rights.indexOf('DOWNLOAD') > -1">
+					<i data-ng-include="'ui/img/Download_Protected.svg'"></i>
+				</a>
+				<a class="sharedFileListOption-manage-icon" title="{{'share.file.extract' | translate}}" data-ng-click="onClickDecrypt(eachFile, projectId, 'PROJECTSPACE')" data-ng-if ="rights.indexOf('DECRYPT') > -1">
+						<i data-ng-include="'ui/img/ExtractButton_P.svg'"></i>
+				</a>
+			</span>
+		</div>
+	</div>
+</div>

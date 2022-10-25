@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="https://skydrm.com/rms/ui/img/favicon.ico">
+  <title>SkyDRM - DATA PROCESSING ADDENDUM (DPA)</title>
+  <style>
+    *,
+    *:before,
+    *:after {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Arial';
+      font-size: 14px;
+      line-height: 1.43;
+    }
+
+    .cc-header {
+      height: 30px;
+      background-color: #3C3C3C;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .cc-header-logo {
+      background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSIyMzBweCIgaGVpZ2h0PSI0NXB4IiB2aWV3Qm94PSIwIDcuNSAyMzAgNDUiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCA3LjUgMjMwIDQ1IiB4bWw6c3BhY2U9InByZXNlcnZlIj48Zz48cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNODEuNjI2LDI0LjA4NmMtMC4xOTEsMC4zMDYtMC4zOSwwLjUzMy0wLjYwMiwwLjY4N2MtMC4yMDgsMC4xNTItMC40NzksMC4yMjktMC44MDksMC4yMjljLTAuMjkzLDAtMC42MDktMC4wOS0wLjk0NC0wLjI3NWMtMC4zMzgtMC4xODUtMC43Mi0wLjM5MS0xLjE0NC0wLjYyYy0wLjQyOC0wLjIyOS0wLjkxNC0wLjQzNi0xLjQ2MS0wLjYxOWMtMC41NDctMC4xODYtMS4xNy0wLjI3Ny0xLjg2OS0wLjI3N2MtMS4yMDksMC0yLjEwOSwwLjI1OC0yLjY5OSwwLjc3M2MtMC41OSwwLjUxNC0wLjg4NSwxLjIxMS0wLjg4NSwyLjA4OGMwLDAuNTYsMC4xNzksMS4wMjMsMC41MzMsMS4zOTJjMC4zNTQsMC4zNywwLjgyLDAuNjg4LDEuNDAyLDAuOTU0YzAuNTc4LDAuMjY5LDEuMjM5LDAuNTEzLDEuOTgyLDAuNzM1YzAuNzQ0LDAuMjIyLDEuNTAyLDAuNDcxLDIuMjc5LDAuNzQ0YzAuNzc1LDAuMjcyLDEuNTM1LDAuNTk0LDIuMjc4LDAuOTY0YzAuNzQ1LDAuMzY5LDEuNDA1LDAuODM5LDEuOTgzLDEuNDFjMC41OCwwLjU3MywxLjA0NywxLjI3MSwxLjQwMiwyLjA4OWMwLjM1NiwwLjgxOCwwLjUzNCwxLjgwOSwwLjUzNCwyLjk2N2MwLDEuMjg1LTAuMjIxLDIuNDg1LTAuNjY2LDMuNjAzYy0wLjQ0NiwxLjExNi0xLjA5MSwyLjA5NC0xLjkzNywyLjkyOGMtMC44NDYsMC44MzItMS44ODksMS40ODMtMy4xMjksMS45NjNjLTEuMjM4LDAuNDc5LTIuNjQ3LDAuNzEzLTQuMjI2LDAuNzEzYy0wLjg2NCwwLTEuNzQ1LTAuMDg4LTIuNjQxLTAuMjY2Yy0wLjg5Ny0wLjE4MS0xLjc2NS0wLjQzMy0yLjYwMy0wLjc1NGMtMC44NC0wLjMyNC0xLjYyNy0wLjcwNy0yLjM2Ny0xLjE1MmMtMC43MzgtMC40NDUtMS4zNzktMC45MzktMS45MjYtMS40ODZsMS45MDUtMy4wMTRjMC4xNTMtMC4yMTUsMC4zNTQtMC4zOTYsMC42MDEtMC41NDNjMC4yNDgtMC4xNDYsMC41Mi0wLjIxOSwwLjgxMi0wLjIxOWMwLjM4MSwwLDAuNzY1LDAuMTE5LDEuMTUzLDAuMzZjMC4zODgsMC4yNCwwLjgyNiwwLjUwOSwxLjMxNSwwLjgwMmMwLjQ4OSwwLjI5MSwxLjA1MiwwLjU2MSwxLjY4OCwwLjgwM2MwLjYzNiwwLjI0LDEuMzg1LDAuMzYxLDIuMjUsMC4zNjFjMS4xNjgsMCwyLjA3OC0wLjI1OSwyLjcyNy0wLjc3MWMwLjY0Ni0wLjUxMiwwLjk3My0xLjMzMiwwLjk3My0yLjQ0OWMwLTAuNjQ5LTAuMTgtMS4xNzUtMC41MzUtMS41ODJjLTAuMzU1LTAuNDA2LTAuODIyLTAuNzQ0LTEuNDAxLTEuMDExYy0wLjU4LTAuMjY4LTEuMjM1LTAuNTA0LTEuOTc2LTAuNzA1Yy0wLjczNS0wLjIwNC0xLjQ5MS0wLjQzMS0yLjI2OC0wLjY3OGMtMC43NzUtMC4yNDktMS41MzEtMC41NTctMi4yNy0wLjkxN2MtMC43MzctMC4zNjItMS4zOTYtMC44MzgtMS45NzUtMS40MzFjLTAuNTctMC41OTMtMS4wNC0xLjMzMy0xLjM5Ni0yLjIxNWMtMC4zNTUtMC44ODMtMC41MzItMS45NzQtMC41MzItMy4yN2MwLTEuMDQzLDAuMjA5LTIuMDYyLDAuNjMtMy4wNTNjMC40Mi0wLjk5LDEuMDM1LTEuODc2LDEuODQ4LTIuNjUxYzAuODE0LTAuNzc1LDEuODE0LTEuMzk2LDIuOTk1LTEuODU4YzEuMTgxLTAuNDY1LDIuNTM3LTAuNjk2LDQuMDYyLTAuNjk2YzAuODU0LDAsMS42ODMsMC4wNjcsMi40ODgsMC4yMDFjMC44MDksMC4xMzQsMS41NzUsMC4zMywyLjI5OSwwLjU5MmMwLjcyNiwwLjI2LDEuNDAyLDAuNTcsMi4wMzMsMC45MzRjMC42MjcsMC4zNjMsMS4xOSwwLjc3MywxLjY4NywxLjIyOUw4MS42MjYsMjQuMDg2eiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik05Mi44MDUsMTcuNjc4djE2LjAwM2gwLjg3NWMwLjM2OCwwLDAuNjQ3LTAuMDU3LDAuODM4LTAuMTYzYzAuMTktMC4xMDYsMC4zODItMC4yODksMC41NzEtMC41NDNsMy43NC01LjU2OGMwLjIyOS0wLjMxNywwLjQ4OC0wLjU1NywwLjc4MS0wLjcxNWMwLjI5Mi0wLjE1OSwwLjY2Ni0wLjIzOSwxLjEyNC0wLjIzOWg1LjQxN2wtNS4xMTEsNy4wMzljLTAuNDgzLDAuNjM1LTEuMDU3LDEuMTU2LTEuNzE3LDEuNTYzYzAuMjkzLDAuMjE3LDAuNTYxLDAuNDY4LDAuODAzLDAuNzUzczAuNDY5LDAuNjA2LDAuNjg2LDAuOTY0bDUuNTY4LDkuNDU0aC01LjMzOGMtMC40NDcsMC0wLjgyOC0wLjA3MS0xLjE0Ni0wLjIxOWMtMC4zMTgtMC4xNDYtMC41ODUtMC40MDItMC44MDItMC43NzFsLTMuNzM4LTYuOTk1Yy0wLjE3Ny0wLjMxOC0wLjM2My0wLjUyNS0wLjU1NC0wLjYyMWMtMC4xODgtMC4wOTUtMC40NzYtMC4xNDQtMC44NTYtMC4xNDRoLTEuMTQ0djguNzVoLTUuOTE0VjE3LjY3N0w5Mi44MDUsMTcuNjc4TDkyLjgwNSwxNy42Nzh6Ii8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNy4zNjksMjYuNDUybC0xMC41NjYsMjQuOTA2Yy0wLjE4LDAuMzk2LTAuMzk1LDAuNjgzLTAuNjQ4LDAuODY3cy0wLjY2LDAuMjc1LTEuMjE5LDAuMjc1aC00LjQzNGwzLjgyMS04LjAwOGwtNy45MDMtMTguMDQxaDUuMjI5YzAuNDU4LDAsMC44MSwwLjEwMiwxLjA2MSwwLjMwNWMwLjI0OSwwLjIwNCwwLjQzLDAuNDQ2LDAuNTQ0LDAuNzI2bDMuMjQ2LDguNTI0YzAuMzA4LDAuNzc1LDAuNTUzLDEuNTcxLDAuNzQ0LDIuMzg0YzAuMTQzLTAuNDA2LDAuMjgtMC44MTMsMC40Mi0xLjIyMmMwLjEzOS0wLjQwNiwwLjI4NS0wLjgxLDAuNDM4LTEuMjAybDIuOTM4LTguNDg1YzAuMTEyLTAuMjkyLDAuMzE3LTAuNTM3LDAuNjEtMC43MzVjMC4yOTEtMC4xOTcsMC42MDctMC4yOTQsMC45NTEtMC4yOTRMMTI3LjM2OSwyNi40NTJMMTI3LjM2OSwyNi40NTJMMTI3LjM2OSwyNi40NTJ6Ii8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTE1Ni42MDIsMzIuMzI1YzAsMi4wMDgtMC4zNDYsMy44NjMtMS4wNDEsNS41NmMtMC42ODgsMS42OTctMS42NjgsMy4xNjQtMi45MjYsNC40MDRjLTEuMjYsMS4yMzgtMi43NzUsMi4yMDUtNC41NDksMi44OTZjLTEuNzc1LDAuNjk0LTMuNzQyLDEuMDQxLTUuOTA0LDEuMDQxaC0xMC43OTVWMTguNDQyaDEwLjc5NWMyLjE2MiwwLDQuMTI5LDAuMzUsNS45MDQsMS4wNDljMS43NzMsMC43LDMuMjg5LDEuNjY3LDQuNTQ5LDIuODk5YzEuMjU4LDEuMjMyLDIuMjM0LDIuNjk4LDIuOTI2LDQuMzk3QzE1Ni4yNTYsMjguNDgzLDE1Ni42MDIsMzAuMzMsMTU2LjYwMiwzMi4zMjV6IE0xNTAuMDA2LDMyLjMyNWMwLTEuMzcyLTAuMTc4LTIuNjEyLTAuNTMzLTMuNzE5Yy0wLjM1OS0xLjEwNi0wLjg3MS0yLjA0NC0xLjUzOS0yLjgxNGMtMC42NjYtMC43NjgtMS40ODMtMS4zNTgtMi40NDktMS43NzFjLTAuOTY3LTAuNDEzLTIuMDY1LTAuNjItMy4yOTktMC42MmgtNC4zMTF2MTcuODdoNC4zMTFjMS4yMzIsMCwyLjMzMi0wLjIwOSwzLjI5OS0wLjYyMWMwLjk2Ni0wLjQxMiwxLjc4My0xLjAwMiwyLjQ0OS0xLjc3MWMwLjY3LTAuNzcsMS4xOC0xLjcwNywxLjUzOS0yLjgxM0MxNDkuODI4LDM0Ljk1NywxNTAuMDA2LDMzLjcxMiwxNTAuMDA2LDMyLjMyNXoiLz48cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMTgzLjUzMSw0Ni4yMjdoLTUuODM4Yy0xLjA4MiwwLTEuODU1LTAuNDA1LTIuMzI0LTEuMjIzbC00LjYxNy04LjA2M2MtMC4yMTctMC4zNDItMC40NTctMC41OTQtMC43MjctMC43NTJjLTAuMjY5LTAuMTU3LTAuNjQ2LTAuMjM4LTEuMTQ2LTAuMjM4aC0xLjY0MnYxMC4yNzVoLTYuNDQ0VjE4LjQ0M2g5LjAzOWMyLjAxLDAsMy43MjQsMC4yMDgsNS4xNDIsMC42MjFjMS40MTYsMC40MTQsMi41NzEsMC45ODksMy40NzMsMS43MjdjMC44OTUsMC43MzYsMS41NDksMS42MDgsMS45NTMsMi42MTJjMC40MDYsMS4wMDMsMC42MDgsMi4wOTgsMC42MDgsMy4yOGMwLDAuOTAxLTAuMTIsMS43NTUtMC4zNiwyLjU1NWMtMC4yNCwwLjgtMC42MDEsMS41NDItMS4wNjYsMi4yMjFjLTAuNDc1LDAuNjgxLTEuMDUxLDEuMjg5LTEuNzQ0LDEuODIyYy0wLjY5NSwwLjUzNC0xLjQ5MiwwLjk3My0yLjM5NiwxLjMxNGMwLjQxOCwwLjIxNiwwLjgxNCwwLjQ4NiwxLjE4NSwwLjgxMmMwLjM2OSwwLjMyNCwwLjY5NywwLjcwOSwwLjk5MiwxLjE1M0wxODMuNTMxLDQ2LjIyN3ogTTE2OS44MzYsMzEuNTAzYzAuODc3LDAsMS42MjctMC4xMDksMi4yNDItMC4zMzFjMC42MTktMC4yMjMsMS4xMjMtMC41MywxLjUxOC0wLjkyNmMwLjM5Ni0wLjM5MywwLjY4Mi0wLjg1NCwwLjg1OS0xLjM4M2MwLjE3OC0wLjUyNywwLjI2OC0xLjA5NywwLjI2OC0xLjcwOGMwLTEuMjIyLTAuMzk3LTIuMTc0LTEuMTktMi44NmMtMC43OTYtMC42ODgtMi4wMjctMS4wMjktMy42OTEtMS4wMjloLTIuNTk0djguMjM3SDE2OS44MzZMMTY5LjgzNiwzMS41MDN6Ii8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTIxNy40OTgsMTguNDR2MjcuNzg0aC01LjY4NlYzMC4yNDdjMC0wLjM2OCwwLjAxNC0wLjc2OSwwLjAyNi0xLjIwMmMwLjAyMi0wLjQzMSwwLjA1OC0wLjg3LDAuMTA2LTEuMzE1bC03LjM4MywxNC4yODZjLTAuMjI3LDAuNDQyLTAuNTM1LDAuNzc4LTAuOTI0LDEuMDFjLTAuMzg5LDAuMjI5LTAuODI4LDAuMzQ0LTEuMzI4LDAuMzQ0aC0wLjg3NWMtMC40OTYsMC0wLjkzOC0wLjExNS0xLjMyNi0wLjM0NGMtMC4zODctMC4yMjktMC42OTYtMC41NjYtMC45MjYtMS4wMWwtNy4zODEtMTQuMzI0YzAuMDM5LDAuNDU4LDAuMDcsMC45MDcsMC4wOTYsMS4zNDZjMC4wMjMsMC40MzgsMC4wMzcsMC44NDIsMC4wMzcsMS4yMXYxNS45NzloLTUuNjg0VjE4LjQ0aDQuOTJjMC4yNzksMCwwLjUyNSwwLjAwOCwwLjczNiwwLjAyMWMwLjIwOSwwLjAxMywwLjM5NSwwLjA1LDAuNTYzLDAuMTE1YzAuMTY0LDAuMDYzLDAuMzE2LDAuMTYxLDAuNDQ5LDAuMjk1YzAuMTM1LDAuMTMzLDAuMjY0LDAuMzIsMC4zOTEsMC41NjNsNy4xNTIsMTQuMDk2YzAuMjU0LDAuNDgzLDAuNDk4LDAuOTg2LDAuNzM0LDEuNTA2YzAuMjM0LDAuNTIxLDAuNDYxLDEuMDU2LDAuNjc2LDEuNjA0YzAuMjE5LTAuNTYsMC40NDEtMS4xMDcsMC42NzgtMS42NDJzMC40ODgtMS4wNDQsMC43NTQtMS41MjZsNy4xMzUtMTQuMDM3YzAuMTI1LTAuMjQyLDAuMjU0LTAuNDMsMC4zOS0wLjU2M2MwLjEzMy0wLjEzNCwwLjI4Mi0wLjIzMSwwLjQ0Ni0wLjI5NWMwLjE2Ni0wLjA2NCwwLjM1NS0wLjEwMywwLjU2My0wLjExNWMwLjIxMS0wLjAxMywwLjQ1NS0wLjAyMSwwLjczOC0wLjAyMUgyMTcuNDk4TDIxNy40OTgsMTguNDR6Ii8+PC9nPjxnPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik01MC41NTMsMzYuNDIyaC04LjkxYy0wLjY1NSwwLTEuMTgzLTAuNTI5LTEuMTgzLTEuMTg0YzAtMC42NTMsMC41MjctMS4xODQsMS4xODMtMS4xODRoOC43NzFjMC44NjQtMC4yMiw2LjA1NS0xLjc0LDUuOTQxLTYuNTRjLTAuMDUxLTIuMTc5LTAuNzUtMy44NTYtMi4wODEtNC45ODVjLTIuODQzLTIuNDE2LTcuNjQ3LTEuNzc1LTcuNjk2LTEuNzY5Yy0wLjMxOCwwLjA0Mi0wLjYzNi0wLjA0Mi0wLjg4OC0wLjIzNWMtMC4yNTItMC4xOTQtMC40MTUtMC40ODItMC40NTMtMC43OTljLTAuMDM4LTAuMzMzLTEuMDg1LTguMjc1LTcuNzUyLTguODgxYy02LjU3NS0wLjU5Mi04LjI3MSw2Ljg4NC04LjMzOCw3LjIwMmMtMC4xMzgsMC42MzgtMC43NjksMS4wNDMtMS40MDgsMC45MDZjLTAuNjM4LTAuMTM4LTEuMDQ0LTAuNzY4LTAuOTA1LTEuNDA2YzAuNzM2LTMuNDA2LDMuOTUtOS42ODUsMTAuODY2LTkuMDU4YzYuMTk1LDAuNTY0LDguOTIsNi4xNjIsOS42OTksOS44MzVjMS44OTMtMC4wNzMsNS43MDcsMC4xMDYsOC40MDcsMi40MDFjMS44NjYsMS41ODUsMi44NDcsMy44NTEsMi45MTEsNi43MzNjMC4xMzMsNS42NjctNS4xMTcsOC4zMjItNy45MTMsOC45MzVDNTAuNzIzLDM2LjQxNCw1MC42MzcsMzYuNDIyLDUwLjU1MywzNi40MjJ6Ii8+PC9nPjxnPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xNC41NCwyNi4zNDhIOS44OTljLTAuNjU0LDAtMS4xODYtMC41My0xLjE4Ni0xLjE4NHMwLjUzMS0xLjE4MywxLjE4Ni0xLjE4M2g0LjY0MWMwLjY1NCwwLDEuMTg0LDAuNTI5LDEuMTg0LDEuMTgzUzE1LjE5NCwyNi4zNDgsMTQuNTQsMjYuMzQ4eiIvPjwvZz48Zz48cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMTYuOTI4LDQ0Ljk0NWgtNC42NDJjLTAuNjUyLDAtMS4xODQtMC41MjktMS4xODQtMS4xODJjMC0wLjY1NiwwLjUzMS0xLjE4NywxLjE4NC0xLjE4N2g0LjY0MmMwLjY1NSwwLDEuMTg1LDAuNTI4LDEuMTg1LDEuMTg3QzE4LjExMSw0NC40MTYsMTcuNTgxLDQ0Ljk0NSwxNi45MjgsNDQuOTQ1eiIvPjwvZz48Zz48cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNNDcuMjQzLDQ0Ljk0NWgtNy4zMDhjLTAuNjUzLDAtMS4xODMtMC41MjktMS4xODMtMS4xODJjMC0wLjY1NiwwLjUyOS0xLjE4NywxLjE4My0xLjE4N2g3LjMwOGMwLjY1MiwwLDEuMTgyLDAuNTI4LDEuMTgyLDEuMTg3QzQ4LjQyNyw0NC40MTYsNDcuODk3LDQ0Ljk0NSw0Ny4yNDMsNDQuOTQ1eiIvPjwvZz48Zz48cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMTQuNTQsMzYuNDM4SDQuMzYyYy0wLjY1MiwwLTEuMTgzLTAuNTI5LTEuMTgzLTEuMTg0YzAtMC42NTIsMC41My0xLjE4MywxLjE4My0xLjE4M0gxNC41NGMwLjY1NCwwLDEuMTg0LDAuNTI4LDEuMTg0LDEuMTgzQzE1LjcyNCwzNS45MDksMTUuMTk0LDM2LjQzOCwxNC41NCwzNi40Mzh6Ii8+PC9nPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yOC4yNiwyMC40NzRsLTEwLjk3OSwxLjk0M3YxNS4xNzZjMCw3LjQ4NSwxMC45NzksMTMuNTU0LDEwLjk3OSwxMy41NTRzMTAuOTc3LTYuMDY4LDEwLjk3Ny0xMy41NTRWMjIuNDE3TDI4LjI2LDIwLjQ3NHogTTMzLjY3MywzMC41bC02LjM4Nyw2LjM5NGMtMC4xNjYsMC4xNjctMC4zOSwwLjI2MS0wLjYyMywwLjI2MXMtMC40NTctMC4wOTMtMC42MjUtMC4yNmwtMy4xOTUtMy4yYy0wLjM0NC0wLjM0My0wLjM0NC0wLjkwMiwwLTEuMjQ0YzAuMzQ0LTAuMzQ1LDAuOTAyLTAuMzQ1LDEuMjQ2LDBsMi41NzIsMi41NzRsNS43NjgtNS43N2MwLjM0My0wLjM0NiwwLjkwMi0wLjM0NCwxLjI0NC0wLjAwMUMzNC4wMiwyOS41OTcsMzQuMDIsMzAuMTU2LDMzLjY3MywzMC41eiIvPjwvc3ZnPg==) no-repeat;
+      background-size: 76% 80%;
+      height: 38px;
+      width: 200px;
+      display: inline-block;
+    }
+
+    .col-xs-2,
+    .col-xs-8 {
+      position: relative;
+      min-height: 1px;
+      padding: 0 15px 0 15px;
+    }
+
+    .col-xs-2 {
+      width: 16.666666666666664%;
+    }
+
+    .col-xs-8 {
+      width: 66.666666666666664%;
+    }
+
+    .margin-auto {
+      margin: auto;
+    }
+
+    h4,
+    .h4 {
+      font-size: 18px;
+      margin: 10px 0 10px 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    p {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      margin: 1em 0 1em;
+    }
+
+    a,
+    a:visited,
+    a:link,
+    a:hover,
+    a:active {
+      outline: 0px;
+      color: #333333;
+    }
+
+    ol, ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul {
+      list-style: disc outside none;
+      padding-left: 1.25em;
+      margin-top: 0.15em;
+      margin-bottom: 1.0em;
+    }
+
+    li {
+      font-family: 'Arial';
+      font-size: 14px;
+      line-height: 1.43;
+    }
+  </style>
+</head>
+
+<body style="-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; font-family: 'Fira Sans'; font-size: 14px; line-height: 1.5; color: #333; height: 100%; background-color: #fff; margin: 0; padding: 0;"
+  bgcolor="#fff">
+  <div class="cc-header" style="margin-bottom:20px; background-color: #3C3C3C; width: 100%; height: 30px;">
+    <div class="cc-header-logo"></div>
+  </div>
+  <div style="width:100%">
+    <div class="col-xs-8 margin-auto">
+      <h2>DATA PROCESSING ADDENDUM</h2>
+    </div>
+  </div>
+  <div style="width:100%">
+    <div class="col-xs-8 margin-auto">
+      <p>This Data Processing Addendum (“DPA”) forms part of the Master Subscription Agreement between Customer and NextLabs,
+        Inc. or other written or electronic agreement between NextLabs and Customer for the purchase of online services from
+        NextLabs (the “Agreement”) to reflect the parties’ agreement with regard to the Processing of Customer Data, including
+        Personal Data, in accordance with the requirements of Data Protection Laws and Regulations. All capitalized terms
+        not defined herein shall have the meaning set forth in the Agreement.</p>
+      <p><strong>HOW THIS DPA APPLIES</strong></p>
+      <p>If the Customer entity signing this DPA is a party to the Agreement, this DPA is an addendum to and forms part of the
+        Agreement. In such case, the NextLabs entity that is party to the Agreement is party to this DPA.</p>
+      <p>If the Customer entity signing this DPA has executed an Order Form with NextLabs or its Affiliate pursuant to the Agreement,
+        but is not itself a party to the Agreement, this DPA is an addendum to that Order Form and applicable renewal Order
+        Forms, and the NextLabs entity that is party to such Order Form is party to this DPA.
+      </p>
+      <p>If the Customer entity signing this DPA is neither a party to an Order Form nor the Agreement, this DPA is not valid
+        and is not legally binding. Such entity should request that the Customer entity who is a party to the Agreement executes
+        this DPA.</p>
+      <p>If the Customer entity signing the DPA is not a party to an Order Form nor a Master Subscription Agreement directly
+        with NextLabs, but is instead a customer indirectly via an authorized reseller of NextLabs services, this DPA is
+        not valid and is not legally binding. Such entity should contact the authorized reseller to discuss whether any amendment
+        to its agreement with that reseller may be required.</p>
+      <p>This DPA shall not replace any comparable or additional rights relating to Processing of Customer Data contained in
+        Customer’s Agreement (including any existing data processing addendum to the Agreement).</p>
+      <p><strong>DATA PROCESSING TERMS</strong></p>
+      <p>In the course of providing the Services to Customer pursuant to the Agreement, NextLabs may Process Personal Data on
+        behalf of Customer and NextLabs agrees to comply with the following provisions with respect to any Personal Data.</p>
+      <ol>
+        <li><strong> DEFINITIONS</strong></li>
+      </ol>
+      <p>“Data Controller” means the entity that determines the purposes and means of the Processing of Personal Data.</p>
+      <p>“Data Processor” means the entity which Processes Personal Data on behalf of the Data Controller.</p>
+      <p>“Data Protection Laws and Regulations” means all laws and regulations, including laws and regulations of the European
+        Union, the European Economic Area and their member states, applicable to the Processing of Personal Data under the
+        Agreement.
+      </p>
+      <p>“Data Subject” means the individual to whom Personal Data relates.</p>
+      <p>“Personal Data” means any information relating to (i) an identified or identifiable person and, (ii) an identified
+        or identifiable legal entity (where such information is protected similarly as personal data or personally identifiable
+        information under applicable Data Protection Laws and Regulations), where such data is submitted to the Services
+        as Customer Data.</p>
+      <p>“Processing” means any operation or set of operations which is performed upon Personal Data, whether or not by automatic
+        means, such as collection, recording, organization, storage, adaptation or alteration, retrieval, consultation, use,
+        disclosure by transmission, dissemination or otherwise making available, alignment or combination, blocking, erasure
+        or destruction.</p>
+      <p>“Security, Privacy and Architecture Documentation” means the Security, Privacy and Architecture Documentation applicable
+        to the specific Services purchased by Customer, as updated from time to time, and accessible via https://www. NextLabs.com/
+        or as otherwise made reasonably available by NextLabs.</p>
+      <p>“NextLabs” means NextLabs Inc.</p>
+      <p>“Standard Contractual Clauses” means the agreement executed by and between Customer and NextLabs and attached hereto
+        as Schedule 2 pursuant to the European Commission’s decision of 5 February 2010 on Standard Contractual Clauses for
+        the transfer of personal data to processors established in third countries which do not ensure an adequate level
+        of data protection.</p>
+      <p>“Sub-processor” means any Data Processor engaged by NextLabs.</p>
+      <ol start="2">
+        <li><strong> PROCESSING OF PERSONAL DATA</strong></li>
+      </ol>
+      <p>2.1 Roles of the Parties. The parties acknowledge and agree that with regard to the Processing of Personal Data, Customer
+        is the Data Controller, NextLabs is a Data Processor and that NextLabs will engage Sub-processors pursuant to the
+        requirements set forth in Section 5 “Sub-processors” below.</p>
+      <p>2.2 Customer’s Processing of Personal Data. Customer shall, in its use of the Services, Process Personal Data in accordance
+        with the requirements of Data Protection Laws and Regulations. For the avoidance of doubt, Customer’s instructions
+        for the Processing of Personal Data shall comply with Data Protection Laws and Regulations. Customer shall have sole
+        responsibility for the accuracy, quality, and legality of Personal Data and the means by which Customer acquired
+        Personal Data.</p>
+      <p>2.3 NextLabs’ Processing of Personal Data. NextLabs shall only Process Personal Data on behalf of and in accordance
+        with Customer’s instructions and shall treat Personal Data as Confidential Information. Customer instructs NextLabs
+        to Process Personal Data for the following purposes: (i) Processing in accordance with the Agreement and applicable
+        Order Form(s); (ii) Processing initiated by Users in their use of the Services; and (iii) Processing to comply with
+        other reasonable instructions provided by Customer (e.g., via email) where such instructions are consistent with
+        the terms of the Agreement.</p>
+      <p>2.4 Scope and Purpose; Categories of Personal Data and Data Subjects. The objective of Processing of Personal Data
+        by NextLabs is the performance of the Services pursuant to the Agreement. The types of Personal Data and categories
+        of Data Subjects Processed under this DPA are further specified in Schedule 1 (Details of the Processing) to this
+        DPA.
+      </p>
+      <ol start="3">
+        <li><strong> RIGHTS OF DATA SUBJECTS</strong></li>
+      </ol>
+      <p>3.1 Correction, Blocking and Deletion. To the extent Customer, in its use of the Services, does not have the ability
+        to correct, amend, block or delete Personal Data, as required by Data Protection Laws and Regulations, NextLabs shall
+        comply with any commercially reasonable request by Customer to facilitate such actions to the extent NextLabs is
+        legally permitted to do so. To the extent legally permitted, Customer shall be responsible for any costs arising
+        from NextLabs’ provision of such assistance.</p>
+      <p>3.2 Data Subject Requests. NextLabs shall, to the extent legally permitted, promptly notify Customer if it receives
+        a request from a Data Subject for access to, correction, amendment or deletion of that person’s Personal Data. NextLabs
+        shall not respond to any such Data Subject request without Customer’s prior written consent except to confirm that
+        the request relates to Customer. NextLabs shall provide Customer with commercially reasonable cooperation and assistance
+        in relation to handling of a Data Subject’s request for access to that person’s Personal Data, to the extent legally
+        permitted and to the extent Customer does not have access to such Personal Data through its use of the Services.
+        If legally permitted, Customer shall be responsible for any costs arising from NextLabs’ provision of such assistance.</p>
+      <ol start="4">
+        <li><strong> NEXTLABS PERSONNEL</strong></li>
+      </ol>
+      <p>4.1 Confidentiality. NextLabs shall ensure that its personnel engaged in the Processing of Personal Data are informed
+        of the confidential nature of the Personal Data, have received appropriate training on their responsibilities and
+        have executed written confidentiality agreements. NextLabs shall ensure that such confidentiality obligations survive
+        the termination of the personnel engagement.</p>
+      <p>4.2 Reliability. NextLabs shall take commercially reasonable steps to ensure the reliability of any NextLabs personnel
+        engaged in the Processing of Personal Data.</p>
+      <p>4.3 Limitation of Access. NextLabs shall ensure that NextLabs’ access to Personal Data is limited to those personnel
+        performing Services in accordance with the Agreement.</p>
+      <p>4.4 Data Protection Officer. NextLabs has appointed a data protection officer where such appointment is required by
+        Data Protection Laws and Regulations. The appointed person may be reached at https://www.compliance@nextlabs.com.</p>
+      <ol start="5">
+        <li><strong> SUB-PROCESSORS</strong></li>
+      </ol>
+      <p>5.1 Appointment of Sub-processors. Customer acknowledges and agrees that (a) NextLabs’ Affiliates may be retained as
+        Sub-processors; and (b) NextLabs and NextLabs’ Affiliates respectively may engage third-party Sub-processors in connection
+        with the provision of the Services. Any such Sub-processors will be permitted to obtain Personal Data only to deliver
+        the services Customer has retained NextLabs to provide, and they are prohibited from using Personal Data for any
+        other purpose.</p>
+      <p>5.2 Liability. NextLabs shall be liable for the acts and omissions of its Sub-processors to the same extent NextLabs
+        would be liable if performing the services of each Sub-processor directly under the terms of this DPA.</p>
+      <ol start="6">
+        <li><strong> SECURITY</strong></li>
+      </ol>
+      <p>Controls for the Protection of Personal Data. NextLabs shall maintain administrative, physical and technical safeguards
+        for protection of the security, confidentiality and integrity of Customer Data, including Personal Data, as set forth
+        in the Security, Privacy and Architecture Documentation. NextLabs regularly monitors compliance with these safeguards.
+        NextLabs will not materially decrease the overall security of the Services during a subscription term.</p>
+      <ol start="7">
+        <li><strong> SECURITY BREACH MANAGEMENT AND NOTIFICATION</strong></li>
+      </ol>
+      <p>NextLabs maintains security incident management policies and procedures specified in the Security, Privacy and Architecture
+        Documentation and shall, to the extent permitted by law, promptly notify Customer of any actual or reasonably suspected
+        unauthorized disclosure of Customer Data, including Personal Data, by NextLabs or its Sub-processors of which NextLabs
+        becomes aware (a “Security Breach”). To the extent such Security Breach is caused by a violation of the requirements
+        of this DPA by NextLabs, NextLabs shall make reasonable efforts to identify and remediate the cause of such Security
+        Breach.
+      </p>
+      <ol start="8">
+        <li><strong> RETURN AND DELETION OF CUSTOMER DATA</strong></li>
+      </ol>
+      <p>NextLabs shall return Customer Data to Customer and delete Customer Data in accordance with the procedures and timeframes
+        specified in the Security, Privacy and Architecture Documentation.</p>
+      <ol start="9">
+        <li><strong> ADDITIONAL TERMS FOR EU PERSONAL DATA</strong></li>
+      </ol>
+      <p>9.1 Application of Standard Contractual Clauses. The Standard Contractual Clauses in Schedule 2 (the “Standard Contractual
+        Clauses”) and the additional terms in this Section 9 will apply to the Processing of Personal Data by Data Importer
+        solely in the course of providing Services, as follows:</p>
+      <p>9.1.1 The Standard Contractual Clauses apply only to Personal Data that is transferred from the European Economic Area
+        and/or Switzerland to outside the European Economic Area and Switzerland, either directly or via onward transfer,
+        to any country or recipient: (i) not recognized by the European Commission as providing an adequate level of protection
+        for personal data (as described in the EU Data Protection Directive), and (ii) not covered by a suitable framework
+        recognized by the relevant authorities or courts as providing an adequate level of protection for personal data.</p>
+      <p>9.1.2 The Standard Contractual Clauses apply to (i) the legal entity that has executed the Standard Contractual Clauses
+        as a Data Exporter and, (ii) all Affiliates (as defined in the Agreement) of Customer established within the European
+        Economic Area and Switzerland which have signed Order Forms for the Services. For the purpose of the Standard Contractual
+        Clauses and this Section 9, the aforementioned entities shall be deemed “Data Exporters”.</p>
+      <p>9.2 Instructions. This DPA and the Agreement are Customer’s complete and final instructions to NextLabs for the Processing
+        of Personal Data. Any additional or alternate instructions must be agreed upon separately. For the purposes of Clause
+        5(a) of the Standard Contractual Clauses, Customer instructs NextLabs to process Personal Data: (a) in accordance
+        with the Agreement and applicable Order Form(s); and (b) as initiated by Users in their use of the Services.</p>
+      <p>9.3 Sub-processors. Pursuant to Clause 5(h) of the Standard Contractual Clauses, Customer acknowledges and expressly
+        agrees that (a) NextLabs’ Affiliates may be retained as Sub-processors; and (b) NextLabs and NextLabs’ Affiliates
+        respectively may engage third-party Sub-processors in connection with the provision of the Services.</p>
+      <p>9.4 List of Current Sub-processors and Notification of New Sub-processors. NextLabs shall make available to Customer
+        a current list of Sub-processors for the respective Services with the identities of those Sub-processors (“Sub-processor
+        List”). NextLabs shall provide Customer with a mechanism to subscribe to updates to the relevant Sub-processor List,
+        to which Customer shall subscribe, and NextLabs shall provide such updates before authorizing any new Sub- processor(s)
+        to Process Personal Data in connection with the provision of the Services.</p>
+      <p>9.5 Objection Right for new Sub-processors. If Customer has a reasonable basis to object to NextLabs’ use of a new
+        Sub- processor, Customer shall notify NextLabs promptly in writing within 10 business days after receipt of NextLabs’
+        notice in accordance with the mechanism set out in Section 9.4.</p>
+      <p>9.5.1 In the event Customer objects to a new Sub-processor(s) and that objection is not unreasonable, NextLabs will
+        use reasonable efforts to make available to Customer a change in the affected Services or recommend a commercially
+        reasonable change to Customer’s configuration or use of the affected Services to avoid Processing of Personal Data
+        by the objected-to new Sub-processor without unreasonably burdening Customer. If NextLabs is unable to make available
+        such change within a reasonable period of time, which shall not exceed sixty (60) days, Customer may terminate the
+        applicable Order Form(s) in respect only to those Services which cannot be provided by NextLabs without the use of
+        the objected-to new Sub-processor, by providing written notice to NextLabs. Customer shall receive a refund of any
+        prepaid fees for the period following the effective date of termination in respect of such terminated Services.</p>
+      <p>9.5.2 The parties agree that the copies of the Sub-processor agreements that must be sent by NextLabs to Customer pursuant
+        to Clause 5(j) of the Standard Contractual Clauses (a) shall be treated as the confidential information of NextLabs
+        and in accordance with the Agreement, if any, and (b) may have all commercial information, or clauses unrelated to
+        the Standard Contractual Clauses or their equivalent, removed by NextLabs beforehand; and, that such copies will
+        be provided by NextLabs only upon reasonable request by Customer.</p>
+      <p>9.6 Audits and Certifications. The parties agree that the audits described in Clause 5(f) and Clause 12(2) of the Standard
+        Contractual Clauses shall be carried out in accordance with the following specifications:</p>
+      <p>Upon Customer’s request, and subject to the confidentiality obligations set forth in the Agreement, NextLabs shall
+        make available to Customer that is not a competitor of NextLabs (or Customer’s independent, third-party auditor that
+        is not a competitor of NextLabs) information regarding NextLabs’ compliance with the obligations set forth in this
+        DPA in the form of the third-party certifications and audits set forth in the Security, Privacy and Architecture
+        Documentation to the extent NextLabs makes them generally available to its customers. Customer may contact NextLabs
+        in accordance with the “Notices” Section of the Agreement to request an on-site audit of the procedures relevant
+        to the protection of Personal Data. Customer shall reimburse NextLabs for any time expended for any such on-site
+        audit at NextLabs’ then-current professional services rates, which shall be made available to Customer upon request.
+        Before the commencement of any such on-site audit, Customer and NextLabs shall mutually agree upon the scope, timing,
+        and duration of the audit in addition to the reimbursement rate for which Customer shall be responsible. All reimbursement
+        rates shall be reasonable, taking into account the resources expended by NextLabs. Customer shall promptly notify
+        NextLabs with information regarding any non-compliance discovered during the course of an audit.</p>
+      <p>9.7 Conflict. In the event of any conflict or inconsistency between this DPA and the Standard Contractual Clauses in
+        Schedule 2, the Standard Contractual Clauses shall prevail.</p>
+      <ol start="10">
+        <li><strong> LIMITATION OF LIABILITY</strong></li>
+      </ol>
+      <p>Each party’s and its Affiliates’ liability arising out of or related to this DPA (whether in contract, tort or under
+        any other theory of liability) is subject to the section ‘Limitation of Liability’ of the Agreement, and any reference
+        in such section to the liability of a party means that party and its Affiliates in the aggregate.
+      </p>
+      <p><strong>List of Schedules</strong></p>
+      <p>Schedule 1: Details of the Processing</p>
+      <p>Schedule 2: Standard Contractual Clauses</p>
+      <p>&nbsp;</p>
+      <p><strong><br> </strong></p>
+      <p><strong>&nbsp;</strong></p>
+      <p>&nbsp;</p>
+      <p style="text-align: center;"><strong>SCHEDULE 1 – DETAILS OF THE PROCESSING</strong></p>
+      <p><strong>&nbsp;</strong></p>
+      <p><strong>Categories of Data Subjects</strong></p>
+      <p>Customer may submit and users may submit on behalf of Customer Personal Data to the Services, the extent of which is
+        determined and controlled by Customer in its sole discretion, and which may include, but is not limited to Personal
+        Data relating to the following categories of data subjects:</p>
+      <ul>
+        <li>Prospects, customers, business partners and vendors of Customer and Customer’s customers (who are natural persons)
+        </li>
+        <li>Employees or contact persons of Customer’s prospects, customers, business partners and vendors</li>
+        <li>Employees, agents, advisors, freelancers of Customer (who are natural persons)</li>
+        <li>Customer’s Users authorized by Customer to use the Services</li>
+      </ul>
+      <p><strong>Categories of Personal Data</strong></p>
+      <p>Customer may submit Personal Data to the Services, the extent of which is determined and controlled by Customer in
+        its sole discretion, and which may include, but is not limited to the following categories of Personal Data:
+      </p>
+      <ul>
+        <li>First and last name</li>
+        <li>Title</li>
+        <li>Position</li>
+        <li>Employer</li>
+        <li>Contact information (company, email, phone, physical business address)</li>
+        <li>ID data</li>
+        <li>Professional life data</li>
+        <li>Personal life data</li>
+        <li>Connection data</li>
+        <li>Localization data</li>
+      </ul>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p style="text-align: center;"><strong>SCHEDULE 2 – STANDARD CONTRACTUAL CLAUSES</strong></p>
+      <p style="text-align: center;"><strong>&nbsp;</strong><strong>Standard Contractual Clauses (processors)</strong></p>
+      <p>For the purposes of Article 26(2) of Directive 95/46/EC for the transfer of personal data to processors established
+        in third countries which do not ensure an adequate level of data protection.</p>
+      <p>Name of the data exporting organization:</p>
+      <p>Address:</p>
+      <p>Tel.:</p>
+      <p>Other information needed to identify the organization: Not applicable</p>
+      <p style="text-align: center;">……………………………………………………………</p>
+      <p style="text-align: center;">(the data <strong>exporter</strong>)</p>
+      <p>And</p>
+      <p>Name of the data importing organization: NextLabs, Inc.</p>
+      <p>Address: 2121 South El Camino Real, #600, San Mateo, CA 94403</p>
+      <p>Tel.: 650-577-9101; e-mail: dpa@nextlabs.com</p>
+      <p>Other information needed to identify the organization: Not applicable</p>
+      <p style="text-align: center;">……………………………………………………………</p>
+      <p style="text-align: center;">(the data <strong>importer</strong>)</p>
+      <p style="text-align: center;">each a “party”; together “the parties”,</p>
+      <p>HAVE AGREED on the following Contractual Clauses (the Clauses) in order to adduce adequate safeguards with respect
+        to the protection of privacy and fundamental rights and freedoms of individuals for the transfer by the data exporter
+        to the data importer of the personal data specified in Appendix 1.</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p style="text-align: center;"><em>Clause 1</em></p>
+      <p style="text-align: center;"><strong><em>Definitions</em></strong></p>
+      <p>For the purposes of the Clauses:</p>
+      <p>(a) ‘personal data’, ‘special categories of data’, ‘process/processing’, ‘controller’, ‘processor’, ‘data subject’
+        and ‘supervisory authority’ shall have the same meaning as in Directive 95/46/EC of the European Parliament and of
+        the Council of 24 October 1995 on the protection of individuals with regard to the processing of personal data and
+        on the free movement of such data;</p>
+      <p>(b) ‘the data exporter’ means the controller who transfers the personal data;</p>
+      <p>(c) ‘the data importer’ means the processor who agrees to receive from the data exporter personal data intended for
+        processing on his behalf after the transfer in accordance with his instructions and the terms of the Clauses and
+        who is not subject to a third country’s system ensuring adequate protection within the meaning of Article 25(1) of
+        Directive 95/46/EC;
+      </p>
+      <p>(d) ‘the subprocessor’ means any processor engaged by the data importer or by any other subprocessor of the data importer
+        who agrees to receive from the data importer or from any other subprocessor of the data importer personal data exclusively
+        intended for processing activities to be carried out on behalf of the data exporter after the transfer in accordance
+        with his instructions, the terms of the Clauses and the terms of the written subcontract;
+      </p>
+      <p>(e) ‘the applicable data protection law’ means the legislation protecting the fundamental rights and freedoms of individuals
+        and, in particular, their right to privacy with respect to the processing of personal data applicable to a data controller
+        in the Member State in which the data exporter is established;</p>
+      <p>(f) ‘technical and organizational security measures’ means those measures aimed at protecting personal data against
+        accidental or unlawful destruction or accidental loss, alteration, unauthorized disclosure or access, in particular
+        where the processing involves the transmission of data over a network, and against all other unlawful forms of processing.</p>
+      <p style="text-align: center;"><em>Clause 2</em></p>
+      <p style="text-align: center;"><strong><em>Details of the transfer</em></strong></p>
+      <p>The details of the transfer and in particular the special categories of personal data where applicable are specified
+        in Appendix 1 which forms an integral part of the Clauses.</p>
+      <p style="text-align: center;"><em>Clause 3</em></p>
+      <p style="text-align: center;"><strong><em>Third-party beneficiary clause</em></strong></p>
+      <ol>
+        <li>The data subject can enforce against the data exporter this Clause, Clause 4(b) to (i), Clause 5(a) to (e), and (g)
+          to
+        </li>
+      </ol>
+      <p>(j), Clause 6(1) and (2), Clause 7, Clause 8(2), and Clauses 9 to 12 as third-party beneficiary.</p>
+      <ol start="2">
+        <li>The data subject can enforce against the data importer this Clause, Clause 5(a) to (e) and (g), Clause 6, Clause
+          7, Clause 8(2), and Clauses 9 to 12, in cases where the data exporter has factually disappeared or has ceased to
+          exist in law unless any successor entity has assumed the entire legal obligations of the data exporter by contract
+          or by operation of law, as a result of which it takes on the rights and obligations of the data exporter, in which
+          case the data subject can enforce them against such entity.
+        </li>
+        <li>The data subject can enforce against the subprocessor this Clause, Clause 5(a) to (e) and (g), Clause 6, Clause 7,
+          Clause 8(2), and Clauses 9 to 12, in cases where both the data exporter and the data importer have factually disappeared
+          or ceased to exist in law or have become insolvent, unless any successor entity has assumed the entire legal obligations
+          of the data exporter by contract or by operation of law as a result of which it takes on the rights and obligations
+          of the data exporter, in which case the data subject can enforce them against such entity. Such third- party liability
+          of the subprocessor shall be limited to its own processing operations under the Clauses.</li>
+        <li>The parties do not object to a data subject being represented by an association or other body if the data subject
+          so expressly wishes and if permitted by national law.</li>
+      </ol>
+      <p style="text-align: center;"><em>Clause 4</em></p>
+      <p style="text-align: center;"><strong><em>Obligations of the data exporter</em></strong></p>
+      <p>The data exporter agrees and warrants:</p>
+      <p>(a) that the processing, including the transfer itself, of the personal data has been and will continue to be carried
+        out in accordance with the relevant provisions of the applicable data protection law (and, where applicable, has
+        been notified to the relevant authorities of the Member State where the data exporter is established) and does not
+        violate the relevant provisions of that State;</p>
+      <p>(b) that it has instructed and throughout the duration of the personal data processing services will instruct the data
+        importer to process the personal data transferred only on the data exporter’s behalf and in accordance with the applicable
+        data protection law and the Clauses;</p>
+      <p>(c) that the data importer will provide sufficient guarantees in respect of the technical and organizational security
+        measures specified in Appendix 2 to this contract;</p>
+      <p>(d) that after assessment of the requirements of the applicable data protection law, the security measures are appropriate
+        to protect personal data against accidental or unlawful destruction or accidental loss, alteration, unauthorized
+        disclosure or access, in particular where the processing involves the transmission of data over a network, and against
+        all other unlawful forms of processing, and that these measures ensure a level of security appropriate to the risks
+        presented by the processing and the nature of the data to be protected having regard to the state of the art and
+        the cost of their implementation;</p>
+      <p>(e) that it will ensure compliance with the security measures;</p>
+      <p>(f) that, if the transfer involves special categories of data, the data subject has been informed or will be informed
+        before, or as soon as possible after, the transfer that its data could be transmitted to a third country not providing
+        adequate protection within the meaning of Directive 95/46/EC;</p>
+      <p>(g) to forward any notification received from the data importer or any subprocessor pursuant to Clause 5(b) and Clause
+        8(3) to the data protection supervisory authority if the data exporter decides to continue the transfer or to lift
+        the suspension;</p>
+      <p>(h) to make available to the data subjects upon request a copy of the Clauses, with the exception of Appendix 2, and
+        a summary description of the security measures, as well as a copy of any contract for subprocessing services which
+        has to be made in accordance with the Clauses, unless the Clauses or the contract contain commercial information,
+        in which case it may remove such commercial information;</p>
+      <p>(i) that, in the event of subprocessing, the processing activity is carried out in accordance with Clause 11 by a subprocessor
+        providing at least the same level of protection for the personal data and the rights of data subject as the data
+        importer under the Clauses; and</p>
+      <p>(j) that it will ensure compliance with Clause 4(a) to (i).</p>
+      <p style="text-align: center;"><em>Clause 5</em></p>
+      <p style="text-align: center;"><strong><em>Obligations of the data importer</em></strong></p>
+      <p>The data importer agrees and warrants:</p>
+      <p>(a) to process the personal data only on behalf of the data exporter and in compliance with its instructions and the
+        Clauses; if it cannot provide such compliance for whatever reasons, it agrees to inform promptly the data exporter
+        of its inability to comply, in which case the data exporter is entitled to suspend the transfer of data and/or terminate
+        the contract;</p>
+      <p>(b) that it has no reason to believe that the legislation applicable to it prevents it from fulfilling the instructions
+        received from the data exporter and its obligations under the contract and that in the event of a change in this
+        legislation which is likely to have a substantial adverse effect on the warranties and obligations provided by the
+        Clauses, it will promptly notify the change to the data exporter as soon as it is aware, in which case the data exporter
+        is entitled to suspend the transfer of data and/or terminate the contract;</p>
+      <p>(c) that it has implemented the technical and organizational security measures specified in Appendix 2 before processing
+        the personal data transferred;</p>
+      <p>(d) that it will promptly notify the data exporter about:</p>
+      <p>(i) any legally binding request for disclosure of the personal data by a law enforcement authority unless otherwise
+        prohibited, such as a prohibition under criminal law to preserve the confidentiality of a law enforcement investigation,
+      </p>
+      <p>(ii) any accidental or unauthorized access, and</p>
+      <p>(iii) any request received directly from the data subjects without responding to that request, unless it has been otherwise
+        authorized to do so;</p>
+      <p>(e) to deal promptly and properly with all inquiries from the data exporter relating to its processing of the personal
+        data subject to the transfer and to abide by the advice of the supervisory authority with regard to the processing
+        of the data transferred;</p>
+      <p>(f) at the request of the data exporter to submit its data processing facilities for audit of the processing activities
+        covered by the Clauses which shall be carried out by the data exporter or an inspection body composed of independent
+        members and in possession of the required professional qualifications bound by a duty of confidentiality, selected
+        by the data exporter, where applicable, in agreement with the supervisory authority;
+      </p>
+      <p>(g) to make available to the data subject upon request a copy of the Clauses, or any existing contract for subprocessing,
+        unless the Clauses or contract contain commercial information, in which case it may remove such commercial information,
+        with the exception of Appendix 2 which shall be replaced by a summary description of the security measures in those
+        cases where the data subject is unable to obtain a copy from the data exporter;
+      </p>
+      <p>(h) that, in the event of subprocessing, it has previously informed the data exporter and obtained its prior written
+        consent;
+      </p>
+      <p>(i) that the processing services by the subprocessor will be carried out in accordance with Clause 11;</p>
+      <p>(j) to send promptly a copy of any subprocessor agreement it concludes under the Clauses to the data exporter.</p>
+      <p style="text-align: center;"><em>Clause 6</em></p>
+      <p style="text-align: center;"><strong><em>Liability</em></strong></p>
+      <ol>
+        <li>The parties agree that any data subject, who has suffered damage as a result of any breach of the obligations referred
+          to in Clause 3 or in Clause 11 by any party or subprocessor is entitled to receive compensation from the data exporter
+          for the damage suffered.</li>
+        <li>If a data subject is not able to bring a claim for compensation in accordance with paragraph 1 against the data exporter,
+          arising out of a breach by the data importer or his subprocessor of any of their obligations referred to in Clause
+          3 or in Clause 11, because the data exporter has factually disappeared or ceased to exist in law or has become
+          insolvent, the data importer agrees that the data subject may issue a claim against the data importer as if it
+          were the data exporter, unless any successor entity has assumed the entire legal obligations of the data exporter
+          by contract of by operation of law, in which case the data subject can enforce its rights against such entity.</li>
+      </ol>
+      <p>The data importer may not rely on a breach by a subprocessor of its obligations in order to avoid its own liabilities.</p>
+      <ol start="3">
+        <li>If a data subject is not able to bring a claim against the data exporter or the data importer referred to in paragraphs
+          1 and 2, arising out of a breach by the subprocessor of any of their obligations referred to in Clause 3 or in
+          Clause 11 because both the data exporter and the data importer have factually disappeared or ceased to exist in
+          law or have become insolvent, the subprocessor agrees that the data subject may issue a claim against the data
+          subprocessor with regard to its own processing operations under the Clauses as if it were the data exporter or
+          the data importer, unless any successor entity has assumed the entire legal obligations of the data exporter or
+          data importer by contract or by operation of law, in which case the data subject can enforce its rights against
+          such entity. The liability of the subprocessor shall be limited to its own processing operations under the Clauses.</li>
+      </ol>
+      <p style="text-align: center;"><em>Clause 7</em></p>
+      <p style="text-align: center;"><strong><em>Mediation and jurisdiction</em></strong></p>
+      <ol>
+        <li>The data importer agrees that if the data subject invokes against it third-party beneficiary rights and/or claims
+          compensation for damages under the Clauses, the data importer will accept the decision of the data subject:</li>
+      </ol>
+      <p>(a) to refer the dispute to mediation, by an independent person or, where applicable, by the supervisory</p>
+      <p>authority;</p>
+      <p>(b) to refer the dispute to the courts in the Member State in which the data exporter is established.</p>
+      <ol start="2">
+        <li>The parties agree that the choice made by the data subject will not prejudice its substantive or procedural rights
+          to seek remedies in accordance with other provisions of national or international law.
+        </li>
+      </ol>
+      <p style="text-align: center;"><em>Clause 8</em></p>
+      <p style="text-align: center;"><strong><em>Cooperation with supervisory authorities</em></strong></p>
+      <ol>
+        <li>The data exporter agrees to deposit a copy of this contract with the supervisory authority if it so requests or if
+          such deposit is required under the applicable data protection law.</li>
+        <li>The parties agree that the supervisory authority has the right to conduct an audit of the data importer, and of any
+          subprocessor, which has the same scope and is subject to the same conditions as would apply to an audit of the
+          data exporter under the applicable data protection law.</li>
+        <li>The data importer shall promptly inform the data exporter about the existence of legislation applicable to it or
+          any subprocessor preventing the conduct of an audit of the data importer, or any subprocessor, pursuant to paragraph
+          2. In such a case the data exporter shall be entitled to take the measures foreseen in Clause 5 (b).</li>
+      </ol>
+      <p style="text-align: center;"><em>Clause 9</em></p>
+      <p style="text-align: center;"><strong><em>Governing Law</em></strong></p>
+      <p>The Clauses shall be governed by the law of the Member State in which the data exporter is established.</p>
+      <p style="text-align: center;"><em>Clause 10</em></p>
+      <p style="text-align: center;"><strong><em>Variation of the contract</em></strong></p>
+      <p>The parties undertake not to vary or modify the Clauses. This does not preclude the parties from adding clauses on
+        business related issues where required as long as they do not contradict the Clause.</p>
+      <p style="text-align: center;"><em>Clause 11</em></p>
+      <p style="text-align: center;"><strong><em>Subprocessing</em></strong></p>
+      <ol>
+        <li>The data importer shall not subcontract any of its processing operations performed on behalf of the data exporter
+          under the Clauses without the prior written consent of the data exporter. Where the data importer subcontracts
+          its obligations under the Clauses, with the consent of the data exporter, it shall do so only by way of a written
+          agreement with the subprocessor which imposes the same obligations on the subprocessor as are imposed on the data
+          importer under the Clauses. Where the subprocessor fails to fulfill its data protection obligations under such
+          written agreement the data importer shall remain fully liable to the data exporter for the performance of the subprocessor’s
+          obligations under such agreement.</li>
+        <li>The prior written contract between the data importer and the subprocessor shall also provide for a third-party beneficiary
+          clause as laid down in Clause 3 for cases where the data subject is not able to bring the claim for compensation
+          referred to in paragraph 1 of Clause 6 against the data exporter or the data importer because they have factually
+          disappeared or have ceased to exist in law or have become insolvent and no successor entity has assumed the entire
+          legal obligations of the data exporter or data importer by contract or by operation of law. Such third-party liability
+          of the subprocessor shall be limited to its own processing operations under the Clauses.</li>
+        <li>The provisions relating to data protection aspects for subprocessing of the contract referred to in paragraph 1 shall
+          be governed by the law of the Member State in which the data exporter is established.</li>
+        <li>The data exporter shall keep a list of subprocessing agreements concluded under the Clauses and notified by the data
+          importer pursuant to Clause 5(j), which shall be updated at least once a year. The list shall be available to the
+          data exporter’s data protection supervisory authority.</li>
+      </ol>
+      <p style="text-align: center;"><em>Clause 12</em></p>
+      <p style="text-align: center;"><strong><em>Obligation after the termination of personal data processing services</em></strong></p>
+      <ol>
+        <li>The parties agree that on the termination of the provision of data processing services, the data importer and the
+          subprocessor shall, at the choice of the data exporter, return all the personal data transferred and the copies
+          thereof to the data exporter or shall destroy all the personal data and certify to the data exporter that it has
+          done so, unless legislation imposed upon the data importer prevents it from returning or destroying all or part
+          of the personal data transferred. In that case, the data importer warrants that it will guarantee the confidentiality
+          of the personal data transferred and will not actively process the personal data transferred anymore.</li>
+        <li>The data importer and the subprocessor warrant that upon request of the data exporter and/or of the supervisory authority,
+          it will submit its data processing facilities for an audit of the measures referred to in paragraph 1.</li>
+      </ol>
+      <p><strong>&nbsp;</strong></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p style="text-align: center;"><strong>APPENDIX 1 TO THE STANDARD CONTRACTUAL CLAUSES</strong></p>
+      <p>This Appendix forms part of the Clauses and must be completed and signed by the parties</p>
+      <p>The Member States may complete or specify, according to their national procedures, any additional necessary information
+        to be contained in this Appendix.</p>
+      <p><strong>Data exporter</strong></p>
+      <p>The data exporter is (please specify briefly your activities relevant to the transfer):</p>
+      <p>Data Exporter is (i) the legal entity that has executed the Standard Contractual Clauses as a Data Exporter and, (ii)
+        all Affiliates (as defined in the Agreement) of Customer established within the European Economic Area (EEA) and
+        Switzerland that have purchased Services on the basis of one or more Order Form(s).</p>
+      <p><strong>Data importer</strong></p>
+      <p>The data importer is (please specify briefly activities relevant to the transfer):</p>
+      <p>NextLabs is a distributed database service which processes personal data upon the instruction of the data exporter
+        in accordance with the terms of the Agreement.</p>
+      <p><strong>Data subjects</strong></p>
+      <p>The personal data transferred concern the following categories of data subjects (please specify):</p>
+      <p>Data exporter may submit Personal Data to the Services, the extent of which is determined and controlled by the data
+        exporter in its sole discretion, and which may include, but is not limited to Personal Data relating to the following
+        categories of data subjects:</p>
+      <ul>
+        <li>Prospects, customers, business partners and vendors of data exporter (who are natural persons)</li>
+        <li>Employees or contact persons of data exporter’s prospects, customers, business partners and vendors
+        </li>
+        <li>Employees, agents, advisors, freelancers of data exporter (who are natural persons)</li>
+        <li>Data exporter’s Users authorized by data exporter to use the Services</li>
+      </ul>
+      <p><strong>Categories of data</strong></p>
+      <p>The personal data transferred concern the following categories of data (please specify):</p>
+      <p>Data exporter may submit Personal Data to the Services, the extent of which is determined and controlled by the data
+        exporter in its sole discretion, and which may include, but is not limited to the following categories of Personal
+        Data:
+      </p>
+      <ul>
+        <li>First and last name</li>
+        <li>Title</li>
+        <li>Position</li>
+        <li>Employer</li>
+        <li>Contact information (company, email, phone, physical business address)</li>
+        <li>ID data</li>
+        <li>Professional life data</li>
+        <li>Personal life data</li>
+        <li>Connection data</li>
+        <li>Localization data</li>
+      </ul>
+      <p><strong>Special categories of data (if appropriate)</strong></p>
+      <p>The personal data transferred concern the following special categories of data (please specify):</p>
+      <p>Data exporter may submit special categories of data to the Services, the extent of which is determined and controlled
+        by the data exporter in its sole discretion, and which is for the sake of clarity Personal Data with information
+        revealing racial or ethnic origin, political opinions, religious or philosophical beliefs, trade-union membership,
+        and the processing of data concerning health or sex life.</p>
+      <p><strong>Processing operations</strong></p>
+      <p>The personal data transferred will be subject to the following basic processing activities (please specify):
+      </p>
+      <p>The objective of Processing of Personal Data by data importer is the performance of the Services pursuant to the Agreement.</p>
+      <p>&nbsp;</p>
+      <p style="text-align: center;"><strong>APPENDIX 2 TO THE STANDARD CONTRACTUAL CLAUSES</strong></p>
+      <p>This Appendix forms part of the Clauses and must be completed and signed by the parties</p>
+      <p><strong>Description of the technical and organizational security measures implemented by the data importer in accordance with Clauses 4(d) and 5(c) (or document/legislation attached):</strong></p>
+      <p>Data importer will maintain administrative, physical, and technical safeguards for protection of the security, confidentiality
+        and integrity of Personal Data uploaded to the Services, as described in the Security, Privacy and Architecture Documentation
+        applicable to the specific Services purchased by data exporter, and accessible via https://www.Nextlabs.com/ or otherwise
+        made reasonably available by data importer. Data Importer will not materially decrease the overall security of the
+        Services during a subscription term.</p>
+    </div>
+  </div>
+</body>
+
+</html>

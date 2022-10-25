@@ -1,0 +1,231 @@
+allprojects {
+	repositories {
+		mavenCentral()
+		maven {
+			url "https://dist.wso2.org/maven2"
+		}
+	}
+}
+buildscript {
+	repositories {
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies {
+		classpath "com.diffplug.gradle.spotless:spotless:2.4.1"
+	}
+}
+
+apply from: "./libraries.gradle"
+project.ext.library="$rootProject.projectDir/lib"
+project.ext.xlib="$rootProject.projectDir/xlib"
+project.ext.docker="$rootProject.projectDir/docker"
+
+def props = new Properties()
+file("build.properties").withInputStream { props.load(it) }
+
+task unzip {
+	ext.copyDestinyLibs = { File zipFile, File dest, List includeFiles, flatten=true ->
+		if (!zipFile.exists()) {
+			println("WARNING: Path for external library doesn't exist: " + zipFile)
+			Random random = new Random()
+			def attempts = Integer.parseInt(props.getProperty("nfs.timeout.retry_attempts"))
+			def timeout_base = Integer.parseInt(props.getProperty("nfs.timeout.base"))
+			def timeout_random = Integer.parseInt(props.getProperty("nfs.timeout.random"))
+			while (attempts > 0) {
+				def seconds = timeout_base + random.nextInt(timeout_random)
+				println("WARNING: Trying again in " + seconds + "s ....")
+				sleep(seconds * 1000)
+				attempts--
+				if (zipFile.exists()) {
+					println("WARNING: Found external library in: " + zipFile)
+					break
+				}
+			}
+			if (!zipFile.exists()) {
+				throw new GradleException("Path for external library doesn't exist: " + zipFile)
+			}
+		}
+		ant.unzip(src: zipFile, dest: dest, overwrite: true) {
+			patternset () {
+				for (item in includeFiles) {
+					include(name: item)
+				}
+			}
+			if (flatten) {
+				mapper(type: "flatten")
+			}
+		}
+	}
+	doLast {
+		def perceptiveDir = file("$library/perceptive")
+		if (!perceptiveDir.exists()) {
+			perceptiveDir.mkdirs();
+		}
+
+		copy {
+			from "${System.env.NLEXTERNALDIR2}/perceptive/perceptive-11.2_Build_1858/"
+			into "$perceptiveDir"
+			include "ISYS11df.jar"
+		}
+		def platformDir = file("$library/platform")
+		if (!platformDir.exists()) {
+			platformDir.mkdirs();
+		}
+		def basePath = System.env['SDRIVE']
+		def agentZipPath = props.getProperty("destiny.agent.path")
+		def pdpZipPath = props.getProperty("destiny.pdp.path")
+		if (agentZipPath != null) {
+			def agentZipFile = file(basePath != null ? (basePath + File.separator + agentZipPath) : agentZipPath)
+			copyDestinyLibs(agentZipFile, platformDir, ['agent/lib/crypt.jar',
+												   'agent/lib/common-framework.jar',
+												   'agent/lib/common-pf.jar',
+												   'agent/lib/policy-types.jar'])
+			copyDestinyLibs(agentZipFile, file("$xlib"), ['temp_agent-keystore.jks'])
+			copy {
+				from "${xlib}/temp_agent-keystore.jks"
+				into "${docker}/setup/conf/cert"
+			}
+		} else {
+			throw new GradleException("Path for external library 'destiny.agent.path' is not configured.")
+		}
+		if (pdpZipPath != null) {
+			def pdpZipFile = file(basePath != null ? (basePath + File.separator + pdpZipPath) : pdpZipPath)
+			copyDestinyLibs(pdpZipFile, platformDir, ['embeddedpdp/embeddedpdp.jar'])
+			copyDestinyLibs(pdpZipFile, file("$xlib"), ['embeddedpdp/**'], false)
+		} else {
+			throw new GradleException("Path for external library 'destiny.pdp.path' is not configured.")
+		}
+		println("Completed unzipping external lib")
+	}
+}
+
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	apply plugin: 'idea'
+	apply plugin: "com.diffplug.gradle.spotless"
+	
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+	repositories {
+	    mavenCentral()
+		maven {
+			url "http://maven.restlet.org"
+		}
+		maven {
+			url "https://www.oracle.com/content/secure/maven/content"
+			credentials {
+				username = 'nextlabsdev@gmail.com'
+				password = '123Blue!'
+			}
+		}
+	}
+	ext {
+		cfgDir = "$project.rootDir/config"
+		docsHome = "$rootProject.projectDir/docs/onlinehelp/output"
+	}
+
+	configurations {
+		formatter
+	}
+
+	spotless {
+		java {
+			importOrder(['com', 'java', 'javax', 'net', 'noNamespace', 'org', ''])
+			eclipseFormatFile "$cfgDir/formatter/conventions.xml"
+		}
+	}
+
+	def excludedProject = 'rms-xmlbeans'
+
+	if (!project.name.equals(excludedProject)) {
+		task formatJava (dependsOn: ['spotlessJavaApply']) {
+		}
+	
+		task formatXml {
+			doLast {
+				def verify = project.hasProperty('verifyOnly') ? Boolean.valueOf(verifyOnly) : false
+				ant.taskdef(name:'formatXml', 
+					classname: 'net.sourceforge.formatter.ant.FormatXmlTask', 
+					classpath: configurations.formatter.asPath)
+				ant.formatXml(
+					failOnError: false, 
+					verifyOnly: verify) {
+					fileset(dir: 'src')
+				}
+			}
+		}
+	}
+
+	if (!project.name.equals(excludedProject)) {
+		apply plugin: 'findbugs'
+		findbugs {
+			toolVersion = "3.0.1"
+			sourceSets = [sourceSets.main]
+			ignoreFailures = true
+			effort = "min"
+			ignoreFailures = false
+			reportLevel = "low"
+			excludeFilter = file("$cfgDir/findbugs/findbugs-exclude.xml")
+		}
+		
+		tasks.withType(FindBugs) {
+			reports {
+				xml.enabled false
+				html.enabled true
+				html.destination file("$project.buildDir/findbugs.html")
+			}
+		}
+	}
+
+	if (!project.name.equals(excludedProject)) {
+		apply plugin: 'checkstyle'
+		checkstyle {
+			toolVersion = "6.9"
+			configFile = file("$cfgDir/checkstyle/checkstyle.xml")
+			configProperties = [ "checkstyle.suppressions.file" : file("$cfgDir/checkstyle/suppressions.xml")]
+			ignoreFailures = false
+		}
+		tasks.withType(Checkstyle) {
+			reports {
+				xml {
+					enabled false
+				}
+				html {
+					enabled true
+					destination file("$project.buildDir/checkstyle.html")
+					stylesheet resources.text.fromFile("$cfgDir/checkstyle/checkstyle.xsl")
+				}
+			}
+		}
+	}
+
+	if (!project.name.equals(excludedProject)) {
+		apply plugin: 'pmd'
+		pmd {
+			toolVersion = "5.8.1"
+			ruleSetFiles = files("$cfgDir/pmd/pmd.xml")
+			ignoreFailures = false
+		}
+		
+		tasks.withType(Pmd) {
+			reports {
+				xml {
+					enabled false
+				}
+				html {
+					enabled true
+					destination file("$project.buildDir/pmd.html")
+				}
+			}
+		}
+	}
+
+	if (!project.name.equals(excludedProject)) {
+		task validate (dependsOn: ['spotlessJavaCheck', 'findbugsMain', 'pmdMain', 'checkstyleMain']){
+		}
+	}
+}
+

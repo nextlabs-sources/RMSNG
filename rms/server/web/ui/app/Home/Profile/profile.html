@@ -1,0 +1,75 @@
+<div>
+    <div id="index-loading-background" style="top:0px; margin: 0px;" data-ng-show="isLoading" class="loading-div" />
+    <div class="row margin-top-20">
+        <h4 ng-show="page!=='summary'" class="pointer-click" data-ng-mousedown="cancel()" style="margin: 0 30px" tabindex="5"><img class="mirrored" style="margin-top:12px;" src="ui/img/rightArrowBlack.svg"></h4>
+        <h4 ng-if="page==='manageProfile'">{{'manage.profile.button' | translate}}</h4>
+        <h4 ng-if="page==='changePassword'">{{'manage.profile.change.password' | translate}}</h4>
+        <h4 tabindex="6" class="margin-auto float-right pointer-click" style="margin-right:40px; font-size: 26px;" data-ng-mousedown="closeModalDialog()">X</h4>
+    </div>
+
+    <div class="row" style="padding: 30px 0;">
+        <div class="col-xs-12" style="max-width:960px; margin:auto">
+            <div id="statusContainer" class="rms-error-messages alert alert-success" data-ng-class="{'alert alert-success': messageStatus==2, 'alert alert-danger': messageStatus==1}" ng-show="messageStatus==1 || messageStatus==2">
+                <button type="button" class="close" data-ng-click="dismissStatus()">x</button>
+                <center><p class="ng-binding">{{message}}</p></center>
+            </div>
+
+            <div ng-if="page==='summary'" style="min-width: 250px;">
+                <div class="row margin-top-20">
+                    <div data-ng-if="profile.displayName" id="profileImageLandingPageTop" class="default_profile" data-ng-class="'profile_'+profile.displayName[0].toLowerCase()" style="height: 100px; width: 100px">
+                        <div id="profileNameLandingPageTop" style="line-height: 100px">
+                            {{profile.displayName | initials}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row margin-top-50">
+                    <div class="margin-auto row">
+                        <label class="rms-files"><b>{{profile.displayName}}</b></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="margin-auto row">
+                        <span data-ng-class="loginAccountType.toLowerCase()+'-login-profile-div'"></span>
+                        <label class="rms-files" style="line-height: 30px; font-style: italic;">{{profile.email}}</label>
+                    </div>
+                </div>
+                <div class="row margin-top-10">
+                    <div class="margin-auto row">
+                        <div style="margin-right:5px" data-ng-if="editProfileAllowed">
+                            <a tabindex="1" class="btn btn-default rms-settings-button-color" data-ng-click="goToChangePassword()">{{"manage.profile.change.password" | translate}}</a>
+                        </div>
+                        <div>
+                            <a tabindex="2" class="btn btn-default rms-settings-button-color" data-ng-click="goToManageProfile()">{{"manage.profile.button" | translate}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="page==='changePassword'">
+                <div class="row">
+                    <div class="col-xs-12" id="changePassword" data-ng-include="'ui/app/Home/Profile/changePassword.html'"></div>
+                </div>
+            </div>
+
+            <div ng-if="page==='manageProfile'">
+                <form class="form-horizontal" name="manageProfileForm" data-ng-submit="manageProfileForm.$pristine || profile.displayName === profile.previousDisplayName || changeDisplayName()">
+                    <div class="row display-block" style="margin-top: 15px">
+                        <div class="col-xs-12">
+                            <label class="usrProfileLabel padding-mobile" style="padding: 0px">{{'manage.profile.displayName' | translate}}</label>
+                        </div>
+                        <div class="col-xs-12">
+                            <input tabindex="1" onfocus="this.value = this.value;" style="width: 250px" id="displayNameTextBox" type="text" ng-model="profile.displayName" />
+                        </div>
+                    </div>
+                    <div class="row display-block" style="margin-top: 150px;">
+                        <div class="col-xs-12">
+                            <a class="btn btn-default rms-settings-button" data-ng-mousedown="cancelManageProfile()" tabindex="4">{{"cancel" | translate}}</a>
+                            <a class="btn btn-default rms-settings-button-color rms-settings-button" data-ng-disabled="manageProfileForm.$pristine || profile.displayName === profile.previousDisplayName || profile.displayName ==='' " 
+                                data-ng-click="manageProfileForm.$pristine || profile.displayName === profile.previousDisplayName || profile.displayName ==='' || changeDisplayName()" tabindex="3">{{"update" | translate}}</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

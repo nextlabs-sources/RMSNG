@@ -1,0 +1,67 @@
+<div ng-controller="projectController"  ngf-drag-over-class="'upload-repo-dragover'" ngf-allow-dir="false" ngf-drop="" ng-model="fileupload" data-ng-disabled ="storageExceeded">
+    <div id="loading-background" data-ng-show="isLoading" class="loading-div" />
+    <div id="fileListHeader"  class="show-only-on-desktop" data-ng-include="'ui/app/Home/Projects/partials/projectFileListHeader.html'"></div>
+    <div class="mobile-tablet-display" data-ng-include="'ui/app/Home/Projects/partials/projectFileListHeaderForMobile.html'"></div>
+    <!--<div class="mobile-tablet-display" data-ng-include="'ui/app/Home/Projects/partials/fileListHeaderForMobile.html'"></div>   -->
+
+    <!--<div data-ng-class="isTreeOpen? 'rms-fileList' : ''">-->
+    <div data-ng-class="rms-fileList" data-ng-if="(selectedTab === 'allFiles')">
+        <div class="row full-width">
+            <!--<div id="resizable-tree" data-ng-show="isTreeOpen && !searchActivated" class="resize" resizable r-directions="['right']"
+                r-flex="true">
+                <div class="col-md-2 rms-width-auto" data-ng-show="isTreeOpen && !searchActivated">
+                    <div class="rms-tree cc-layout-full-height">
+                        <div id="rmstree" data-js-tree="treeConfig" data-ng-model="treeData" data-tree="fileListTree" data-should-apply="applyModelChanges()"
+                            data-tree-events-obj="treeEventsObj" data-ng-show="isTreeOpen"></div>
+                    </div>
+                </div>
+            </div>-->
+            <div id="fileList-col-id" class="col-md-10">
+                <center>
+                    <label data-ng-if="contents.length === 0 && searchActivated">{{"err.no.search.results"|translate}}</label>
+                </center>
+                <div data-ng-if="creatingFolder">
+                    <ul id="unordered-fileList-id" class="margin-bottom-0">
+                        <li class="list-group-item rms-file-list creating-folder">
+                            <div class="rms-files">
+                                <i class="glyphicon glyphicon-folder-close"></i>
+                                <input id="newFolderTextBox" placeholder="{{'create_folder.placeholder' | translate}}" type="text" ng-model="folderName" ng-blur="createFolder()"
+                                    ng-keyup="$event.keyCode == 13 ? createFolder() : ($event.keyCode == 27 ? exitCreateFolderModal() : null)">
+                                <br>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="drag-and-drop-container">
+                    <ul class="padding-left-0" id="unordered-fileList-id">
+                        <li class="list-group-item rms-file-list mobile-tablet-display" ng-show="parentFolder">
+                            <div id="fileList-col-id">
+                                <div class="rms-files file-list-parent-folder-name" data-ng-click="onClickFile(parentFolder)">
+                                    <i data-ng-include="'ui/img/FolderUP_P.svg'" />
+                                    <a class="rms-file-item">..</a>
+                                </div>
+                                <div><label class="file-info-label" /></div>
+                            </div>
+                        </li>
+                        <li class="list-group-item rms-file-list" data-ng-repeat="eachFile in contents">
+                            <div data-ng-include="'ui/app/Home/Projects/partials/projectFileListTemplate.html'"></div>
+                        </li>
+                    </ul>
+                    <center>
+                    <button data-ng-class="'btn btn-default'" data-ng-if="contents.length!=0 && showMoreFiles" data-ng-click= "loadMoreFiles()">{{"share.file.loadmore"|translate}}</button>
+                    </center> 
+                    <div data-ng-if="!isLoading && emptyFolderExists && !noSearchResult" class="empty-file-container">
+                        <center>
+                            <div class="upload pointer-click" data-ng-click="uploadFileModal()"></div>
+                            <span><b>{{"err.repo.no.files" | translate}}</b></span>
+                            <div class="padding-10" style="font-style: italic">{{"widget.protect.file.instruction.1" | translate}} {{"click" | translate}} <a class="underline pointer-click" data-ng-click="uploadFileModal()">{{"here" | translate}}</a> 
+                                {{"repo.nofiles.upload" | translate}}</div>
+                        </center>
+                    </div>
+                    <hr/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-ng-include="'ui/app/Home/Projects/partials/projectSharedFiles.html'"></div>    
+</div>

@@ -1,0 +1,1 @@
+export CATALINA_OPTS="$CATALINA_OPTS -Drms_shared_dir=$RMS_SHARED_DIR"

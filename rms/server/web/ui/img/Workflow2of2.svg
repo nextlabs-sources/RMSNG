@@ -1,0 +1,40 @@
+<svg id="workflow-style" height="24" viewBox="0 0 437 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Group</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(29695 -5873)">
+<g id="Group">
+<g id="Group">
+<g id="Group 3">
+<g id="Group 5">
+<g id="Rectangle 15">
+<use xlink:href="#path00_fill" transform="translate(-29682 5883)" fill="url(#paint0_linear)"/>
+</g>
+<g id="Group">
+<g id="Ellipse 5">
+<use xlink:href="#path01_fill" transform="translate(-29695 5873)" fill="#34994C"/>
+</g>
+<g id="Ellipse 5">
+<use xlink:href="#path02_fill" transform="translate(-29689 5879)" fill="#FFFFFF"/>
+</g>
+</g>
+<g id="Ellipse 5">
+<use xlink:href="#path01_fill" transform="translate(-29282.5 5873)" fill="#FFFFFF"/>
+</g>
+<g id="Ellipse 5">
+<use xlink:href="#path02_fill" transform="translate(-29276.5 5879)" fill="#70B55B"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(414 1.41816e-12 -1.52083e-10 25632.8 7.61333e-11 -12811.4)">
+<stop offset="0" stop-color="#34994C"/>
+<stop offset="1" stop-color="#70B55B"/>
+</linearGradient>
+<path id="path00_fill" d="M 0 2.5C 0 1.11929 1.11929 0 2.5 0L 411.5 0C 412.881 0 414 1.11929 414 2.5L 414 2.5C 414 3.88071 412.881 5 411.5 5L 2.50001 5C 1.1193 5 0 3.88071 0 2.5L 0 2.5Z"/>
+<path id="path01_fill" d="M 24 12C 24 18.6274 18.6274 24 12 24C 5.37258 24 0 18.6274 0 12C 0 5.37258 5.37258 0 12 0C 18.6274 0 24 5.37258 24 12Z"/>
+<path id="path02_fill" d="M 12 6C 12 9.31371 9.31371 12 6 12C 2.68629 12 0 9.31371 0 6C 0 2.68629 2.68629 0 6 0C 9.31371 0 12 2.68629 12 6Z"/>
+</defs>
+</svg>

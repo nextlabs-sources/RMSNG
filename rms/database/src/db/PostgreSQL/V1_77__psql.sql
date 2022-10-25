@@ -1,0 +1,1 @@
+ALTER TABLE project_space_item ALTER COLUMN last_modified_user_id DROP NOT NULL;

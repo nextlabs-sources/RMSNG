@@ -1,0 +1,67 @@
+<div>
+	<div class="row modal-header" style="width:100%;">
+		<div class="col-xs-3">{{"managerepo.addrepository.label" | translate}}<br/></div>
+		<div class="col-xs-4">
+			<div id="display-success" data-ng-if="messageStatus==1">
+				<img src="ui/img/Alert_P.svg" alt="Error" />
+				{{message}}
+			</div>
+			<div id="display-error" data-ng-if="messageStatus==2">
+				<img src="ui/img/Correct_P.svg" alt="Success" />
+				{{message}}
+			</div>
+		</div>
+		<div class="col-xs-5">
+			<a class="btn btn-default rms-settings-button" data-ng-click="cancel()" tabindex="6">{{"cancel" | translate}}</a>
+			<a class="btn btn-default rms-settings-button-color rms-settings-button" data-ng-disabled="repoEditForm.$pristine || repoEditForm.$invalid" data-ng-click="repoEditForm.$pristine || repoEditForm.$invalid || connectRepository()" tabindex="5">{{"save" | translate}}</a>
+		</div>
+	</div>
+	<br/>
+	<br/>
+	<form name="repoEditForm">
+		<div style="padding-left:10%">
+			<div>
+				<label>{{"managerepo.choose.serviceProvider.label" | translate}}</label><br/>
+				<div tabindex="1" class="btn-group repo-selector" uib-dropdown is-open="status.isopen">
+				      <button id="single-button" data-ng-model="button" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+				        <img class="repo-logo" ng-src="{{'ui/img/service-provider-'+ selectedServiceProvider.provider + '.svg'}}"> {{selectedServiceProvider.name}} <span class="caret"></span>
+				      </button>
+				      <ul class="uib-dropdown-menu" role="menu" aria-labelledby="single-button">
+				        <li role="menuitem">
+				          <a href=""  ng-click="change(serviceProvider.key);repoEditForm.DISPLAY_NAME.$setUntouched();repoEditForm.SITES_URL.$setUntouched()" ng-repeat="serviceProvider in allowedServiceProvidersList"><img class="repo-logo" ng-src="{{'ui/img/service-provider-'+ serviceProvider.serviceProvider.provider +'.svg'}}"> {{serviceProvider.serviceProvider.name}}</a>
+				        </li>
+				      </ul>
+			    </div>
+			</div>
+			<br/>
+			<div>
+				<label>{{"managerepo.display.name" | translate}}</label><span class="mandatory"> * </span><br/>
+				<input tabindex="2" type="text" data-ng-model="displayName" name="DISPLAY_NAME" data-ng-required="true" data-ng-pattern="/^[\w -]*$/" data-ng-trim="true" ng-maxlength="40"/>
+				<span class="mandatory" data-ng-show="repoEditForm.DISPLAY_NAME.$touched && (repoEditForm.DISPLAY_NAME.$error.required || repoEditForm.DISPLAY_NAME.$error.maxlength) && !repoEditForm.DISPLAY_NAME.$error.pattern">{{"managerepo.disp_name.required" | translate}}</span>
+				<span class="mandatory rms-display" data-ng-show="repoEditForm.DISPLAY_NAME.$error.pattern">{{"managerepo.disp_name.incorrect_format" | translate}}</span>
+			</div>
+			<br/>
+			<!-- <div data-ng-if="button=='SHAREPOINT_ONLINE' || button=='SHAREPOINT_ONPREMISE'">
+				<label>{{"managerepo.sites.label" | translate}}</label><span class="mandatory"> * </span><br/>
+				<input tabindex="3" type="text" data-ng-model="$parent.sitesUrl" name="SITES_URL" data-ng-required="true" data-ng-pattern="/https?:\/\/(?:www\.|(?!www))(([^\s\.]+\.[^\s]+)|[^\s]+)/" data-ng-trim="true"/>
+				<span class="mandatory" data-ng-show="repoEditForm.SITES_URL.$touched && repoEditForm.SITES_URL.$error.required">{{"managerepo.sites_url.required" | translate}}</span>
+				<span class="mandatory" data-ng-show="repoEditForm.SITES_URL.$error.pattern">{{"managerepo.sites_url_notValid" | translate}}</span>
+				<br/>
+				<br/>
+			</div> -->
+			
+			<!-- <div data-ng-if="$parent.isAdmin && (button=='SHAREPOINT_ONLINE' || button=='SHAREPOINT_ONPREMISE')" > 
+				<label>{{"managerrepo.showall.label" | translate}}</label><br/>
+				<switch tabindex = "4" disabled="!selectedServiceProvider.attributes.ALLOW_PERSONAL_REPO" data-ng-model="$parent.allow_all"></switch>
+				<br/>
+				<br/>
+			</div> -->
+			<div>
+				<label>{{"managerrepo.connect.label1" | translate}} {{serviceProviderDisplayName}} {{"managerrepo.connect.label2" | translate}} </label><br/>
+				<div tabindex="5" data-ng-class="'btn btn-default connectbtn '+button" data-ng-disabled="repoEditForm.$pristine || repoEditForm.$invalid" data-ng-click="repoEditForm.$pristine || repoEditForm.$invalid || connectRepository()">
+					{{"managerrepo.connect.button" | translate}}
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+        version="2.5">
+
+    <display-name>nextlabs</display-name>
+    <description>nextlabs</description>
+
+    <!-- log4j2 begin -->
+    <listener>
+        <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>log4jServletFilter</filter-name>
+        <filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>log4jServletFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+
+    <context-param>
+        <param-name>log4jConfiguration</param-name>
+        <param-value>file://${rms_shared_dir}/conf/log4j2_rms.xml</param-value>
+    </context-param>
+    <!-- log4j2 end -->
+	
+    <listener>
+        <listener-class>com.nextlabs.rms.servlet.ServletListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>headersFilter</filter-name>
+        <filter-class>com.nextlabs.rms.servlet.HeaderFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>headersFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+    	<filter-name>securityFilter</filter-name>
+    	<filter-class>com.nextlabs.rms.filter.SecurityFilter</filter-class>
+    	<init-param>
+    		<param-name>xss-protection</param-name>
+    		<param-value>true</param-value>
+    	</init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>securityFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>RMS</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>com.nextlabs.rms.rs</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RMS</servlet-name>
+        <url-pattern>/rs/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OAuthManagerServlet</servlet-name>
+        <servlet-class>com.nextlabs.rms.repository.servlets.OAuthManagerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OAuthManagerServlet</servlet-name>
+        <url-pattern>/OAuthManager/*</url-pattern>
+        <url-pattern>/json/OAuthManager/*</url-pattern>
+        <url-pattern>/custom/OAuthManager/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>IdpManagerServlet</servlet-name>
+        <servlet-class>com.nextlabs.rms.servlet.IdpManagerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IdpManagerServlet</servlet-name>
+        <url-pattern>/IdpManager/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RMSServlet</servlet-name>
+        <servlet-class>com.nextlabs.rms.servlets.RMSServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RMSServlet</servlet-name>
+        <url-pattern>/RMSViewer/*</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+		<servlet-name>RMSRestletServlet</servlet-name>
+		<servlet-class>org.restlet.ext.servlet.ServerServlet</servlet-class>
+		<init-param>
+			<param-name>org.restlet.application</param-name>
+			<param-value>com.nextlabs.rms.services.application.RMSApplication</param-value>
+		</init-param>
+        <init-param>
+            <param-name>org.restlet.clients</param-name>
+            <param-value>HTTP HTTPS</param-value>
+        </init-param>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>RMSRestletServlet</servlet-name>
+		<url-pattern>/service/*</url-pattern>
+	</servlet-mapping>
+
+
+    <!-- Default page to serve -->
+    <welcome-file-list>
+    	<welcome-file>login</welcome-file>
+    </welcome-file-list>
+
+	<mime-mapping>
+	   <extension>nxl</extension>
+	   <mime-type>application/octet-stream</mime-type>
+	</mime-mapping> 
+
+	<error-page>
+	    <error-code>404</error-code>
+	    <location>/error_404.jsp</location>
+	</error-page>
+	<error-page>
+	    <error-code>403</error-code>
+	    <location>/error_403.jsp</location>
+	</error-page>
+	<error-page>
+	    <error-code>401</error-code>
+	    <location>/TimeOut.jsp</location>
+	</error-page>
+	<error-page>
+	    <error-code>500</error-code>
+	    <location>/error_500.jsp</location>
+	</error-page>
+	
+    <!-- JSP Servlet Mappings -->
+    <servlet>
+        <servlet-name>Activate</servlet-name>
+        <jsp-file>/activate.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Activate</servlet-name>
+        <url-pattern>/activate</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ForgotPassword</servlet-name>
+        <jsp-file>/ForgotPassword.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ForgotPassword</servlet-name>
+        <url-pattern>/forgotPassword</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Intro</servlet-name>
+        <jsp-file>/Intro.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Intro</servlet-name>
+        <url-pattern>/intro</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Invitation</servlet-name>
+        <jsp-file>/invitation.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Invitation</servlet-name>
+        <url-pattern>/invitation</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <jsp-file>/Login.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>LoginAdmin</servlet-name>
+        <jsp-file>/LoginAdmin.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginAdmin</servlet-name>
+        <url-pattern>/loginAdmin</url-pattern>
+    </servlet-mapping>
+
+    <!-- Web UI access disabled via rmsng -->
+    <!-- <servlet>
+        <servlet-name>Main</servlet-name>
+        <jsp-file>/main.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Main</servlet-name>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Admin</servlet-name>
+        <jsp-file>/main.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping> -->
+
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <jsp-file>/Register.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ResetPassword</servlet-name>
+        <jsp-file>/ResetPassword.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResetPassword</servlet-name>
+        <url-pattern>/resetPassword</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Unregister</servlet-name>
+        <jsp-file>/unregister.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Unregister</servlet-name>
+        <url-pattern>/unregister</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>TimeOut</servlet-name>
+        <jsp-file>/TimeOut.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TimeOut</servlet-name>
+        <url-pattern>/timeout</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ShowError</servlet-name>
+        <jsp-file>/ShowError.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowError</servlet-name>
+        <url-pattern>/error</url-pattern>
+    </servlet-mapping>
+	
+	<servlet>
+        <servlet-name>CustomURL</servlet-name>
+        <jsp-file>/CustomURL.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomURL</servlet-name>
+        <url-pattern>/customURL</url-pattern>
+    </servlet-mapping>
+</web-app>

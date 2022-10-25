@@ -1,0 +1,35 @@
+{
+    "version": "1.0",
+    "issuer": "skydrm.com",
+    "issueTime": "2016-08-12T13:09:45Z",
+    "policies": [
+        {
+            "id": 0,
+            "name": "Grant VIEW rights to all JT2GO users",
+            "action": 1,
+            "rights": [
+                "VIEW"
+            ],
+            "conditions": {
+                "subject": {
+                    "type": 0,
+                    "operator": "&&",
+                    "expressions": [
+                        {
+                            "type": 1,
+                            "operator": "=",
+                            "name": "application.name",
+                            "value": "visview_ng.exe"
+                        },
+                        {
+                            "type": 1,
+                            "operator": "=",
+                            "name": "user.tenant_id",
+                            "value": "jt2go"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?><toc xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:toc="http://www.oxygenxml.com/ns/webhelp/toc" xmlns="http://www.oxygenxml.com/ns/webhelp/toc">
+   <title><span xmlns="http://www.w3.org/1999/xhtml" class="booktitle">  <span class="ph mainbooktitle">SkyDRM App for iOS 1.0 Quick Start Guide</span>  <span class="ph booktitlealt">Revision 2 </span>  <span class="ph booktitlealt">October 2018</span>  </span></title>
+   <topic href="what_is_skydrm_.html" data-id="what_is_skydrm_" wh-toc-id="what_is_skydrm_-d66e24">
+      <title>What is SkyDRM?</title>
+      <shortdesc>
+         <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">SkyDRM is a cloud-based service that prevents unauthorized access to         files.</p>
+      </shortdesc>
+      <topicmeta>
+         <resourceid class="- topic/resourceid " oxy-source="topic" appid="what_is_skydrm_"></resourceid>
+         <navtitle class="- topic/navtitle ">What is SkyDRM?</navtitle><?ditaot gentext?>
+         <linktext class="- map/linktext ">What is SkyDRM?</linktext><?ditaot genshortdesc?>
+         <shortdesc class="- map/shortdesc ">SkyDRM is a cloud-based service that prevents unauthorized access to         files.</shortdesc>
+      </topicmeta>
+      <topic href="oxy_ex-1/reuse/skydrm_concepts.html" data-id="skydrm_concepts" wh-toc-id="skydrm_concepts-d66e35">
+         <title>SkyDRM concepts</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">This section describes the SkyDRM-specific terminology and components, and the         relationships between the components
+               of SkyDRM.
+            </p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="skydrm_concepts"></resourceid>
+            <navtitle class="- topic/navtitle ">SkyDRM concepts</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">SkyDRM concepts</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc ">This section describes the SkyDRM-specific terminology and components, and the         relationships between the components
+               of SkyDRM.
+            </shortdesc>
+         </topicmeta>
+      </topic>
+      <topic href="oxy_ex-1/reuse/supported_file_formats.html" data-id="reference_ttt_hnb_p2b" wh-toc-id="reference_ttt_hnb_p2b-d66e46">
+         <title>Supported file formats</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"></p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="reference_ttt_hnb_p2b"></resourceid>
+            <navtitle class="- topic/navtitle ">Supported file formats</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Supported file formats</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc "></shortdesc>
+         </topicmeta>
+      </topic>
+      <topic href="supported_file_formats_offline.html" data-id="reference_ygz_1df_qfb" wh-toc-id="reference_ygz_1df_qfb-d66e56">
+         <title>Supported file formats for offline viewing</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"></p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="reference_ygz_1df_qfb"></resourceid>
+            <navtitle class="- topic/navtitle ">Supported file formats for offline viewing</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Supported file formats for offline viewing</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc "></shortdesc>
+         </topicmeta>
+      </topic>
+   </topic>
+   <topic href="managing_repositories.html" data-id="managing_repositories" wh-toc-id="managing_repositories-d66e67">
+      <title>Managing repositories</title>
+      <shortdesc>
+         <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">You can configure SkyDRM to connect to external         repositories, such as Box, OneDrive, Dropbox, Google Drive, SharePoint,
+            and SharePoint         Online. 
+         </p>
+      </shortdesc>
+      <topicmeta>
+         <resourceid class="- topic/resourceid " oxy-source="topic" appid="managing_repositories"></resourceid>
+         <navtitle class="- topic/navtitle ">Managing repositories</navtitle><?ditaot gentext?>
+         <linktext class="- map/linktext ">Managing repositories</linktext><?ditaot genshortdesc?>
+         <shortdesc class="- map/shortdesc ">You can configure SkyDRM to connect to external         repositories, such as Box, OneDrive, Dropbox, Google Drive, SharePoint,
+            and SharePoint         Online. 
+         </shortdesc>
+      </topicmeta>
+      <topic href="adding_a_personal_repository.html" data-id="adding_a_personal_repository" wh-toc-id="adding_a_personal_repository-d66e78">
+         <title>Adding a personal repository</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="adding_a_personal_repository"></resourceid>
+            <navtitle class="- topic/navtitle ">Adding a personal repository</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Adding a personal repository</linktext>
+         </topicmeta>
+      </topic>
+      <topic href="editing_the_repository_display_name.html" data-id="editing_the_repository_display_name" wh-toc-id="editing_the_repository_display_name-d66e86">
+         <title>Editing the repository display name</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="editing_the_repository_display_name"></resourceid>
+            <navtitle class="- topic/navtitle ">Editing the repository display name</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Editing the repository display name</linktext>
+         </topicmeta>
+      </topic>
+      <topic href="disconnecting_a_repository.html" data-id="disconnecting_a_repository" wh-toc-id="disconnecting_a_repository-d66e94">
+         <title>Disconnecting a repository</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="disconnecting_a_repository"></resourceid>
+            <navtitle class="- topic/navtitle ">Disconnecting a repository</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Disconnecting a repository</linktext>
+         </topicmeta>
+      </topic>
+   </topic>
+   <topic href="using_skydrm.html" data-id="using_skydrm" wh-toc-id="using_skydrm-d66e103">
+      <title>Using SkyDRM</title>
+      <shortdesc>
+         <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">With SkyDRM, you can apply rights protection to a file, and share the         rights-protected file. </p>
+      </shortdesc>
+      <topicmeta>
+         <resourceid class="- topic/resourceid " oxy-source="topic" appid="using_skydrm"></resourceid>
+         <navtitle class="- topic/navtitle ">Using SkyDRM</navtitle><?ditaot gentext?>
+         <linktext class="- map/linktext ">Using SkyDRM</linktext><?ditaot genshortdesc?>
+         <shortdesc class="- map/shortdesc ">With SkyDRM, you can apply rights protection to a file, and share the         rights-protected file. </shortdesc>
+      </topicmeta>
+      <topic href="creating_skydrm_account_mobile.html" data-id="untitled5" wh-toc-id="untitled5-d66e114">
+         <title>Creating a SkyDRM account</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">You can create a SkyDRM account on the SkyDRM app provided by your organization. You         should only create an account
+               if your enterprise instructs you to. 
+            </p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="untitled5"></resourceid>
+            <navtitle class="- topic/navtitle ">Creating a SkyDRM account</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Creating a SkyDRM account</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc ">You can create a SkyDRM account on the SkyDRM app provided by your organization. You         should only create an account
+               if your enterprise instructs you to. 
+            </shortdesc>
+         </topicmeta>
+      </topic>
+      <topic href="logging_in_to_skydrm.html" data-id="untitled7" wh-toc-id="untitled7-d66e125">
+         <title>Logging in to SkyDRM</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">You can log in to SkyDRM using your NextLabs SkyDRM, enterprise credentials, or         social account credentials.</p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="untitled7"></resourceid>
+            <navtitle class="- topic/navtitle ">Logging in to SkyDRM</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Logging in to SkyDRM</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc ">You can log in to SkyDRM using your NextLabs SkyDRM, enterprise credentials, or         social account credentials.</shortdesc>
+         </topicmeta>
+      </topic>
+      <topic href="configuring_rights_preferences.html" data-id="untitled8" wh-toc-id="untitled8-d66e136">
+         <title>Configuring digital rights preferences</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">You can configure digital rights preferences settings to prevent recipients from         misusing your sensitive files. </p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="untitled8"></resourceid>
+            <navtitle class="- topic/navtitle ">Configuring digital rights preferences</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Configuring digital rights preferences</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc ">You can configure digital rights preferences settings to prevent recipients from         misusing your sensitive files. </shortdesc>
+         </topicmeta>
+      </topic>
+      <topic href="applying_rights_protection_to_a_file.html" data-id="applying_rights_protection_to_a_file" wh-toc-id="applying_rights_protection_to_a_file-d66e147">
+         <title>Applying rights protection to a file</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">You can apply rights protection to files on your local or         network drive, MyDrive, or an external repository by email.
+               
+            </p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="applying_rights_protection_to_a_file"></resourceid>
+            <navtitle class="- topic/navtitle ">Applying rights protection to a file</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Applying rights protection to a file</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc ">You can apply rights protection to files on your local or         network drive, MyDrive, or an external repository by email.
+               
+            </shortdesc>
+         </topicmeta>
+      </topic>
+      <topic href="sharing_a_rights_protected_file.html" data-id="sharing_a_rights_protected_file" wh-toc-id="sharing_a_rights_protected_file-d66e158">
+         <title>Sharing a rights-protected file</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">You can share a rights-protected file from your local or         network drive, MyDrive, or an external repository by email.</p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="sharing_a_rights_protected_file"></resourceid>
+            <navtitle class="- topic/navtitle ">Sharing a rights-protected file</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Sharing a rights-protected file</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc ">You can share a rights-protected file from your local or         network drive, MyDrive, or an external repository by email.</shortdesc>
+         </topicmeta>
+      </topic>
+      <topic href="marking_file_favorite.html" data-id="task_tfb_ywc_p2b" wh-toc-id="task_tfb_ywc_p2b-d66e169">
+         <title>Marking a file as a favorite</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">This section describes the steps to mark a file as a favorite.</p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_tfb_ywc_p2b"></resourceid>
+            <navtitle class="- topic/navtitle ">Marking a file as a favorite</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Marking a file as a favorite</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc ">This section describes the steps to mark a file as a favorite.</shortdesc>
+         </topicmeta>
+      </topic>
+      <topic href="making_file_offline.html" data-id="task_xpk_kk4_4fb" wh-toc-id="task_xpk_kk4_4fb-d66e180">
+         <title>Making a file available for offline viewing</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_xpk_kk4_4fb"></resourceid>
+            <navtitle class="- topic/navtitle ">Making a file available for offline viewing</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Making a file available for offline viewing</linktext>
+         </topicmeta>
+         <topic href="viewing_offline.html" data-id="task_ujh_mk4_4fb" wh-toc-id="task_ujh_mk4_4fb-d66e188">
+            <title>Viewing a file when offline</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_ujh_mk4_4fb"></resourceid>
+               <navtitle class="- topic/navtitle ">Viewing a file when offline</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Viewing a file when offline</linktext>
+            </topicmeta>
+         </topic>
+         <topic href="making_offline_online.html" data-id="task_nx3_r51_pfb" wh-toc-id="task_nx3_r51_pfb-d66e196">
+            <title>Making a file unavailable offline</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_nx3_r51_pfb"></resourceid>
+               <navtitle class="- topic/navtitle ">Making a file unavailable offline</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Making a file unavailable offline</linktext>
+            </topicmeta>
+         </topic>
+      </topic>
+      <topic href="viewers.html" data-id="concept_gnx_yyb_p2b" wh-toc-id="concept_gnx_yyb_p2b-d66e204">
+         <title>Viewers</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Multiple file formats open in different viewers. This section describes the viewers,         common tools, and tools that
+               are specific to each viewer.
+            </p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="concept_gnx_yyb_p2b"></resourceid>
+            <navtitle class="- topic/navtitle ">Viewers</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Viewers</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc ">Multiple file formats open in different viewers. This section describes the viewers,         common tools, and tools that
+               are specific to each viewer.
+            </shortdesc>
+         </topicmeta>
+         <topic href="common_viewer_tools.html" data-id="task_ak5_vyb_p2b" wh-toc-id="task_ak5_vyb_p2b-d66e215">
+            <title>Common tools</title>
+            <shortdesc>
+               <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">This section describes the tools common to all 2D viewers. Some tools are not         applicable to 3D viewers, such as the
+                  CAD viewer.
+               </p>
+            </shortdesc>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_ak5_vyb_p2b"></resourceid>
+               <navtitle class="- topic/navtitle ">Common tools</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Common tools</linktext><?ditaot genshortdesc?>
+               <shortdesc class="- map/shortdesc ">This section describes the tools common to all 2D viewers. Some tools are not         applicable to 3D viewers, such as the
+                  CAD viewer.
+               </shortdesc>
+            </topicmeta>
+         </topic>
+         <topic href="cad_viewer_tools.html" data-id="reference_ybx_ljc_p2b" wh-toc-id="reference_ybx_ljc_p2b-d66e226">
+            <title>CAD viewer tools</title>
+            <shortdesc>
+               <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">This section describes the tools specific to the CAD viewer.</p>
+            </shortdesc>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="reference_ybx_ljc_p2b"></resourceid>
+               <navtitle class="- topic/navtitle ">CAD viewer tools</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">CAD viewer tools</linktext><?ditaot genshortdesc?>
+               <shortdesc class="- map/shortdesc ">This section describes the tools specific to the CAD viewer.</shortdesc>
+            </topicmeta>
+         </topic>
+      </topic>
+      <topic href="change_password.html" data-id="task_uqv_dtb_p2b" wh-toc-id="task_uqv_dtb_p2b-d66e237">
+         <title>Changing your password</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">If you sign up to SkyDRM directly, without social media or enterprise credentials,         you can change your password. Otherwise,
+               you need to change the password where you created         it. For example, for Google password, you need to open a Google
+               application and change it         from there.
+            </p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_uqv_dtb_p2b"></resourceid>
+            <navtitle class="- topic/navtitle ">Changing your password</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Changing your password</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc ">If you sign up to SkyDRM directly, without social media or enterprise credentials,         you can change your password. Otherwise,
+               you need to change the password where you created         it. For example, for Google password, you need to open a Google
+               application and change it         from there.
+            </shortdesc>
+         </topicmeta>
+      </topic>
+      <topic href="change_display_name.html" data-id="task_c4n_jvc_p2b" wh-toc-id="task_c4n_jvc_p2b-d66e248">
+         <title>Changing your display name</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">You can change your display name by following the steps in this section.</p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_c4n_jvc_p2b"></resourceid>
+            <navtitle class="- topic/navtitle ">Changing your display name</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Changing your display name</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc ">You can change your display name by following the steps in this section.</shortdesc>
+         </topicmeta>
+      </topic>
+   </topic>
+   <topic href="using_a_skydrm_project.html" data-id="using_a_skydrm_project" wh-toc-id="using_a_skydrm_project-d66e261">
+      <title>Using a SkyDRM project</title>
+      <shortdesc>
+         <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">A SkyDRM project enables you to collaborate with a group of users, on one or more         rights-protected documents.</p>
+      </shortdesc>
+      <topicmeta>
+         <resourceid class="- topic/resourceid " oxy-source="topic" appid="using_a_skydrm_project"></resourceid>
+         <navtitle class="- topic/navtitle ">Using a SkyDRM project</navtitle><?ditaot gentext?>
+         <linktext class="- map/linktext ">Using a SkyDRM project</linktext><?ditaot genshortdesc?>
+         <shortdesc class="- map/shortdesc ">A SkyDRM project enables you to collaborate with a group of users, on one or more         rights-protected documents.</shortdesc>
+      </topicmeta>
+      <topic href="creating_a_project.html" data-id="creating_a_project" wh-toc-id="creating_a_project-d66e272">
+         <title>Creating a project</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"></p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="creating_a_project"></resourceid>
+            <navtitle class="- topic/navtitle ">Creating a project</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Creating a project</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc "></shortdesc>
+         </topicmeta>
+      </topic>
+      <topic href="adding_members_to_project.html" data-id="untitled7" wh-toc-id="untitled7-d66e282">
+         <title>Inviting a new member to a project</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">You can invite new members to a project after the project creation.</p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="untitled7"></resourceid>
+            <navtitle class="- topic/navtitle ">Inviting a new member to a project</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Inviting a new member to a project</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc ">You can invite new members to a project after the project creation.</shortdesc>
+         </topicmeta>
+      </topic>
+      <topic href="adding_files_to_a_project.html" data-id="adding_files_to_a_project" wh-toc-id="adding_files_to_a_project-d66e293">
+         <title>Adding files to a project</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="adding_files_to_a_project"></resourceid>
+            <navtitle class="- topic/navtitle ">Adding files to a project</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Adding files to a project</linktext>
+         </topicmeta>
+      </topic>
+      <topic href="applying_company-defined_rights.html" data-id="task_w4l_sfy_s2b" wh-toc-id="task_w4l_sfy_s2b-d66e301">
+         <title>Applying company-defined rights protection</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">In a SkyDRM project, you can either apply your own customized rights protection, also         known as ad-hoc rights, or company-defined
+               rights. 
+            </p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_w4l_sfy_s2b"></resourceid>
+            <navtitle class="- topic/navtitle ">Applying company-defined rights protection</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Applying company-defined rights protection</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc ">In a SkyDRM project, you can either apply your own customized rights protection, also         known as ad-hoc rights, or company-defined
+               rights. 
+            </shortdesc>
+         </topicmeta>
+      </topic>
+   </topic>
+</toc>

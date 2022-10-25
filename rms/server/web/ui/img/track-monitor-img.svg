@@ -1,0 +1,74 @@
+<svg width="430" height="430" viewBox="0 0 430 430" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>track monitor img</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(15370 -8329)" figma:type="canvas">
+<g id="track monitor img" figma:type="frame">
+<g id="Rectangle 36" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(-15353.4 8345.56)" fill="#FFFFFF" fill-opacity="0.2"/>
+</g>
+<g id="Rectangle 36" figma:type="vector">
+<mask id="mask0_outline_ins">
+<use xlink:href="#path1_fill" fill="white" transform="translate(-15369.2 8329.84)"/>
+</mask>
+<g mask="url(#mask0_outline_ins)">
+<use xlink:href="#path2_stroke_2x" transform="translate(-15369.2 8329.84)" fill="#FFFFFF" fill-opacity="0.5"/>
+</g>
+</g>
+<g id="Rectangle 36" figma:type="vector">
+<use xlink:href="#path3_fill" transform="translate(-15318.2 8380.85)" fill="#FFFFFF" fill-opacity="0.8"/>
+</g>
+<g id="browser-2" figma:type="frame">
+<g id="Vector" figma:type="vector">
+<use xlink:href="#path4_fill" transform="matrix(-1 0 0 1 -15090 8479)" fill="#399749"/>
+</g>
+<g id="Vector" figma:type="vector">
+<use xlink:href="#path5_fill" transform="matrix(-1 0 0 1 -15096.9 8510.24)" fill="#FFFFFF"/>
+</g>
+<g id="Group" figma:type="frame">
+<g id="Vector" figma:type="vector">
+<use xlink:href="#path6_fill" transform="matrix(-1 0 0 1 -15102.2 8489.56)" fill="#FFFFFF"/>
+</g>
+<g id="Vector" figma:type="vector">
+<use xlink:href="#path7_fill" transform="matrix(-1 0 0 1 -15119 8489.56)" fill="#FFFFFF"/>
+</g>
+</g>
+<g id="Vector" figma:type="vector">
+<use xlink:href="#path8_fill" transform="matrix(-1 0 0 1 -15153.1 8489.56)" fill="#FFFFFF"/>
+</g>
+<g id="Vector" figma:type="vector">
+<use xlink:href="#path9_fill" transform="matrix(-1 0 0 1 -15103.8 8542.1)" fill="#D4D4DF"/>
+</g>
+<g id="Vector" figma:type="vector">
+<use xlink:href="#path10_fill" transform="matrix(-1 0 0 1 -15177.8 8542.1)" fill="#D4D4DF"/>
+</g>
+<g id="Vector" figma:type="vector">
+<use xlink:href="#path11_fill" transform="matrix(-1 0 0 1 -15140.6 8542.1)" fill="#D4D4DF"/>
+</g>
+<g id="Group" figma:type="frame">
+<g id="Vector" figma:type="vector">
+<use xlink:href="#path12_fill" transform="matrix(-1 0 0 1 -15103.8 8522.88)" fill="#ECECF1"/>
+</g>
+<g id="Vector" figma:type="vector">
+<use xlink:href="#path13_fill" transform="matrix(-1 0 0 1 -15132.2 8583)" fill="#ECECF1"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 71.1624 52.7208C 141.457 -17.5736 255.426 -17.5736 325.721 52.7208L 344.162 71.1624C 414.457 141.457 414.457 255.426 344.162 325.721L 325.721 344.162C 255.426 414.457 141.457 414.457 71.1624 344.162L 52.7208 325.721C -17.5736 255.426 -17.5736 141.457 52.7208 71.1624L 71.1624 52.7208Z"/>
+<path id="path1_fill" d="M 72.7359 58.5786C 150.841 -19.5262 277.474 -19.5262 355.579 58.5786L 369.736 72.7359C 447.841 150.841 447.841 277.474 369.736 355.579L 355.579 369.736C 277.474 447.841 150.841 447.841 72.7359 369.736L 58.5786 355.579C -19.5262 277.474 -19.5262 150.841 58.5786 72.7359L 72.7359 58.5786Z"/>
+<path id="path2_stroke_2x" d="M 355.579 58.5786L 354.872 59.2857L 355.579 58.5786ZM 369.736 72.7359L 370.443 72.0288L 369.736 72.7359ZM 72.7359 369.736L 72.0288 370.443L 72.7359 369.736ZM 58.5786 355.579L 59.2857 354.872L 58.5786 355.579ZM 73.4431 59.2857C 151.157 -18.4286 277.157 -18.4286 354.872 59.2857L 356.286 57.8715C 277.79 -20.6238 150.524 -20.6238 72.0288 57.8715L 73.4431 59.2857ZM 354.872 59.2857L 369.029 73.4431L 370.443 72.0288L 356.286 57.8715L 354.872 59.2857ZM 369.029 73.4431C 446.743 151.157 446.743 277.157 369.029 354.872L 370.443 356.286C 448.938 277.79 448.938 150.524 370.443 72.0288L 369.029 73.4431ZM 369.029 354.872L 354.872 369.029L 356.286 370.443L 370.443 356.286L 369.029 354.872ZM 354.872 369.029C 277.157 446.743 151.157 446.743 73.4431 369.029L 72.0288 370.443C 150.524 448.938 277.79 448.938 356.286 370.443L 354.872 369.029ZM 73.4431 369.029L 59.2857 354.872L 57.8715 356.286L 72.0288 370.443L 73.4431 369.029ZM 59.2857 354.872C -18.4286 277.157 -18.4286 151.157 59.2857 73.4431L 57.8715 72.0288C -20.6238 150.524 -20.6238 277.79 57.8715 356.286L 59.2857 354.872ZM 59.2857 73.4431L 73.4431 59.2857L 72.0288 57.8715L 57.8715 72.0288L 59.2857 73.4431Z"/>
+<path id="path3_fill" d="M 71.2283 38.0761C 121.997 -12.692 204.308 -12.692 255.076 38.0761L 288.228 71.2283C 338.996 121.997 338.996 204.308 288.228 255.076L 255.076 288.228C 204.308 338.996 121.997 338.996 71.2283 288.228L 38.0761 255.076C -12.692 204.308 -12.692 121.997 38.0761 71.2283L 71.2283 38.0761Z"/>
+<path id="path4_fill" d="M 124.583 0L 5.41668 0C 2.43748 0 0 2.43748 0 5.41668L 0 124.583C 0 127.563 2.43748 130 5.41668 130L 124.583 130C 127.563 130 130 127.563 130 124.583L 130 5.41668C 130 2.43748 127.563 0 124.583 0Z"/>
+<path id="path5_fill" d="M 116.458 0L 0 0L 0 91.8124L 116.458 91.8124L 116.458 0Z"/>
+<path id="path6_fill" d="M 5.14582 10.2916C 7.98777 10.2916 10.2916 7.98777 10.2916 5.14582C 10.2916 2.30386 7.98777 0 5.14582 0C 2.30386 0 0 2.30386 0 5.14582C 0 7.98777 2.30386 10.2916 5.14582 10.2916Z"/>
+<path id="path7_fill" d="M 5.14582 10.2916C 7.98777 10.2916 10.2916 7.98777 10.2916 5.14582C 10.2916 2.30386 7.98777 0 5.14582 0C 2.30386 0 0 2.30386 0 5.14582C 0 7.98777 2.30386 10.2916 5.14582 10.2916Z"/>
+<path id="path8_fill" d="M 49.5627 -1.42381e-07L 5.14582 -1.42381e-07C 2.16662 -1.42381e-07 -3.79682e-07 2.43748 -3.79682e-07 5.14582C -3.79682e-07 8.12502 2.43748 10.2916 5.14582 10.2916L 49.5624 10.2916C 52.5416 10.2916 54.7082 7.85416 54.7082 5.14582C 54.7085 2.16662 52.2708 -1.42381e-07 49.5627 -1.42381e-07Z"/>
+<path id="path9_fill" d="M 28.4374 0L 0 0L 0 28.4374L 28.4374 28.4374L 28.4374 0Z"/>
+<path id="path10_fill" d="M 28.4374 0L 0 0L 0 28.4374L 28.4374 28.4374L 28.4374 0Z"/>
+<path id="path11_fill" d="M 28.4374 0L 0 0L 0 28.4374L 28.4374 28.4374L 28.4374 0Z"/>
+<path id="path12_fill" d="M 65.2707 0L 0 0L 0 6.77072L 65.2707 6.77072L 65.2707 0Z"/>
+<path id="path13_fill" d="M 73.9375 0L 0 0L 0 6.77072L 73.9375 6.77072L 73.9375 0Z"/>
+</defs>
+</svg>

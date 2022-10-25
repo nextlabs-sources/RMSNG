@@ -1,0 +1,74 @@
+<div class="col-xs-12" data-ng-controller="welcomeController">
+
+		<div class = "welcome_control pull-right">
+			<span data-ng-show="SHOW_HIDE_WELCOME_PAGE_CONTROL">
+				<input type="checkbox" id="HIDE_WELCOME_PAGE" data-ng-model="HIDE_WELCOME_PAGE" name="HIDE_WELCOME_PAGE" data-ng-change="hideWelcomePage()">
+				<label for="HIDE_WELCOME_PAGE">{{'hide.welcome' | translate}}</label>
+			</span>
+			<span class="close-icon-container"><a class="close-icon" data-ng-click="leaveWelcomePage()">x</a></span>
+		</div>
+
+	<div class="row">
+			<div class="setting-sidebar-toggle-div col-xs-2">
+				<div class="file-list-icons big-screen-hide ipad-potrait-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i>
+				</div>
+				<div class="ipad-potrait-show"><br/><br/></div>	
+			</div>
+	</div>
+	<div class="row welcome-title">
+		<div class="col-xs-8 hide-welcome-desktop">
+			<h4 class="padding-mobile">{{'login.welcome' | translate}}</h4>
+		</div>
+		<div class="col-xs-12 hide-welcome-mobile show-welcome-mobile">
+			<h4 class="padding-mobile">{{'login.welcome' | translate}}</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-8">
+			<div id="statusContainer" data-ng-class="{'alert alert-success': messageStatus==2, 'alert alert-danger': messageStatus==1}" style="margin-bottom:10px;" ng-show="messageStatus==1 || messageStatus==2">
+		        <button type="button" class="close" data-ng-click="dismissStatus()">x</button>
+		        {{message}}
+		    </div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-8 col-xs-12">
+			<div class="embed-responsive embed-responsive-16by9">
+			    <video controls class="embed-responsive-item" preload="metadata">
+        				<source data-ng-src="{{videoURL | trusted}}" type="video/mp4">
+    			</video>
+			</div>
+		</div>
+		<div class="col-md-4 hide-welcome-desktop">
+			<h4>{{'welcome.get.started' | translate}}</h4>
+			<ul class="list-unstyled">
+  				<li><a class="welcome-help-links" href="javascript:void(0)" data-ng-click="launchURL('/help_users/index.html', false)">{{'welcome.what.to.do.first' | translate}}</a></li>
+  				<li><a class="welcome-help-links" href="javascript:void(0)" data-ng-click="launchURL('/help_users/index.html', false)">{{'welcome.add.repository' | translate}}</a></li>
+  				<li><a class="welcome-help-links" href="javascript:void(0)" data-ng-click="launchURL('/help_users/index.html', false)">{{'welcome.protect.files' | translate}}</a></li>
+  				<li><a class="welcome-help-links" href="javascript:void(0)" data-ng-click="launchURL('/help_users/index.html', false)">{{'welcome.share.files' | translate}}</a></li>
+  				<li><a class="welcome-help-links" href="javascript:void(0)" data-ng-click="launchURL('/help_users/index.html', false)">{{'welcome.learn.more' | translate}}</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 hide-welcome-mobile show-welcome-mobile">
+			<h4>{{'welcome.get.started' | translate}}</h4>
+			<ul class="list-unstyled">
+  				<li><a href="javascript:void(0)" data-ng-click="launchURL('/help_users/index.html', false)">{{'welcome.what.to.do.first' | translate}}</a></li>
+  				<li><a href="javascript:void(0)" data-ng-click="launchURL('/help_users/index.html', false)">{{'welcome.add.repository' | translate}}</a></li>
+  				<li><a href="javascript:void(0)" data-ng-click="launchURL('/help_users/index.html', false)">{{'welcome.protect.files' | translate}}</a></li>
+  				<li><a href="javascript:void(0)" data-ng-click="launchURL('/help_users/index.html', false)">{{'welcome.share.files' | translate}}</a></li>
+  				<li><a href="javascript:void(0)" data-ng-click="launchURL('/help_users/index.html', false)">{{'welcome.learn.more' | translate}}</a></li>
+			</ul>
+		</div>
+	</div>
+		
+	<!-- Mobile -->
+	<br>
+	<div class="row" data-ng-if="isRMCDownloadable">
+		<div class="margin-auto" id="download-rmc">
+	  		<a class="btn btn-default rms-settings-button-color" data-ng-click="downloadRMC()" >{{"download.rmc.tab" | translate}}</a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,40 @@
+dependencies {
+	compile project(':shared')
+	compile project(':rmjavasdk-ng')
+	compile project(':rms-shared')
+	compile project(':rms-database')
+	compile project(':rms-xmlbeans')
+
+	compile libs.'commons-lang3'
+	compile libs.'dropbox'
+	compile libs.'google-drive'
+	compile libs.'guava'
+	compile libs.'hibernate'
+	compile libs.'http-client'
+	compile libs.'http-core'
+	compile libs.'jackson'
+	compile libs.'joda-time'
+	compile libs.'restlet'
+	compile libs.'log4j'
+	compile libs.'s3'
+	compile libs.'xmlbeans'
+	compile group: 'com.box', name: 'box-java-sdk', version: '2.8.1'
+	compile libs.'jaxws'
+	compile libs.'javax'
+	compileOnly libs.'servlet'
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src']
+		}
+		resources {
+			srcDirs "src"
+		}
+	}
+}
+
+jar {
+	baseName 'repository'
+}

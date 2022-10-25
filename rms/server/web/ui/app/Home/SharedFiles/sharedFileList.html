@@ -1,0 +1,48 @@
+<div data-ng-controller="sharedFileListController">
+    <div id="loading-background" data-ng-show="isLoading">
+        <div id="pgLoading-image">
+            <img  src="ui/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+    <div id="fileListHeader" class="show-only-on-desktop" data-ng-include="'ui/app/Home/SharedFiles/partials/sharedFileListHeader.html'"></div>
+    <div class="mobile-tablet-display" data-ng-include="'ui/app/Home/SharedFiles/partials/sharedFileListHeaderForMobile.html'"></div>
+    <div data-ng-class="rms-fileList">
+        <div class="row">
+            <div id="fileList-col-id" class="col-md-10">
+                <center>
+                    <label data-ng-if="repoContents.length === 0 && searchActivated">{{"err.no.search.results"|translate}}</label>
+                </center>
+                <div data-ng-if="emptyFileList && !searchActivated">
+                    <div data-ng-if="showWidgetIfEmpty && isActiveFilter" class="empty-file-container">
+                        <center>
+                            <div class="upload pointer-click" data-ng-click="openShareWidget()"></div>
+                            <div class="padding-10" style="font-style: italic">{{"share.file.nofiles" | translate}} {{"Click" | translate}} <a class="underline pointer-click" data-ng-click="openShareWidget()">{{"here" | translate}}</a> {{"myvault.nofiles.share" | translate}}</div>
+                        </center>
+                    </div>
+                    <div data-ng-if="showWidgetIfEmpty && !isActiveFilter" class="empty-file-container">
+                        <center>
+                            <div class="upload pointer-click" data-ng-click="openProtectWidget()"></div>
+                            <div class="padding-10" style="font-style: italic">{{"myvault.nofiles" | translate}} {{"Click" | translate}} <a class="underline pointer-click" data-ng-click="openProtectWidget()">{{"here" | translate}}</a> {{"myvault.nofiles.protect" | translate}}</div>
+                        </center>
+                    </div>
+                    <div data-ng-if="!showWidgetIfEmpty" class="empty-file-container" style="padding-top: 10px">
+                        <center>
+                            <div class="padding-10" style="font-style: italic">{{isDeletedFilter ? "myvault.nofiles.deleted" : "myvault.nofiles.revoked" | translate}}</div>
+                        </center>
+                    </div>
+                </div>
+                <div style="min-height: 350px;">
+                    <ul id="unordered-fileList-id">
+                        <li data-ng-class="eachFile.isRevoked?'rms-share-revoked-transaction':''"class="list-group-item rms-file-list" data-ng-repeat="eachFile in repoContents "> 
+                            <div data-ng-include="'ui/app/Home/SharedFiles/partials/sharedFileListTemplate.html'"></div>
+                        </li>
+                    </ul>   
+                </div>
+            </div>
+        </div>
+        <center>
+            <button data-ng-class="'btn btn-default'" data-ng-if="!isLoading && repoContents.length!=0 && showMore" data-ng-click= "loadMoreSharedFiles()">{{"share.file.loadmore"|translate}}</button>
+          	<label data-ng-if="repoContents.length!=0 && !showMore">{{"view.shared.file.nomorefiles"|translate}}</label>
+        </center>  
+    </div>
+</div>

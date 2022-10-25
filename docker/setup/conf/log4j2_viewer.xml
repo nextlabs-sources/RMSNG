@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<Configuration status="WARN" monitorInterval="300">
+    <Properties>
+        <Property name="HOST">${env:HOSTNAME}</Property>
+        <Property name="LOG_HOME">${env:RMS_SHARED_DIR}/logs/${HOST}</Property>
+        <Property name="PATTERN">%d %p:%m%n</Property>
+    </Properties>
+    <Appenders>  
+        <Console name="Console" target="SYSTEM_OUT">  
+            <PatternLayout pattern="${PATTERN}" />
+        </Console>  
+        <RollingRandomAccessFile name="viewer" fileName="${LOG_HOME}/viewer.log" filePattern="${LOG_HOME}/viewer.%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${PATTERN}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingRandomAccessFile>  
+        <RollingRandomAccessFile name="viewer_audit" fileName="${LOG_HOME}/viewer_audit.log" filePattern="${LOG_HOME}/viewer_audit.%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${PATTERN}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingRandomAccessFile>
+    </Appenders>  
+    <Loggers>
+        <Logger name="com.nextlabs.viewer" level="trace" additivity="true">  
+            <AppenderRef ref="viewer" />  
+        </Logger>
+        <Logger name="com.nextlabs.viewer.audit" level="trace" additivity="true">  
+            <AppenderRef ref="viewer_audit" />  
+        </Logger>  
+        <Root level="error">  
+            <AppenderRef ref="Console" />  
+        </Root>  
+    </Loggers>  
+</Configuration>  

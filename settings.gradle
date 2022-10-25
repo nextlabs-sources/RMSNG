@@ -1,0 +1,11 @@
+rootProject.name = 'rmsng'
+include 'shared', 'captcha', 'rmjavasdk-ng', 'router/database' , 'router/server', 'rms/database', 'rms/shared', 'rms/xmlbeans', 'rms/cc-stubs', 'rms/repository', 'rms/server', 'viewer'
+
+project(':router/database').name = 'router-database'
+project(':router/server').name = 'router-server'
+project(':rms/database').name = 'rms-database'
+project(':rms/shared').name = 'rms-shared'
+project(':rms/xmlbeans').name = 'rms-xmlbeans'
+project(':rms/cc-stubs').name = 'rms-cc-stubs'
+project(':rms/repository').name = 'rms-repository'
+project(':rms/server').name = 'rms-server'

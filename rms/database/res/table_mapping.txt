@@ -1,0 +1,15 @@
+activity_log``
+black_list``
+client``
+favorite_file``
+group``
+login_account``
+membership``
+offline_file``
+repository``
+shared_nxl``
+sharing_recipient``
+sharing_transaction``
+storage_provider``
+tenant``
+user``

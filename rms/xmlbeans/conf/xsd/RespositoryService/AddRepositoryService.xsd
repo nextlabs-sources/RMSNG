@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://nextlabs.com/rms/rmc" xmlns:rms-rmc-type="http://nextlabs.com/rms/rmc/types">
+
+	<xs:import schemaLocation="../types/rms-rmc-integration-types.xsd"
+		namespace="http://nextlabs.com/rms/rmc/types" />
+		
+	<xs:element name="addRepositoryRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="repository" type="rms-rmc-type:RepositoryType"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="rms-rmc-type:RequestAttributes"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addRepositoryResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="repoId" type="xs:string" minOccurs="0"/>
+				<xs:element name="status" type="rms-rmc-type:StatusType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

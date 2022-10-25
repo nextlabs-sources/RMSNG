@@ -1,0 +1,13 @@
+<div class="cc-ps-menu">
+    <span class="close-menu-mobile"><a class="glyphicon glyphicon-remove big-screen-hide toggle-close-button" data-ng-click="toggleSideBar()"></a></span>
+    <div data-ng-include="'ui/app/Home/Repositories/repoList.html'"></div>
+    <div ng-show="showPromotion && saasMode" class="sidebar-promotion">
+        <a style="float:right; padding-right: 5px; cursor: pointer" data-ng-click="dismissPromotion()">x</a>
+        <div style="padding:10px;">
+            <h6>{{'promotion.tile.headine' | translate}}</h6>
+            <img style="height: 120px; width: 80%" src="ui/img/colloborate-img.svg">
+            <h6>{{'promotion.tile.description' | translate}}<a class="green-bold-cta" data-ng-click="goToUpgradeProject()">{{"project.title" | translate}}</a></h6>
+            <button class="col-xs-12 borderless-shadow" data-ng-click="goToCreateProject()">{{'promotion.tile.activate.btn'| translate}}</button>
+        </div>
+    </div>
+</div>

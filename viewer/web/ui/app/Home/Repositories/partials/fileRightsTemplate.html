@@ -1,0 +1,13 @@
+<div class="rms-info-rights text-align-center file-rights-container">
+		<li data-ng-if="rights.indexOf('VIEW') >= 0"><div><img class="rms-sharefile-icon-50px" src="/viewer/ui/img/View_P.svg"/><br><h6>{{"file.rights.view" | translate}}</h6></div></li>
+		<li data-ng-if="rights.indexOf('EDIT') >= 0"><div><img class="rms-sharefile-icon-50px" src="/viewer/ui/img/EditRight_P.svg"/><br><h6>{{"file.rights.edit" | translate}}</h6></div></li>
+		<li data-ng-if="rights.indexOf('PRINT') >= 0"><div><img class="rms-sharefile-icon-50px" src="/viewer/ui/img/Print_P.svg"/><br><h6>{{"file.rights.print" | translate}}</h6></div></li>
+		<li data-ng-if="rights.indexOf('SHARE') >= 0"><div><img class="rms-sharefile-icon-50px" src="/viewer/ui/img/SharedFilesInfo_P.svg"/><br><h6>{{"file.rights.share" | translate}}</h6></div></li>
+		<li data-ng-if="rights.indexOf('DOWNLOAD') >= 0"><div><img class="rms-sharefile-icon-50px" src="/viewer/ui/img/SaveAsRight_P.svg"/><br><h6>{{"file.rights.download" | translate}}</h6></div></li>
+		<li data-ng-if="rights.indexOf('WATERMARK') >= 0"><div><img class="rms-sharefile-icon-50px" src="/viewer/ui/img/WaterMark_P.svg"/><br><h6>{{"file.rights.watermark" | translate}}</h6></div></li>	
+		<li data-ng-if="protectionType == 0"><div><img class="rms-sharefile-icon-50px" src="/viewer/ui/img/Validity_P.svg"/><br><h6>{{"validity" | translate}}</h6></div></li>
+</div>
+<div ng-show="expiryInfo && protectionType == 0" class="expiry-info text-align-center">
+	<p><b>{{'validity' | translate}}</b> : {{expiration}}</p>
+</div>
+<br/>

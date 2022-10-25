@@ -1,0 +1,28 @@
+<div id="user-attribute-mapping" style="background-color: white; width: 100%; margin-top: 30px;">
+	<div id="user-attribute-mapping-heading" class="admin-heading-border" style="position:relative;">
+		<span id="user-attribute-mapping-landing-page-icon" style="padding-left:10px;">
+			<i data-ng-include="'ui/img/UserAttrMap_P.svg'"></i>
+		</span>
+		<span style="display:inline-block;padding:10px;">
+			<div class="admin-section-title">{{'config.user_attr_mapping' | translate}}</div>
+			<div class="admin-section-description">{{'config.user_attr_mapping.description' | translate}}</div>
+		</span>
+		<span style="position:absolute; right:3%; top:32%; cursor:pointer;" data-ng-click="onClickTab('userAttributeMapping')">
+			<i data-ng-include="'ui/img/Arrow_Grey.svg'"></i>
+		</span>
+	</div>
+	<div ng-controller="userAttributeMappingController" id="user-attribute-mapping-body" class="admin-body-border" style="position:relative;">
+		<div ng-show="selectedAttributes.length == 0" id="user-attribute-mapping-section" class="inline-block" style="position:relative; width:245px; cursor:pointer;" data-ng-click="onClickTab('userAttributeMapping')">
+			<div style="position:relative;">
+				<i data-ng-include="'ui/img/Add_icon.svg'"></i>
+				<span class="light-gray-text" style="position:absolute; top:18px; right:0px;">{{'config.user_attr_mapping' | translate}}</span>
+			</div>
+		</div>
+		<div ng-show="selectedAttributes.length != 0">
+			<span ng-repeat="attr in selectedAttributes">
+				<button ng-class="'btn btn-default rms-settings-button-color button-paddings'" style="margin:10px; cursor:initial;">{{attr.name}}</button>
+			</span>
+		</div>
+		<button type="button" class="btn-link" data-ng-click="onClickTab('userAttributeMapping')" style="position:absolute; right:0px; bottom:5px;">{{'add.manage.user.attribute.mapping' | translate}}<i style="padding-left:5px;" data-ng-include="'ui/img/back arrow - black.svg'"></i></button>
+	</div>
+</div>

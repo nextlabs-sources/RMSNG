@@ -1,0 +1,21 @@
+<div data-ng-repeat="project in projectsInvited" class ="col-xs-12 col-md-4 inline-block" style="padding: 0; vertical-align: top" data-ng-show="(projectsInvited!=null && projectsInvited.length>0)" >
+    <div class="pointer-click rms-tile-shadow rms-tile-project rms-tile-project-invited text-align-left margin-10" data-ng-click="goToProject(projectsInvited[$index].id)" data-ng-class="{'rms-tile-project-hover': hovering, 'rms-tile-project-no-hover': !hovering }" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false">
+        <h4 class="rms-tile-project-title-text margin-bottom-10 mobile-text-align-center">{{projectsInvited[$index].displayName}}</h4>
+        <div class="margin-auto mobile-text-align-center">
+            <div id="profileImageLandingPage" class="inline-block default_profile" data-ng-class="'profile_'+member.displayName[0].toLowerCase()" data-ng-repeat="member in projectsInvited[$index].projectMembers.members" uib-tooltip="{{getUserFullDisplayName(member.displayName, member.email)}}">
+                 <div id="profileNameLandingPage" class="inline-block">
+                   {{member.displayName | initials}}
+                 </div>
+            </div>
+            <div id="profileImageLandingPage" style="background-color:#399649;" class="inline-block" data-ng-show="projectsInvited[$index].totalMembers > 6">
+                 <div id="profileNameLandingPage" class="inline-block">
+                    <a style="color:white">+{{projectsInvited[$index].totalMembers - 5}}</a>
+                 </div>
+            </div>
+        </div>
+        <div class="margin-top-10 mobile-text-align-center" >
+            <span><b>{{projectsInvited[$index].totalFiles?projectsInvited[$index].totalFiles:0}}</b></span>
+            <span class="color-gray">{{(projectsInvited[$index].totalFiles == 1 ? 'project.file' : 'project.files') |translate }}</span>
+        </div>
+    </div>
+</div>

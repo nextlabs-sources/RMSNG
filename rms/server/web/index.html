@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="scaffolded-by" content="https://github.com/google/stagehand">
+    <title>Right Management Server</title>
+
+    <link rel="shortcut icon" href="images/favicon.ico"/>
+
+    <script src="packages/web_components/webcomponents-lite.min.js"></script>
+    <script async type="application/dart" src="index.dart"></script>
+    <script async src="packages/browser/dart.js"></script>
+    <link rel="stylesheet" href="css/rms.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <script src="https://apis.google.com/js/api:client.js"></script>
+
+    <script>
+        var onLoginSuccess; // implemented in dart
+        var initGoogleButton = function() {
+            gapi.load('auth2', function() {
+                auth2 = gapi.auth2.init({
+                    client_id : '383825979725-1kmosf03cfvba4j4vsh6qb9aeimrfb3s.apps.googleusercontent.com',
+                    cookiepolicy : 'single_host_origin',
+                });
+                document.getElementById('googleLoginBtn').style.display = "block";
+            });
+        };
+
+        function googleLogin() {
+            if (auth2.isSignedIn.get()) {
+                googleUser = auth2.currentUser.get();
+                var token = googleUser.getAuthResponse().id_token;
+                onLoginSuccess(document.baseURI, 'rs/login/google', token);
+            } else {
+                auth2.signIn().then(function() {
+                    googleUser = auth2.currentUser.get();
+                    var token = googleUser.getAuthResponse().id_token;
+                    onLoginSuccess(document.baseURI, 'rs/login/google', token);
+                });
+            }
+        };
+    </script>
+</head>
+
+<body class="fullbleed">
+<script>
+    function onFacebookLogin() {
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                var token = response.authResponse.accessToken;
+                onLoginSuccess(document.baseURI, 'rs/login/fb', token);
+            }
+        });
+    }
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '991226667638754',
+            cookie     : true,  // enable cookies to allow the server to access the session
+            xfbml      : true,  // parse social plugins on this page
+            version    : 'v2.5' // use graph api version 2.5
+        });
+    };
+
+    // Load the SDK asynchronously
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div id="splash">
+</div>
+
+<login-app class="fit"></login-app>
+<main-app hidden="true"></main-app>
+
+</body>
+</html>

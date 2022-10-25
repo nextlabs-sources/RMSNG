@@ -1,0 +1,37 @@
+<div data-ng-controller="uploadProgressController" class="upload-status alert alert-upload" ng-hide="close">
+    <div class="button-upload-file-header">
+        <div class="uploadFile-info">
+            <span>{{uploadFileSummary | translate}}</span>
+        </div>
+        <div class="close-notification pointer-click"><i class="fa fa-times-circle" ng-click="closeNotification()"></i></div>
+        <div class="close-notification pointer-click">
+            <i class="fa fa-chevron-circle-up" ng-click="toggleNotification()" ng-show="minimize"></i>
+            <i class="fa fa-chevron-circle-down" ng-click="toggleNotification()" ng-hide="minimize"></i>
+        </div>
+    </div>  
+    <div class="table-upload-file-list">
+        <table id="status-bar" ng-hide="minimize">
+            <tr ng-repeat="uploadFile in uploadFileList | reverse">
+                <td class="wrap" data-ng-class="{'error-text': uploadFile.uploadFailed, 'normal-text': !uploadFile.uploadFailed}" width="100%" title="{{uploadFile.hoverFileName}}">{{uploadFile.displayFileName}}</td>
+                <td>
+                    <span ng-show="uploadFile.fileUploading">
+                        <center>
+                            {{uploadFile.percentUploaded}}%
+                        </center>
+                    </span>
+                    <span ng-show="uploadFile.fileUploaded">
+                        <center>
+                            <img src="ui/img/Correct_P.svg" alt="Uploaded" />
+                        </center>
+                    </span>
+                    <span class="error-tooltip" ng-show="uploadFile.uploadFailed">
+                        <center>
+                            <img src="ui/img/Alert_P.svg" alt="Error" />
+                        </center>
+                        <span class="error-tooltip-text">{{ uploadFile.error }}</span>
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

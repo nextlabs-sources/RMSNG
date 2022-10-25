@@ -1,0 +1,29 @@
+<div class="rms-repo-list-header">
+    <div class = "rms-repoTitle">
+        <div class="repo-info">
+            <span>
+                <b>{{"myvault.title"|translate}}</b>
+                <span id="sharedFileInfo" class="small-screen-hide" uib-tooltip="{{'sharedByMe.sharedFiles.info' | translate}}" tooltip-placement="bottom"> <i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign-shared-file"></i></span>
+            </span>
+        </div>
+        <div data-ng-class="!isTreeOpen ? 'rms-file-search rms-file-search-custom' : 'rms-file-search tree'">
+            <form ng-submit="search()" >
+                <i class="fa fa-search"></i>
+                <input style="max-width: 140px" placeholder="{{'search.file.placeholder' | translate}}"  type="text" ng-model="$parent.searchString" clear-input="clearSearch()"></input>
+            </form>
+        </div> 
+    </div>
+    <div >
+         <span class="rms-shareFile-filter">
+             <select 
+                data-ng-options="filter.lookupCode as filter.description |  translate for filter in filterOptions" data-ng-model="$parent.selectedFilter" data-ng-change="filterChanged($parent.selectedFilter)">
+            </select>
+        </span>
+        <span class="rms-file-sort rms-file-sort-custom">
+            <label class="rms-file-sort-label">{{'sort.by' | translate}}</label>&nbsp;
+            <select 
+                data-ng-options="sort.lookupCode as sort.description | translate for sort in sortOptions" data-ng-model="$parent.selectedSort" data-ng-change="sortChanged($parent.selectedSort)">
+            </select>
+        </span>
+    </div> 
+</div>

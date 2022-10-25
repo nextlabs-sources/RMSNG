@@ -1,0 +1,24 @@
+DROP TABLE rms.identity_provider;
+CREATE TABLE rms.identity_provider
+(
+   id INT IDENTITY NOT NULL,
+   tenant_id NVARCHAR(36) NOT NULL,
+   type INT NOT NULL,
+   attributes NVARCHAR(MAX),
+   user_attribute_map NVARCHAR(1200),
+   CONSTRAINT IDENTITY_PROVIDER_PKEY PRIMARY KEY(id),
+   CONSTRAINT FK_IDENTITY_TENANT FOREIGN KEY (tenant_id) 
+   REFERENCES rms.tenant(id) ON DELETE CASCADE
+);
+CREATE TABLE rms.tenant_user_attribute
+(
+   id NVARCHAR(36) NOT NULL,
+   tenant_id NVARCHAR(36) NOT NULL,
+   name NVARCHAR(50) NOT NULL,
+   is_custom SMALLINT NOT NULL,
+   is_selected SMALLINT NOT NULL,   
+   CONSTRAINT TENANT_USER_ATTRIB_PKEY PRIMARY KEY(id),
+   CONSTRAINT U_TENANT_ATTRIB_NAME UNIQUE(tenant_id, name),
+   CONSTRAINT FK_TENANT_USER_ATTRIB_TENANT FOREIGN KEY (tenant_id) 
+   REFERENCES rms.tenant(id) ON DELETE CASCADE
+);

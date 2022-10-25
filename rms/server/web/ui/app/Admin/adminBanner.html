@@ -1,0 +1,4 @@
+<div class="banner margin-bottom-0">
+	<a class="project-navigator" ng-click="goToLanding()">{{ isDefaultTenant ? 'super.admin.landing.page' : 'admin.landing.page' | translate }}</a>
+	<h4>{{ isDefaultTenant ? 'domain.settings' : loginTenant | translate }} <a ng-if="isDefaultTenant" style="color: #D0F09B">({{loginTenant}})</a></h4>
+</div>

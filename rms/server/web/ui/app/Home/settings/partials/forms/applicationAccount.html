@@ -1,0 +1,46 @@
+<div class="dialog-control-group">
+    <label>{{"sp.app.display-name.label" | translate}}<span class="mandatory"> * </span></label><br/>
+    <input type="text" class="input" data-ng-model="formData.displayName" id="displayName" name="displayName" data-ng-required="true" data-ng-trim="true" data-ng-pattern="/^[\w -]+$/" ng-maxlength="40"/>
+    <span uib-tooltip="{{displayNameInfo}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+    <p class="mandatory" ng-show="configurationForm.displayName.$touched && (configurationForm.displayName.$error.required || configurationForm.displayName.$error.maxlength) && !configurationForm.displayName.$error.pattern">{{"sp.display_name.required" | translate}}</p>
+    <p class="mandatory" ng-show="configurationForm.displayName.$error.pattern">{{"sp.display_name.incorrect_format" | translate}}</p>
+</div>
+<div class="dialog-control-group">
+    <label>{{"sp.app.key.label" | translate}}<span class="mandatory"> * </span></label><br/>
+    <input type="text" class="input" data-ng-model="formData.appId" id="appId" name="appId" data-ng-required="true" data-ng-trim="true"/>
+    <span uib-tooltip="{{appIdInfo}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+    <p class="mandatory" ng-show="configurationForm.appId.$touched && configurationForm.appId.$error.required">{{"sp.app_id.required" | translate}}</p>
+</div>
+<div class="dialog-control-group">
+    <label>{{"sp.app.secret.label" | translate}}<span class="mandatory"> * </span></label><br/>
+    <a class="btn btn-default" ng-if="!showAppSecret" ng-click="showAppSecretField()">{{"sp.change.label" | translate}}</a>
+    <input type="password" class="input" ng-if="showAppSecret" data-ng-model="formData.appSecret" id="appSecret" name="appSecret" data-ng-required="showAppSecret" data-ng-trim="true"></input>
+    <span uib-tooltip="{{appSecretInfo}}" tooltip-placement="bottom"> <i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+    <p class="mandatory" ng-show="configurationForm.appSecret.$touched && configurationForm.appSecret.$error.required">{{"sp.app_secret.required" | translate}}</p>
+</div>
+<div class="dialog-control-group">
+    <label>{{"sp.app-tenant-id.label" | translate: '{service: "Azure"}'}}<span class="mandatory"> * </span></label><br/>
+    <input type="text" class="input" data-ng-model="formData.directoryId" id="directoryId" name="directoryId" data-ng-required="true" data-ng-trim="true"/>
+    <span uib-tooltip="{{appIdInfo}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+    <p class="mandatory" ng-show="configurationForm.directoryId.$touched && configurationForm.directoryId.$error.required">{{"sp.app_tenant_id.required" | translate: '{service: "Azure"}'}}</p>
+</div>
+<div class="dialog-control-group">
+    <label>{{"sp.site-url.label" | translate}}<span class="mandatory"> * </span></label><br/>
+    <input type="text" class="input" data-ng-model="formData.siteUrl" id="siteUrl" name="siteUrl" data-ng-required="true" data-ng-pattern="/https?:\/\/(?:www\.|(?!www))(([^\s\.]+\.[^\s]+)|[^\s]+)/i" data-ng-trim="true"/>
+    <span uib-tooltip="{{appIdInfo}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+    <p class="mandatory" ng-show="configurationForm.siteUrl.$touched && configurationForm.siteUrl.$error.required">{{"sp.site-url.required" | translate}}</p>
+    <p class="mandatory" ng-show="configurationForm.siteUrl.$error.pattern">{{"sp.site-url.not-valid" | translate}}</p>
+</div>
+<div class="dialog-control-group">
+    <label>{{"sp.drive-name.label" | translate}}<span class="mandatory"> * </span></label><br/>
+    <input type="text" class="input" data-ng-model="formData.driveName" id="driveName" name="driveName" data-ng-required="true" data-ng-trim="true"/>
+    <span uib-tooltip="{{appIdInfo}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+    <p class="mandatory" ng-show="configurationForm.driveName.$touched && configurationForm.driveName.$error.required">{{"sp.drive-name.required" | translate}}</p>
+</div>
+
+<!-- TODO hidden until backend is ready to accept this toggle functionality -->
+<!-- <div class="dialog-control-group">
+    <switch id="enabled" name="enabled" data-ng-model="formData.enabled" data-ng-change="setFormDirty()"></switch>
+    {{"Enable service provider" | translate}}
+    <span uib-tooltip="{{appEnableToggleInfo}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+</div> -->

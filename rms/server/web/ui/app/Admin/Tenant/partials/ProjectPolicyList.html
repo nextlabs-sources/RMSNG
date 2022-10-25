@@ -1,0 +1,49 @@
+<div style="clear: both"></div>
+<div class="col-xs-12 padding-20 margin-top-10" data-ng-class="projectPoliciesList.length == 0 ? 'background-white':''">
+    <div data-ng-if="projectPoliciesList.length == 0" style="text-align:center;">
+        <label>{{ 'policies.not.found' | translate}}</label>
+    </div>
+    <li data-ng-if="projectPoliciesList.length > 0" data-ng-repeat="policy in projectPoliciesList" class="list-group-item rms-file-list ng-scope">
+        <div class="cc-ps-policy">
+            <div id="rms-file-details">
+                <div class="rms-files padding-bottom-5">
+                    <a class="rms-file-item" data-ng-click="editPolicy(policy.id)" style="font-weight: bold;font-size:16px;"> {{policy.name}} </a>
+                </div>
+                <div class="file-info-label padding-bottom-5" style="color:#828282;">{{policy.description}}</div>
+                <label title="{{'last.modified'| translate}}" class="file-info-label" >
+                    <friendly-date data-ng-if="policy.lastUpdatedDate != null" data-date="{{policy.lastUpdatedDate}}"
+                                   data-content-class="friendly-date" data-full-format="d MMM yyyy,hh:mm a"
+                                   data-short-format="hh:mm a" />
+                </label>
+                <span style="font-weight:500; padding-right: 5px;" data-ng-class=" policy.deployed ? 'green-text file-info-label' : 'file-info-label' " title="{{'policy.status' | translate}}">{{policy.deployed ? 'policy.depolyed' : 'policy.not.deployed' | translate }}</span>
+                <span style="text-align: center; background-color: #8C8E9D; color: white; padding: 2px 8px; border-radius: 3px; font-size: 12px" data-ng-if="policy.status.toUpperCase() === 'DRAFT'" title="{{'policy.status' | translate}}">{{'policy.draft' | translate }}</span>
+            </div>
+            <div class="rms-file-menu" data-ng-mouseleave="hideMenu(policy.id)" data-ng-mouseover="showMenu(policy.id)">
+                <div class=" file-menu-button">
+                    <span>
+                        <a title="{{'toolbar.menu'| translate}}" data-ng-click="onClickMenu(policy.id)" class="glyphicon glyphicon-option-vertical"></a>
+                    </span>
+                </div>
+                <div class="file-menu-operations">
+                    <span data-ng-if ="(selectedFileId == policy.id && MenuClickedMode)" >
+                        <a class="fileListOption-info-icon" title="{{'policy.deploy'| translate}}" data-ng-click="deployPolicy(policy.id)">
+                            <i data-ng-include="'ui/img/Deploy.svg'"></i>
+                        </a>
+                        <a class="fileListOption-info-icon" title="{{'delete'| translate}}" data-ng-click="deletePolicy(policy.id)">
+                            <i data-ng-include="'ui/img/Delete_P.svg'"></i>
+                        </a>
+                        <a class="fileListOption-info-icon" title="{{'edit'| translate}}" data-ng-click="editPolicy(policy.id)">
+                            <i data-ng-include="'ui/img/Edit_P.svg'"></i>
+                        </a>
+                        <a data-ng-if="false" class="fileListOption-info-icon" title="{{'copy'| translate}}" data-ng-click="copyPolicy()">
+                            <i data-ng-include="'ui/img/copy_P.svg'"></i>
+                        </a>
+                        <a class="fileListOption-info-icon" title="{{'policy.deactivate'| translate}}" data-ng-click="undeployPolicy(policy.id)" data-ng-if ="policy.deployed">
+                            <i data-ng-include="'ui/img/Inactive_P.svg'"></i>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </li>
+</div>

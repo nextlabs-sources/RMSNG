@@ -1,0 +1,7 @@
+<div class="banner margin-bottom-0">
+	<a class="project-navigator" ng-click="goToLanding()">{{ 'landing.page' | translate }}</a>
+	<h4>
+		<span>{{ 'myspace' | translate }}</span>
+		<i data-ng-show="projectsCreated.length>0 || projectsInvited.length>0 || !saasMode" data-ng-click="switchProject()" class="glyphicon project-switcher" data-ng-class="{'glyphicon-chevron-up': collapseStatus,'glyphicon-chevron-down': !collapseStatus}"></i>
+	</h4>
+</div>

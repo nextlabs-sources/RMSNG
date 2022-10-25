@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+   <appContext helpID="about_skydrm_rms" path="about_skydrm_rms.html"/>
+   <appContext helpID="skydrm_concepts" path="oxy_ex-1/reuse/skydrm_concepts.html"/>
+   <appContext helpID="concept_zyj_qbw_mfb" path="skydrm_rms_concepts.html"/>
+   <appContext helpID="reference_iwp_r4x_3hb" path="admin_rights_user_relationship.html"/>
+   <appContext helpID="concept_tpc_k2m_fgb" path="skydrm_mgmt_console.html"/>
+   <appContext helpID="key_benefits" path="key_benefits.html"/>
+   <appContext helpID="logical_architecture" path="logical_architecture.html"/>
+   <appContext helpID="installing_skydrm_rms" path="installing_skydrm_rms.html"/>
+   <appContext helpID="container_based_deployment" path="container_based_deployment.html"/>
+   <appContext helpID="reference_tn2_qnn_mfb" path="installation_files_list.html"/>
+   <appContext helpID="reference_ttt_hnb_p2b"
+               path="oxy_ex-1/reuse/supported_file_formats.html"/>
+   <appContext helpID="platform" path="platform.html"/>
+   <appContext helpID="reference_kvm_pwt_xgb" path="storage.html"/>
+   <appContext helpID="nextlabs_software" path="nextlabs_software.html"/>
+   <appContext helpID="port_numbers" path="port_numbers.html"/>
+   <appContext helpID="task_bhq_yvv_tgb" path="opening_ports.html"/>
+   <appContext helpID="database" path="database.html"/>
+   <appContext helpID="web_browsers" path="web_browsers.html"/>
+   <appContext helpID="installing_rms_on_a_linux_server"
+               path="installing_rms_on_a_linux_server.html"/>
+   <appContext helpID="reference_t3r_k1c_nfb" path="installation_prereqs.html"/>
+   <appContext helpID="reference_iqj_2qc_nfb" path="idp_information.html"/>
+   <appContext helpID="reference_q3b_nqc_nfb" path="storage_provider_info.html"/>
+   <appContext helpID="reference_gfv_tqc_nfb" path="smtp_info.html"/>
+   <appContext helpID="reference_p2r_d2d_nfb" path="db_info.html"/>
+   <appContext helpID="reference_gvz_zqc_nfb" path="cc_info.html"/>
+   <appContext helpID="task_tv5_cs3_n2b" path="installing_docker_on_linux_server.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="concept_jm3_wxt_xgb" path="skydrm_rms_high_avail.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="skydrm_rms_configuration" path="skydrm_rms_configuration.html"/>
+   <appContext helpID="task_rhw_mjz_q2b" path="configuring_ldap.html"/>
+   <appContext helpID="task_u5r_4jz_q2b" path="configuring_saml.html"/>
+   <appContext helpID="task_uc4_rjz_q2b" path="configuring_facebook.html"/>
+   <appContext helpID="task_g2r_5jz_q2b" path="configuring_google.html"/>
+   <appContext helpID="task_h2j_2f1_r2b" path="configuring_amazons3.html"/>
+   <appContext helpID="task_h2j_2f1_r2b" path="configuring_onedrive_biz.html"/>
+   <appContext helpID="task_h2j_2f1_r2b" path="configuring_local_drive.html"/>
+   <appContext helpID="task_xks_5gb_r2b" path="configuring_postgresql_db.html"/>
+   <appContext helpID="task_c2h_xgb_r2b" path="configuring_mssql_db.html"/>
+   <appContext helpID="task_ndp_lsw_mfb" path="configuring_oracle_db.html"/>
+   <appContext helpID="task_lbq_s4h_mfb" path="defining_log_levels.html"/>
+   <appContext helpID="task_qhm_bs5_mfb" path="viewing_logs.html"/>
+   <appContext helpID="task_ywl_csk_fgb" path="installing_custom_cert.html"/>
+   <appContext helpID="untitled2" path="importing_selfsigned_ADcert.html"/>
+   <appContext helpID="task_h1y_krb_r2b" path="upgrading_skydrmrms.html"/>
+   <appContext helpID="task_uyj_sjp_mfb" path="uninstalling_skydrm_rms.html"/>
+   <appContext helpID="skydrm_rms_configuration" path="skydrm_rms_configuration.html"/>
+   <appContext helpID="concept_ltm_qjm_fgb" path="tenant_mgmt.html"/>
+   <appContext helpID="task_y5v_m3m_fgb" path="adding_tenant.html"/>
+   <appContext helpID="task_mr1_r3m_fgb" path="editing_hosts_file.html"/>
+   <appContext helpID="task_i1c_njm_fgb" path="deleting_tenant.html"/>
+   <appContext helpID="task_e5w_hbp_r2b" path="mapping_user_attributes.html"/>
+   <appContext helpID="task_ccm_mbp_r2b" path="assigning_project_admin.html"/>
+   <appContext helpID="task_em3_g2z_fgb" path="creating_project_tags.html"/>
+   <appContext helpID="configuring_storage_service_providers"
+               path="configuring_storage_service_providers.html"/>
+   <appContext helpID="configuring_microsoft_onedrive_as_a_storage_service_provider"
+               path="configuring_microsoft_onedrive_as_a_storage_service_provider.html"/>
+   <appContext helpID="task_cg5_yfr_q2b" path="creating_onedrive_app.html"/>
+   <appContext helpID="task_fdn_zjr_q2b" path="configuring_onedrive.html"/>
+   <appContext helpID="configuring_google_drive_as_a_storage_service_provider"
+               path="configuring_google_drive_as_a_storage_service_provider.html"/>
+   <appContext helpID="task_gjx_zlr_q2b" path="creating_gdrive_app.html"/>
+   <appContext helpID="task_fdn_zjr_q2b" path="configuring_gdrive.html"/>
+   <appContext helpID="configuring_dropbox_as_a_storage_service_provider"
+               path="configuring_dropbox_as_a_storage_service_provider.html"/>
+   <appContext helpID="task_sbz_nmj_s2b" path="creating_dropbox_app.html"/>
+   <appContext helpID="task_fdn_zjr_q2b" path="configuring_dropbox.html"/>
+   <appContext helpID="configuring_box_as_a_storage_service_provider"
+               path="configuring_box_as_a_storage_service_provider.html"/>
+   <appContext helpID="task_yfk_5fs_q2b" path="creating_box_app.html"/>
+   <appContext helpID="task_fdn_zjr_q2b" path="configuring_box.html"/>
+   <appContext helpID="integrating_with_sharepoint_online_cross_launch_app"
+               path="configuring_sharepoint_online.html"/>
+   <appContext helpID="task_w5x_41t_q2b" path="registering_SPonline_app.html"/>
+   <appContext helpID="task_jg1_dmt_q2b" path="creating_sponline_app.html"/>
+   <appContext helpID="task_szv_mqt_q2b" path="deploy_SPonline_app.html"/>
+   <appContext helpID="integrating_with_sharepoint_on_premise_cross_launch_app"
+               path="configuring_sharepoint_on_premise.html"/>
+   <appContext helpID="integrating_with_okta" path="integrating_with_okta.html"/>
+   <appContext helpID="task_wmd_vnk_r2b" path="integrating_adfs.html"/>
+   <appContext helpID="task_m5c_1rk_r2b" path="integrating_onelogin.html"/>
+   <appContext helpID="task_bvb_2rk_r2b" path="integrating_ping.html"/>
+   <appContext helpID="creating_policies" path="creating_policies.html"/>
+   <appContext helpID="policy_creation_concepts" path="policy_creation_concepts.html"/>
+   <appContext helpID="task_ib3_zqd_z2b" path="defining_doc_classification.html"/>
+   <appContext helpID="task_bqg_5vn_y2b" path="creating_policy.html"/>
+   <appContext helpID="sample_policy_1" path="sample_policy_1.html"/>
+   <appContext helpID="sample_policy_2" path="sample_policy_2.html"/>
+   <appContext helpID="task_sbf_fml_ggb" path="creating_abac_policy.html"/>
+   <appContext helpID="task_k5l_mst_3hb"
+               path="oxy_ex-3/10_2/DITA/SkyDRM-C/reclassifying_file.html"/>
+   <appContext helpID="concept_akn_5k4_mfb" path="troubleshooting.html"/>
+   <appContext helpID="trouble_a1b_jr4_mfb" path="troubleshooting_dns_not_resolved.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="task_rhw_mjz_q2b" path="configuring_ldap.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="task_u5r_4jz_q2b" path="configuring_saml.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="task_uc4_rjz_q2b" path="configuring_facebook.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="task_g2r_5jz_q2b" path="configuring_google.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="task_h2j_2f1_r2b" path="configuring_amazons3.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="task_h2j_2f1_r2b" path="configuring_onedrive_biz.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="task_h2j_2f1_r2b" path="configuring_local_drive.html"/>
+   <appContext helpID="skydrm_rms_configuration" path="skydrm_rms_configuration.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="skydrm_rms_configuration" path="skydrm_rms_configuration.html"/>
+   <appContext helpID="configuring_storage_service_providers"
+               path="configuring_storage_service_providers.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="task_xks_5gb_r2b" path="configuring_postgresql_db.html"/>
+   <appContext helpID="creating_policies" path="creating_policies.html"/>
+   <appContext helpID="task_e5w_hbp_r2b" path="mapping_user_attributes.html"/>
+   <appContext helpID="task_e5w_hbp_r2b" path="mapping_user_attributes.html"/>
+   <appContext helpID="task_bqg_5vn_y2b" path="creating_policy.html"/>
+   <appContext helpID="policy_creation_concepts" path="policy_creation_concepts.html"/>
+   <appContext helpID="task_bqg_5vn_y2b" path="creating_policy.html"/>
+   <appContext helpID="task_bqg_5vn_y2b" path="creating_policy.html"/>
+   <appContext helpID="task_ib3_zqd_z2b" path="defining_doc_classification.html"/>
+   <appContext helpID="container_based_deployment" path="container_based_deployment.html"/>
+   <appContext helpID="reference_tn2_qnn_mfb" path="installation_files_list.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="trouble_a1b_jr4_mfb" path="troubleshooting_dns_not_resolved.html"/>
+   <appContext helpID="concept_zyj_qbw_mfb" path="skydrm_rms_concepts.html"/>
+   <appContext helpID="reference_tn2_qnn_mfb" path="installation_files_list.html"/>
+   <appContext helpID="concept_zyj_qbw_mfb" path="skydrm_rms_concepts.html"/>
+   <appContext helpID="container_based_deployment" path="container_based_deployment.html"/>
+   <appContext helpID="concept_zyj_qbw_mfb" path="skydrm_rms_concepts.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="task_c2h_xgb_r2b" path="configuring_mssql_db.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="task_ndp_lsw_mfb" path="configuring_oracle_db.html"/>
+   <appContext helpID="skydrm_rms_configuration" path="skydrm_rms_configuration.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="task_u5r_4jz_q2b" path="configuring_saml.html"/>
+   <appContext helpID="integrating_with_okta" path="integrating_with_okta.html"/>
+   <appContext helpID="task_u5r_4jz_q2b" path="configuring_saml.html"/>
+   <appContext helpID="task_wmd_vnk_r2b" path="integrating_adfs.html"/>
+   <appContext helpID="task_u5r_4jz_q2b" path="configuring_saml.html"/>
+   <appContext helpID="task_m5c_1rk_r2b" path="integrating_onelogin.html"/>
+   <appContext helpID="task_u5r_4jz_q2b" path="configuring_saml.html"/>
+   <appContext helpID="task_bvb_2rk_r2b" path="integrating_ping.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="integrating_with_okta" path="integrating_with_okta.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="task_wmd_vnk_r2b" path="integrating_adfs.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="task_m5c_1rk_r2b" path="integrating_onelogin.html"/>
+   <appContext helpID="task_kds_hdz_q2b" path="installing_skydrm.html"/>
+   <appContext helpID="task_bvb_2rk_r2b" path="integrating_ping.html"/>
+   <appContext helpID="concept_tpc_k2m_fgb" path="skydrm_mgmt_console.html"/>
+   <appContext helpID="skydrm_rms_configuration" path="skydrm_rms_configuration.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="task_u5r_4jz_q2b" path="configuring_saml.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="task_uc4_rjz_q2b" path="configuring_facebook.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="task_g2r_5jz_q2b" path="configuring_google.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="task_h2j_2f1_r2b" path="configuring_amazons3.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="task_h2j_2f1_r2b" path="configuring_onedrive_biz.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="task_h2j_2f1_r2b" path="configuring_local_drive.html"/>
+   <appContext helpID="concept_zyj_qbw_mfb" path="skydrm_rms_concepts.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="skydrm_rms_configuration" path="skydrm_rms_configuration.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="task_rhw_mjz_q2b" path="configuring_ldap.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="task_xks_5gb_r2b" path="configuring_postgresql_db.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="trouble_a1b_jr4_mfb" path="troubleshooting_dns_not_resolved.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="integrating_with_okta" path="integrating_with_okta.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="task_wmd_vnk_r2b" path="integrating_adfs.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="task_m5c_1rk_r2b" path="integrating_onelogin.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="trouble_a1b_jr4_mfb" path="troubleshooting_dns_not_resolved.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="task_c2h_xgb_r2b" path="configuring_mssql_db.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="task_ndp_lsw_mfb" path="configuring_oracle_db.html"/>
+   <appContext helpID="skydrm_rms_configuration" path="skydrm_rms_configuration.html"/>
+   <appContext helpID="task_nqh_flm_vgb" path="installing_skyrdm_high_availability.html"/>
+   <appContext helpID="concept_zyj_qbw_mfb" path="skydrm_rms_concepts.html"/>
+   <appContext helpID="task_k5l_mst_3hb" path="oxy_ex-1/SkyDRM-C/reclassifying_file.html"/>
+   <appContext helpID="concept_zyj_qbw_mfb" path="skydrm_rms_concepts.html"/>
+   <appContext helpID="reference_iwp_r4x_3hb" path="admin_rights_user_relationship.html"/>
+</map>

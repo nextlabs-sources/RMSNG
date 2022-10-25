@@ -1,0 +1,13 @@
+<div>
+  <div class="row modal-header" style="width: 100%;">
+    <h3 class="modal-title">{{isEditWatermark ? "edit.watermark" : "edit.digital.rights.validity.period" | translate}}</h3>
+  </div>
+  <div class="modal-body" style="overflow:hidden;">
+    <div data-ng-if="isEditWatermark" ng-include="'ui/app/Home/watermarkTemplate.html'"></div>
+    <div data-ng-if="!isEditWatermark" ng-include="'ui/app/Home/digitalRightsExpiryDateTemplate.html'"></div>
+  </div>
+  <div class="modal-footer">
+    <a class="btn btn-default rms-settings-button margin-bottom-0" data-ng-click="cancel()">{{"cancel" | translate}}</a>
+    <a class="btn btn-default rms-settings-button-color rms-settings-button" data-ng-disabled="isEditWatermark && (addWatermarkStr().trim().length == 0 || addWatermarkStr().length > 50)" data-ng-click="(isEditWatermark && (addWatermarkStr().trim().length == 0 || addWatermarkStr().length > 50)) || save()">{{"ok" | translate}}</a>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="sharing-activity">
+	<div class="rms-shareFile-activity-header">
+		<div>
+			<span class="rms-shareFile-activity-title">{{'share.file.activity' | translate}}</span>
+			<a class="rms-info-closeLink" data-ng-click="ok()">x</a>
+			<div class="rms-shareFile-activity-title">
+				<div>{{name}}</div>
+			</div>
+		</div>
+	</div>
+	<div id="statusContainer" class="alert alert-danger" style="margin-bottom:0px !important;" ng-show="error">
+		{{errorMessage}}
+    </div>
+	<div class="shared-file-activity table-responsive">
+          <table tr-ng-grid items='items' on-data-required-delay='0' enable-filtering="false" enable-sorting="false" current-page="currentPage" selection-mode="None" page-items="pageItems" total-items="totalItems" order-by="orderBy" order-by-reverse="orderByReverse" 
+          filter-by-fields="columnFilter" on-data-required="onServerSideItemsRequested(currentPage, pageItems, orderBy, orderByReverse)">
+		    <thead>
+		        <tr>
+		            <th field-name="email" display-name="{{'share.file.user'| translate}}" enable-filtering="false" enable-sorting="false"></th>
+		            <th field-name="operation" display-name="{{'share.file.operation'| translate}}" enable-filtering="false" enable-sorting="false"></th>
+		            <th field-name="deviceId" display-name="{{'share.file.deviceId'| translate}}" enable-filtering="false" enable-sorting="false"></th>
+		            <th field-name="deviceType" display-name="{{'share.file.deviceType'| translate}}" enable-filtering="false" enable-sorting="false"></th>
+		            <th field-name="accessTime" display-format="date:'dd MMM yyyy, hh:mm a'" display-name="{{'share.file.accessTime'| translate}}" enable-filtering="false" enable-sorting="true"></th>
+		            <th field-name="accessResult" display-name="{{'share.file.result'| translate}}" enable-filtering="false" enable-sorting="true"></th>
+		        </tr>
+		    </thead>
+		    <div id="fileSharing" data-ng-show="isLoading">
+				<div id="pgLoading-image">
+					<img src="ui/img/loading-icon.gif" alt="Loading..." />
+				</div>
+			</div>
+	        <tfoot>
+		        <tr>
+		            <td>
+			            <span tr-ng-grid-global-filter=""></span>
+	                    <span class="form-group pull-left">
+	                    	<form ng-submit="doSearch()" >
+							    <select class="form-control" name="searchField" id="searchField"
+                                        ng-model="searchData.field"
+                                        ng-options="option.value as option.field for option in searchOptions">
+							    </select>&nbsp;:&nbsp;
+							    <i class="fa fa-search"></i>
+						    	<input placeholder="{{'search' | translate}}" class="activity-search" type="text" ng-model="searchData.value" clear-input="clearSearch()" style="padding-right: 20px"/>
+					    	</form>
+					    </span>
+		                <span tr-ng-grid-pager=""></span>
+		            </td>
+		        </tr>
+		    </tfoot>
+          </table> 
+	</div>
+</div>

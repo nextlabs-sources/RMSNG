@@ -1,0 +1,4 @@
+<div class="float-right">
+    <a class="btn btn-default rms-settings-button" data-ng-click="goToList()">{{'cancel' | translate}}</a>
+    <a class="btn btn-default rms-settings-button rms-settings-button-color" style="width: auto" data-ng-click="!tenantForm.$invalid && addOrUpdateTenant(tenant)" data-ng-disabled="tenantForm.$invalid || (isAddTenant && !validationCheck(tenant))">{{isAddTenant ? 'tenant.add_tenant' : 'save' | translate}}</a>
+</div>

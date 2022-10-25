@@ -1,0 +1,1 @@
+ALTER TABLE repository ADD COLUMN last_updated_time timestamp WITH TIME ZONE;

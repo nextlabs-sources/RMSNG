@@ -1,0 +1,1 @@
+CREATE INDEX idx_repo_id ON builtin_repo_item (repo_id);

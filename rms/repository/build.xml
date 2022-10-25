@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="repository" default="compile" basedir=".">
+
+    <import file="../config.xml" optional="true"/>
+    <property environment="env"/>
+    <property name="src" value="src"/>
+    <property name="xmlbeans_schemas_dir" value="./conf/xsd"/>
+    <property name="src.excludes" value=""/>
+    <condition property="lib_home" value="${env.LIB_HOME}" else="../../../libraries">
+        <available file="${env.LIB_HOME}" type="dir"/>
+    </condition>
+    <property name="lib" location="${lib_home}/libs/web"/>
+
+    <!-- defines output files -->
+    <property name="outdir" value="build"/>
+    <property name="outdir-classes" value="${outdir}/classes"/>
+    <property name="outjar" value="${outdir}/${ant.project.name}.jar"/>
+
+    <path id="sourcepath">
+        <path location="src"/>
+    </path>
+
+    <path id="project.classpath">
+        <fileset dir="${lib}" includes="**/*.jar"/>
+        <path location="../../shared/build/shared.jar"/>
+        <path location="../../rmjavasdk-ng/build/rmjavasdk-ng.jar"/>
+        <path location="../database/build/database.jar"/>
+        <path location="../xmlbeans/build/repository_xmlbeans.jar"/>
+        <path location="../shared/build/rms_shared.jar"/>
+        <fileset dir="${outdir}" includes="repository_xmlbeans.jar"/>
+    </path>
+
+    <!-- Create the output directories if they don't exist yet. -->
+    <target name="dirs">
+        <echo>Creating output directories if needed...</echo>
+        <mkdir dir="${outdir}"/>
+        <mkdir dir="${outdir-classes}"/>
+
+        <echo>Compiling shared project...</echo>
+        <ant dir="../../shared" target="debug" inheritAll="false"/>
+
+        <echo>Compiling rmjavasdk-ng project...</echo>
+        <ant dir="../../rmjavasdk-ng" target="debug" inheritAll="false"/>
+
+        <echo>Compiling xmlbeans project...</echo>
+        <ant dir="../xmlbeans" inheritAll="false"/>
+
+    	<echo>Compiling database project...</echo>
+        <ant dir="../database" target="debug" inheritAll="false"/>
+
+        <echo>Compiling rms_shared project...</echo>
+        <ant dir="../shared" target="debug" inheritAll="false"/>
+    </target>
+
+    <target name="debug" depends="compile"/>
+
+    <target name="release" depends="compile"/>
+
+    <path id="classpath.xmlbeans">
+        <fileset dir="${lib}" includes="xmlbeans/xmlbeans*.jar"/>
+    </path>
+
+    <!-- Compile java files. -->
+    <target name="compile" depends="dirs">
+        <property name="javac.arg" value="-Xlint -Xlint:-options -Xlint:-path -Werror"/>
+        <javac includeAntRuntime="false"
+               source="1.7"
+               target="1.7"
+               encoding="UTF-8"
+               debug="on"
+               sourcepath=""
+               sourcepathref="sourcepath"
+               srcdir="${src}"
+               destdir="${outdir-classes}"
+               excludes="${src.excludes}">
+            <compilerarg line="${javac.arg}"/>
+            <classpath refid="project.classpath"/>
+        </javac>
+        <copy todir="${outdir-classes}">
+            <fileset dir="${src}" excludes="${src.excludes}">
+                <include name="**/*.properties"/>
+                <include name="**/*.xml"/>
+                <include name="**/*.xsl"/>
+                <include name="**/*.xsd"/>
+                <include name="**/*.png"/>
+                <include name="**/*.jpg"/>
+                <include name="**/*.gif"/>
+                <include name="**/*.dic"/>
+                <include name="**/*.jks"/>
+                <include name="**/*.sql"/>
+                <include name="**/*.vm"/>
+                <include name="**/*.txt"/>
+            </fileset>
+        </copy>
+        <jar destfile="${outjar}" basedir="${outdir-classes}" update="true" duplicate="fail"/>
+    </target>
+
+    <target name="clean">
+        <echo>Deleting Output Files and Directories...</echo>
+        <delete dir="${outdir}"/>
+
+        <ant dir="../../shared" target="clean" inheritAll="false"/>
+    	<ant dir="../../rmjavasdk-ng" target="clean" inheritAll="false"/>
+        <ant dir="../xmlbeans" target="clean" inheritAll="false"/>
+        <ant dir="../database" target="clean" inheritAll="false"/>
+        <ant dir="../shared" target="clean" inheritAll="false"/>
+    </target>
+
+    <target name="install" if="env.CATALINA_HOME">
+        <echo>Deploying ${outjar} to ${env.CATALINA_HOME}/webapps/rms/WEB-INF/lib ...</echo>
+        <copy file="${outjar}" todir="${env.CATALINA_HOME}/webapps/rms/WEB-INF/lib"/>
+    </target>
+
+    <import file="${lib_home}/tools/validate.xml"/>
+</project>

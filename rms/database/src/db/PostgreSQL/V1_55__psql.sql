@@ -1,0 +1,1 @@
+ALTER TABLE all_nxl DROP COLUMN expiration;

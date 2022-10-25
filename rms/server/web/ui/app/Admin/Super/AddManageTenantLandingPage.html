@@ -1,0 +1,24 @@
+<div ng-controller="tenantController" id="tenant-list" style="background-color: white; width: 100%; margin-top: 30px;">
+	<div id="tenant-list-heading" class="admin-heading-border" style="position:relative;">
+		<span id="system-configuration-landing-page-icon" style="padding-left:10px;">
+			<i data-ng-include="'ui/img/gear.svg'"></i>
+		</span>
+		<span style="display:inline-block;padding:10px;">
+			<div class="admin-section-title">{{'tenant.tenant_list' | translate}}</div>
+			<div class="admin-section-description">{{'tenant.tenant_list_description' | translate}}</div>
+		</span>
+		<span style="position:absolute; right:3%; top:32%; cursor:pointer;" data-ng-click="onClickTab('tenantList')">
+			<i data-ng-include="'ui/img/Arrow_Grey.svg'"></i>
+		</span>
+	</div>
+	<div id="tenant-list-body" class="admin-body-border" style="position:relative;">
+		<div style="min-height: 350px;">
+			<ul id="unordered-fileList-id" style="padding-left: 0">
+				<li class="list-group-item rms-file-list" data-ng-repeat="eachTenant in tenantList ">
+					<div data-ng-include="'ui/app/Home/Tenant/partials/tenantListTemplate.html'"></div>
+				</li>
+			</ul>
+		</div>
+		<button type="button" class="btn-link" data-ng-click="onClickTab('tenantList')" style="position:absolute; right:0px; bottom:5px; padding-right:35px">{{'config.tenant_title' | translate}}<i style="padding-left:5px;" data-ng-include="'ui/img/back arrow - black.svg'"></i></button>
+	</div>
+</div>

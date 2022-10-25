@@ -1,0 +1,23 @@
+{
+	"applinks": {
+		"apps": [],
+		"details": [{
+			"appID": "3F6YQ3PC52.com.skydrm.rmc",
+			"paths": ["*/viewSharedFile/*",
+			"*/invitation/*",
+			"*/projects/*"]
+		},
+		{
+			"appID": "3F6YQ3PC52.com.skydrm.rmc-entprise",
+			"paths": ["*/viewSharedFile/*",
+			"*/invitation/*",
+			"*/projects/*"]
+		},
+		{
+			"appID": "4MWKEXQQQY.com.skydrm.rmcentprise",
+			"paths": ["*/viewSharedFile/*",
+			"*/invitation/*",
+			"*/projects/*"]
+		}]
+	}
+}

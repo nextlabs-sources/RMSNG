@@ -1,0 +1,46 @@
+<svg width="24" height="28" viewBox="0 0 24 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>XLM</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(1416 232)">
+<g id="XLM">
+<g id="RH">
+<g id="Canvas">
+<mask id="mask0_alpha" mask-type="alpha">
+<g id="mask0_alpha">
+<g id="Vector">
+<use xlink:href="#path0_fill" transform="translate(-1418 -232)" fill="#FFFFFF"/>
+</g>
+</g>
+</mask>
+<g id="filetype - doc" mask="url(#mask0_alpha)">
+<g id="Group">
+<g id="Rectangle 6">
+<g id="Vector">
+<use xlink:href="#path1_fill" transform="translate(-1414.76 -210.125)" fill="#E0E0E0"/>
+</g>
+</g>
+<g id="Subtract">
+<g id="Vector">
+<use xlink:href="#path2_fill" transform="translate(-1415.64 -232)" fill="#BDBDBD"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="XML">
+<use xlink:href="#path3_fill" transform="translate(-1414.98 -218.898)"/>
+<use xlink:href="#path4_fill" transform="translate(-1414.98 -218.898)"/>
+<use xlink:href="#path5_fill" transform="translate(-1414.98 -218.898)"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M -2.18279e-11 0L 28 0L 28 28L -2.18279e-11 28L -2.18279e-11 0Z"/>
+<path id="path1_fill" d="M 0 0L 22.75 0L 22.75 1.75C 22.75 3.683 21.183 5.25 19.25 5.25L 3.5 5.25C 1.567 5.25 0 3.683 0 1.75L 0 0Z"/>
+<path id="path2_fill" fill-rule="evenodd" d="M 15.3125 5.50036C 15.3125 5.01673 14.9211 4.62536 14.4375 4.62536C 13.9539 4.62536 13.5625 5.01673 13.5625 5.50036L 13.5625 8.52185C 13.5625 9.00462 13.9539 9.39689 14.4375 9.39689L 17.7598 9.39689C 18.2417 9.39689 18.6348 9.00462 18.6348 8.52185C 18.6348 8.03821 18.2417 7.64685 17.7598 7.64685L 15.3125 7.64685L 15.3125 5.50036ZM 2.625 1.75L 13.7505 1.75L 21.875 9.28576L 21.875 25.375C 21.875 25.8586 21.4836 26.25 21 26.25L 2.625 26.25C 2.14136 26.25 1.75 25.8586 1.75 25.375L 1.75 21.875L 0 21.875L 0 25.375C 0 26.825 1.17578 28 2.625 28L 21 28C 22.4492 28 23.625 26.825 23.625 25.375L 23.625 8.52185L 14.4375 0L 2.625 0C 1.17578 0 0 1.17492 0 2.625L 0 9.625L 1.75 9.625L 1.75 2.625C 1.75 2.14136 2.14136 1.75 2.625 1.75Z"/>
+<path id="path3_fill" d="M 2.85205 2.12695L 3.89795 0L 5.66016 0L 3.87158 3.17285L 5.7085 6.39844L 3.92871 6.39844L 2.85205 4.23193L 1.77539 6.39844L 0 6.39844L 1.83252 3.17285L 0.0483398 0L 1.80615 0L 2.85205 2.12695Z"/>
+<path id="path4_fill" d="M 8.23975 0L 9.66797 4.45166L 11.0918 0L 13.1221 0L 13.1221 6.39844L 11.5752 6.39844L 11.5752 4.9043L 11.7246 1.8457L 10.1777 6.39844L 9.1582 6.39844L 7.60693 1.84131L 7.75635 4.9043L 7.75635 6.39844L 6.21387 6.39844L 6.21387 0L 8.23975 0Z"/>
+<path id="path5_fill" d="M 15.6489 5.21191L 18.334 5.21191L 18.334 6.39844L 14.1064 6.39844L 14.1064 0L 15.6489 0L 15.6489 5.21191Z"/>
+</defs>
+</svg>

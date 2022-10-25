@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="UTF-8"?><toc xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:toc="http://www.oxygenxml.com/ns/webhelp/toc" xmlns="http://www.oxygenxml.com/ns/webhelp/toc">
+   <title><span xmlns="http://www.w3.org/1999/xhtml" class="booktitle">  <span class="ph mainbooktitle">SkyDRM RMS 10.4 Administrator's Guide</span>  <span class="ph booktitlealt">Revision 1</span>  <span class="ph booktitlealt">June 2019</span>  </span></title>
+   <topic href="about_skydrm_rms.html" data-id="about_skydrm_rms" wh-toc-id="about_skydrm_rms-d66e24">
+      <title>About SkyDRM RMS</title>
+      <topicmeta>
+         <resourceid class="- topic/resourceid " oxy-source="topic" appid="about_skydrm_rms"></resourceid>
+         <navtitle class="- topic/navtitle ">About SkyDRM RMS</navtitle><?ditaot gentext?>
+         <linktext class="- map/linktext ">About SkyDRM RMS</linktext>
+      </topicmeta>
+      <topic href="oxy_ex-1/reuse/skydrm_concepts.html" data-id="skydrm_concepts" wh-toc-id="skydrm_concepts-d66e32">
+         <title>SkyDRM concepts</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">This section describes the SkyDRM-specific terminology and components, and the         relationships between the components
+               of SkyDRM.
+            </p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="skydrm_concepts"></resourceid>
+            <navtitle class="- topic/navtitle ">SkyDRM concepts</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">SkyDRM concepts</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc ">This section describes the SkyDRM-specific terminology and components, and the         relationships between the components
+               of SkyDRM.
+            </shortdesc>
+         </topicmeta>
+      </topic>
+      <topic href="skydrm_rms_concepts.html" data-id="concept_zyj_qbw_mfb" wh-toc-id="concept_zyj_qbw_mfb-d66e43">
+         <title>SkyDRM RMS concepts</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">This section describes the SkyDRM RMS-specific terminology and         components.</p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="concept_zyj_qbw_mfb"></resourceid>
+            <navtitle class="- topic/navtitle ">SkyDRM RMS concepts</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">SkyDRM RMS concepts</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc ">This section describes the SkyDRM RMS-specific terminology and         components.</shortdesc>
+         </topicmeta>
+         <topic href="admin_rights_user_relationship.html" data-id="reference_iwp_r4x_3hb" wh-toc-id="reference_iwp_r4x_3hb-d66e54">
+            <title>Administrator rights and user role relationship</title>
+            <shortdesc>
+               <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">A table describing the relationship between administrator rights and user         roles.</p>
+            </shortdesc>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="reference_iwp_r4x_3hb"></resourceid>
+               <navtitle class="- topic/navtitle ">Administrator rights and user role relationship</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Administrator rights and user role relationship</linktext><?ditaot genshortdesc?>
+               <shortdesc class="- map/shortdesc ">A table describing the relationship between administrator rights and user         roles.</shortdesc>
+            </topicmeta>
+         </topic>
+         <topic href="skydrm_mgmt_console.html" data-id="concept_tpc_k2m_fgb" wh-toc-id="concept_tpc_k2m_fgb-d66e65">
+            <title>SkyDRM RMS management console</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="concept_tpc_k2m_fgb"></resourceid>
+               <navtitle class="- topic/navtitle ">SkyDRM RMS management console</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">SkyDRM RMS management console</linktext>
+            </topicmeta>
+         </topic>
+      </topic>
+      <topic href="key_benefits.html" data-id="key_benefits" wh-toc-id="key_benefits-d66e73">
+         <title>Key benefits</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="key_benefits"></resourceid>
+            <navtitle class="- topic/navtitle ">Key benefits</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Key benefits</linktext>
+         </topicmeta>
+      </topic>
+      <topic href="logical_architecture.html" data-id="logical_architecture" wh-toc-id="logical_architecture-d66e81">
+         <title>Logical architecture</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="logical_architecture"></resourceid>
+            <navtitle class="- topic/navtitle ">Logical architecture</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Logical architecture</linktext>
+         </topicmeta>
+      </topic>
+   </topic>
+   <topic href="installing_skydrm_rms.html" data-id="installing_skydrm_rms" wh-toc-id="installing_skydrm_rms-d66e90">
+      <title>SkyDRM RMS installation</title>
+      <topicmeta>
+         <resourceid class="- topic/resourceid " oxy-source="topic" appid="installing_skydrm_rms"></resourceid>
+         <navtitle class="- topic/navtitle ">SkyDRM RMS installation</navtitle><?ditaot gentext?>
+         <linktext class="- map/linktext ">SkyDRM RMS installation</linktext>
+      </topicmeta>
+      <topic href="container_based_deployment.html" data-id="container_based_deployment" wh-toc-id="container_based_deployment-d66e98">
+         <title>Container-based deployment</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="container_based_deployment"></resourceid>
+            <navtitle class="- topic/navtitle ">Container-based deployment</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Container-based deployment</linktext>
+         </topicmeta>
+         <topic href="installation_files_list.html" data-id="reference_tn2_qnn_mfb" wh-toc-id="reference_tn2_qnn_mfb-d66e106">
+            <title>Installation file list</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="reference_tn2_qnn_mfb"></resourceid>
+               <navtitle class="- topic/navtitle ">Installation file list</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Installation file list</linktext>
+            </topicmeta>
+         </topic>
+      </topic>
+      <topic href="javascript:void(0)" wh-toc-id="tocId-d66e114">
+         <title>Supported software and platforms</title>
+         <topic href="oxy_ex-1/reuse/supported_file_formats.html" data-id="reference_ttt_hnb_p2b" wh-toc-id="reference_ttt_hnb_p2b-d66e115">
+            <title>Supported file formats</title>
+            <shortdesc>
+               <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"></p>
+            </shortdesc>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="reference_ttt_hnb_p2b"></resourceid>
+               <navtitle class="- topic/navtitle ">Supported file formats</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Supported file formats</linktext><?ditaot genshortdesc?>
+               <shortdesc class="- map/shortdesc "></shortdesc>
+            </topicmeta>
+         </topic>
+         <topic href="platform.html" data-id="platform" wh-toc-id="platform-d66e125">
+            <title>Platform</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="platform"></resourceid>
+               <navtitle class="- topic/navtitle ">Platform</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Platform</linktext>
+            </topicmeta>
+         </topic>
+         <topic href="storage.html" data-id="reference_kvm_pwt_xgb" wh-toc-id="reference_kvm_pwt_xgb-d66e133">
+            <title>Storage</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="reference_kvm_pwt_xgb"></resourceid>
+               <navtitle class="- topic/navtitle ">Storage</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Storage</linktext>
+            </topicmeta>
+         </topic>
+         <topic href="nextlabs_software.html" data-id="nextlabs_software" wh-toc-id="nextlabs_software-d66e141">
+            <title>NextLabs software</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="nextlabs_software"></resourceid>
+               <navtitle class="- topic/navtitle ">NextLabs software</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">NextLabs software</linktext>
+            </topicmeta>
+         </topic>
+         <topic href="port_numbers.html" data-id="port_numbers" wh-toc-id="port_numbers-d66e149">
+            <title>Port numbers</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="port_numbers"></resourceid>
+               <navtitle class="- topic/navtitle ">Port numbers</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Port numbers</linktext>
+            </topicmeta>
+            <topic href="opening_ports.html" data-id="task_bhq_yvv_tgb" wh-toc-id="task_bhq_yvv_tgb-d66e157">
+               <title>Opening ports</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_bhq_yvv_tgb"></resourceid>
+                  <navtitle class="- topic/navtitle ">Opening ports</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Opening ports</linktext>
+               </topicmeta>
+            </topic>
+         </topic>
+         <topic href="database.html" data-id="database" wh-toc-id="database-d66e165">
+            <title>Database</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="database"></resourceid>
+               <navtitle class="- topic/navtitle ">Database</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Database</linktext>
+            </topicmeta>
+         </topic>
+         <topic href="web_browsers.html" data-id="web_browsers" wh-toc-id="web_browsers-d66e173">
+            <title>Web browsers</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="web_browsers"></resourceid>
+               <navtitle class="- topic/navtitle ">Web browsers</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Web browsers</linktext>
+            </topicmeta>
+         </topic>
+      </topic>
+      <topic href="installing_rms_on_a_linux_server.html" data-id="installing_rms_on_a_linux_server" wh-toc-id="installing_rms_on_a_linux_server-d66e181">
+         <title>SkyDRM RMS installation on a Linux server</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="installing_rms_on_a_linux_server"></resourceid>
+            <navtitle class="- topic/navtitle ">SkyDRM RMS installation on a Linux server</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">SkyDRM RMS installation on a Linux server</linktext>
+         </topicmeta>
+         <topic href="installation_prereqs.html" data-id="reference_t3r_k1c_nfb" wh-toc-id="reference_t3r_k1c_nfb-d66e189">
+            <title>Installation information pre-requisites</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="reference_t3r_k1c_nfb"></resourceid>
+               <navtitle class="- topic/navtitle ">Installation information pre-requisites</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Installation information pre-requisites</linktext>
+            </topicmeta>
+            <topic href="idp_information.html" data-id="reference_iqj_2qc_nfb" wh-toc-id="reference_iqj_2qc_nfb-d66e197">
+               <title>Identity provider information</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="reference_iqj_2qc_nfb"></resourceid>
+                  <navtitle class="- topic/navtitle ">Identity provider information</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Identity provider information</linktext>
+               </topicmeta>
+            </topic>
+            <topic href="storage_provider_info.html" data-id="reference_q3b_nqc_nfb" wh-toc-id="reference_q3b_nqc_nfb-d66e205">
+               <title>Storage provider information</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="reference_q3b_nqc_nfb"></resourceid>
+                  <navtitle class="- topic/navtitle ">Storage provider information</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Storage provider information</linktext>
+               </topicmeta>
+            </topic>
+            <topic href="smtp_info.html" data-id="reference_gfv_tqc_nfb" wh-toc-id="reference_gfv_tqc_nfb-d66e213">
+               <title>SMTP server information</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="reference_gfv_tqc_nfb"></resourceid>
+                  <navtitle class="- topic/navtitle ">SMTP server information</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">SMTP server information</linktext>
+               </topicmeta>
+            </topic>
+            <topic href="db_info.html" data-id="reference_p2r_d2d_nfb" wh-toc-id="reference_p2r_d2d_nfb-d66e221">
+               <title>Database information</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="reference_p2r_d2d_nfb"></resourceid>
+                  <navtitle class="- topic/navtitle ">Database information</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Database information</linktext>
+               </topicmeta>
+            </topic>
+            <topic href="cc_info.html" data-id="reference_gvz_zqc_nfb" wh-toc-id="reference_gvz_zqc_nfb-d66e229">
+               <title>Control Center information</title>
+               <shortdesc>
+                  <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"></p>
+               </shortdesc>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="reference_gvz_zqc_nfb"></resourceid>
+                  <navtitle class="- topic/navtitle ">Control Center information</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Control Center information</linktext><?ditaot genshortdesc?>
+                  <shortdesc class="- map/shortdesc "></shortdesc>
+               </topicmeta>
+            </topic>
+         </topic>
+         <topic href="installing_docker_on_linux_server.html" data-id="task_tv5_cs3_n2b" wh-toc-id="task_tv5_cs3_n2b-d66e239">
+            <title>Installing Docker on a Linux server</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_tv5_cs3_n2b"></resourceid>
+               <navtitle class="- topic/navtitle ">Installing Docker on a Linux server</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Installing Docker on a Linux server</linktext>
+            </topicmeta>
+         </topic>
+         <topic href="installing_skydrm.html" data-id="task_kds_hdz_q2b" wh-toc-id="task_kds_hdz_q2b-d66e247">
+            <title>Installing SkyDRM RMS</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_kds_hdz_q2b"></resourceid>
+               <navtitle class="- topic/navtitle ">Installing SkyDRM RMS</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Installing SkyDRM RMS</linktext>
+            </topicmeta>
+         </topic>
+         <topic href="skydrm_rms_high_avail.html" data-id="concept_jm3_wxt_xgb" wh-toc-id="concept_jm3_wxt_xgb-d66e255">
+            <title>SkyDRM RMS installation on multiple servers for high availability</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="concept_jm3_wxt_xgb"></resourceid>
+               <navtitle class="- topic/navtitle ">SkyDRM RMS installation on multiple servers for high availability</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">SkyDRM RMS installation on multiple servers for high availability</linktext>
+            </topicmeta>
+            <topic href="installing_skyrdm_high_availability.html" data-id="task_nqh_flm_vgb" wh-toc-id="task_nqh_flm_vgb-d66e263">
+               <title>Installing SkyDRM RMS on multiple servers for high availability</title>
+               <shortdesc>
+                  <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"></p>
+               </shortdesc>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_nqh_flm_vgb"></resourceid>
+                  <navtitle class="- topic/navtitle ">Installing SkyDRM RMS on multiple servers for high availability</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Installing SkyDRM RMS on multiple servers for high availability</linktext><?ditaot genshortdesc?>
+                  <shortdesc class="- map/shortdesc "></shortdesc>
+               </topicmeta>
+            </topic>
+         </topic>
+         <topic href="skydrm_rms_configuration.html" data-id="skydrm_rms_configuration" wh-toc-id="skydrm_rms_configuration-d66e273">
+            <title>SkyDRM RMS configuration</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="skydrm_rms_configuration"></resourceid>
+               <navtitle class="- topic/navtitle ">SkyDRM RMS configuration</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">SkyDRM RMS configuration</linktext>
+            </topicmeta>
+            <topic href="configuring_ldap.html" data-id="task_rhw_mjz_q2b" wh-toc-id="task_rhw_mjz_q2b-d66e281">
+               <title>Configuring LDAP</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_rhw_mjz_q2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Configuring LDAP</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Configuring LDAP</linktext>
+               </topicmeta>
+            </topic>
+            <topic href="configuring_saml.html" data-id="task_u5r_4jz_q2b" wh-toc-id="task_u5r_4jz_q2b-d66e289">
+               <title>Configuring SAML</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_u5r_4jz_q2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Configuring SAML</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Configuring SAML</linktext>
+               </topicmeta>
+            </topic>
+            <topic href="configuring_facebook.html" data-id="task_uc4_rjz_q2b" wh-toc-id="task_uc4_rjz_q2b-d66e297">
+               <title>Configuring Facebook as an IdP</title>
+               <shortdesc>
+                  <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"></p>
+               </shortdesc>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_uc4_rjz_q2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Configuring Facebook as an IdP</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Configuring Facebook as an IdP</linktext><?ditaot genshortdesc?>
+                  <shortdesc class="- map/shortdesc "></shortdesc>
+               </topicmeta>
+            </topic>
+            <topic href="configuring_google.html" data-id="task_g2r_5jz_q2b" wh-toc-id="task_g2r_5jz_q2b-d66e307">
+               <title>Configuring Google as an IdP</title>
+               <shortdesc>
+                  <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"></p>
+               </shortdesc>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_g2r_5jz_q2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Configuring Google as an IdP</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Configuring Google as an IdP</linktext><?ditaot genshortdesc?>
+                  <shortdesc class="- map/shortdesc "></shortdesc>
+               </topicmeta>
+            </topic>
+            <topic href="configuring_amazons3.html" data-id="task_h2j_2f1_r2b" wh-toc-id="task_h2j_2f1_r2b-d66e317">
+               <title>Configuring Amazon S3 storage provider</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_h2j_2f1_r2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Configuring Amazon S3 storage provider</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Configuring Amazon S3 storage provider</linktext>
+               </topicmeta>
+            </topic>
+            <topic href="configuring_onedrive_biz.html" data-id="task_h2j_2f1_r2b" wh-toc-id="task_h2j_2f1_r2b-d66e325">
+               <title>Configuring OneDrive for Business storage provider</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_h2j_2f1_r2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Configuring OneDrive for Business storage provider</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Configuring OneDrive for Business storage provider</linktext>
+               </topicmeta>
+            </topic>
+            <topic href="configuring_local_drive.html" data-id="task_h2j_2f1_r2b" wh-toc-id="task_h2j_2f1_r2b-d66e333">
+               <title>Configuring local drive as storage</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_h2j_2f1_r2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Configuring local drive as storage</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Configuring local drive as storage</linktext>
+               </topicmeta>
+            </topic>
+            <topic href="configuring_postgresql_db.html" data-id="task_xks_5gb_r2b" wh-toc-id="task_xks_5gb_r2b-d66e341">
+               <title>Configuring PostgreSQL database</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_xks_5gb_r2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Configuring PostgreSQL database</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Configuring PostgreSQL database</linktext>
+               </topicmeta>
+            </topic>
+            <topic href="configuring_mssql_db.html" data-id="task_c2h_xgb_r2b" wh-toc-id="task_c2h_xgb_r2b-d66e349">
+               <title>Configuring Microsoft SQL Server database</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_c2h_xgb_r2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Configuring Microsoft SQL Server database</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Configuring Microsoft SQL Server database</linktext>
+               </topicmeta>
+            </topic>
+            <topic href="configuring_oracle_db.html" data-id="task_ndp_lsw_mfb" wh-toc-id="task_ndp_lsw_mfb-d66e357">
+               <title>Configuring Oracle database</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_ndp_lsw_mfb"></resourceid>
+                  <navtitle class="- topic/navtitle ">Configuring Oracle database</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Configuring Oracle database</linktext>
+               </topicmeta>
+            </topic>
+         </topic>
+         <topic href="defining_log_levels.html" data-id="task_lbq_s4h_mfb" wh-toc-id="task_lbq_s4h_mfb-d66e365">
+            <title>Defining log levels</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_lbq_s4h_mfb"></resourceid>
+               <navtitle class="- topic/navtitle ">Defining log levels</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Defining log levels</linktext>
+            </topicmeta>
+         </topic>
+         <topic href="viewing_logs.html" data-id="task_qhm_bs5_mfb" wh-toc-id="task_qhm_bs5_mfb-d66e373">
+            <title>Viewing SkyDRM RMS logs</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_qhm_bs5_mfb"></resourceid>
+               <navtitle class="- topic/navtitle ">Viewing SkyDRM RMS logs</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Viewing SkyDRM RMS logs</linktext>
+            </topicmeta>
+         </topic>
+         <topic href="installing_custom_cert.html" data-id="task_ywl_csk_fgb" wh-toc-id="task_ywl_csk_fgb-d66e381">
+            <title>Installing a custom certificate on SkyDRM RMS</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_ywl_csk_fgb"></resourceid>
+               <navtitle class="- topic/navtitle ">Installing a custom certificate on SkyDRM RMS</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Installing a custom certificate on SkyDRM RMS</linktext>
+            </topicmeta>
+         </topic>
+         <topic href="importing_selfsigned_ADcert.html" data-id="untitled2" wh-toc-id="untitled2-d66e389">
+            <title>Importing an AD or SharePoint certificate</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="untitled2"></resourceid>
+               <navtitle class="- topic/navtitle ">Importing an AD or SharePoint certificate</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Importing an AD or SharePoint certificate</linktext>
+            </topicmeta>
+         </topic>
+         <topic href="upgrading_skydrmrms.html" data-id="task_h1y_krb_r2b" wh-toc-id="task_h1y_krb_r2b-d66e397">
+            <title>Upgrading SkyDRM RMS</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_h1y_krb_r2b"></resourceid>
+               <navtitle class="- topic/navtitle ">Upgrading SkyDRM RMS</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Upgrading SkyDRM RMS</linktext>
+            </topicmeta>
+         </topic>
+         <topic href="uninstalling_skydrm_rms.html" data-id="task_uyj_sjp_mfb" wh-toc-id="task_uyj_sjp_mfb-d66e406">
+            <title>Uninstalling SkyDRM RMS</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_uyj_sjp_mfb"></resourceid>
+               <navtitle class="- topic/navtitle ">Uninstalling SkyDRM RMS</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Uninstalling SkyDRM RMS</linktext>
+            </topicmeta>
+         </topic>
+      </topic>
+   </topic>
+   <topic href="skydrm_rms_configuration_2.html" data-id="skydrm_rms_configuration" wh-toc-id="skydrm_rms_configuration-d66e415">
+      <title>SkyDRM RMS configuration</title>
+      <topicmeta>
+         <resourceid class="- topic/resourceid " oxy-source="topic" appid="skydrm_rms_configuration"></resourceid>
+         <navtitle class="- topic/navtitle ">SkyDRM RMS configuration</navtitle><?ditaot gentext?>
+         <linktext class="- map/linktext ">SkyDRM RMS configuration</linktext>
+      </topicmeta>
+      <topic href="tenant_mgmt.html" data-id="concept_ltm_qjm_fgb" wh-toc-id="concept_ltm_qjm_fgb-d66e423">
+         <title>Tenant management</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="concept_ltm_qjm_fgb"></resourceid>
+            <navtitle class="- topic/navtitle ">Tenant management</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Tenant management</linktext>
+         </topicmeta>
+         <topic href="adding_tenant.html" data-id="task_y5v_m3m_fgb" wh-toc-id="task_y5v_m3m_fgb-d66e431">
+            <title>Adding a tenant</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_y5v_m3m_fgb"></resourceid>
+               <navtitle class="- topic/navtitle ">Adding a tenant</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Adding a tenant</linktext>
+            </topicmeta>
+            <topic href="editing_hosts_file.html" data-id="task_mr1_r3m_fgb" wh-toc-id="task_mr1_r3m_fgb-d66e439">
+               <title>Editing the hosts file </title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_mr1_r3m_fgb"></resourceid>
+                  <navtitle class="- topic/navtitle ">Editing the hosts file </navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Editing the hosts file</linktext>
+               </topicmeta>
+            </topic>
+         </topic>
+         <topic href="deleting_tenant.html" data-id="task_i1c_njm_fgb" wh-toc-id="task_i1c_njm_fgb-d66e447">
+            <title>Deleting a tenant</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_i1c_njm_fgb"></resourceid>
+               <navtitle class="- topic/navtitle ">Deleting a tenant</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Deleting a tenant</linktext>
+            </topicmeta>
+         </topic>
+      </topic>
+      <topic href="mapping_user_attributes.html" data-id="task_e5w_hbp_r2b" wh-toc-id="task_e5w_hbp_r2b-d66e455">
+         <title>Mapping user attributes</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_e5w_hbp_r2b"></resourceid>
+            <navtitle class="- topic/navtitle ">Mapping user attributes</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Mapping user attributes</linktext>
+         </topicmeta>
+      </topic>
+      <topic href="assigning_project_admin.html" data-id="task_ccm_mbp_r2b" wh-toc-id="task_ccm_mbp_r2b-d66e463">
+         <title>Assigning project administrators</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">You can grant the right to create a project to SkyDRM RMS users. This user becomes         the project administrator.</p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_ccm_mbp_r2b"></resourceid>
+            <navtitle class="- topic/navtitle ">Assigning project administrators</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Assigning project administrators</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc ">You can grant the right to create a project to SkyDRM RMS users. This user becomes         the project administrator.</shortdesc>
+         </topicmeta>
+      </topic>
+      <topic href="creating_project_tags.html" data-id="task_em3_g2z_fgb" wh-toc-id="task_em3_g2z_fgb-d66e474">
+         <title>Defining a project tag</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_em3_g2z_fgb"></resourceid>
+            <navtitle class="- topic/navtitle ">Defining a project tag</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Defining a project tag</linktext>
+         </topicmeta>
+      </topic>
+      <topic href="configuring_storage_service_providers.html" data-id="configuring_storage_service_providers" wh-toc-id="configuring_storage_service_providers-d66e482">
+         <title>Storage service providers configuration</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="configuring_storage_service_providers"></resourceid>
+            <navtitle class="- topic/navtitle ">Storage service providers configuration</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Storage service providers configuration</linktext>
+         </topicmeta>
+         <topic href="configuring_microsoft_onedrive_as_a_storage_service_provider.html" data-id="configuring_microsoft_onedrive_as_a_storage_service_provider" wh-toc-id="configuring_microsoft_onedrive_as_a_storage_service_provider-d66e490">
+            <title>Configuring Microsoft OneDrive as a storage service provider</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="configuring_microsoft_onedrive_as_a_storage_service_provider"></resourceid>
+               <navtitle class="- topic/navtitle ">Configuring Microsoft OneDrive as a storage service provider</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Configuring Microsoft OneDrive as a storage service provider</linktext>
+            </topicmeta>
+            <topic href="creating_onedrive_app.html" data-id="task_cg5_yfr_q2b" wh-toc-id="task_cg5_yfr_q2b-d66e498">
+               <title>Creating a OneDrive app for SkyDRM RMS</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_cg5_yfr_q2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Creating a OneDrive app for SkyDRM RMS</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Creating a OneDrive app for SkyDRM RMS</linktext>
+               </topicmeta>
+            </topic>
+            <topic href="configuring_onedrive.html" data-id="task_fdn_zjr_q2b" wh-toc-id="task_fdn_zjr_q2b-d66e506">
+               <title>Configuring OneDrive app in SkyDRM RMS</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_fdn_zjr_q2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Configuring OneDrive app in SkyDRM RMS</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Configuring OneDrive app in SkyDRM RMS</linktext>
+               </topicmeta>
+            </topic>
+         </topic>
+         <topic href="configuring_google_drive_as_a_storage_service_provider.html" data-id="configuring_google_drive_as_a_storage_service_provider" wh-toc-id="configuring_google_drive_as_a_storage_service_provider-d66e514">
+            <title>Configuring Google Drive as a storage service provider</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="configuring_google_drive_as_a_storage_service_provider"></resourceid>
+               <navtitle class="- topic/navtitle ">Configuring Google Drive as a storage service provider</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Configuring Google Drive as a storage service provider</linktext>
+            </topicmeta>
+            <topic href="creating_gdrive_app.html" data-id="task_gjx_zlr_q2b" wh-toc-id="task_gjx_zlr_q2b-d66e522">
+               <title>Creating a Google Drive app for SkyDRM RMS</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_gjx_zlr_q2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Creating a Google Drive app for SkyDRM RMS</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Creating a Google Drive app for SkyDRM RMS</linktext>
+               </topicmeta>
+            </topic>
+            <topic href="configuring_gdrive.html" data-id="task_fdn_zjr_q2b" wh-toc-id="task_fdn_zjr_q2b-d66e530">
+               <title>Configuring Google Drive app in SkyDRM RMS</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_fdn_zjr_q2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Configuring Google Drive app in SkyDRM RMS</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Configuring Google Drive app in SkyDRM RMS</linktext>
+               </topicmeta>
+            </topic>
+         </topic>
+         <topic href="configuring_dropbox_as_a_storage_service_provider.html" data-id="configuring_dropbox_as_a_storage_service_provider" wh-toc-id="configuring_dropbox_as_a_storage_service_provider-d66e538">
+            <title>Configuring Dropbox as a storage service provider</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="configuring_dropbox_as_a_storage_service_provider"></resourceid>
+               <navtitle class="- topic/navtitle ">Configuring Dropbox as a storage service provider</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Configuring Dropbox as a storage service provider</linktext>
+            </topicmeta>
+            <topic href="creating_dropbox_app.html" data-id="task_sbz_nmj_s2b" wh-toc-id="task_sbz_nmj_s2b-d66e546">
+               <title>Creating a Dropbox app for SkyDRM RMS</title>
+               <shortdesc>
+                  <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"></p>
+               </shortdesc>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_sbz_nmj_s2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Creating a Dropbox app for SkyDRM RMS</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Creating a Dropbox app for SkyDRM RMS</linktext><?ditaot genshortdesc?>
+                  <shortdesc class="- map/shortdesc "></shortdesc>
+               </topicmeta>
+            </topic>
+            <topic href="configuring_dropbox.html" data-id="task_fdn_zjr_q2b" wh-toc-id="task_fdn_zjr_q2b-d66e556">
+               <title>Configuring Dropbox app in SkyDRM RMS</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_fdn_zjr_q2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Configuring Dropbox app in SkyDRM RMS</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Configuring Dropbox app in SkyDRM RMS</linktext>
+               </topicmeta>
+            </topic>
+         </topic>
+         <topic href="configuring_box_as_a_storage_service_provider.html" data-id="configuring_box_as_a_storage_service_provider" wh-toc-id="configuring_box_as_a_storage_service_provider-d66e564">
+            <title>Configuring Box as a storage service provider</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="configuring_box_as_a_storage_service_provider"></resourceid>
+               <navtitle class="- topic/navtitle ">Configuring Box as a storage service provider</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Configuring Box as a storage service provider</linktext>
+            </topicmeta>
+            <topic href="creating_box_app.html" data-id="task_yfk_5fs_q2b" wh-toc-id="task_yfk_5fs_q2b-d66e572">
+               <title>Creating a Box app for SkyDRM RMS</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_yfk_5fs_q2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Creating a Box app for SkyDRM RMS</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Creating a Box app for SkyDRM RMS</linktext>
+               </topicmeta>
+            </topic>
+            <topic href="configuring_box.html" data-id="task_fdn_zjr_q2b" wh-toc-id="task_fdn_zjr_q2b-d66e580">
+               <title>Configuring Box app in SkyDRM RMS</title>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_fdn_zjr_q2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Configuring Box app in SkyDRM RMS</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Configuring Box app in SkyDRM RMS</linktext>
+               </topicmeta>
+            </topic>
+         </topic>
+         <topic href="configuring_sharepoint_online.html" data-id="integrating_with_sharepoint_online_cross_launch_app" wh-toc-id="integrating_with_sharepoint_online_cross_launch_app-d66e588">
+            <title>Configuring SharePoint Online as a storage service provider</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="integrating_with_sharepoint_online_cross_launch_app"></resourceid>
+               <navtitle class="- topic/navtitle ">Configuring SharePoint Online as a storage service provider</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Configuring SharePoint Online as a storage service provider</linktext>
+            </topicmeta>
+            <topic href="registering_SPonline_app.html" data-id="task_w5x_41t_q2b" wh-toc-id="task_w5x_41t_q2b-d66e596">
+               <title>Registering a SharePoint Online app</title>
+               <shortdesc>
+                  <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Before you can use SkyDRM RMS to create your SharePoint Online App, you must register         your SharePoint Online App.
+                     The registration process generates Client and Secret Client IDs         while also saving the public listed IP address of
+                     the machine on which your SkyDRM RMS         deployment is hosted.
+                  </p>
+               </shortdesc>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_w5x_41t_q2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Registering a SharePoint Online app</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Registering a SharePoint Online app</linktext><?ditaot genshortdesc?>
+                  <shortdesc class="- map/shortdesc ">Before you can use SkyDRM RMS to create your SharePoint Online App, you must register         your SharePoint Online App.
+                     The registration process generates Client and Secret Client IDs         while also saving the public listed IP address of
+                     the machine on which your SkyDRM RMS         deployment is hosted.
+                  </shortdesc>
+               </topicmeta>
+            </topic>
+            <topic href="creating_sponline_app.html" data-id="task_jg1_dmt_q2b" wh-toc-id="task_jg1_dmt_q2b-d66e607">
+               <title>Creating a SharePoint Online app</title>
+               <shortdesc>
+                  <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"></p>
+               </shortdesc>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_jg1_dmt_q2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Creating a SharePoint Online app</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Creating a SharePoint Online app</linktext><?ditaot genshortdesc?>
+                  <shortdesc class="- map/shortdesc "></shortdesc>
+               </topicmeta>
+            </topic>
+            <topic href="deploy_SPonline_app.html" data-id="task_szv_mqt_q2b" wh-toc-id="task_szv_mqt_q2b-d66e617">
+               <title>Deploying a SharePoint Online app</title>
+               <shortdesc>
+                  <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">After creating the SharePoint Online app, you can upload it to the SharePoint Online         App Catalog.</p>
+               </shortdesc>
+               <topicmeta>
+                  <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_szv_mqt_q2b"></resourceid>
+                  <navtitle class="- topic/navtitle ">Deploying a SharePoint Online app</navtitle><?ditaot gentext?>
+                  <linktext class="- map/linktext ">Deploying a SharePoint Online app</linktext><?ditaot genshortdesc?>
+                  <shortdesc class="- map/shortdesc ">After creating the SharePoint Online app, you can upload it to the SharePoint Online         App Catalog.</shortdesc>
+               </topicmeta>
+            </topic>
+         </topic>
+         <topic href="configuring_sharepoint_on_premise.html" data-id="integrating_with_sharepoint_on_premise_cross_launch_app" wh-toc-id="integrating_with_sharepoint_on_premise_cross_launch_app-d66e628">
+            <title>Configuring SharePoint On-Premises as a storage provider</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="integrating_with_sharepoint_on_premise_cross_launch_app"></resourceid>
+               <navtitle class="- topic/navtitle ">Configuring SharePoint On-Premises as a storage provider</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Configuring SharePoint On-Premises as a storage provider</linktext>
+            </topicmeta>
+         </topic>
+      </topic>
+      <topic href="javascript:void(0)" wh-toc-id="tocId-d66e636">
+         <title>Integrating external identity providers</title>
+         <topic href="integrating_with_okta.html" data-id="integrating_with_okta" wh-toc-id="integrating_with_okta-d66e637">
+            <title>Integrating Okta</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="integrating_with_okta"></resourceid>
+               <navtitle class="- topic/navtitle ">Integrating Okta</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Integrating Okta</linktext>
+            </topicmeta>
+         </topic>
+         <topic href="integrating_adfs.html" data-id="task_wmd_vnk_r2b" wh-toc-id="task_wmd_vnk_r2b-d66e645">
+            <title>Integrating AD FS</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_wmd_vnk_r2b"></resourceid>
+               <navtitle class="- topic/navtitle ">Integrating AD FS</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Integrating AD FS</linktext>
+            </topicmeta>
+         </topic>
+         <topic href="integrating_onelogin.html" data-id="task_m5c_1rk_r2b" wh-toc-id="task_m5c_1rk_r2b-d66e653">
+            <title>Integrating OneLogin</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_m5c_1rk_r2b"></resourceid>
+               <navtitle class="- topic/navtitle ">Integrating OneLogin</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Integrating OneLogin</linktext>
+            </topicmeta>
+         </topic>
+         <topic href="integrating_ping.html" data-id="task_bvb_2rk_r2b" wh-toc-id="task_bvb_2rk_r2b-d66e661">
+            <title>Integrating PingOne</title>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_bvb_2rk_r2b"></resourceid>
+               <navtitle class="- topic/navtitle ">Integrating PingOne</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Integrating PingOne</linktext>
+            </topicmeta>
+         </topic>
+      </topic>
+   </topic>
+   <topic href="creating_policies.html" data-id="creating_policies" wh-toc-id="creating_policies-d66e671">
+      <title>Policy creation in SkyDRM RMS</title>
+      <topicmeta>
+         <resourceid class="- topic/resourceid " oxy-source="topic" appid="creating_policies"></resourceid>
+         <navtitle class="- topic/navtitle ">Policy creation in SkyDRM RMS</navtitle><?ditaot gentext?>
+         <linktext class="- map/linktext ">Policy creation in SkyDRM RMS</linktext>
+      </topicmeta>
+      <topic href="policy_creation_concepts.html" data-id="policy_creation_concepts" wh-toc-id="policy_creation_concepts-d66e679">
+         <title>Policy creation concepts</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="policy_creation_concepts"></resourceid>
+            <navtitle class="- topic/navtitle ">Policy creation concepts</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Policy creation concepts</linktext>
+         </topicmeta>
+      </topic>
+      <topic href="defining_doc_classification.html" data-id="task_ib3_zqd_z2b" wh-toc-id="task_ib3_zqd_z2b-d66e687">
+         <title>Defining document classification</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_ib3_zqd_z2b"></resourceid>
+            <navtitle class="- topic/navtitle ">Defining document classification</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Defining document classification</linktext>
+         </topicmeta>
+      </topic>
+      <topic href="creating_policy.html" data-id="task_bqg_5vn_y2b" wh-toc-id="task_bqg_5vn_y2b-d66e695">
+         <title>Creating a policy</title>
+         <shortdesc>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"></p>
+         </shortdesc>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_bqg_5vn_y2b"></resourceid>
+            <navtitle class="- topic/navtitle ">Creating a policy</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Creating a policy</linktext><?ditaot genshortdesc?>
+            <shortdesc class="- map/shortdesc "></shortdesc>
+         </topicmeta>
+         <topic href="sample_policy_1.html" data-id="sample_policy_1" wh-toc-id="sample_policy_1-d66e705">
+            <title>Example: Creating a policy with an OR combiner</title>
+            <shortdesc>
+               <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">You want to create a policy where you allow departments such as HR or Finance to have         access to a particular resource.
+                  
+               </p>
+            </shortdesc>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="sample_policy_1"></resourceid>
+               <navtitle class="- topic/navtitle ">Example: Creating a policy with an OR combiner</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Example: Creating a policy with an OR combiner</linktext><?ditaot genshortdesc?>
+               <shortdesc class="- map/shortdesc ">You want to create a policy where you allow departments such as HR or Finance to have         access to a particular resource.
+                  
+               </shortdesc>
+            </topicmeta>
+         </topic>
+         <topic href="sample_policy_2.html" data-id="sample_policy_2" wh-toc-id="sample_policy_2-d66e716">
+            <title>Example: Creating a policy with a multi-value combiner</title>
+            <shortdesc>
+               <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">You can create a policy where you allow a person who belong to two departments to         have access to a particular resource.
+                  
+               </p>
+            </shortdesc>
+            <topicmeta>
+               <resourceid class="- topic/resourceid " oxy-source="topic" appid="sample_policy_2"></resourceid>
+               <navtitle class="- topic/navtitle ">Example: Creating a policy with a multi-value combiner</navtitle><?ditaot gentext?>
+               <linktext class="- map/linktext ">Example: Creating a policy with a multi-value combiner</linktext><?ditaot genshortdesc?>
+               <shortdesc class="- map/shortdesc ">You can create a policy where you allow a person who belong to two departments to         have access to a particular resource.
+                  
+               </shortdesc>
+            </topicmeta>
+         </topic>
+      </topic>
+      <topic href="creating_abac_policy.html" data-id="task_sbf_fml_ggb" wh-toc-id="task_sbf_fml_ggb-d66e727">
+         <title>Creating an attribute-based access control policy</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_sbf_fml_ggb"></resourceid>
+            <navtitle class="- topic/navtitle ">Creating an attribute-based access control policy</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Creating an attribute-based access control policy</linktext>
+         </topicmeta>
+      </topic>
+      <topic href="oxy_ex-3/10_2/DITA/SkyDRM-C/reclassifying_file.html" data-id="task_k5l_mst_3hb" wh-toc-id="task_k5l_mst_3hb-d66e735">
+         <title>Reclassifying a file</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="task_k5l_mst_3hb"></resourceid>
+            <navtitle class="- topic/navtitle ">Reclassifying a file</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Reclassifying a file</linktext>
+         </topicmeta>
+      </topic>
+   </topic>
+   <topic href="troubleshooting.html" data-id="concept_akn_5k4_mfb" wh-toc-id="concept_akn_5k4_mfb-d66e744">
+      <title>Troubleshooting</title>
+      <topicmeta>
+         <resourceid class="- topic/resourceid " oxy-source="topic" appid="concept_akn_5k4_mfb"></resourceid>
+         <navtitle class="- topic/navtitle ">Troubleshooting</navtitle><?ditaot gentext?>
+         <linktext class="- map/linktext ">Troubleshooting</linktext>
+      </topicmeta>
+      <topic href="troubleshooting_dns_not_resolved.html" data-id="trouble_a1b_jr4_mfb" wh-toc-id="trouble_a1b_jr4_mfb-d66e752">
+         <title>Cannot access SkyDRM RMS website: DNS not resolving</title>
+         <topicmeta>
+            <resourceid class="- topic/resourceid " oxy-source="topic" appid="trouble_a1b_jr4_mfb"></resourceid>
+            <navtitle class="- topic/navtitle ">Cannot access SkyDRM RMS website: DNS not resolving</navtitle><?ditaot gentext?>
+            <linktext class="- map/linktext ">Cannot access SkyDRM RMS website: DNS not resolving</linktext>
+         </topicmeta>
+      </topic>
+   </topic>
+</toc>

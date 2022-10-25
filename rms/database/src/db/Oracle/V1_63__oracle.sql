@@ -1,0 +1,1 @@
+ALTER TABLE user_session ADD login_tenant VARCHAR2(36);

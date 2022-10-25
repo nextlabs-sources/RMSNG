@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+   <appContext helpID="what_is_skydrm_"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/what_is_skydrm_.html"/>
+   <appContext helpID="reference_ttt_hnb_p2b"
+               path="oxy_ex-3/10_9/DITA/reuse/supported_file_formats.html"/>
+   <appContext helpID="skydrm_concepts" path="oxy_ex-3/10_9/DITA/reuse/skydrm_concepts.html"/>
+   <appContext helpID="managing_repositories"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/managing_repositories.html"/>
+   <appContext helpID="adding_a_personal_repository"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/adding_a_personal_repository.html"/>
+   <appContext helpID="editing_the_repository_display_name"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/editing_the_repository_display_name.html"/>
+   <appContext helpID="disconnecting_a_repository"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/disconnecting_a_repository.html"/>
+   <appContext helpID="using_skydrm" path="oxy_ex-3/10_9/DITA/SkyDRM-C/using_skydrm.html"/>
+   <appContext helpID="untitled5"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/creating_skydrm_account.html"/>
+   <appContext helpID="untitled7" path="oxy_ex-3/10_9/DITA/SkyDRM-C/logging_in_to_skydrm.html"/>
+   <appContext helpID="untitled8"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/configuring_rights_preferences.html"/>
+   <appContext helpID="applying_rights_protection_to_a_file"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/applying_rights_protection_to_a_file.html"/>
+   <appContext helpID="sharing_a_rights_protected_file"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/sharing_a_rights_protected_file_web_win.html"/>
+   <appContext helpID="viewing_shared_files" path="viewing_shared_files.html"/>
+   <appContext helpID="task_tfb_ywc_p2b"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/marking_file_favorite.html"/>
+   <appContext helpID="task_v3y_fxc_p2b"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/viewing_favorite.html"/>
+   <appContext helpID="concept_gnx_yyb_p2b" path="oxy_ex-3/10_9/DITA/SkyDRM-C/viewers.html"/>
+   <appContext helpID="task_ak5_vyb_p2b"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/common_viewer_tools.html"/>
+   <appContext helpID="reference_vzz_3kc_p2b"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/vds_viewer_tools.html"/>
+   <appContext helpID="reference_ybx_ljc_p2b"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/cad_viewer_tools.html"/>
+   <appContext helpID="task_uqv_dtb_p2b"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/change_password.html"/>
+   <appContext helpID="task_c4n_jvc_p2b"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/change_display_name.html"/>
+   <appContext helpID="using_a_skydrm_project"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/using_a_skydrm_project.html"/>
+   <appContext helpID="creating_a_project"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/creating_a_project.html"/>
+   <appContext helpID="untitled7"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/adding_members_to_project.html"/>
+   <appContext helpID="adding_files_to_a_project"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/adding_files_to_a_project.html"/>
+   <appContext helpID="task_k5l_mst_3hb" path="reclassifying_file.html"/>
+   <appContext helpID="task_my4_qwx_3hb"
+               path="oxy_ex-3/10_2/DITA/SkyDRM-C/extracting_file_content.html"/>
+   <appContext helpID="adding_a_protected_file_to_a_project"
+               path="adding_a_protected_file_to_a_project_web.html"/>
+   <appContext helpID="task_w4l_sfy_s2b"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/applying_company-defined_rights.html"/>
+   <appContext helpID="skydrm_concepts" path="oxy_ex-3/10_9/DITA/reuse/skydrm_concepts.html"/>
+   <appContext helpID="what_is_skydrm_"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/what_is_skydrm_.html"/>
+   <appContext helpID="untitled8"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/configuring_rights_preferences.html"/>
+   <appContext helpID="applying_rights_protection_to_a_file"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/applying_rights_protection_to_a_file.html"/>
+   <appContext helpID="adding_files_to_a_project"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/adding_files_to_a_project.html"/>
+   <appContext helpID="task_w4l_sfy_s2b"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/applying_company-defined_rights.html"/>
+   <appContext helpID="untitled8"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/configuring_rights_preferences.html"/>
+   <appContext helpID="sharing_a_rights_protected_file"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/sharing_a_rights_protected_file.html"/>
+   <appContext helpID="using_skydrm" path="oxy_ex-3/10_9/DITA/SkyDRM-C/using_skydrm.html"/>
+   <appContext helpID="applying_rights_protection_to_a_file"
+               path="oxy_ex-3/10_9/DITA/SkyDRM-C/applying_rights_protection_to_a_file.html"/>
+</map>

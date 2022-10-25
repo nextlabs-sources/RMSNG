@@ -1,0 +1,20 @@
+<div data-ng-controller="viewSharedFileController">
+    <div id="loading-background" data-ng-show="isLoading">
+        <div id="pgLoading-image">
+            <img  src="ui/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>    
+	<div id="fileListHeader" class="show-only-on-desktop">
+		<br>
+        <div class="rms-shareFile-title"><b>{{"view.shared.file.title" | translate}}</b></div>
+	</div>
+	<div class="mobile-tablet-display">
+		<span class="file-list-icons ipad-potrait-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></span>
+        <span class="rms-shareFile-title"><h4 class="padding-mobile">{{"view.shared.file.title" | translate}}</h4></span>
+	</div>
+	<hr class="hr.manage-local">
+    <div  style="padding-left: 10px;">
+        <h4 class="font-weight-normal">{{getMessage()}}</h4><br>
+        <a class="btn btn-default rms-settings-button-color" data-ng-click="getURLandViewFile()" data-ng-show="success">{{"view.shared.file.link.text" | translate}}</a>
+    </div>
+</div>

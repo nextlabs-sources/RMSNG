@@ -1,0 +1,87 @@
+
+	<div class="col-xs-12 padding-20" style="background-color: white;">
+		<div class="rms-repoTitle mobile-tablet-display" data-ng-show="showRepoTitle">
+			<div class="file-list-icons big-screen-hide ipad-potrait-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></div>
+		</div>
+	
+		<div ng-if="fromCreateProject">
+			<div id="workflow-bar">
+				<div id="workflow-bar-position">
+					<button class="button-workflow green-button-workflow">1</button>
+					<span style="display:inline-block;" class="arrow">
+						<span class="arrow-line" style="background-color:#27AE60;"></span>
+						<span class="arrow-head" style="border-left-color:#27AE60;"></span>
+					</span>
+					<button class="button-workflow gray-button-workflow">2</button>
+					<span style="display:inline-block;" class="arrow">
+						<span class="arrow-line" style="background-color:#E0E0E0;"></span>
+						<span class="arrow-head" style="border-left-color:#E0E0E0;"></span>
+					</span>
+					<button class="button-workflow gray-button-workflow">3</button>
+					<span style="display:inline-block;" class="arrow">
+						<span class="arrow-line" style="background-color:#E0E0E0;"></span>
+						<span class="arrow-head" style="border-left-color:#E0E0E0;"></span>
+					</span>
+					<button class="button-workflow gray-button-workflow">4</button>
+				</div>
+			</div>
+			<div style="font-size:1.5em" class="text-align-center">{{'step.one' | translate}} : {{'project.info' | translate}}</div>
+		</div>
+
+		<div ng-if="!fromCreateProject" class="mobile-tablet-display col-md-8 col-md-offset-2 col-sm-12" style="margin-top:10px;">
+			<span>
+				<button type="button" ng-click="onClickTab('configuration', true)" class='btn btn-default col-md-3 col-xs-12' ng-class="configTabId == 0 ? 'rms-settings-button-color' : '' " style="margin-bottom:10px; border-radius:0px;height:34px;">{{'project.info' | translate}}</button>
+				<button type="button" ng-click="onClickTab('accessPermission', true)" class='btn btn-default col-md-3 col-xs-12' ng-class="configTabId == 3 ? 'rms-settings-button-color' : '' " style="margin-bottom:10px; border-radius:0px;height:34px;">{{'project.access.permission' | translate}}</button>
+				<button type="button" ng-click="onClickTab('classification', true)" class='btn btn-default col-md-3 col-xs-12' ng-class="configTabId == 1 ? 'rms-settings-button-color' : '' " style="margin-bottom:10px; border-radius:0px;height:34px;">{{'project.classification' | translate}}</button>
+				<button type="button" ng-click="onClickTab('preference', true)" class='btn btn-default col-md-3 col-xs-12' ng-class="configTabId == 2 ? 'rms-settings-button-color' : '' " style="margin-bottom:10px; border-radius:0px;height:34px;">{{'advanced' | translate}}</button>
+			</span>
+		</div>
+
+		<div class="rms-error-messages" data-ng-class="{'alert alert-success': isOperationSuccess, 'alert alert-danger': !isOperationSuccess}"
+	                ng-show="displayOperationMsg">
+	                <button type="button" class="close" data-ng-click="cancelOperationMessage()">x</button>
+	                <center>
+	                    <p>{{msg}}</p>
+	                </center>
+		</div>
+		<div class="col-xs-12 text-align-center" style="margin-top: 30px">
+	        <div class="col-md-offset-1 col-md-10">
+				<form name="projectConfigureForm" id="projectConfigureForm">
+					<div class="form-group-project-creation">
+						<label for="projectName" style="font-size:16px">{{'project.name'| translate}}</label>
+				        <div>
+				            <input focus-element="true" tabindex="2" class="form-control cursor-not-allowed" type="text" name="PRJ_NAME" id="project-name" data-ng-model="updateParams.projectName" disabled/>
+				        </div>
+					</div>
+					<div class="form-group-project-creation">
+						<label for="projectDescription" style="font-size:16px">{{'project.description'| translate}}</label>
+				        <div>
+				            <textarea tabindex="3" class="form-control" ng-attr-placeholder="{{'project.description.placeholder' | translate}}" name="PRJ_DESC" id="project-description" data-ng-model="updateParams.projectDescription" ng-change="changeConfig()" ng-maxlength="250" data-ng-pattern="/^[\w -]*$/" required/>
+						</div>
+				 		<p class="mandatory" data-ng-show="projectConfigureForm.PRJ_DESC.$touched && (projectConfigureForm.PRJ_DESC.$error.pattern || projectConfigureForm.PRJ_DESC.$invalid)">{{'project.desc.validation.pattern'| translate}}</p>
+					</div>
+					<div class="form-group-project-creation">
+						<label for="projectDefaultInvitationMsg" style="font-size:16px">{{'project.invite.message.title.default'| translate}}</label>
+						<a style="color: darkgrey; margin: 0 auto; font-size: 14px; font-style: italic">{{'project.invite.message.optional'| translate}}</a>
+						<div tabindex="4">
+							<textarea id="invitationMsg" class="form-control" name="PRJ_INVITE_MSG" data-ng-model="updateParams.invitationMsg" ng-change="changeConfig()" placeholder="{{'project.user.invitemsg.placeholder'| translate}}" data-ng-trim="false" maxlength="250"></textarea>
+							<span class="float-right">{{250 - updateParams.invitationMsg.length}} / 250</span>
+						</div>
+					</div>
+					<div ng-if="!fromCreateProject">
+						<span class="float-right">
+							<span data-ng-show="configureProjectLoading" class="loading-icon"></span>
+							<button type="button" class="btn btn-default rms-settings-button-color button-paddings" ng-click="projectConfigureForm.$invalid || configureProjectLoading || !configChanged || configureProject()" data-ng-disabled="projectConfigureForm.$invalid || configureProjectLoading || !configChanged" tabindex="5">{{'save'| translate}}</button>
+						</span>
+					</div>
+					<div ng-if="fromCreateProject">
+						<span class="float-right">
+							<button type="button" class="btn btn-default" style="padding: 6px 25px;" ng-click="onClickTab('classification', true)" tabindex="7">{{'skip'| translate}}</button>
+							<button type="button" class="btn btn-default rms-settings-button-color" style="padding: 6px 25px;" ng-click="projectConfigureForm.$invalid || configureProjectLoading || !configChanged || configureProject()" data-ng-disabled="projectConfigureForm.$invalid || configureProjectLoading || !configChanged" tabindex="5">{{'policy.save.continue'| translate}}</button>
+							<span data-ng-show="configureProjectLoading" class="loading-icon"></span>
+						</span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>

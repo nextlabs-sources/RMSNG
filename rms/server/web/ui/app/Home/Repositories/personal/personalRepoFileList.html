@@ -1,0 +1,72 @@
+<div data-ng-controller="personalRepoController" ngf-drag-over-class="'upload-repo-dragover'" ngf-allow-dir="false" ngf-drop="" data-ng-model="fileupload" ngf-drop-disabled="showAllServices || isRepoReadOnly()  || inMyVaultFolder() || vaultExceeded || (pageTitle=='MyDrive' && driveExceeded)">
+	<div id="loading-background" data-ng-show="isLoading" class="loading-div" />
+    <div id="fileListHeader" class="show-only-on-desktop" data-ng-include="'ui/app/Home/Repositories/personal/personalRepoFileListHeader.html'"></div>
+    <div class="mobile-tablet-display" data-ng-include="'ui/app/Home/Repositories/personal/personalRepoFileListHeaderForMobile.html'"></div>   
+    
+	<div data-ng-class="isTreeOpen? 'rms-fileList' : ''" >
+	<div class="row full-width">	
+		 <div id="resizable-tree" data-ng-show="isTreeOpen && !searchActivated" class="resize" resizable r-directions="['right']" r-flex="true">
+		<div class="col-md-2 rms-width-auto" data-ng-show="isTreeOpen && !searchActivated">
+			<div class="rms-tree cc-layout-full-height">
+				<div id="rmstree" data-js-tree="treeConfig" data-ng-model="treeData" data-tree="fileListTree" data-should-apply="applyModelChanges()" data-tree-events-obj="treeEventsObj" data-ng-show="isTreeOpen"></div>
+			</div>
+		</div>	
+		</div>		
+		<div id="fileList-col-id" class="col-md-10">
+			<center>
+				<label data-ng-if="repoContents.length === 0 && searchActivated">{{"err.no.search.results"|translate}}</label>
+			</center>
+			<div class="rms-error-messages" data-ng-class="'alert alert-danger'" ng-show="invalidTokenRepoExists">
+				<button type="button" class="close" data-ng-click="invalidTokenRepoExists=false">x</button>
+				<div id="invalid-token-repo-err-div"></div>
+			</div>
+			<div data-ng-if="repoContents != null && !repoContents.length && showAllServices && !searchActivated">
+				<center>{{'no.repo.files' | translate}}</center>
+			</div>
+			<div data-ng-if="creatingFolder">
+				<ul id="unordered-fileList-id" class="margin-bottom-0">
+					<li class="list-group-item rms-file-list creating-folder"> 
+						<div class="rms-files">
+							<i class="glyphicon glyphicon-folder-close"></i>
+							<input id="newFolderTextBox" placeholder="{{'create_folder.placeholder' | translate}}" type="text" ng-blur="createFolder()"
+								ng-keyup="$event.keyCode == 13 ? createFolder() : ($event.keyCode == 27 ? exitCreateFolderModal() : null)">
+							<br>
+						</div>
+					</li>
+				</ul>	
+			</div>
+			<div id="drag-and-drop-container"> 
+				<div data-ng-if="repoContents.result != false">
+					<ul class="padding-left-0" id="unordered-fileList-id">
+						<li class="list-group-item rms-file-list mobile-tablet-display" data-ng-show="parentFolder">
+							<div id="fileList-col-id">	
+								<div class="rms-files file-list-parent-folder-name" data-ng-click="onClickFile(parentFolder)">
+									<i data-ng-include="'ui/img/FolderUP_P.svg'"></i>
+									<a class="rms-file-item">..</a>
+								</div>
+								<div><label class="file-info-label"></label></div>
+							</div>
+						</li>
+						<li class="list-group-item rms-file-list" data-ng-repeat="eachFile in repoContents |orderBy:selectedSort" data-ng-if="isFiltered(eachFile)"> 
+							<div data-ng-include="'ui/app/Home/Repositories/personal/personalRepoFileListTemplate.html'"></div>
+						</li>
+					</ul>
+					<div data-ng-if="emptyFolderExists&&!isRepoReadOnly()" class="empty-file-container" style="margin-left: 0px">
+						<center>
+                            <div class="upload pointer-click" data-ng-click="uploadFileModal()"></div>
+                            <span><b>{{"err.repo.no.files" | translate}}</b></span>
+                            <div class="padding-10" style="font-style: italic">{{"widget.protect.file.instruction.1" | translate}} {{"click" | translate}} <a class="underline pointer-click" data-ng-click="uploadFileModal()">{{"here" | translate}}</a> 
+                                {{"repo.nofiles.upload" | translate}}</div>
+                        </center>
+					</div>	
+					<div data-ng-if="emptyFolderExists&&isRepoReadOnly()" class="empty-file-container" style="padding-top: 10px">
+						<center>
+							<div class="padding-10" style="font-style: italic">{{"widget.source.no.items" | translate}}</div>
+						</center>
+					</div>
+				</div>
+			</div>
+	    </div>	 
+    </div>
+	</div>
+</div>

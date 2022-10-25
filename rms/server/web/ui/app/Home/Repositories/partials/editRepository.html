@@ -1,0 +1,41 @@
+<div>
+	<div id="editRepoLoading" data-ng-show="isLoading">
+		<div id="pgLoading-image">
+			<img src="ui/img/loading-icon.gif" alt="Loading..." />
+		</div>
+	</div>
+	<div class="row modal-header" style="width:100%;">
+		<div class="col-xs-6 overflow-hidden rms-break-word" uib-tooltip="{{repository.repoName}}" tooltip-placement="left">{{"edit" | translate}}<br/><b>{{repoNameShortened}}</b></div>
+		<div class="col-xs-6 text-align-right">
+			<a class="btn btn-default rms-settings-button" data-ng-click="cancel()">{{"cancel" | translate}}</a>
+			<a class="btn btn-default rms-settings-button-color rms-settings-button" data-ng-disabled="repoEditForm.$pristine || repoEditForm.$invalid || nameNotChanged" data-ng-click="repoEditForm.$pristine || repoEditForm.$invalid || nameNotChanged || updateRepository(repository)">{{"save" | translate}}</a>
+		</div>
+	</div>
+	<br/>
+	<br/>
+	<form name="repoEditForm">
+		<div class="rms-popup-panel-div">
+			<div>
+				<label>{{"managerepo.display.name" | translate}}</label><br/>
+				<input type="text" data-ng-model="repository.repoName" ng-maxlength="40" name="DISPLAY_NAME" data-ng-required="true" data-ng-pattern="/^[\w -]*$/" data-ng-trim="true"/>
+				<span class="mandatory" data-ng-show="repoEditForm.DISPLAY_NAME.$touched && (repoEditForm.DISPLAY_NAME.$error.required || repoEditForm.DISPLAY_NAME.$error.maxlength) && !repoEditForm.DISPLAY_NAME.$error.pattern">{{"managerepo.disp_name.required" | translate}}</span>
+				<span class="mandatory rms-display" data-ng-show="repoEditForm.DISPLAY_NAME.$error.pattern">{{"managerepo.disp_name.incorrect_format" | translate}}</span>			
+			</div>
+			<br/>
+			<div>
+				<span class="label-grey">{{"managerepo.service.provider" | translate}}</span><br/>
+				<span>{{repository.repoTypeDisplayName}}</span><br/>
+			</div>
+			<br/>
+			<div>
+				<span class="label-grey">{{"managerepo.useraccount" | translate}}</span>
+				<br/>
+				<div class="rms-break-word">{{repository.accountName}}</div><br/>
+			</div>
+			<br/>
+			<div>
+				<button type="button" class="btn btn-default rms-delete-button" data-ng-click="deleteRepository(repository)">{{"disconnect" | translate}}</button>
+			</div>
+		</div>
+	</form>
+</div>

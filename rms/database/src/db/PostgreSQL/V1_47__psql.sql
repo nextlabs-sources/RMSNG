@@ -1,0 +1,1 @@
+ALTER TABLE project_invitation ALTER COLUMN expire_date TYPE timestamp WITH TIME ZONE;

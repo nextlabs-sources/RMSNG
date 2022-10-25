@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<Configuration status="WARN" monitorInterval="300">
+    <Properties>
+        <Property name="HOST">${env:HOSTNAME}</Property>
+        <Property name="LOG_HOME">${env:RMS_SHARED_DIR}/logs/${HOST}</Property>
+        <Property name="PATTERN">%d %p:%m%n</Property>
+    </Properties>
+    <Appenders>  
+        <Console name="Console" target="SYSTEM_OUT">  
+            <PatternLayout pattern="${PATTERN}" />
+        </Console>  
+        <RollingRandomAccessFile name="router" fileName="${LOG_HOME}/router.log" filePattern="${LOG_HOME}/router.%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${PATTERN}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingRandomAccessFile>  
+        <RollingRandomAccessFile name="router_audit" fileName="${LOG_HOME}/router_audit.log" filePattern="${LOG_HOME}/router_audit.%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${PATTERN}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingRandomAccessFile>
+    </Appenders>  
+    <Loggers>
+        <Logger name="com.nextlabs.router" level="trace" additivity="true">  
+            <AppenderRef ref="router" />  
+        </Logger>
+        <Logger name="com.nextlabs.router.audit" level="trace" additivity="true">  
+            <AppenderRef ref="router_audit" />  
+        </Logger>  
+        <Root level="error">  
+            <AppenderRef ref="Console" />  
+        </Root>  
+    </Loggers>  
+</Configuration>  

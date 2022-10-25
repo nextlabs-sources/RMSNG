@@ -1,0 +1,32 @@
+<div class="margin-top-10" style="padding: 50px; background-color: white; overflow: auto">
+    <div style="font-size: 18px;font-weight: 500;">{{'tenant.tenant_details' | translate}}</div>
+    <form name="tenantForm">
+    <div class="components-container-header margin-top-10" style="padding: 30px; background-color: #ECECF1; border: 1px solid #D4D4DF;; overflow: auto">
+        <input data-ng-show="isAddTenant" class="form-control" style="width:100%" maxlength="255" id="tenantName" name="tenantName" placeholder="{{'tenant.tenant_name_placeholder' | translate}}" data-ng-model="tenant.name" data-ng-pattern="/^[\w .-]*$/">
+        <p class="error-text" data-ng-show="isAddTenant && tenant.name.length == 0">{{'tenant.name.error.text' | translate}}</p>
+        <p class="error-text" data-ng-show="isAddTenant && tenantForm.tenantName.$error.pattern">{{"tenant.name.incorrect_format" | translate}}</p>
+        <input data-ng-show="isAddTenant" class="form-control margin-top-10" style="width:100%" maxlength="255" id="tenantServerAddr" placeholder="{{'tenant.tenant_server_placeholder' | translate}}" data-ng-model="tenant.dnsName">
+        <p class="error-text" data-ng-show="isAddTenant && tenant.dnsName.length == 0">{{'tenant.dns.error.text' | translate}}</p>
+        <div data-ng-show="!isAddTenant" class="form-control" style="width:100%; background-color: transparent;" id="tenantNameTxt">{{tenant.name}}</div>
+        <div data-ng-show="!isAddTenant" class="form-control margin-top-10" style="width:100%; background-color: transparent;" id="tenantServerAddrTxt">{{tenant.dnsName}}</div>
+        <textarea class="form-control margin-top-10" style="width:100%" id="tenantDescription" placeholder="{{'tenant.tenant_description_placeholder' | translate}}" data-ng-model="tenant.description" data-ng-pattern="/^[\w -]*$/" autofocus></textarea>
+     </div>
+    </form>
+    <div class="margin-top-20" style="font-size: 18px;font-weight: 500;">{{'tenant.assign_admin' | translate}}</div>
+    <label class="margin-top-10">{{'tenant.assign_admin_description' | translate}}</label>
+    <div class="components-container-header margin-top-10" style="padding: 30px; background-color: #ECECF1; border: 1px solid #D4D4DF;; overflow: auto">
+        <form name="adminForm">
+            <span class="row">
+                <input type="text" maxlength="60" class="form-control" style="height: 42px" name="adminEmail" placeholder="{{ 'tenant.assign_admin_placeholder' | translate}}" data-ng-model="formData.newAdmin" data-ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"/>
+                <button class="btn btn-default rms-settings-button-color add-button" data-ng-click="addAdmin()" data-ng-disabled="!formData.newAdmin || checkAdminEmail() || adminForm.adminEmail.$error.pattern"></button>
+            </span>
+        </form>
+    </div>
+    <div class="margin-top-20" style="font-size: 18px;font-weight: 500;">{{'tenant.exist_admin' | translate}}</div>
+    <div class="margin-top-10" style="line-height: 30px;">
+        <span class="admin-tag" data-ng-class="{'super-admin-tag': superAdminList.indexOf(admin) != -1}" data-ng-repeat="admin in tenant.adminList">{{admin}} <span class="admin-delete" data-ng-click="removeAdmin(admin)" data-ng-show="superAdminList.indexOf(admin) == -1">x</span></span>
+    </div>
+</div>
+<div class="rms-repo-list-header">
+    <div data-ng-include="'ui/app/Home/Tenant/partials/addTenantButtonGroup.html'"></div>
+</div>

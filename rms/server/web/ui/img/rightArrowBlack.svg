@@ -1,0 +1,12 @@
+<svg width="16" height="14" viewBox="0 0 16 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>right arrow - black</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(14326 -2431)" figma:type="canvas">
+<g id="right arrow - black" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_stroke" transform="matrix(-1 -1.22465e-16 1.22465e-16 -1 -14311.5 2443)" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+<defs>
+<path id="path0_stroke" d="M 3.93934 11.0607C 4.52513 11.6464 5.47487 11.6464 6.06066 11.0607C 6.64645 10.4749 6.64645 9.52513 6.06066 8.93934L 3.93934 11.0607ZM 0 5L -1.06066 3.93934C -1.64645 4.52513 -1.64645 5.47487 -1.06066 6.06066L 0 5ZM 6.06066 1.06066C 6.64645 0.474874 6.64645 -0.474874 6.06066 -1.06066C 5.47487 -1.64645 4.52513 -1.64645 3.93934 -1.06066L 6.06066 1.06066ZM 12.5 6.5C 13.3284 6.5 14 5.82843 14 5C 14 4.17157 13.3284 3.5 12.5 3.5L 12.5 6.5ZM 6.06066 8.93934L 1.06066 3.93934L -1.06066 6.06066L 3.93934 11.0607L 6.06066 8.93934ZM 1.06066 6.06066L 6.06066 1.06066L 3.93934 -1.06066L -1.06066 3.93934L 1.06066 6.06066ZM 0 6.5L 12.5 6.5L 12.5 3.5L 0 3.5L 0 6.5Z"/>
+</defs>
+</svg>

@@ -1,0 +1,138 @@
+<div data-ng-controller="repoListController">
+	<div class="rms-system-settings-item" ng-if="!hideWorkspace">
+		<a class="cc-pc-menu-item" data-ng-click="goToWorkSpace()">
+			<span class="icon rms-repos-entry fill-black">
+				<i data-ng-include="'ui/img/WorkSpace.svg'"></i>
+			</span>
+			<span class="menu-label color-black">{{'workspace.title' | translate}}</span>
+		</a>
+	</div>
+	<hr class="rms-menu-separator" ng-if="!hideWorkspace">
+	<div class="rms-system-settings-item" id="repo-list-menu-id">
+		<uib-accordion>
+			<uib-accordion-group is-open="collapseStatus" is-disabled="!toggleMySpaceTab">
+				<uib-accordion-heading>
+					<a class="cc-pc-menu-item"
+					data-ng-click="onClickTab('myspace')"
+					data-ng-class="{'cc-ps-menu-selected':isActiveTab('myspace')}">
+						<span class="icon rms-repos-entry" data-ng-class="isActiveTab('myspace') ? 'fill-green' : 'fill-black'">
+							<i data-ng-include="'ui/img/MyDrive_P.svg'"></i>
+						</span>
+						<span class="menu-label" data-ng-class="isActiveTab('myspace') ? 'color-green':'color-black'">{{"myspace" | translate}}</span>
+			
+						<i data-ng-click="toggleActiveTab()" class="glyphicon position-right" data-ng-class="{'glyphicon-chevron-up': collapseStatus,'glyphicon-chevron-down': !collapseStatus,
+																		'color-green': isActiveTab('myspace'),'color-black': !isActiveTab('myspace')}"></i>
+					</a>
+				</uib-accordion-heading>
+				<div>
+					<a class="cc-pc-menu-item"
+					data-ng-class="{'cc-ps-menu-selected':isActiveTab(mydrive.repoId)}"
+					data-ng-click="onClickMyDrive(1)">
+						<span class="icon rms-repos-entry" data-ng-class="isActiveTab(mydrive.repoId) ? 'fill-green' : 'fill-black'">
+							<i data-ng-include="'ui/img/myDrive_new.svg'"></i>										
+						</span>
+						<span class="menu-label" data-ng-class="isActiveTab(mydrive.repoId) ? 'color-green':'color-black'" uib-tooltip="{{mydrive.repoName}}" tooltip-placement="right" tooltip-enable="mydrive.showToolTip" tooltip-append-to-body="true">{{mydrive.name}}</span>
+					</a>
+					<a class="cc-pc-menu-item"
+					data-ng-class="{'cc-ps-menu-selected':isActiveTab('shared_files')}"
+					data-ng-click="onClickTab('shared_files')">
+						<span class="icon rms-repos-entry" data-ng-class="isActiveTab('shared_files') ? 'fill-green' : 'fill-black'">
+							<i data-ng-include="'ui/img/MyVault_P.svg'"></i>
+						</span>
+						<span class="menu-label" data-ng-class="isActiveTab('shared_files') ? 'color-green':'color-black'">{{'myvault.title' | translate}}</span>
+					</a>
+				</div>
+			</uib-accordion-group> 
+		</uib-accordion>
+	</div>
+	<hr class="rms-menu-separator" data-ng-if="repoList.length > 0"/>
+	<div class="rms-repositories-panel" data-ng-if="repoList.length > 0">
+		<p class="rms-repo-category-header">{{'repositories' | translate}}</p>
+		<div class="rms-system-settings-item" data-ng-repeat="repo in repoList">
+			<a class="cc-pc-menu-item"
+			data-ng-class="{'cc-ps-menu-selected':isActiveTab(repo.repoId)}"
+			data-ng-click="onClickTab(repo)">
+				<img class="repo-logos" ng-src="{{'ui/img/service-provider-'+ repo.provider +'.svg'}}" alt="{{repo.name}}">
+				<span class="menu-label truncate" data-ng-class="isActiveTab(repo.repoId) ? 'color-green':'color-black'" uib-tooltip="{{repo.name}}" tooltip-placement="top" tooltip-enable="repo.showToolTip" tooltip-append-to-body="true">{{repo.name}}</span>
+				<div ng-class="{'class-icon': true, 'application': repo.providerClass === 'APPLICATION', 'personal': repo.providerClass === 'PERSONAL'}">
+					<span class="dot"> &bull; </span>
+					<i ng-if="repo.providerClass === 'PERSONAL'" ng-include="'ui/img/repository-personal-account.svg'"></i>
+					<i ng-if="repo.providerClass === 'APPLICATION'" ng-include="'ui/img/repository-application-account.svg'"></i>
+				</div>
+			</a>
+		</div>
+	</div>
+	<hr class="rms-menu-separator"/>
+	<div class="rms-repositories-panel">
+		<div class="rms-system-settings-item">
+			<a class="cc-pc-menu-item"
+			data-ng-class="{'cc-ps-menu-selected':isActiveTab('manage_local_files')}"
+			data-ng-click="onClickTab('manage_local_files')">
+				<span class="icon rms-repos-entry" data-ng-class="isActiveTab('manage_local_files') ? 'fill-green' : 'fill-black'">
+					<i data-ng-include="'ui/img/Manage_Local_Files_P.svg'"></i>
+				</span>
+				<span class="menu-label" data-ng-class="isActiveTab('manage_local_files') ? 'color-green':'color-black'">{{'manage.local.file' | translate}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item"> 
+			<a class="cc-pc-menu-item" 
+			data-ng-class="{'cc-ps-menu-selected':isActiveTab('active_shares')}" 
+			data-ng-click="onClickTab('active_shares')">
+				<span class="icon rms-repos-entry" data-ng-class="isActiveTab('active_shares') ? 'fill-green' : 'fill-black'">
+					<i data-ng-include="'ui/img/Share_P.svg'"></i>
+				</span>
+				<span class="menu-label" data-ng-class="isActiveTab('active_shares') ? 'color-green':'color-black'">{{'share.file.title' | translate}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item">
+			<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('favorites')}" 
+			data-ng-click="onClickTab('favorites')">
+				<span class="icon rms-settings-entry" data-ng-class="isActiveTab('favorites') ? 'fill-green':'fill-black'">
+					<i data-ng-include="'ui/img/Favorite_Filled.svg'"></i>
+				</span>
+				<span class="menu-label" data-ng-class="isActiveTab('favorites') ? 'color-green':'color-black'">{{'favorites' | translate}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item"> 
+			<a class="cc-pc-menu-item" 
+			data-ng-class="{'cc-ps-menu-selected':isActiveTab('deleted_files')}" 
+			data-ng-click="onClickTab('deleted_files')">
+				<span class="icon rms-repos-entry" data-ng-class="isActiveTab('deleted_files') ? 'fill-green' : 'fill-black'">
+					<i data-ng-include="'ui/img/Delete_P.svg'"></i>
+				</span>
+				<span class="menu-label" data-ng-class="isActiveTab('deleted_files') ? 'color-green':'color-black'">{{'deletedFiles' | translate}}</span>
+			</a>
+		</div>
+	</div>
+	<hr class="rms-menu-separator"/>
+	<div class="rms-system-settings-item">
+		<a class="cc-pc-menu-item" data-ng-click="openShareWidget()">
+			<span class="icon rms-settings-entry share-icon">
+				<i data-ng-include="'ui/img/Share_P.svg'"></i>
+			</span>
+			<span class="menu-label" data-ng-class="color-black">{{'share' | translate}}</span>
+		</a>
+	</div>
+	<div class="rms-system-settings-item">
+		<a class="cc-pc-menu-item" data-ng-click="openProtectWidget()">
+			<span class="icon rms-settings-entry share-icon">
+				<i data-ng-include="'ui/img/Protect_P.svg'"></i>
+			</span>
+			<span class="menu-label" data-ng-class="color-black">{{'protect' | translate}}</span>
+		</a>
+	</div>
+	<div class="rms-system-settings-item"> 
+		<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('manage_repositories')}" data-ng-click="onClickTab('manage_repositories')">
+		<span class="icon rms-repos-entry" data-ng-class="isActiveTab('manage_repositories') ? 'fill-green' : 'fill-black'">
+			<i data-ng-include="'ui/img/Manage_P.svg'"></i>
+		</span>
+		<span class="menu-label" data-ng-class="isActiveTab('manage_repositories') ? 'color-green':'color-black'">{{'managerepo.add.repository' | translate}}</span>
+		</a>
+	</div>
+	<div class="rms-system-settings-item" data-ng-if="isRMCDownloadable">
+		<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('download_rmc')}" data-ng-click="onClickTab('download_rmc')">
+			<span class="icon rms-settings-entry" data-ng-class="isActiveTab('download_rmc') ? 'fill-green' : 'fill-black'"></span>
+			<span class="menu-label" data-ng-class="isActiveTab('download_rmc') ? 'color-green':'color-black'">{{'download.rmc.tab' | translate}}</span>
+		</a>
+	</div>
+</div>

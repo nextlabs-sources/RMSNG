@@ -1,0 +1,1 @@
+ALTER TABLE sharing_transaction ADD comment varchar(250);

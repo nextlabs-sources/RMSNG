@@ -1,0 +1,9 @@
+<div data-ng-class="rms-fileList">
+    <div style="min-height: 350px;">
+        <ul id="unordered-fileList-id" style="margin-left: -40px">
+            <li class="list-group-item rms-file-list" data-ng-repeat="eachUser in userList ">
+                <div data-ng-controller="userDetailsController" data-ng-init="eachUser=eachUser" data-ng-include="'ui/app/Admin/Super/partials/manageUserTemplate.html'"></div>
+            </li>
+        </ul>
+    </div>
+</div>

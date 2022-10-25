@@ -1,0 +1,13 @@
+﻿body {
+	font-family: arial;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+	background-color: rgb(192, 220, 248);
+}
+
+.tab-hidden {
+    height: 0px;
+    padding: 0px;
+    display: none;
+}

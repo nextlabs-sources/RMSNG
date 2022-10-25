@@ -1,0 +1,67 @@
+<form>
+	<span data-ng-show="!readOnly" class="expiry-type" style="padding-right:15px;" ng-repeat="type in expiryTypeList">
+		<input type="radio" name="EXPIRY_TYPE" value="{{type}}" ng-checked="expiryType == type ? true : false" ng-click="selectExpiryType(type)">
+		<span ng-class="expiryType == type? 'selected-expiry': ''">{{type}}</span>
+	</span>	
+	<div style="padding-top:15px" ng-show="expiryType == expiryTypeList[0]"> 
+		<div class="expiry col-xs-9">
+			<span>{{'access.rights.will'| translate}}</span> <b style="color:#399649">{{'never.expire'| translate}}</b>
+		</div>
+	</div>
+	<div style="padding-top:15px" ng-show="expiryType == expiryTypeList[1]"> 
+		<div class="expiry col-xs-9">{{minDate | date:'longDate'}} &nbsp;&nbsp;<b>{{'to' | translate}}</b> &nbsp;&nbsp; {{finalRelativeDate | date:'longDate'}}
+		</div>
+		<div class="col-xs-2 padding-5">
+			{{expiryDays}} {{'expiry.days' | translate}}
+		</div>
+		<div class="col-xs-12 no-padding">
+			<span data-ng-show="!readOnly" class="relative-date">
+				<input class="form-control relative-date" type="number" min="0" max="100" ng-model="expiry.year"> {{'years' | translate}}
+			</span>
+			<span data-ng-show="!readOnly" class="relative-date">
+				<input class="form-control relative-date" type="number" min="0" max="100" ng-model="expiry.month"> {{'months' | translate}}
+			</span>
+			<span data-ng-show="!readOnly" class="relative-date">
+				<input class="form-control relative-date" type="number" min="0" max="100" ng-model="expiry.week"> {{'weeks' | translate}}
+			</span>
+			<span data-ng-show="!readOnly" class="relative-date">
+				<input class="form-control relative-date" type="number" min="0" max="1000" ng-model="expiry.day"> {{'days' | translate}}
+			</span>	
+		</div>	
+	</div>
+	<div style="padding-top:15px" ng-show="expiryType == expiryTypeList[2]">
+		<div class="expiry col-xs-9">
+			<span ng-show="expiry.datePicker != null"><b>{{'until' | translate}}</b> &nbsp;&nbsp;{{expiry.datePicker | date:'longDate'}}</span>
+			<span class="placeholder" ng-show="expiry.datePicker == null">{{'choose.expiration.date' | translate}}</span>
+		</div>
+		<div class="col-xs-2 padding-5">
+			<div class="inline-block show-only-on-desktop margin-left-20"></div>
+			{{expiryDays < 0 ? 0 : expiryDays}} {{'expiry.days' | translate}}
+		</div>
+		<div data-ng-show="!readOnly" uib-datepicker ng-model="expiry.datePicker" class="ui-datepicker" show-weeks="false" min-date="minDate"></div>
+		<div data-ng-show="!readOnly"><a class="clear" ng-click="clear('datePicker')">{{'clear' | translate}}</a></div>
+	</div>
+	<div style="padding-top:15px" ng-show="expiryType == expiryTypeList[3]"> 
+		<div class="expiry col-xs-9">
+			<span ng-show="expiry.startDatePicker != null || expiry.endDatePicker != null">
+				{{expiry.startDatePicker | date:'longDate'}} &nbsp;&nbsp; <span ng-show="expiry.startDatePicker || expiry.endDatePicker"><b>{{'to' | translate}}</b></span> &nbsp;&nbsp; {{expiry.endDatePicker | date:'longDate'}}
+			</span>
+			<span class="placeholder" ng-show="expiry.startDatePicker == null && expiry.endDatePicker == null">{{'choose.expiration.date' | translate}}</span>
+		</div>
+		<div class="col-xs-2 padding-5">
+			<div class="inline-block show-only-on-desktop margin-left-20"></div>
+			{{expiryDays}} {{'expiry.days' | translate}}
+		</div>
+		<div data-ng-show="!readOnly">
+			<div class="start-date">
+				<span uib-datepicker ng-model="expiry.startDatePicker"  class="ui-datepicker" show-weeks="false" min-date="minStartDate"></span>
+				<div><a class="clear" ng-click="clear('startDatePicker')">{{'clear' | translate}}</a></div>
+			</div>
+			<div class="end-date">
+				<span uib-datepicker ng-model="expiry.endDatePicker"  class="ui-datepicker" show-weeks="false" min-date="minEndDate"></span>
+				<div><a class="clear" ng-click="clear('endDatePicker')">{{'clear' | translate}}</a></div>
+			</div>	
+		</div>
+	</div>
+	<p class="inline-block mandatory" data-ng-show="relativeExpiryError">{{'digital.rights.validity.relative.error'| translate}}</p>
+</form>

@@ -1,0 +1,1 @@
+ALTER TABLE builtin_repo_item ADD custom_metadata varchar(2000);

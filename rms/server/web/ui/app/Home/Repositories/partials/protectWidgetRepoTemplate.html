@@ -1,0 +1,63 @@
+<!-- Repo Selector for Desktop -->
+<div class="widget-desktop-display" style="width: 250px; height: 380px; flex-direction: column">
+	<h5 class="text-align-center padding-10">{{'repositories' | translate}}</h5>
+	<div style="overflow: auto; height: calc(100% - 55px)">
+		<div class="col-xs-12 inline-block">
+			<div class="col-xs-12 pointer-click" data-ng-class="srcRepo.repoId === mydrive.repoId ? 'rms-protect-widget-selected': ''" data-ng-click="chooseSrcRepo(mydrive)">
+				<span data-ng-class="srcRepo.repoId === mydrive.repoId ? 'widget-repoicon-selected' : ''" aria-hidden="true"><img src="ui/img/MyDrive_Original_P.svg" alt="{{mydrive.name}}"></span>
+				<a class="btn btn-link truncate" uib-tooltip="{{mydrive.name}}" tooltip-placement="top" tooltip-enable="mydrive.showToolTip" tooltip-append-to-body="true">{{mydrive.name}}</a>
+			</div>
+		</div>
+		<div class="col-xs-12 inline-block" data-ng-repeat="repo in repoList">
+			<div class="col-xs-12 pointer-click" data-ng-class="srcRepo.repoId === repo.repoId ? 'rms-protect-widget-selected': ''" data-ng-click="chooseSrcRepo(repo)" ng-hide="hideRepo(repo)">
+				<span data-ng-class="srcRepo.repoId === repo.repoId ? 'widget-repoicon-selected' : ''" aria-hidden="true"><img ng-src="{{'ui/img/service-provider-'+ repo.provider +'.svg'}}" alt="{{repo.name}}"></span>
+				<a class="btn btn-link truncate" uib-tooltip="{{repo.name}}" tooltip-placement="top" tooltip-enable="repo.showToolTip" tooltip-append-to-body="true">{{repo.name}}</a>
+				<div ng-class="{'class-icon': true, 'application': repo.providerClass === 'APPLICATION', 'personal': repo.providerClass === 'PERSONAL'}">
+					<span class="dot"> &bull; </span>
+					<i ng-if="repo.providerClass === 'PERSONAL'" ng-include="'ui/img/repository-personal-account.svg'"></i>
+					<i ng-if="repo.providerClass === 'APPLICATION'" ng-include="'ui/img/repository-application-account.svg'"></i>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 inline-block">
+			<div class="col-xs-12 pointer-click" data-ng-class="srcIsLocal ? 'rms-protect-widget-selected': ''"
+				data-ng-click="chooseSrcLocal()">
+				<span><img src="ui/img/Manage_Local_Files_Original_P.svg" alt="{{'manage.local.file' | translate}}"></span>
+				<a class="btn btn-link">{{'manage.local.file' | translate}}</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Repo Selector for Mobile -->
+<div class="widget-mobile-display" style="flex-direction: column; background-color: #F2F3F5;">
+	<h5 class="text-align-center padding-10" style="margin-top: 0px;">{{'repositories' | translate}}
+		<i data-ng-click="collapsed.status = !collapsed.status" class="pull-right glyphicon" data-ng-class="collapsed.status ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"></i>
+	</h5>
+	<div style="overflow: auto;">
+		<div class="col-xs-12 inline-block">
+			<div ng-show="collapsed.status || srcRepo.repoId === mydrive.repoId" class="col-xs-12 pointer-click" data-ng-class="srcRepo.repoId === mydrive.repoId ? 'rms-protect-widget-selected': ''" data-ng-click="chooseSrcRepo(mydrive)">
+				<span data-ng-class="srcRepo.repoId === mydrive.repoId ? 'widget-repoicon-selected' : ''" aria-hidden="true"><img src="ui/img/MyDrive_Original_P.svg" alt="{{mydrive.name}}"></span>
+				<a class="btn btn-link truncate" >{{mydrive.name}}</a>
+			</div>
+		</div>
+		<div class="col-xs-12 inline-block" data-ng-repeat="repo in repoList">
+			<div ng-show="!hideRepo(repo) && (collapsed.status || srcRepo.repoId === repo.repoId)" class="col-xs-12 pointer-click" data-ng-class="srcRepo.repoId === repo.repoId ? 'rms-protect-widget-selected': ''" data-ng-click="chooseSrcRepo(repo)">
+				<span data-ng-class="srcRepo.repoId === repo.repoId ? 'widget-repoicon-selected' : ''" aria-hidden="true"><img ng-src="{{'ui/img/service-provider-'+ repo.provider +'.svg'}}" alt="{{repo.name}}"></span>
+				<a class="btn btn-link truncate" >{{repo.name}}</a>
+				<div ng-class="{'class-icon': true, 'application': repo.providerClass === 'APPLICATION', 'personal': repo.providerClass === 'PERSONAL'}">
+					<span class="dot"> &bull; </span>
+					<i ng-if="repo.providerClass === 'PERSONAL'" ng-include="'ui/img/repository-personal-account.svg'"></i>
+					<i ng-if="repo.providerClass === 'APPLICATION'" ng-include="'ui/img/repository-application-account.svg'"></i>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 inline-block">
+			<div ng-show="collapsed.status || srcIsLocal" class="col-xs-12 pointer-click" data-ng-class="srcIsLocal ? 'rms-protect-widget-selected': ''"
+				data-ng-click="chooseSrcLocal()">
+				<span><img src="ui/img/Manage_Local_Files_Original_P.svg" alt="{{'manage.local.file' | translate}}"></span>
+				<a class="btn btn-link">{{'manage.local.file' | translate}}</a>
+			</div>
+		</div>
+	</div>
+</div>

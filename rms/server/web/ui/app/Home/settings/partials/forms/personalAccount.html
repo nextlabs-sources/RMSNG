@@ -1,0 +1,26 @@
+<div class="dialog-control-group">
+    <label>{{"sp.app.key.label" | translate}}<span class="mandatory"> * </span></label><br/>
+    <input type="text" data-ng-model="formData.appId" id="appId" name="appId" data-ng-required="true" data-ng-trim="true"/>
+    <span uib-tooltip="{{appIdInfo}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+    <p class="mandatory" ng-show="configurationForm.appId.$touched && configurationForm.appId.$error.required">{{"sp.app_id.required" | translate}}</p>
+</div>
+<div class="dialog-control-group">
+    <label>{{"sp.app.secret.label" | translate}}<span class="mandatory"> * </span></label><br/>
+    <a class="btn btn-default" ng-if="!showAppSecret" ng-click="showAppSecretField()">{{"sp.change.label" | translate}}</a>
+    <input ng-if="showAppSecret" data-ng-model="formData.appSecret" id="appSecret" name="appSecret" type="password" data-ng-required="showAppSecret" data-ng-trim="true"></input>
+    <span uib-tooltip="{{appSecretInfo}}" tooltip-placement="bottom"> <i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+    <p class="mandatory" ng-show="configurationForm.appSecret.$touched && configurationForm.appSecret.$error.required">{{"sp.app_secret.required" | translate}}</p>
+</div>
+<div class="dialog-control-group">
+    <label>{{"sp.redirect.url.label" | translate}}<span class="mandatory"> * </span></label><br/>
+    <input id="redirectUrl" name="redirectUrl" data-ng-model="formData.redirectUrl" data-ng-pattern="/https?:\/\/(?:www\.|(?!www))(([^\s\.]+\.[^\s]+)|[^\s]+)/i" data-ng-required="true" data-ng-trim="true" type = "text" class="big-box"></input>
+    <span uib-tooltip="{{'sp.redirect_url.info' | translate}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+    <p class="mandatory" ng-show="configurationForm.redirectUrl.$touched && configurationForm.redirectUrl.$error.required">{{"sp.redirect_url.required" | translate}}</p>
+    <p class="mandatory" ng-show="configurationForm.redirectUrl.$error.pattern">{{"sp.redirect_url.notValid" | translate}}</p>
+</div>
+<!-- TODO hidden until backend is ready to accept this toggle functionality -->
+<!-- <div class="dialog-control-group">
+    <switch id="enabled" name="enabled" data-ng-model="formData.enabled" data-ng-change="setFormDirty()"></switch>
+    {{"Enable service provider" | translate}}
+    <span uib-tooltip="{{appEnableToggleInfo}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+</div> -->

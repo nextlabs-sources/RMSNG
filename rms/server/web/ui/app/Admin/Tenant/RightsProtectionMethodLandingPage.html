@@ -1,0 +1,39 @@
+<div id="rights-protection-method" style="background-color: white; width: 49%; margin-top: 30px;">
+    <div id="rights-protection-method-heading" class="admin-heading-border" style="position:relative;">
+        <span id="rights-protection-method-landing-page-icon" style="padding-left:10px;">
+            <i data-ng-include="'ui/img/Policy.svg'"></i>
+        </span>
+        <span style="display:inline-block;padding:10px;">
+            <div class="admin-section-title">{{'config.rights_protection_method' | translate}}</div>
+            <div class="admin-section-description">{{'config.rights_protection_method.description' | translate}}</div>
+        </span>
+    </div>
+    <div id="rights-protection-method-body" ng-controller="RightsProtectionMethodController" class="admin-body-border" style="position:relative; height:175px;">
+        <div id="rights-protection-method-section" class="inline-block">
+            <div class="text-align-center no-padding" style="position:absolute; left:10%; top:30%;">
+                <div class="toggle-directive">
+                    <input type="checkbox" style="display: none" data-ng-checked="isAdhocRightEnabled"> 
+                    <label ng-click="toggle()"> 
+                        <span class="label-left">
+                            <i class="fa fa-check"></i>
+                        </span>
+                    </label> 
+                </div>
+                <br>
+                <a class="">{{'user.defined.rights' | translate}}</a> 
+            </div>
+            <div class="text-align-center no-padding" style="position:absolute; left:50%; top:30%;">
+                <div class="toggle-directive" ng-class="'toggle-directive-disabled'" data-ng-disabled="true">
+                    <input type="checkbox" style="display: none" data-ng-checked="true"> 
+                    <label data-ng-disabled="true"> 
+                        <span class="label-left">
+                            <i class="fa fa-check"></i>
+                        </span>
+                    </label> 
+                </div>
+                <br>
+                <a class="">{{'company.defined.rights' | translate}}</a>
+            </div>
+        </div>
+    </div>
+</div>

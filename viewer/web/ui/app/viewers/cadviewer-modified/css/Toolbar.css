@@ -1,0 +1,25 @@
+#toolBar {
+    position: relative;
+}
+
+.toolbar-tools{
+    background: rgba(255,255,255,1.0);
+    border-bottom: 0px !important;
+    border-radius: 0px !important;
+    opacity: 1.0 !important;
+    border: none;
+}
+
+.hoops-tool {
+    vertical-align: top;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.toolbar-snapshot {
+    height: 0px;
+}
+
+.submenus:after, .submenus:before {
+    border:none;
+}

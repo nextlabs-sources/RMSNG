@@ -1,0 +1,62 @@
+<div data-ng-controller="mySpaceController">
+	<div id="loading-background" data-ng-show="isLoading" class="loading-div" />
+    <div class="show-only-on-desktop" data-ng-include="'ui/app/Home/partials/mySpaceHeader.html'"></div>
+    <div class="mobile-tablet-display" data-ng-include="'ui/app/Home/partials/mySpaceHeaderForMobile.html'"></div>   
+    <div class="rms-myspace-tiles">
+		<div class="myspace-title mobile-only">
+			<h1>{{'myspace' | translate}}</h1>
+			<p class="repo-description">{{'myspace.description' | translate}}</p>
+		</div>
+		<div class="myspace-usage">
+			<div class="details">
+				<h3>{{'usage.title' | translate}}</h3>
+				<div class="myDriveUsage-text">
+					<i>{{usage|filesize:2}} of {{vaultQuota|filesize}} used</i>
+				</div>
+			</div>
+			<div class="myDriveUsage-bar">	
+				<div class="myDrive-usage-color" data-ng-style="{'width': myDriveWidth , 'height': 'inherit'}"><div class="myVault-usage-color" data-ng-style="{'width': myVaultWidth , 'height': 'inherit'}" style="float: right;"></div></div>
+			</div>
+		</div>
+		<div class="row revert display-block">
+			<div class="col-xs-12 card-tiles no-padding">
+				<div class="col-md-6 col-sm-12">
+					<div class="tile" data-ng-click="onClickTab(mydrive)">
+						<div class="main-details">
+							<div class="inline-block legend">
+								<div class="inline-block legend-icon myDrive-usage-color"></div>
+							</div>
+							<img src="ui/img/myDrive_new.svg" alt="{{'MyDrive' | translate}}">
+							<h2>{{'MyDrive' | translate}}</h2>
+						</div>
+						<div class="sub-details">
+							<p class="description color-gray">{{'mydrive.description' | translate}}</p>
+							<div class="info" data-ng-controller="landingPageController">
+								<p>{{myDriveFileCount}} <span class="color-gray">{{ myDriveFileCount == 1 ? 'file' : 'files' | translate}}</span></p>
+								<button type="button" class="btn-link">{{"view.files" | translate}}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="tile" data-ng-click="onClickTab('shared_files')">
+						<div class="main-details">
+							<div class="inline-block legend">
+								<div class="inline-block legend-icon myVault-usage-color"></div>
+							</div>
+							<img src="ui/img/MyVault_P.svg" alt="{{'myvault.title' | translate}}">
+							<h2>{{'myvault.title' | translate}}</h2>
+						</div>
+						<div class="sub-details">
+							<p class="description color-gray">{{'myvault.description' | translate}}</p>
+							<div class="info" data-ng-controller="landingPageController">
+								<p>{{myVaultFileCount}} <span class="color-gray">{{ myVaultFileCount == 1 ? 'file' : 'files' | translate}}</span></p>
+								<button type="button" class="btn-link">{{"view.files" | translate}}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>					
+	</div>
+</div>

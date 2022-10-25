@@ -1,0 +1,178 @@
+<svg width="430" height="430" viewBox="0 0 430 430" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>/access files from vault</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(14866 -1237)" figma:type="canvas">
+<g id="artwork/access files from vault" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Rectangle 36" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(-14849.4 1253.56)" fill="#FFFFFF" fill-opacity="0.2" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Rectangle 36" style="mix-blend-mode:normal;" figma:type="vector">
+<mask id="mask0_outline_ins">
+<use xlink:href="#path1_fill" fill="white" transform="translate(-14865.2 1237.84)"/>
+</mask>
+<g mask="url(#mask0_outline_ins)">
+<use xlink:href="#path2_stroke_2x" transform="translate(-14865.2 1237.84)" fill="#FFFFFF" fill-opacity="0.5" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+<g id="Rectangle 36" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path3_fill" transform="translate(-14814.2 1288.85)" fill="#FFFFFF" fill-opacity="0.8" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Path" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path4_fill" transform="matrix(6.12323e-17 -1 1 6.12323e-17 -14610.1 1510.99)" fill="#D4D4DF" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Path" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path5_fill" transform="matrix(6.12323e-17 -1 1 6.12323e-17 -14625.1 1522.33)" fill="#D4D4DF" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Oval 4" style="mix-blend-mode:normal;" figma:type="vector-operation">
+<use xlink:href="#path6_fill" transform="translate(-14637.9 1382)" fill="#D4D4DF" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Oval 4 Copy" style="mix-blend-mode:normal;" figma:type="vector-operation">
+<use xlink:href="#path7_fill" transform="translate(-14665.8 1514)" fill="#D4D4DF" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Combined Shape" style="mix-blend-mode:normal;" figma:type="vector-operation">
+<use xlink:href="#path8_fill" transform="translate(-14569.9 1449.26)" fill="#D4D4DF" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Subtract" style="mix-blend-mode:normal;" figma:type="vector-operation">
+<use xlink:href="#path9_fill" transform="translate(-14757.5 1424.26)" fill="#D4D4DF" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Group" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Rectangle 35" style="mix-blend-mode:normal;" figma:type="rounded-rectangle">
+<use xlink:href="#path10_fill" transform="translate(-14716 1410)" fill="#D0F09B" style="mix-blend-mode:normal;"/>
+</g>
+<g id="MyVault-black" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Canvas" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="MyVault-black" style="mix-blend-mode:normal;isolation:isolate;" figma:type="frame">
+<g id="Group" style="mix-blend-mode:normal;isolation:isolate;" figma:type="frame">
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="frame">
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="vector">
+<use xlink:href="#path11_fill" transform="translate(-14716.2 1409.81)" fill="#FFFFFF" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="frame">
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="vector">
+<use xlink:href="#path12_fill" transform="translate(-14642.3 1446.24)" fill="#FFFFFF" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="frame">
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="vector">
+<use xlink:href="#path13_fill" transform="translate(-14683.2 1442.71)" fill="#FFFFFF" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="MyVault-black" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Canvas" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="MyVault-black" style="mix-blend-mode:normal;isolation:isolate;" figma:type="frame">
+<g id="Group" style="mix-blend-mode:normal;isolation:isolate;" figma:type="frame">
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="frame">
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="vector">
+<use xlink:href="#path14_fill" transform="translate(-14721.2 1405)" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="frame">
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="vector">
+<use xlink:href="#path12_fill" transform="translate(-14647.3 1441.42)" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="frame">
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="vector">
+<use xlink:href="#path13_fill" transform="translate(-14688.2 1437.9)" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Group" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Subtract" style="mix-blend-mode:normal;" figma:type="vector-operation">
+<use xlink:href="#path15_fill" transform="translate(-14604.7 1406)" fill="#D0F09B" style="mix-blend-mode:normal;"/>
+<mask id="mask1_outline_ins">
+<use xlink:href="#path15_fill" fill="white" transform="translate(-14604.7 1406)"/>
+</mask>
+<g mask="url(#mask1_outline_ins)">
+<use xlink:href="#path16_stroke_2x" transform="translate(-14604.7 1406)" fill="#34994C" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+<g id="Vector 3" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path17_stroke" transform="translate(-14586.8 1413.49)" fill="#FFFFFF" style="mix-blend-mode:normal;"/>
+</g>
+<g id="protect - black" style="mix-blend-mode:normal;" figma:type="vector-operation">
+<use xlink:href="#path18_fill" transform="translate(-14599.7 1423)" fill="#4F4F4F" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Subtract" style="mix-blend-mode:normal;" figma:type="vector-operation">
+<use xlink:href="#path19_fill" transform="translate(-14598 1468)" fill="#D0F09B" style="mix-blend-mode:normal;"/>
+<mask id="mask2_outline_ins">
+<use xlink:href="#path19_fill" fill="white" transform="translate(-14598 1468)"/>
+</mask>
+<g mask="url(#mask2_outline_ins)">
+<use xlink:href="#path20_stroke_2x" transform="translate(-14598 1468)" fill="#34994C" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+<g id="Vector 3" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path21_stroke" transform="translate(-14587.9 1472.25)" fill="#FFFFFF" style="mix-blend-mode:normal;"/>
+</g>
+<g id="protect - black" style="mix-blend-mode:normal;" figma:type="vector-operation">
+<use xlink:href="#path22_fill" transform="translate(-14595.7 1477.33)" fill="#4F4F4F" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Rectangle 38" style="mix-blend-mode:normal;" figma:type="rounded-rectangle">
+<mask id="mask3_outline_ins">
+<use xlink:href="#path23_fill" fill="white" transform="translate(-14614 1399)"/>
+</mask>
+<g mask="url(#mask3_outline_ins)">
+<use xlink:href="#path24_stroke_2x" transform="translate(-14614 1399)" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+<g id="Line 13" style="mix-blend-mode:normal;" figma:type="line">
+<use xlink:href="#path25_stroke" transform="translate(-14599 1439)" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+<g id="Group" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Rectangle 38" style="mix-blend-mode:normal;" figma:type="rounded-rectangle">
+<mask id="mask4_outline_ins">
+<use xlink:href="#path26_fill" fill="white" transform="matrix(6.12323e-17 1 -1 6.12323e-17 -14577 1462.31)"/>
+</mask>
+<g mask="url(#mask4_outline_ins)">
+<use xlink:href="#path27_stroke_2x" transform="matrix(6.12323e-17 1 -1 6.12323e-17 -14577 1462.31)" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<g id="Rectangle 41" style="mix-blend-mode:normal;" figma:type="rounded-rectangle">
+<use xlink:href="#path28_fill" transform="translate(-14592 1492)" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 71.1624 52.7208C 141.457 -17.5736 255.426 -17.5736 325.721 52.7208L 344.162 71.1624C 414.457 141.457 414.457 255.426 344.162 325.721L 325.721 344.162C 255.426 414.457 141.457 414.457 71.1624 344.162L 52.7208 325.721C -17.5736 255.426 -17.5736 141.457 52.7208 71.1624L 71.1624 52.7208Z"/>
+<path id="path1_fill" d="M 72.7359 58.5786C 150.841 -19.5262 277.474 -19.5262 355.579 58.5786L 369.736 72.7359C 447.841 150.841 447.841 277.474 369.736 355.579L 355.579 369.736C 277.474 447.841 150.841 447.841 72.7359 369.736L 58.5786 355.579C -19.5262 277.474 -19.5262 150.841 58.5786 72.7359L 72.7359 58.5786Z"/>
+<path id="path2_stroke_2x" d="M 355.579 58.5786L 354.872 59.2857L 354.872 59.2857L 355.579 58.5786ZM 369.736 72.7359L 370.443 72.0288L 370.443 72.0288L 369.736 72.7359ZM 72.7359 369.736L 72.0288 370.443L 72.0288 370.443L 72.7359 369.736ZM 58.5786 355.579L 59.2857 354.872L 59.2857 354.872L 58.5786 355.579ZM 73.4431 59.2857C 151.157 -18.4286 277.157 -18.4286 354.872 59.2857L 356.286 57.8715C 277.79 -20.6238 150.524 -20.6238 72.0288 57.8715L 73.4431 59.2857ZM 354.872 59.2857L 369.029 73.4431L 370.443 72.0288L 356.286 57.8715L 354.872 59.2857ZM 369.029 73.4431C 446.743 151.157 446.743 277.157 369.029 354.872L 370.443 356.286C 448.938 277.79 448.938 150.524 370.443 72.0288L 369.029 73.4431ZM 369.029 354.872L 354.872 369.029L 356.286 370.443L 370.443 356.286L 369.029 354.872ZM 354.872 369.029C 277.157 446.743 151.157 446.743 73.4431 369.029L 72.0288 370.443C 150.524 448.938 277.79 448.938 356.286 370.443L 354.872 369.029ZM 73.4431 369.029L 59.2857 354.872L 57.8715 356.286L 72.0288 370.443L 73.4431 369.029ZM 59.2857 354.872C -18.4286 277.157 -18.4286 151.157 59.2857 73.4431L 57.8715 72.0288C -20.6238 150.524 -20.6238 277.79 57.8715 356.286L 59.2857 354.872ZM 59.2857 73.4431L 73.4431 59.2857L 72.0288 57.8715L 57.8715 72.0288L 59.2857 73.4431Z"/>
+<path id="path3_fill" d="M 71.2283 38.0761C 121.997 -12.692 204.308 -12.692 255.076 38.0761L 288.228 71.2283C 338.996 121.997 338.996 204.308 288.228 255.076L 255.076 288.228C 204.308 338.996 121.997 338.996 71.2283 288.228L 38.0761 255.076C -12.692 204.308 -12.692 121.997 38.0761 71.2283L 71.2283 38.0761Z"/>
+<path id="path4_fill" fill-rule="evenodd" d="M 1.48255 7.13168C 1.09624 7.13168 0.712876 6.98247 0.424643 6.684C -0.148898 6.09902 -0.139985 5.15291 0.442471 4.57391L 4.6504 0.422391C 5.23881 -0.147654 6.18381 -0.141709 6.75139 0.446275C 7.32494 1.03125 7.31602 1.97736 6.73357 2.55636L 2.52563 6.70788C 2.23441 6.99142 1.857 7.13168 1.48255 7.13168Z"/>
+<path id="path5_fill" fill-rule="evenodd" d="M 1.48659 15.9592C 1.10622 15.9592 0.725823 15.813 0.434595 15.5235C -0.144865 14.9415 -0.144865 13.9954 0.434595 13.4134L 13.3318 0.436503C 13.9112 -0.145501 14.8533 -0.145501 15.4328 0.436503C 16.0122 1.01851 16.0122 1.96458 15.4328 2.54659L 2.53559 15.5235C 2.24735 15.813 1.86695 15.9592 1.48659 15.9592Z"/>
+<path id="path6_fill" fill-rule="evenodd" d="M 6.375 0C 9.89551 0 12.75 2.85413 12.75 6.375C 12.75 9.89587 9.89551 12.75 6.375 12.75C 2.85449 12.75 0 9.89587 0 6.375C 0 2.85413 2.85449 0 6.375 0ZM 6.375 1.82141C 3.86035 1.82141 1.82129 3.86011 1.82129 6.375C 1.82129 8.88989 3.86035 10.9286 6.375 10.9286C 8.88965 10.9286 10.9287 8.88989 10.9287 6.375C 10.9287 3.86011 8.88965 1.82141 6.375 1.82141Z"/>
+<path id="path7_fill" fill-rule="evenodd" d="M 3.5 0C 5.43262 0 7 1.56702 7 3.5C 7 5.43298 5.43262 7 3.5 7C 1.56738 7 0 5.43298 0 3.5C 0 1.56702 1.56738 0 3.5 0ZM 3.5 1C 2.11914 1 1 2.11926 1 3.5C 1 4.88074 2.11914 6 3.5 6C 4.88086 6 6 4.88074 6 3.5C 6 2.11926 4.88086 1 3.5 1Z"/>
+<path id="path8_fill" fill-rule="evenodd" d="M 4.64648 0.774414C 4.64648 0.34668 4.2998 0 3.87207 0C 3.44434 0 3.09766 0.34668 3.09766 0.774414L 3.09766 3.09753L 0.774414 3.09753C 0.34668 3.09753 0 3.44421 0 3.87195C 0 4.29956 0.34668 4.64636 0.774414 4.64636L 3.09766 4.64636L 3.09766 6.96948C 3.09766 7.39722 3.44434 7.7439 3.87207 7.7439C 4.2998 7.7439 4.64648 7.39722 4.64648 6.96948L 4.64648 4.64636L 6.96973 4.64636C 7.39746 4.64636 7.74414 4.29956 7.74414 3.87195C 7.74414 3.44421 7.39746 3.09753 6.96973 3.09753L 4.64648 3.09753L 4.64648 0.774414Z"/>
+<path id="path9_fill" fill-rule="evenodd" d="M 3 0L 26.208 0L 46.2793 19.4797L 46.2793 52.4709C 46.2793 54.1278 44.9365 55.4709 43.2793 55.4709L 3 55.4709C 1.34277 55.4709 0 54.1278 0 52.4709L 0 3C 0 1.34314 1.34277 0 3 0ZM 29.0293 11.5388C 29.0293 10.7104 28.3574 10.0388 27.5293 10.0388C 26.7012 10.0388 26.0293 10.7104 26.0293 11.5388L 26.0293 18.4462C 26.0293 19.2747 26.7012 19.9462 27.5293 19.9462L 34.7852 19.9462C 35.6143 19.9462 36.2852 19.2747 36.2852 18.4462C 36.2852 17.6178 35.6143 16.9462 34.7852 16.9462L 29.0293 16.9462L 29.0293 11.5388Z"/>
+<path id="path10_fill" d="M 0 0L 89 0L 89 89L 0 89L 0 0Z"/>
+<path id="path11_fill" d="M 6.96317 1.99699e-13C 3.10577 1.99699e-13 5.78751e-15 3.10555 5.78751e-15 6.96298L 5.78751e-15 87.0369C 5.78751e-15 90.8949 3.10553 94 6.96317 94L 87.0369 94C 90.8945 94 94 90.8949 94 87.0369L 94 6.96298C 94 3.10555 90.8949 1.99699e-13 87.0369 1.99699e-13L 6.96317 1.99699e-13ZM 8.70369 8.70371L 85.296 8.70371L 85.296 85.296L 8.70369 85.296L 8.70369 8.70371Z"/>
+<path id="path12_fill" d="M 3.48148 -1.21215e-13C 1.57909 -1.21215e-13 2.14776e-13 1.57957 2.14776e-13 3.4815L 2.14776e-13 17.4074C 2.14776e-13 19.3096 1.57909 20.8889 3.48148 20.8889L 6.96294 20.8889L 6.96294 17.4074L 3.48148 17.4074L 3.48148 3.4815L 6.96294 3.4815L 6.96294 -1.21215e-13L 3.48148 -1.21215e-13Z"/>
+<path id="path13_fill" d="M 13.9191 1.68407e-13C 6.23423 1.68407e-13 0.00350909 6.23074 6.5867e-09 13.9192C -0.000233932 21.6096 6.23118 27.8446 13.9182 27.8451C 13.9187 27.8451 13.9189 27.8451 13.9191 27.8451C 21.6063 27.8451 27.8382 21.6106 27.8382 13.9201C 27.8382 13.9196 27.8382 13.9196 27.8382 13.9194C 27.8347 6.23074 21.604 1.68407e-13 13.9191 1.68407e-13ZM 13.9191 8.69691C 16.8022 8.69574 19.1402 11.033 19.1413 13.9175C 19.1413 13.9182 19.1413 13.9187 19.1413 13.9192C 19.1411 16.8036 16.8038 19.1414 13.9207 19.1414C 13.9203 19.1414 13.9196 19.1414 13.9191 19.1414C 11.0381 19.1388 8.70393 16.8015 8.70369 13.9192C 8.70393 11.037 11.0379 8.6995 13.9191 8.69691Z"/>
+<path id="path14_fill" d="M 6.96317 0C 3.10577 0 0 3.10555 0 6.96298L 0 87.0369C 0 90.8949 3.10553 94 6.96317 94L 87.0369 94C 90.8945 94 94 90.8949 94 87.0369L 94 6.96298C 94 3.10555 90.8949 0 87.0369 0L 6.96317 0ZM 7.70369 7.70371L 86.296 7.70371L 86.296 86.296L 7.70369 86.296L 7.70369 7.70371Z"/>
+<path id="path15_fill" fill-rule="evenodd" d="M 3 0L 16.9893 0L 30 12.6421L 30 26L 0 26L 0 3C 0 1.34314 1.34277 0 3 0Z"/>
+<path id="path16_stroke_2x" d="M 16.9893 0L 17.6861 -0.717194C 17.4995 -0.898549 17.2495 -1 16.9893 -1L 16.9893 0ZM 30 12.6421L 31 12.6421C 31 12.3719 30.8907 12.1132 30.6969 11.9249L 30 12.6421ZM 30 26L 30 27C 30.5523 27 31 26.5523 31 26L 30 26ZM 0 26L -1 26C -1 26.5523 -0.552285 27 2.22045e-16 27L 0 26ZM 16.9893 -1L 3 -1L 3 1L 16.9893 1L 16.9893 -1ZM 30.6969 11.9249L 17.6861 -0.717194L 16.2924 0.717194L 29.3031 13.3593L 30.6969 11.9249ZM 31 26L 31 12.6421L 29 12.6421L 29 26L 31 26ZM 0 27L 30 27L 30 25L 0 25L 0 27ZM -1 3L -1 26L 1 26L 1 3L -1 3ZM 3 -1C 0.790409 -1 -1 0.790934 -1 3L 1 3C 1 1.89534 1.89514 1 3 1L 3 -1Z"/>
+<path id="path17_stroke" d="M 1 0C 1 -0.552285 0.552285 -1 0 -1C -0.552285 -1 -1 -0.552285 -1 0L 1 0ZM 0 4.4828L -1 4.4828C -1 5.03508 -0.552285 5.4828 2.22045e-16 5.4828L 0 4.4828ZM 4.70377 5.4828C 5.25605 5.4828 5.70377 5.03508 5.70377 4.4828C 5.70377 3.93051 5.25605 3.4828 4.70377 3.4828L 4.70377 5.4828ZM -1 0L -1 4.4828L 1 4.4828L 1 0L -1 0ZM 0 5.4828L 4.70377 5.4828L 4.70377 3.4828L 0 3.4828L 0 5.4828Z"/>
+<path id="path18_fill" fill-rule="evenodd" d="M 7.125 3.125L 7.125 3.93396C 7.125 3.99585 7.12207 4.05701 7.11719 4.11755L 2.88281 4.11755C 2.87793 4.05701 2.875 3.99585 2.875 3.93396L 2.875 3.125C 2.875 1.95142 3.82617 1 5 1C 6.17383 1 7.125 1.95142 7.125 3.125ZM 1.87988 4.11755C 1.87598 4.05676 1.875 3.99561 1.875 3.93396L 1.875 3.125C 1.875 1.39905 3.27441 0 5 0C 6.72559 0 8.125 1.39905 8.125 3.125L 8.125 3.93396C 8.125 3.99561 8.12402 4.05676 8.12012 4.11755L 9 4.11755C 9.55176 4.11755 10 4.56531 10 5.11755L 10 9C 10 9.55225 9.55176 10 9 10L 1 10C 0.447266 10 0 9.55225 0 9L 0 5.11755C 0 4.56531 0.447266 4.11755 1 4.11755L 1.87988 4.11755Z"/>
+<path id="path19_fill" fill-rule="evenodd" d="M 3 0L 9.62695 0L 17 7.17017L 17 17.418C 17 17.9987 16.835 18.5408 16.5498 19L 0.450195 19C 0.165039 18.5408 0 17.9987 0 17.418L 0 3C 0 1.34314 1.34277 0 3 0Z"/>
+<path id="path20_stroke_2x" d="M 9.62695 0L 10.3241 -0.716901C 10.1375 -0.898436 9.88734 -1 9.62695 -1L 9.62695 0ZM 17 7.17017L 18 7.17017C 18 6.90011 17.8908 6.64154 17.6972 6.45326L 17 7.17017ZM 16.5498 19L 16.5498 20C 16.8956 20 17.2169 19.8213 17.3993 19.5275L 16.5498 19ZM 0.450195 19L -0.399347 19.5275C -0.216915 19.8213 0.104367 20 0.450195 20L 0.450195 19ZM 9.62695 -1L 3 -1L 3 1L 9.62695 1L 9.62695 -1ZM 17.6972 6.45326L 10.3241 -0.716901L 8.92978 0.716901L 16.3028 7.88707L 17.6972 6.45326ZM 18 17.418L 18 7.17017L 16 7.17017L 16 17.418L 18 17.418ZM 17.3993 19.5275C 17.7458 18.9536 17.9891 18.1459 18 17.418L 16 17.418C 16.0109 17.8514 15.9242 18.1279 15.7003 18.4725L 17.3993 19.5275ZM 0.450195 20L 16.5498 20L 16.5498 18L 0.450195 18L 0.450195 20ZM -1 17.418C -0.989103 18.1459 -0.745752 18.9536 -0.399347 19.5275L 1.29974 18.4725C 1.07583 18.1279 0.989103 17.8514 1 17.418L -1 17.418ZM -1 3L -1 17.418L 1 17.418L 1 3L -1 3ZM 3 -1C 0.790409 -1 -1 0.790934 -1 3L 1 3C 1 1.89534 1.89514 1 3 1L 3 -1Z"/>
+<path id="path21_stroke" d="M 0.5 0C 0.5 -0.276142 0.276142 -0.5 0 -0.5C -0.276142 -0.5 -0.5 -0.276142 -0.5 0L 0.5 0ZM 0 2.54249L -0.5 2.54249C -0.5 2.81863 -0.276142 3.04249 1.11022e-16 3.04249L 0 2.54249ZM 2.66547 3.04249C 2.94161 3.04249 3.16547 2.81863 3.16547 2.54249C 3.16547 2.26635 2.94161 2.04249 2.66547 2.04249L 2.66547 3.04249ZM -0.5 0L -0.5 2.54249L 0.5 2.54249L 0.5 0L -0.5 0ZM 0 3.04249L 2.66547 3.04249L 2.66547 2.04249L 0 2.04249L 0 3.04249Z"/>
+<path id="path22_fill" fill-rule="evenodd" d="M 4.41699 2.08337L 4.41699 2.62268C 4.41699 2.66394 4.41504 2.70471 4.41016 2.74487L 2.25684 2.74487C 2.25195 2.70471 2.25 2.66394 2.25 2.62268L 2.25 2.08337C 2.25 1.48499 2.73535 1 3.33301 1C 3.93164 1 4.41699 1.48499 4.41699 2.08337ZM 1.25391 2.74487C 1.25195 2.70447 1.25 2.6637 1.25 2.62268L 1.25 2.08337C 1.25 0.932739 2.18262 0 3.33301 0C 4.48438 0 5.41699 0.932739 5.41699 2.08337L 5.41699 2.62268C 5.41699 2.6637 5.41504 2.70447 5.41309 2.74487L 5.66699 2.74487C 6.21875 2.74487 6.66699 3.19263 6.66699 3.74487L 6.66699 5.6665C 6.66699 6.21875 6.21875 6.6665 5.66699 6.6665L 1 6.6665C 0.447266 6.6665 0 6.21875 0 5.6665L 0 3.74487C 0 3.19263 0.447266 2.74487 1 2.74487L 1.25391 2.74487Z"/>
+<path id="path23_fill" d="M 0 5C 0 2.23858 2.23858 0 5 0L 43 0C 45.7614 0 48 2.23858 48 5L 48 30C 48 32.7614 45.7614 35 43 35L 5 35C 2.23858 35 0 32.7614 0 30L 0 5Z"/>
+<path id="path24_stroke_2x" d="M 5 3L 43 3L 43 -3L 5 -3L 5 3ZM 45 5L 45 30L 51 30L 51 5L 45 5ZM 43 32L 5 32L 5 38L 43 38L 43 32ZM 3 30L 3 5L -3 5L -3 30L 3 30ZM 5 -3C 0.581722 -3 -3 0.581722 -3 5L 3 5C 3 3.89543 3.89543 3 5 3L 5 -3ZM 43 3C 44.1046 3 45 3.89543 45 5L 51 5C 51 0.581722 47.4183 -3 43 -3L 43 3ZM 45 30C 45 31.1046 44.1046 32 43 32L 43 38C 47.4183 38 51 34.4183 51 30L 45 30ZM 5 32C 3.89543 32 3 31.1046 3 30L -3 30C -3 34.4183 0.581722 38 5 38L 5 32Z"/>
+<path id="path25_stroke" d="M 1.5 -3C 0.671573 -3 0 -2.32843 0 -1.5C 0 -0.671573 0.671573 0 1.5 0L 1.5 -3ZM 15.5 0C 16.3284 0 17 -0.671573 17 -1.5C 17 -2.32843 16.3284 -3 15.5 -3L 15.5 0ZM 1.5 0L 15.5 0L 15.5 -3L 1.5 -3L 1.5 0Z"/>
+<path id="path26_fill" d="M 0 5C 0 2.23858 2.23858 0 5 0L 32 0C 34.7614 0 37 2.23858 37 5L 37 21C 37 23.7614 34.7614 26 32 26L 5 26C 2.23858 26 0 23.7614 0 21L 0 5Z"/>
+<path id="path27_stroke_2x" d="M 5 2L 32 2L 32 -2L 5 -2L 5 2ZM 35 5L 35 21L 39 21L 39 5L 35 5ZM 32 24L 5 24L 5 28L 32 28L 32 24ZM 2 21L 2 5L -2 5L -2 21L 2 21ZM 5 -2C 1.13401 -2 -2 1.13401 -2 5L 2 5C 2 3.34315 3.34315 2 5 2L 5 -2ZM 32 2C 33.6569 2 35 3.34315 35 5L 39 5C 39 1.13401 35.866 -2 32 -2L 32 2ZM 35 21C 35 22.6569 33.6569 24 32 24L 32 28C 35.866 28 39 24.866 39 21L 35 21ZM 5 24C 3.34315 24 2 22.6569 2 21L -2 21C -2 24.866 1.13401 28 5 28L 5 24Z"/>
+<path id="path28_fill" d="M 0 1C 0 0.447715 0.447715 0 1 0L 2 0C 2.55228 0 3 0.447715 3 1L 3 2C 3 2.55228 2.55228 3 2 3L 1 3C 0.447715 3 0 2.55228 0 2L 0 1Z"/>
+</defs>
+</svg>

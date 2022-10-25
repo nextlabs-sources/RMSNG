@@ -1,0 +1,36 @@
+<div id="service-provider" style="background-color: white; width: 49%; margin-top: 30px;">
+	<div id="service-provider-heading" class="admin-heading-border" style="position:relative;">
+		<span id="service-provider-landing-page-icon" style="padding-left:10px;">
+			<i data-ng-include="'ui/img/ServiceProviders_P.svg'"></i>
+		</span>
+		<span style="display:inline-block;padding:10px;">
+			<div class="admin-section-title">{{'config.manage.providers.heading' | translate}}</div>
+			<div class="admin-section-description">{{'add.manage.service.providers' | translate}}</div>
+		</span>
+		<span style="position:absolute; right:3%; top:32%; cursor:pointer;" data-ng-click="onClickTab('configureServiceProvider')">
+			<i data-ng-include="'ui/img/Arrow_Grey.svg'"></i>
+		</span>
+	</div>
+	<div ng-controller="serviceProvidersController" id="service-provider-body" class="admin-body-border" style="position:relative; height:275px;">
+		<div ng-show="configuredServiceProviders.length == 0" id="service-provider-section" class="inline-block" style="position:relative; width:245px; cursor:pointer;" data-ng-click="onClickTab('configureServiceProvider')">
+			<div style="position:relative;">
+				<i data-ng-include="'ui/img/Add_icon.svg'"></i>
+				<span class="light-gray-text" style="position:absolute; top:18px; right:0px;">{{'add.service.provider' | translate}}</span>
+			</div>
+		</div>
+		<div ng-show="configuredServiceProviders.length != 0">
+			<span data-ng-repeat="(providerName, serviceProvider) in serviceProviders" ng-if="serviceProvider.hasAtLeastOneConfigured">
+				<div style="display:inline-block; margin: 10px 25px; text-align:center;">
+					<span>
+						<img ng-src="{{'ui/img/service-provider-' + providerName + '.svg'}}" alt="{{serviceProvider.displayName}}" style="width: 55px;">
+					</span>
+					<br>
+					<a class="rms-configured-service-provider">
+						<span>{{serviceProvider.displayName}}</span> 
+					</a>
+				</div>
+			</span>
+		</div>
+		<button type="button" class="btn-link" data-ng-click="onClickTab('configureServiceProvider')" style="position:absolute; right:0px; bottom:5px;">{{'add.manage.service.providers' | translate}}<i style="padding-left:5px;" data-ng-include="'ui/img/back arrow - black.svg'"></i></button>
+	</div>
+</div>

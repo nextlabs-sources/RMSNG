@@ -1,0 +1,69 @@
+<div data-ng-controller="sharedFileListController">
+	<div data-ng-if="!showSharedWithMe" data-ng-class="rms-fileList">
+	    <div id="loading-background" data-ng-show="isLoading">
+	        <div id="pgLoading-image">
+	            <img  src="ui/img/loading-icon.gif" alt="Loading..." />
+	        </div>
+	    </div>
+	    <div id="fileListHeader" class="show-only-on-desktop" data-ng-include="'ui/app/Home/SharedFiles/partials/sharedWithMeFileListHeader.html'"></div>
+	    <div class="mobile-tablet-display" data-ng-include="'ui/app/Home/SharedFiles/partials/sharedWithMeFileListHeaderForMobile.html'"></div>
+	    <div class="row full-width">
+	        <div id="fileList-col-id" class="col-md-10">
+	            <center>
+	                <label data-ng-if="repoContents.length === 0 && searchActivated">{{"err.no.search.results"|translate}}</label>
+	            </center>
+	            <div data-ng-if="emptyFileList">
+	                <div data-ng-if="showWidgetIfEmpty && isActiveFilter && !searchActivated" class="empty-file-container">
+	                    <center>
+	                        <div class="upload pointer-click" data-ng-click="openShareWidget()"></div>
+	                        <div class="padding-10" style="font-style: italic">{{"share.file.nofiles" | translate}} {{"Click" | translate}} <a class="underline pointer-click" data-ng-click="openShareWidget()">{{"here" | translate}}</a> {{"myvault.nofiles.share" | translate}}</div>
+	                    </center>
+	                </div>
+	            </div>
+	            <div style="min-height: 350px;">
+	                <ul id="unordered-fileList-id">
+	                    <li class="list-group-item rms-file-list" data-ng-repeat="eachFile in repoContents "> 
+	                        <div data-ng-include="'ui/app/Home/SharedFiles/partials/sharedFileListTemplate.html'"></div>
+	                    </li>
+	                </ul>   
+	            </div>
+	        </div>
+	    </div>
+	    <center>
+	        <button data-ng-class="'btn btn-default'" data-ng-if="!isLoading && repoContents.length!=0 && showMore" data-ng-click= "loadMoreSharedFiles()">{{"share.file.loadmore"|translate}}</button>
+	        <label data-ng-if="repoContents.length!=0 && !showMore">{{"view.shared.file.nomorefiles"|translate}}</label>
+	    </center>  
+	</div>
+	<div data-ng-if="showSharedWithMe" data-ng-class="rms-fileList">
+	        <div id="loading-background" data-ng-show="isLoading">
+	            <div id="pgLoading-image">
+	                <img  src="ui/img/loading-icon.gif" alt="Loading..." />
+	            </div>
+	        </div>
+	        <div id="fileListHeader" class="show-only-on-desktop" data-ng-include="'ui/app/Home/SharedFiles/partials/sharedWithMeFileListHeader.html'"></div>
+	        <div class="mobile-tablet-display" data-ng-include="'ui/app/Home/SharedFiles/partials/sharedWithMeFileListHeaderForMobile.html'"></div>
+	        <div class="row full-width">
+	            <div id="fileList-col-id" class="col-md-10">
+	                <center>
+	                    <label data-ng-if="repoContents.length === 0 && searchActivated">{{"err.no.search.results"|translate}}</label>
+	                </center>
+	                <div data-ng-if="repoContents.length==0 && !messages.length && !canResetSearchResults" class="empty-file-container" style="padding-top: 10px">
+	                    <center>
+	                        <div class="padding-10" style="font-style: italic">{{"shared.withMe.nofiles" | translate}}</div>
+	                    </center>
+	                </div>
+	                <div style="min-height: 350px;">
+	                    <ul id="unordered-fileList-id">
+	                        <li class="list-group-item rms-file-list" data-ng-repeat="eachFile in repoContents "> 
+	                            <div data-ng-include="'ui/app/Home/SharedFiles/partials/sharedWithMeFileListTemplate.html'"></div>
+	                        </li>
+	                    </ul>   
+	                </div>
+	            </div>
+	        </div>
+	        <center>
+	            <button data-ng-class="'btn btn-default'" data-ng-if="!isLoading && repoContents.length!=0 && showMore" data-ng-click= "loadMoreSharedFiles()">{{"share.file.loadmore"|translate}}</button>
+	            <label data-ng-if="repoContents.length!=0 && !showMore">{{"view.shared.file.nomorefiles"|translate}}</label>
+	        </center>  
+	</div>
+</div>

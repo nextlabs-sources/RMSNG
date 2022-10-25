@@ -1,0 +1,10 @@
+<div data-ng-controller="tenantController">
+    <div id="loading-background-admin" data-ng-show="isLoading">
+        <div id="pgLoading-image">
+            <img  src="ui/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+    <div id="tenantListHeader" data-ng-include="'ui/app/Home/Tenant/partials/addTenantHeader.html'"></div>
+    <div style="clear: both"></div>
+    <div id="tenantListBody" data-ng-include="'ui/app/Home/Tenant/partials/addTenantBody.html'"></div>
+</div>

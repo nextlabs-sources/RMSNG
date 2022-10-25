@@ -1,0 +1,39 @@
+<div class="btn-group go-as-you-type-root" data-uib-dropdown auto-close="outsideClick">
+    <div class="go-as-you-type-selected-box" data-uib-dropdown-toggle>
+        <div class="go-as-you-type-selected" ng-class="condition.combiner == 'or' ? 'go-as-you-type-selected-margin-or' : 'go-as-you-type-selected-margin-and'" data-ng-repeat="item in condition.value track by $index">
+            <table class="item">
+                <tbody class="item">
+                    <tr class="item">
+                        <td class="go-as-you-type-selected-icon-pre"></td>
+                        <td auto-size class="go-as-you-type-selected-label">
+                            <div title="{{item}}" class="auto-resize-target">{{item}}</div>
+                        </td>
+                        <td class="go-as-you-type-deselect" data-ng-click="deleteItem($event, $index)"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <span ng-show="!$last" ng-class="condition.combiner == 'or' ? 'go-as-you-type-selected-or' : 'go-as-you-type-selected-and'">{{condition.combiner == 'or' ? '- OR -' : ','}}</span>
+        </div>
+    </div>  
+    <div data-uib-dropdown-menu class="uib-dropdown-menu go-as-you-type-dropdown-box">
+        <div class="padding-10" style="background-color:#F9F9F9;">
+            <span>
+                <label ng-class="condition.combiner == 'or'?'attribute-selected':''" style="text-align:left; align-items: center; display: inline-flex; margin-right: 20px;">
+                    <input type="radio" name="type" value="or" data-ng-model="condition.combiner" data-ng-init="condition.combiner = condition.combiner ? condition.combiner : 'or'" style="margin: 0 5px;" ng-class="condition.combiner == 'or'?'selected':'unselected'" />
+                    <span>{{'or' | translate}}</span>
+                </label>
+                <label ng-class="condition.combiner == 'and'?'attribute-selected':''" style="text-align:left; align-items: center; display: inline-flex; margin-right: 20px;">
+                    <input type="radio" name="type" value="and" data-ng-model="condition.combiner" style="margin: 0 5px;" ng-class="condition.combiner == 'and'?'selected':'unselected'" />
+                    <span>{{'select.multi.value' | translate}}</span>
+                </label>
+            </span>
+        </div>
+        <div class="go-as-you-type-input-box">
+            <input id="policy-values" class="go-as-you-type-input" data-ng-model="policyValue" placeholder="{{placeholder}}" maxlength="{{inputMax}}">
+        </div>
+        <div class="mandatory" style="font-weight:normal;">{{duplicateError}}</div>
+        <div class="padding-10" style="text-align:center;">
+            <button style="width:100px;" class="btn btn-default" id="add" ng-click="noMatchedTag() && addTag()">{{'add' | translate}}</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="cc-layout-full-width">
+    <div class="rms-shared-files padding-top-10">
+        <span class="inline-flex">
+            <i data-ng-include="'ui/img/Circle-Green.svg'"></i>
+        </span>
+        <a class="rms-file-item" data-ng-click="goToTenantConsole(eachTenant)">{{eachTenant.name}}
+            <span data-ng-show="eachTenant.isDefault">{{'tenant.default'| translate}}</span>
+        </a>
+        <span data-ng-click="goToTenantConsole(eachTenant)" data-ng-show="eachTenant.isDefault">
+            <a class="btn-config">{{"config.configure.label" | translate}}</a>
+        </span>
+    </div>
+    <div class="padding-top-10">
+        <label style="color: grey;font-weight: 300;word-wrap: break-word"><span data-ng-bind="eachTenant.description"></span>{{eachTenant.description ? "" : 'tenant.no_description'| translate}}</label>
+    </div>
+    <div class="padding-top-10">
+        <label class="file-info-label">
+            <friendly-date data-date="{{eachTenant.lastModified}}"
+                           data-content-class="friendly-date" data-full-format="d MMM yyyy,hh:mm a"
+                           data-short-format="hh:mm a"/>
+        </label>
+    </div>
+    <div class="padding-top-10">
+        <span class="admin-tag" data-ng-class="{'super-admin-tag': superAdminList.indexOf(admin) != -1}" data-ng-repeat="admin in eachTenant.adminList | limitTo:2">{{admin}}</span>
+        <span class="admin-tag" data-ng-show="eachTenant.adminList.length > 2">+{{eachTenant.adminList.length - 2}}</span>
+    </div>
+    <div class="rms-file-menu shared-file-menu" data-ng-mouseleave="hideMenu(eachTenant)"
+         data-ng-mouseover="showMenu(eachTenant)" data-ng-show="showMenuFlag">
+        <div class="shared-file-menu-button">
+        <span>
+            <a title="{{'toolbar.menu'| translate}}" data-ng-click="onClickMenu(eachTenant)"
+               class="glyphicon glyphicon-option-vertical "></a>
+        </span>
+        </div>
+        <div class="shared-file-menu-operations">
+        <span data-ng-if="(selectedTenantId == eachTenant.id && menuClickedMode)">
+            <a class="fileListOption-info-icon" title="{{'configuration'| translate}}"
+               data-ng-click="goToTenantConsole(eachTenant)" data-ng-show="eachTenant.isDefault">
+                <i data-ng-include="'ui/img/Configuration_P.svg'"></i>
+            </a>
+            <a class="sharedFileListOption-manage-icon" data-ng-show="!eachTenant.isDefault"
+               title="{{'share.file.delete' | translate}}" data-ng-click="deleteTenant(eachTenant.name)">
+                <i data-ng-include="'ui/img/Delete_P.svg'"></i>
+            </a>
+            <a class="fileListOption-info-icon" title="{{'file.rights.edit'| translate}}"
+               data-ng-click="goToEditTenant(eachTenant)">
+                <i data-ng-include="'ui/img/Edit_P.svg'"></i>
+            </a>
+            <!--<a class="sharedFileListOption-manage-icon" title="{{'copy' | translate}}"-->
+               <!--data-ng-click="">-->
+                <!--<i data-ng-include="'ui/img/copy_P.svg'"></i>-->
+            <!--</a>-->
+            <!--<a class="sharedFileListOption-manage-icon"-->
+               <!--title="" data-ng-click="">-->
+                <!--<i data-ng-include="'ui/img/Inactive_P.svg'"></i>-->
+            <!--</a>-->
+        </span>
+        </div>
+    </div>
+</div>

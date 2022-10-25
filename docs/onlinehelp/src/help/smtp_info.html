@@ -1,0 +1,199 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xml:lang="en" lang="en">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="You must configure your SMTP server for SkyDRM RMS to send emails to the users. This section describes the SMTP server-related information you must have on hand before attempting to install SkyDRM ..." /><meta charset="UTF-8" /><meta name="copyright" content="(C) Copyright 2019" /><meta name="DC.rights.owner" content="(C) Copyright 2019" /><meta name="DC.Type" content="reference" /><meta name="DC.Relation" scheme="URI" content="installation_prereqs.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="reference_gfv_tqc_nfb" /><title>SMTP server information</title><!--  Generated with Oxygen version 20.1-SNAPSHOT, build number 2018061311.  --><meta name="wh-path2root" content="" /><meta name="wh-toc-id" content="reference_gfv_tqc_nfb-d66e213" /><link rel="stylesheet" type="text/css" href="./oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css" /><link rel="stylesheet" href="./oxygen-webhelp/lib/bootstrap/css/bootstrap-theme.min.css" /><link rel="stylesheet" href="./oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css" /><link rel="stylesheet" type="text/css" href="./oxygen-webhelp/app/topic-page.css?buildId=2018061311" /><script type="text/javascript" src="./oxygen-webhelp/lib/jquery/jquery-3.1.1.min.js"><!----></script><script data-main="./oxygen-webhelp/app/topic-page.js" src="./oxygen-webhelp/lib/requirejs/require.js"></script><link rel="stylesheet" type="text/css" href="oxygen-webhelp/template/blue.css?buildId=2018061311" /></head>
+
+    <body id="reference_gfv_tqc_nfb" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">Jump to main content</a>
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        
+        
+        
+        <header class="navbar navbar-default wh_header">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <a href="index.html" class=" wh_logo hidden-xs "><img src="SkyDRM_Logo_small1.png" alt="  SkyDRM RMS 10.4 Administrator's Guide  Revision 1  June 2019  " /></a>
+                    <div class=" wh_publication_title "><a href="index.html"><span class="booktitle">  <span class="ph mainbooktitle">SkyDRM RMS 10.4 Administrator's Guide</span>  <span class="ph booktitlealt">Revision 1</span>  <span class="ph booktitlealt">June 2019</span>  </span></a></div>
+                    
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                <button type="button" data-target="#wh_top_menu_and_indexterms_link" id="wh_menu_mobile_button" data-toggle="collapse" class="navbar-toggle collapsed wh_toggle_button" aria-expanded="false" aria-label="Toggle menu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+                <nav class=" wh_top_menu "><ul>
+   <li class="has-children"><span data-tocid="about_skydrm_rms-d66e24" data-state="not-ready" class=" topicref " data-id="about_skydrm_rms"><span class="title"><a href="about_skydrm_rms.html">About SkyDRM RMS</a></span></span></li>
+   <li class="has-children"><span data-tocid="installing_skydrm_rms-d66e90" data-state="not-ready" class=" topicref " data-id="installing_skydrm_rms"><span class="title"><a href="installing_skydrm_rms.html">SkyDRM RMS installation</a></span></span></li>
+   <li class="has-children"><span data-tocid="skydrm_rms_configuration-d66e415" data-state="not-ready" class=" topicref " data-id="skydrm_rms_configuration"><span class="title"><a href="skydrm_rms_configuration_2.html">SkyDRM RMS configuration</a></span></span></li>
+   <li class="has-children"><span data-tocid="creating_policies-d66e671" data-state="not-ready" class=" topicref " data-id="creating_policies"><span class="title"><a href="creating_policies.html">Policy creation in SkyDRM RMS</a></span></span></li>
+   <li class="has-children"><span data-tocid="concept_akn_5k4_mfb-d66e744" data-state="not-ready" class=" topicref " data-id="concept_akn_5k4_mfb"><span class="title"><a href="troubleshooting.html">Troubleshooting</a></span></span></li>
+</ul></nav>
+                <div class=" wh_indexterms_link "><a href="indexTerms.html" title="Index" aria-label="Go to index terms page"><span>Index</span></a></div>
+                
+            </div>
+        </div>
+    </div>
+</header>
+        
+        <div class=" wh_search_input "><form id="searchForm" method="get" role="search" action="search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div><script><!--
+                                    $(document).ready(function () {
+                                        $('#searchForm').submit(function (e) {
+                                            if ($('.wh_search_textfield').val().length < 1) {
+                                                e.preventDefault();
+                                            }
+                                        });
+                                    });
+                                --></script></form></div>
+        
+        <div class="container-fluid">
+            <div class="row">
+
+                <nav class="wh_tools hidden-print">
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "><ol xmlns:html="http://www.w3.org/1999/xhtml" class="hidden-print"><li><span class="home"><a href="index.html"><span>Home</span></a></span></li>
+   <li><span class="topicref" data-id="installing_skydrm_rms"><span class="title"><a href="installing_skydrm_rms.html">SkyDRM RMS installation</a></span></span></li>
+   <li><span class="topicref" data-id="installing_rms_on_a_linux_server"><span class="title"><a href="installing_rms_on_a_linux_server.html">SkyDRM RMS installation on a Linux server</a></span></span></li>
+   <li><span class="topicref" data-id="reference_t3r_k1c_nfb"><span class="title"><a href="installation_prereqs.html">Installation information pre-requisites</a></span></span></li>
+   <li class="active"><span class="topicref" data-id="reference_gfv_tqc_nfb"><span class="title"><a href="smtp_info.html">SMTP server information</a></span></span></li>
+</ol></div>
+
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links" class="navheader">
+  </span></div>
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <button class="webhelp_expand_collapse_sections" data-next-state="collapsed" aria-label="Collapse sections" title="Collapse sections"></button>
+                        <div class=" wh_print_link print "><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="wh_content_area">
+                <div class="row">
+                    
+                        <nav role="navigation" id="wh_publication_toc" class="col-lg-3 col-md-3 col-sm-3 hidden-xs navbar hidden-print">
+                            <div class=" wh_publication_toc " data-tooltip-position="right"><ul role="tree" aria-label="Table of Contents"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" aria-expanded="true"><span data-tocid="installing_skydrm_rms-d66e90" class="topicref" data-id="installing_skydrm_rms" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action installing_skydrm_rms-d66e90-link" class="wh-expand-btn"></span><span class="title"><a href="installing_skydrm_rms.html" id="installing_skydrm_rms-d66e90-link">SkyDRM RMS installation</a></span></span><ul role="group" class="nav nav-list"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" aria-expanded="false"><span data-tocid="container_based_deployment-d66e98" class="topicref" data-id="container_based_deployment" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action container_based_deployment-d66e98-link" class="wh-expand-btn"></span><span class="title"><a href="container_based_deployment.html" id="container_based_deployment-d66e98-link">Container-based deployment</a></span></span></li>
+         <li role="treeitem" aria-expanded="false"><span data-tocid="tocId-d66e114" class="topicref" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action tocId-d66e114-link" class="wh-expand-btn"></span><span class="title"><a href="oxy_ex-1/reuse/supported_file_formats.html" id="tocId-d66e114-link">Supported software and platforms</a></span></span></li>
+         <li role="treeitem" aria-expanded="true"><span data-tocid="installing_rms_on_a_linux_server-d66e181" class="topicref" data-id="installing_rms_on_a_linux_server" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action installing_rms_on_a_linux_server-d66e181-link" class="wh-expand-btn"></span><span class="title"><a href="installing_rms_on_a_linux_server.html" id="installing_rms_on_a_linux_server-d66e181-link">SkyDRM RMS installation on a Linux server</a></span></span><ul role="group" class="nav nav-list"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" aria-expanded="true"><span data-tocid="reference_t3r_k1c_nfb-d66e189" class="topicref" data-id="reference_t3r_k1c_nfb" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action reference_t3r_k1c_nfb-d66e189-link" class="wh-expand-btn"></span><span class="title"><a href="installation_prereqs.html" id="reference_t3r_k1c_nfb-d66e189-link">Installation information pre-requisites</a></span></span><ul role="group" class="nav nav-list"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem"><span data-tocid="reference_iqj_2qc_nfb-d66e197" class="topicref" data-id="reference_iqj_2qc_nfb" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="idp_information.html" id="reference_iqj_2qc_nfb-d66e197-link">Identity provider information</a></span></span></li>
+                     <li role="treeitem"><span data-tocid="reference_q3b_nqc_nfb-d66e205" class="topicref" data-id="reference_q3b_nqc_nfb" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="storage_provider_info.html" id="reference_q3b_nqc_nfb-d66e205-link">Storage provider information</a></span></span></li>
+                     <li role="treeitem" class="active"><span data-tocid="reference_gfv_tqc_nfb-d66e213" class="topicref" data-id="reference_gfv_tqc_nfb" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="smtp_info.html" id="reference_gfv_tqc_nfb-d66e213-link">SMTP server information</a></span></span></li>
+                     <li role="treeitem"><span data-tocid="reference_p2r_d2d_nfb-d66e221" class="topicref" data-id="reference_p2r_d2d_nfb" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="db_info.html" id="reference_p2r_d2d_nfb-d66e221-link">Database information</a></span></span></li>
+                     <li role="treeitem"><span data-tocid="reference_gvz_zqc_nfb-d66e229" class="topicref" data-id="reference_gvz_zqc_nfb" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="cc_info.html" id="reference_gvz_zqc_nfb-d66e229-link">Control Center information</a><span class="wh-tooltip">
+                                 
+                                 <p xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:toc="http://www.oxygenxml.com/ns/webhelp/toc" class="shortdesc"></p>
+                                 </span></span></span></li>
+                  </ul>
+               </li>
+               <li role="treeitem"><span data-tocid="task_tv5_cs3_n2b-d66e239" class="topicref" data-id="task_tv5_cs3_n2b" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="installing_docker_on_linux_server.html" id="task_tv5_cs3_n2b-d66e239-link">Installing Docker on a Linux server</a></span></span></li>
+               <li role="treeitem"><span data-tocid="task_kds_hdz_q2b-d66e247" class="topicref" data-id="task_kds_hdz_q2b" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="installing_skydrm.html" id="task_kds_hdz_q2b-d66e247-link">Installing SkyDRM RMS</a></span></span></li>
+               <li role="treeitem" aria-expanded="false"><span data-tocid="concept_jm3_wxt_xgb-d66e255" class="topicref" data-id="concept_jm3_wxt_xgb" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action concept_jm3_wxt_xgb-d66e255-link" class="wh-expand-btn"></span><span class="title"><a href="skydrm_rms_high_avail.html" id="concept_jm3_wxt_xgb-d66e255-link">SkyDRM RMS installation on multiple servers for high availability</a></span></span></li>
+               <li role="treeitem" aria-expanded="false"><span data-tocid="skydrm_rms_configuration-d66e273" class="topicref" data-id="skydrm_rms_configuration" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action skydrm_rms_configuration-d66e273-link" class="wh-expand-btn"></span><span class="title"><a href="skydrm_rms_configuration.html" id="skydrm_rms_configuration-d66e273-link">SkyDRM RMS configuration</a></span></span></li>
+               <li role="treeitem"><span data-tocid="task_lbq_s4h_mfb-d66e365" class="topicref" data-id="task_lbq_s4h_mfb" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="defining_log_levels.html" id="task_lbq_s4h_mfb-d66e365-link">Defining log levels</a></span></span></li>
+               <li role="treeitem"><span data-tocid="task_qhm_bs5_mfb-d66e373" class="topicref" data-id="task_qhm_bs5_mfb" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="viewing_logs.html" id="task_qhm_bs5_mfb-d66e373-link">Viewing SkyDRM RMS logs</a></span></span></li>
+               <li role="treeitem"><span data-tocid="task_ywl_csk_fgb-d66e381" class="topicref" data-id="task_ywl_csk_fgb" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="installing_custom_cert.html" id="task_ywl_csk_fgb-d66e381-link">Installing a custom certificate on SkyDRM RMS</a></span></span></li>
+               <li role="treeitem"><span data-tocid="untitled2-d66e389" class="topicref" data-id="untitled2" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="importing_selfsigned_ADcert.html" id="untitled2-d66e389-link">Importing an AD or SharePoint certificate</a></span></span></li>
+               <li role="treeitem"><span data-tocid="task_h1y_krb_r2b-d66e397" class="topicref" data-id="task_h1y_krb_r2b" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="upgrading_skydrmrms.html" id="task_h1y_krb_r2b-d66e397-link">Upgrading SkyDRM RMS</a></span></span></li>
+               <li role="treeitem"><span data-tocid="task_uyj_sjp_mfb-d66e406" class="topicref" data-id="task_uyj_sjp_mfb" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="uninstalling_skydrm_rms.html" id="task_uyj_sjp_mfb-d66e406-link">Uninstalling SkyDRM RMS</a></span></span></li>
+            </ul>
+         </li>
+      </ul>
+   </li>
+</ul></div>
+                        </nav>
+                    
+                    
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12" id="wh_topic_body">
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+    <h1 class="title topictitle1" id="ariaid-title1">SMTP server information</h1>
+    <div class="body refbody">
+        <section class="section refsyn" id="reference_gfv_tqc_nfb__refsyn_bf2_vqc_nfb">You must configure your SMTP server for SkyDRM RMS to send
+            emails to the users. This section describes the SMTP server-related information you must
+            have on hand before attempting to install SkyDRM RMS.</section>
+        <table class="table" id="reference_gfv_tqc_nfb__table_uv1_5hc_nfb"><caption><span class="table--title-label">Table 1. </span><span class="title">SMTP server information</span></caption><colgroup><col style="width:25%" /><col style="width:75%" /></colgroup><thead class="thead">
+                    <tr>
+                        <th class="entry colsep-1 rowsep-1" id="reference_gfv_tqc_nfb__table_uv1_5hc_nfb__entry__1">Component</th>
+                        <th class="entry colsep-1 rowsep-1" id="reference_gfv_tqc_nfb__table_uv1_5hc_nfb__entry__2">Value</th>
+                    </tr>
+                </thead><tbody class="tbody">
+                    <tr>
+                        <td class="entry colsep-1 rowsep-1" headers="reference_gfv_tqc_nfb__table_uv1_5hc_nfb__entry__1 ">SMTP server hostname </td>
+                        <td class="entry colsep-1 rowsep-1" headers="reference_gfv_tqc_nfb__table_uv1_5hc_nfb__entry__2 ">Obtain the SMTP server hostname. For example:
+                                <span class="ph filepath">smtp.gmail.com</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="entry colsep-1 rowsep-1" headers="reference_gfv_tqc_nfb__table_uv1_5hc_nfb__entry__1 ">SMTP server port</td>
+                        <td class="entry colsep-1 rowsep-1" headers="reference_gfv_tqc_nfb__table_uv1_5hc_nfb__entry__2 ">Obtain the SMTP server port number. For example:
+                                <kbd class="ph userinput">465</kbd>.</td>
+                    </tr>
+                    <tr>
+                        <td class="entry colsep-1 rowsep-1" headers="reference_gfv_tqc_nfb__table_uv1_5hc_nfb__entry__1 ">SMTP server user name</td>
+                        <td class="entry colsep-1 rowsep-1" headers="reference_gfv_tqc_nfb__table_uv1_5hc_nfb__entry__2 ">Obtain the SMTP server user name. For example:
+                                <kbd class="ph userinput">johndoe</kbd>.</td>
+                    </tr>
+                    <tr>
+                        <td class="entry colsep-1 rowsep-1" headers="reference_gfv_tqc_nfb__table_uv1_5hc_nfb__entry__1 ">SSL</td>
+                        <td class="entry colsep-1 rowsep-1" headers="reference_gfv_tqc_nfb__table_uv1_5hc_nfb__entry__2 ">Determine whether or not SSL is enabled for the SMTP server.</td>
+                    </tr>
+                    <tr>
+                        <td class="entry colsep-1 rowsep-1" headers="reference_gfv_tqc_nfb__table_uv1_5hc_nfb__entry__1 ">SMTP server password</td>
+                        <td class="entry colsep-1 rowsep-1" headers="reference_gfv_tqc_nfb__table_uv1_5hc_nfb__entry__2 ">Obtain the SMTP server user password.</td>
+                    </tr>
+                </tbody></table>
+    </div>
+</article></main></div>
+                        
+                        
+                                                
+                    </div>
+                    
+                </div>
+            </div>
+        </div> 
+        
+        <div class="wh_navigation_links">
+            <div class=" wh_navigation_links "><span id="topic_navigation_links" class="navheader">
+  </span></div>
+        </div>
+        
+        <div class="wh_related_links">
+            
+        </div>
+
+
+        <footer class="navbar navbar-default wh_footer">
+  <div class=" footer-container text-center ">
+    CONFIDENTIALITY NOTICE <div>THIS DOCUMENT IS CONFIDENTIAL AND PROPRIETARY TO NEXTLABS, INC. AND MAY NOT BE REPRODUCED, PUBLISHED OR DISCLOSED TO OTHERS WITHOUT COMPANY AUTHORIZATION.</div> <div> Copyright (C) 2019 NextLabs, Inc. All rights reserved.</div>
+  </div>
+</footer>
+
+        
+        <div id="go2top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        
+        <!-- The modal container for images -->
+        <div id="modal_img_large" class="modal">
+            <span class="close glyphicon glyphicon-remove"></span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal-img" />
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        
+        <script src="./oxygen-webhelp/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        
+    </body>
+</html>

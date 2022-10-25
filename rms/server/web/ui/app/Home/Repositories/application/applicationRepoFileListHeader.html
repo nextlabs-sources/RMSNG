@@ -1,0 +1,32 @@
+<div class="project-file-list-header rms-repo-list-header">
+    <div class="project-file-list-title rms-repoTitle">
+        <div class="repo-info">
+            <span uib-tooltip="{{thisRepo.name}}" tooltip-placement="right" tooltip-enable="false"><b>{{ thisRepo.name }}</b></span>
+            <div class="class-icon application">
+                <span class="dot"> &bull; </span>
+                <img ng-src="{{'ui/img/repository-application-account.svg'}}" alt="{{'service-provider.class.application-account' | translate}}">
+            </div>
+        </div>
+        <div style="display:none" class="rms-file-search rms-file-search-custom">
+            <form ng-submit="search()">
+                <i class="fa fa-search"></i>
+                <input placeholder="{{'search.placeholder' | translate}}" type="text" ng-model="$parent.searchString" clear-input="clearSearch()">
+            </form>
+        </div>
+    </div>
+    <div class="rms-fileList-options">
+        <span ng-if="!searchActivated">
+            <a class="rms-breadCrumbItem" data-ng-click="onClickFile({isFolder: true, pathId: '/', path:'/'})" ><b>Root</b></a>
+            <span data-ng-repeat="eachFolder in breadCrumbsContent"> 
+                <b> > </b>
+                <a class="rms-breadCrumbItem" data-ng-click="onClickFile(eachFolder)">
+                    <b>{{eachFolder.name}}</b>
+                </a>
+            </span>
+        </span>
+        <div class="rms-file-sort rms-file-sort-custom">
+            <label class="rms-file-sort-label">{{'sort.by' | translate}}</label>&nbsp;
+            <select data-ng-options="sort.sortBy as sort.description | translate for sort in sortOptions" data-ng-model="$parent.selectedSort" ng-change="sort()"></select>
+        </div>
+    </div>
+</div>

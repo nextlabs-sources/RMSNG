@@ -1,0 +1,29 @@
+<div class="project-user-list-header rms-repo-list-header">
+	<div id="loading-background" data-ng-show="isLoading" class="loading-div" />
+	<div class="project-file-list-title rms-repoTitle">
+        <div class="repo-info">
+            <span uib-tooltip="{{pageTitle}}" tooltip-placement="right" tooltip-enable="false"><b>{{ 'project.members' | translate}}</b></span>  
+                   
+        </div>
+
+        <div class="rms-file-search rms-file-search-custom">
+        	<form ng-submit="searchMember()" style="margin-right:0">
+                <i class="fa fa-search"></i>
+                <input placeholder="{{'project.user.search.placeholder' | translate}}" type="text" ng-model="$parent.searchMemberString" clear-input="clearMemberSearch()">
+            </form>
+            <button class="btn btn-default float-right rms-settings-button-color" data-ng-click="openInvitationModal()">{{'project.invite' | translate}}</button>
+        </div>
+
+        
+    </div>
+    <div class="rms-fileList-options">
+        <div class="rms-file-sort rms-file-sort-custom" style="float:right; padding-right:60px">
+        <label class="rms-file-sort-label">{{'sort.by' | translate}}</label>&nbsp;
+            <select data-ng-options="sort.lookupCode as sort.description | translate for sort in sortProjectOptions" data-ng-model="$parent.selectedProjectSort"
+                data-ng-change="refreshUsersPage()"></select>
+        </div> 
+    </div> 
+   
+    	
+        
+</div>

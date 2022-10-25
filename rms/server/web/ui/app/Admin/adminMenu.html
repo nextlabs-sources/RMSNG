@@ -1,0 +1,59 @@
+<span class="close-menu-mobile big-screen-hide"><a class="glyphicon glyphicon-remove big-screen-hide toggle-close-button" data-ng-click="toggleSideBar()"></a></span>
+<div class="cc-ps-menu">
+	<div class="rms-settings-panel">
+		<div class="rms-system-settings-item" data-ng-if="isDefaultTenant && !showTenantConsole">
+			<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('tenantList')}" data-ng-click="onClickTab('tenantList')">
+				<span class="menu-label" data-ng-class="isActiveTab('tenantList') ? 'color-green':'color-black'">{{'config.tenant_title' | translate}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item">
+			<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('configureServiceProvider')}" data-ng-click="onClickTab('configureServiceProvider')">
+				<span class="menu-label" data-ng-class="isActiveTab('configureServiceProvider') ? 'color-green':'color-black'">{{'config.manage.providers.heading' | translate}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item">
+			<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('configureIdentityProvider')}" data-ng-click="onClickTab('configureIdentityProvider')">
+				<span class="menu-label" data-ng-class="isActiveTab('configureIdentityProvider') ? 'color-green':'color-black'">{{'config.manage.identity.providers.heading' | translate}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item" data-ng-if="(isSystemAdmin || isTenantAdmin)">
+			<a ng-if="isDefaultTenant" class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('systemConfiguration')}" data-ng-click="onClickTab('systemConfiguration')">
+				<span class="menu-label" data-ng-class="isActiveTab('systemConfiguration') ? 'color-green':'color-black'">{{'config.system_config' | translate}}</span>
+			</a>
+			<a ng-if="!isDefaultTenant" class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('tenantConfiguration')}" data-ng-click="onClickTab('tenantConfiguration')">
+				<span class="menu-label" ng-if="!isDefaultTenant" data-ng-class="isActiveTab('tenantConfiguration') ? 'color-green':'color-black'">{{'config.tenant_config' | translate}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item" data-ng-if="(isSystemAdmin || isTenantAdmin)">
+			<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('userAttributeMapping')}" data-ng-click="onClickTab('userAttributeMapping')">
+				<span class="menu-label" data-ng-class="isActiveTab('userAttributeMapping') ? 'color-green':'color-black'">{{'config.user_attr_mapping' | translate}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item">
+			<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('classification')}" data-ng-click="onClickTab('classification')">
+				<span class="menu-label" data-ng-class="isActiveTab('classification') ? 'color-green':'color-black'">{{'project.classification' | translate}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item" data-ng-if="(isSystemAdmin || isTenantAdmin)">
+			<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('policies')}" data-ng-click="onClickTab('policies')">
+				<span class="menu-label" data-ng-class="isActiveTab('policies') ? 'color-green':'color-black'">{{'policies' | translate}}</span>
+				<span class="badge position-right" data-ng-class="isActiveTab('policies') ? 'badge-active':'badge-not-active'">{{totalPolicies}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item">
+			<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('assignProjectAdmin')}" data-ng-click="onClickTab('assignProjectAdmin')">
+				<span class="menu-label" data-ng-class="isActiveTab('assignProjectAdmin') ? 'color-green':'color-black'">{{'config.project_admin' | translate}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item">
+			<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('manageProjectTags')}" data-ng-click="onClickTab('manageProjectTags')">
+				<span class="menu-label" data-ng-class="isActiveTab('manageProjectTags') ? 'color-green':'color-black'">{{'define.project.tags' | translate}}</span>
+			</a>
+		</div>
+		<div class="rms-system-settings-item">
+			<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('manageProjectPolicies')}" data-ng-click="onClickTab('manageProjectPolicies')">
+				<span class="menu-label" data-ng-class="isActiveTab('manageProjectPolicies') ? 'color-green':'color-black'">{{'manage.project.policies' | translate}}</span>
+			</a>
+		</div>
+	</div>
+</div>

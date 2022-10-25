@@ -1,0 +1,34 @@
+<svg width="56" height="56" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Validity</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(19147 9566)">
+<g id="Validity">
+<g id="Ellipse 2" filter="url(#filter0_d)">
+<use xlink:href="#path0_fill" transform="translate(-19143 -9564)" fill="url(#paint0_linear)"/>
+<use xlink:href="#path0_fill" transform="translate(-19143 -9564)" fill="#FFFFFF"/>
+</g>
+<g id="SandClock_P 2">
+<g id="Vector">
+<use xlink:href="#path1_fill" transform="translate(-19128 -9548.93)"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d" filterUnits="userSpaceOnUse" x="-19147" y="-9566" width="56" height="56" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 0"/>
+<feOffset dx="0" dy="2"/>
+<feGaussianBlur stdDeviation="2"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(2.93915e-15 48 -48 2.93915e-15 48 -2.93915e-15)">
+<stop offset="0" stop-color="#34994C"/>
+<stop offset="1" stop-color="#70B55B"/>
+</linearGradient>
+<path id="path0_fill" d="M 48 24C 48 37.2548 37.2548 48 24 48C 10.7452 48 0 37.2548 0 24C 0 10.7452 10.7452 0 24 0C 37.2548 0 48 10.7452 48 24Z"/>
+<path id="path1_fill" fill-rule="evenodd" d="M 17.8894 3.48586C 16.7164 6.90366 12.0166 8.41252 11.4173 10.0712C 11.3365 10.294 11.3329 10.6755 11.4095 10.9016C 11.9684 12.5418 16.564 14.0273 17.8306 17.3475L 18.4774 17.3475L 18.4774 17.8349C 12.8031 17.8349 7.13024 17.8349 1.45669 17.8349L 1.45669 17.3475L 1.97014 17.3475C 3.21691 14.0809 7.68483 12.5906 8.36141 10.9807C 8.48835 10.6782 8.47559 10.2486 8.33446 9.9537C 7.56427 8.34035 3.05805 6.82323 1.91199 3.48586L 1.52264 3.48586L 1.52264 2.91874L 1.75668 2.91874L 18.0448 2.91874L 18.5433 2.91874L 18.5433 3.48586L 17.8894 3.48586L 17.8894 3.48586ZM 0.0659551 -1.44224e-08L 20 -1.44224e-08L 20 2.33582L 0.0659551 2.33582L 0.0659551 -1.44224e-08ZM 3.68994 17.3468C 4.85586 15.5671 7.61391 15.1299 9.93369 14.327C 12.6506 15.9122 15.0413 15.3347 16.1562 17.3468L 16.8022 17.3468L 16.7285 17.2052C 16.6179 16.9941 16.4909 16.7907 16.3491 16.5927C 16.1214 16.2758 15.859 15.9802 15.5789 15.7039C 14.7257 14.8591 13.713 14.1861 12.7329 13.4904C 11.9216 12.9157 10.8308 12.1479 10.5046 11.1897C 10.3613 10.771 10.3663 10.1812 10.5166 9.76397C 10.5358 9.7131 10.5571 9.66155 10.5791 9.61137C 10.3351 9.82653 10.1571 10.0355 10.067 10.2582C 9.94646 10.5552 9.86277 11.2756 9.85071 13.41C 9.71951 13.0189 9.89114 10.5641 9.73228 10.2727C 9.60037 10.0293 9.43158 9.81209 9.2174 9.60037C 9.45357 10.1235 9.46633 10.8013 9.24506 11.3271C 8.86564 12.2311 7.7983 12.9742 7.00613 13.5337C 6.04588 14.2129 5.05727 14.8769 4.22184 15.7025C 3.76511 16.1534 3.363 16.6498 3.07294 17.2038L 3.02755 17.3461L 3.68994 17.3461L 3.68994 17.3468ZM 19.934 20.8333L 0 20.8333L 0 18.4982L 1.45669 18.4982L 18.4774 18.4982L 19.9348 18.4982L 19.9348 20.8333L 19.934 20.8333ZM 2.90486 3.48586C 3.3786 4.33549 3.74668 4.86068 4.48778 5.5419L 9.06067 5.36042L 11.0578 5.36042L 15.325 5.53159C 15.9278 4.97754 16.5923 4.27432 16.8136 3.48654L 2.90486 3.48654L 2.90486 3.48586Z"/>
+</defs>
+</svg>

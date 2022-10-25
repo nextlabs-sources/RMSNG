@@ -1,0 +1,32 @@
+<div class="rms-upload-file">
+    <div class="modalheader">
+        <label>{{"upload.profile.picture" | translate}}</label> <a data-ng-click="ok()">x</a>
+    </div>
+    <hr/>
+    <div ngf-drop="" ng-model="files" class="upload-repo-drop-box" ngf-drag-over-class="'upload-repo-dragover'" ngf-allow-dir="false">
+        <center>
+            {{"upload.drag.drop.repo" | translate}},<br>
+            {{"upload.browse.upload.repo" | translate}}
+            <br><br>
+            <div style="word-wrap: break-word">
+                <span ng-show="fileChosen">{{"managelocalfile.file.chosen.label" | translate}}: <b>{{files.name}}</b></span>
+                <span style="margin-left:10px;" ng-show="fileChosen" class="pointer-click glyphicon glyphicon-pencil" ng-model="files" ngf-multiple="false" ngf-select=""></span>
+                <br/><br/>
+                <button ng-show="filePristine" class="btn btn-default rms-settings-button rms-settings-button-color ng-pristine ng-valid
+                               ng-touched" ng-model="files" ngf-multiple="false" ngf-select=""
+                        style="cursor: pointer;" type="button">{{"upload.file.button.browse" | translate}}</button>
+
+
+                <div data-ng-if="error.length > 0">
+                    <br><span class="mandatory rms-display">{{error}}</span>
+                </div>
+
+                <div ng-if="!filePristine">
+                    <br>
+                    <button class="btn btn-default rms-settings-button rms-settings-button-color" data-ng-click="uploadProfilePicture()" type="button">{{"UPLOAD" | translate}}</button>
+                </div>
+            </div>
+            <br>
+        </center>
+    </div>
+</div>

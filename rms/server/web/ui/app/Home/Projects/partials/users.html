@@ -1,0 +1,50 @@
+<div ng-controller="projectController">
+	<div id="fileListHeader" class="show-only-on-desktop" data-ng-include="'ui/app/Home/Projects/partials/userListHeader.html'"></div>
+	<div class="mobile-tablet-display" data-ng-include="'ui/app/Home/Projects/partials/userListHeaderForMobile.html'"></div>
+	<center>
+		<label data-ng-if="members.length === 0 && pendingMembers.length === 0 && searchActivated">{{"err.no.search.results"|translate}}</label>
+	</center>
+	<div data-ng-show="(members!=null && members.length>0)">
+		<div  style="margin-left: 60px;" class="service-provider-subtitle">
+				<h5>{{"projects.users.active" | translate}}</h5>
+		</div>
+		<div style="margin-left: 60px;">
+			<div data-ng-repeat="member in members"   class="pointer-click rms-tile-shadow rms-tile-member rms-break-word overflow-hidden" data-ng-click="memberInfo(member)" data-ng-class="{'rms-tile-project-hover': hovering, 'rms-tile-project-no-hover': !hovering }" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false">
+				<div class="projectHost-badge float-right text-align-center margin-top-10" data-ng-if="isMemberAdmin(member)"><span>Host</span></div>
+		        <div id="profileImage"  class="default_profile" data-ng-class="'profile_'+member.displayName[0].toLowerCase()">
+		 			 <div id="profileName">
+		 			 	{{member.displayName | initials}}
+		   		     </div>
+		        </div>
+		        <div class="margin-bottom-10 text-ellipsis"  style="margin:5px;">
+		            <span>{{member.displayName}}</span>
+		        </div>
+		    </div>
+		</div>
+	</div>
+	<center>
+            <button data-ng-class="'btn btn-default'" data-ng-if="members.length!=0 && showMoreMembers" data-ng-click= "loadMoreMembers()">{{"share.file.loadmore"|translate}}</button>
+    </center> 
+    <hr/>
+    <div data-ng-show ="pendingMembers!=null && pendingMembers.length>0">
+	    <div style="margin-left: 60px;" class="service-provider-subtitle">
+				<h5>{{"projects.users.pending" | translate}}</h5>
+		</div>	
+		<div style="margin-left: 60px;"> 
+			<div data-ng-repeat="pendingMember in pendingMembers"  data-ng-show="(pendingMembers!=null) " class="pointer-click rms-tile-shadow rms-tile-member rms-break-word overflow-hidden" data-ng-click="managePendingInvitation(pendingMember)" data-ng-class="{'rms-tile-project-hover': hovering, 'rms-tile-project-no-hover': !hovering }" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false">
+		        <div id="profileImage" class="default_profile" data-ng-class="'profile_'+pendingMember.inviteeEmail[0].toLowerCase()">
+		 			 <div id="profileName">
+		 			 	{{pendingMember.inviteeEmail | initials}}
+		   		     </div>
+		        </div>
+		        <div class="margin-10 text-ellipsis">
+		            <span>{{pendingMember.inviteeEmail}}</span>
+		        </div>
+	   		</div>
+	   	</div>
+    	<center>
+            <button data-ng-class="'btn btn-default'" data-ng-if="pendingMembers.length!=0 && showMorePendingMembers" data-ng-click= "loadMorePendingMembers()">{{"share.file.loadmore"|translate}}</button>
+    	</center> 
+    	<hr/>
+	</div>
+<div>

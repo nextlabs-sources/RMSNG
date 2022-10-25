@@ -1,0 +1,3 @@
+ALTER TABLE rms.repository 
+ADD class INT DEFAULT  0 NOT NULL;
+GO

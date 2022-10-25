@@ -1,0 +1,70 @@
+<div data-ng-controller="userPreferenceController" class="col-xs-12 padding-20" style="background-color: white;">
+
+	<div class="rms-repoTitle mobile-tablet-display" data-ng-show="showRepoTitle">
+		<div class="file-list-icons big-screen-hide ipad-potrait-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></div>
+	</div>
+
+	<div ng-if="fromCreateProject">
+		<div id="workflow-bar">
+			<div id="workflow-bar-position">
+				<button class="button-workflow blue-button-workflow">1</button>
+				<span style="display:inline-block;" class="arrow">
+					<span class="arrow-line" style="background-color:#2D9CDB;"></span>
+					<span class="arrow-head" style="border-left-color:#2D9CDB;"></span>
+				</span>
+				<button class="button-workflow blue-button-workflow">2</button>
+				<span style="display:inline-block;" class="arrow">
+					<span class="arrow-line" style="background-color:#2D9CDB;"></span>
+					<span class="arrow-head" style="border-left-color:#2D9CDB;"></span>
+				</span>
+				<button class="button-workflow blue-button-workflow">3</button>
+				<span style="display:inline-block;" class="arrow">
+					<span class="arrow-line" style="background-color:#2D9CDB;"></span>
+					<span class="arrow-head" style="border-left-color:#2D9CDB;"></span>
+				</span>
+				<button class="button-workflow green-button-workflow">4</button>
+			</div>
+		</div>
+		<div style="font-size:1.5em" class="text-align-center">{{'step.four' | translate}} : {{'project.preference' | translate}}</div>
+	</div>
+
+	<div ng-if="!fromCreateProject" class="mobile-tablet-display col-md-8 col-md-offset-2 col-sm-12" style="margin-top:10px;">
+		<span>
+			<button type="button" ng-click="onClickTab('configuration', true)" class='btn btn-default col-md-3 col-xs-12' ng-class="configTabId == 0 ? 'rms-settings-button-color' : '' " style="margin-bottom:10px; border-radius:0px;height:34px;font-size:90%;">{{'project.info' | translate}}</button>
+			<button type="button" ng-click="onClickTab('accessPermission', true)" class='btn btn-default col-md-3 col-xs-12' ng-class="configTabId == 3 ? 'rms-settings-button-color' : '' " style="margin-bottom:10px; border-radius:0px;height:34px;font-size:90%;">{{'project.access.permission' | translate}}</button>
+			<button type="button" ng-click="onClickTab('classification', true)" class='btn btn-default col-md-3 col-xs-12' ng-class="configTabId == 1 ? 'rms-settings-button-color' : '' " style="margin-bottom:10px; border-radius:0px;height:34px;font-size:90%;">{{'project.classification' | translate}}</button>
+			<button type="button" ng-click="onClickTab('preference', true)" class='btn btn-default col-md-3 col-xs-12' ng-class="configTabId == 2 ? 'rms-settings-button-color' : '' " style="margin-bottom:10px; border-radius:0px;height:34px;font-size:90%;">{{'advanced' | translate}}</button>
+		</span>
+		<div class="col-xs-12" style="height: 30px"></div>
+	</div>
+	
+	<form name="userPreferenceForm" id="userPreferenceForm" ng-submit="addUserPreference('project-preference')">
+		<div class="user-preference-configure">
+			<div class = "digital-rights-title">
+				<span>{{'digital.rights.preferences' | translate}}</span>
+			</div>
+			<div style="margin-left:5%;">
+				<div class="default-user-preference-subtitle">
+					<span>{{'default.watermark' | translate}}</span>
+				</div>
+				<div style="padding-bottom:70px" ng-include="'ui/app/Home/watermarkTemplate.html'"></div>
+				<div class="default-user-preference-subtitle">
+					<span>{{'digital.rights.validity.period' | translate}}</span>
+				</div>
+				<div ng-include="'ui/app/Home/digitalRightsExpiryDateTemplate.html'"></div>
+			</div>			
+		</div>
+		<div ng-if="!fromCreateProject" class="user-preference-buttons float-right">
+			<button type="button" class="btn btn-default" data-ng-disabled="userPreferenceLoading" ng-click="goBack()" style="padding-left:35px;padding-right:35px;" tabindex="6">{{'cancel' | translate}}</button>
+			<button type="submit" class="btn btn-default rms-settings-button-color" style="padding-left:35px;padding-right:35px;" data-ng-disabled="userPreferenceForm.$pristine || watermarkError || relativeExpiryError || userPreferenceLoading" tabindex="5">{{'save'| translate}}</button>
+			<span data-ng-show="userPreferenceLoading" class="loading-icon"></span>
+		</div>
+		<div ng-if="fromCreateProject" class="user-preference-buttons">
+			<button type="button" class="btn btn-default button-paddings" ng-click="back()">{{'back' | translate}}</button>
+			<span class="float-right">
+				<button type="button" class="btn btn-default button-paddings" ng-click="skip()">{{'skip'| translate}}</button>
+				<button type="submit" class="btn btn-default rms-settings-button-color" style="padding-left:35px;padding-right:35px;" data-ng-disabled="watermarkError || relativeExpiryError || userPreferenceLoading" tabindex="5">{{'save'| translate}}</button>
+			</span>
+		</div>
+	</form>
+</div>

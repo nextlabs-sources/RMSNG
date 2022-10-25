@@ -1,0 +1,43 @@
+<div class="rms-upload-file">
+	<div id="fileUploading" data-ng-show="isLoading">
+		<div id="pgLoading-image">
+           <img src="ui/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+	<div class="modalheader">
+		<label class="text-ellipsis" style="max-width: 80%;">{{uploadTitle}}</label> <a data-ng-click="ok()">x</a>
+	</div>
+    <hr/>
+    <div ngf-drop="" ng-model="files" class="upload-repo-drop-box" ngf-drag-over-class="'upload-repo-dragover'" ngf-allow-dir="false">
+        <div class="padding-left-20">
+			<br>
+			{{"upload.drag.drop.repo" | translate}}
+            <br><br>
+            <div style="word-wrap: break-word">
+                <span ng-show="fileChosen">{{"managelocalfile.file.chosen.label" | translate}}: <b>{{files.name}}</b></span>
+                <span style="margin-left:10px;" ng-show="fileChosen" class="pointer-click glyphicon glyphicon-pencil" ng-model="files" ngf-multiple="false" ngf-select=""></span>
+                <br/><br/>
+                <button ng-show="filePristine" class="btn btn-default rms-settings-button rms-settings-button-color ng-pristine ng-valid
+                               ng-touched" ng-model="files" ngf-multiple="false" ngf-select=""
+                               style="cursor: pointer;" type="button">{{"upload.file.button.browse" | translate}}</button>
+
+       
+                <div data-ng-if="error.length > 0"> 
+                	<br><span class="mandatory rms-display">{{error}}</span>
+                </div>
+                
+                <div ng-if="!filePristine">
+                	<br>
+                	<div ng-if="(protect && !isNxl)">
+						<div data-ng-include="'ui/app/Home/Repositories/partials/fileRightsSelectionTemplate.html'"></div>
+		            </div>
+		            <div>
+	                    <button class="btn btn-default rms-settings-button rms-settings-button-color" data-ng-disabled="disableUpload || editWatermark" data-ng-click="editWatermark || upload(!isNxl);" type="button">{{"upload.file.button.upload" | translate}}</button>
+	                    <a ng-if="!isNxl" class="rms-color-link file-options-icon-padding" data-ng-click="upload(false);">{{"upload.do_not_protect" | translate}}</a><br><br>
+	                </div>
+	            </div>   
+            </div>
+            <br>
+     	</div>
+ 	</div>    
+</div>

@@ -1,0 +1,219 @@
+buildscript {
+	repositories {
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+  	}
+	dependencies {
+		classpath "com.moowork.gradle:gradle-node-plugin:1.1.1"
+	}
+}
+
+apply plugin: 'war'
+apply plugin: "com.moowork.node"
+apply plugin: "com.moowork.grunt"
+
+dependencies {
+	compile project(':shared')
+	compile project(':rmjavasdk-ng')
+	compile (project(':rms-shared')) {
+		exclude group: 'org.hibernate', module:'hibernate-core'
+		exclude group: 'org.hibernate', module:'hibernate-c3p0'
+		exclude group: 'com.googlecode.flyway', module:'flyway-core'
+	}
+
+	compile libs.'ehcache'
+	compile libs.'pdfbox'
+	compile libs.'tika'
+	
+	compileOnly files("$library/perceptive/ISYS11df.jar")
+
+	compile libs.'axis2-kernel'
+	compile libs.'log4j'
+    compile libs.'log4j-web'
+	compile libs.'disruptor'
+
+	compileOnly libs.'jsp-api'
+	compileOnly libs.'servlet'
+    compile libs.'bouncycastle_fips'
+    compileOnly libs.'javax-activation'
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src']
+		}
+		resources {
+			srcDirs "src"
+		}
+	}
+}
+
+jar.enabled = true
+jar {
+	baseName = 'viewer'
+	dependsOn 'jarPerceptive'
+	exclude ('com/nextlabs/rms/viewer/conversion/MemoryStream*')
+}
+
+task jarPerceptive(type: Jar) { 
+	baseName = 'RMS-Perceptive-Lib' 
+	dependsOn classes
+	from sourceSets.main.output
+	include ('com/nextlabs/rms/viewer/conversion/MemoryStream*') 
+}
+
+configurations {
+	core
+	perceptive
+}
+
+artifacts {
+	perceptive jarPerceptive 
+}
+
+def moduleDir = "${project.projectDir}/web/ui"
+node {
+	version = '6.9.4'
+	npmVersion = '4.1.2'
+	nodeModulesDir = file(moduleDir)
+	download = true
+}
+
+grunt {
+    workDir = file(moduleDir)
+    colors = false
+    bufferOutput = false
+}
+
+clean {
+	delete moduleDir + File.separator + "build"
+	delete moduleDir + File.separator + "deploy"
+}
+
+task gruntTask (type: NodeTask) {
+    def localGrunt = new File(this.project.node.nodeModulesDir, 'node_modules/grunt-cli/bin/grunt')
+    def gruntFileName = "Gruntfile.js"
+    setArgs(["--gruntfile", gruntFileName])
+    setWorkingDir(this.project.grunt.workDir)
+    setScript(localGrunt)
+}
+
+gruntTask.dependsOn 'npmInstall'
+gruntTask.dependsOn 'installGrunt'
+war.dependsOn gruntTask
+
+war {
+	archiveName 'viewer.war'
+	from 'web'
+	dependsOn jar
+	classpath jar.archivePath
+	rootSpec.exclude('**/WEB-INF/lib/*')
+	rootSpec.exclude('**/WEB-INF/classes/*')
+	rootSpec.exclude('**/node_modules/*')
+	rootSpec.exclude('**/node_modules/')
+	webInf {
+		into ('classes') 
+		exclude '**/*.class'
+	}
+	from ("$docsHome/help") {
+		into 'help'
+	}
+	from ("$docsHome/help_clients/ios") {
+		into 'help_clients/ios'
+	}
+	from ("$docsHome/help_users") {
+		into 'help_users'
+	}
+	classpath -= sourceSets.main.output
+}
+
+def BUILD_NUMBER = System.getenv("BUILD_NUMBER") != null ? System.getenv("BUILD_NUMBER") : "0"
+def DOC_VIEWER_ZIP_NAME = String.format("RightsManagementServer-DocViewer-%s.zip", BUILD_NUMBER)
+def CAD_VIEWER_ZIP_NAME = String.format("RightsManagementServer-CADViewer-%s.zip", BUILD_NUMBER)
+def SAP_VIEWER_ZIP_NAME = String.format("RightsManagementServer-SAPViewer-%s.zip", BUILD_NUMBER)
+
+task copyDocViewer {
+    dependsOn 'jarPerceptive'
+    doLast {
+        copy {
+            from "${System.env.NLEXTERNALDIR2}/perceptive/perceptive-11.2_Build_1858/"
+            into "build/libs/staging/perceptive"
+            exclude "**/intel-32/**"
+        }
+        copy {
+            from "build/libs/RMS-Perceptive-Lib.jar"
+            into "build/libs/staging/perceptive"
+        }
+    }
+}
+
+task updateDocViewer {
+    dependsOn 'copyDocViewer'
+    doLast {
+        def versionFile = new File("${projectDir}/build/libs/staging/perceptive/rms-perceptive-version.txt")
+        versionFile.createNewFile()
+        versionFile.setText DOC_VIEWER_ZIP_NAME
+    }
+}
+
+task zipDocViewer (type: Zip){
+    dependsOn 'updateDocViewer'
+    archiveName DOC_VIEWER_ZIP_NAME
+    from "build/libs/staging/perceptive"
+}
+
+
+task copyCADViewer {
+    doLast {
+        copy {
+            from "${System.env.NLEXTERNALDIR2}/HOOPSCADViewer/2021_SP1_U1/"
+            into "build/libs/staging/hoops"
+        }
+    }
+}
+
+task updateCADViewer {
+    dependsOn 'copyCADViewer'
+    doLast {
+        def versionFile = new File("${projectDir}/build/libs/staging/hoops/bin/rms-cad-version.txt")
+        versionFile.createNewFile()
+        versionFile.setText CAD_VIEWER_ZIP_NAME
+    }
+}
+task zipCADViewer (type: Zip){
+    dependsOn 'updateCADViewer'
+    archiveName CAD_VIEWER_ZIP_NAME
+    from "build/libs/staging/hoops"
+}
+
+task copySAPViewer {
+    doLast {
+        copy {
+            from "${System.env.NLEXTERNALDIR2}/VDSViewer/SAPVE/7.4.5/"
+            into "build/libs/staging/sap"
+            exclude "**/RHViewer.jsp", "**/VDSViewer.jsp" 
+        }
+    }
+}
+task updateSAPViewer {
+    dependsOn 'copySAPViewer'
+    doLast {
+        def versionFile = new File("${projectDir}/build/libs/staging/sap/SAPViewer/rms-sap-version.txt")
+        versionFile.createNewFile()
+        versionFile.setText SAP_VIEWER_ZIP_NAME
+    }
+}
+task zipSAPViewer (type: Zip){
+    dependsOn 'updateSAPViewer'
+    archiveName SAP_VIEWER_ZIP_NAME
+    from "build/libs/staging/sap"
+}
+
+task packageViewers {
+    dependsOn 'clean'
+    dependsOn 'zipDocViewer'
+    dependsOn 'zipCADViewer'
+    dependsOn 'zipSAPViewer'
+}

@@ -1,0 +1,35 @@
+<div id="document-classification" style="background-color: white; width: 100%; margin-top: 30px;">
+	<div id="document-classification-heading" class="admin-heading-border" style="position:relative;">
+		<span id="document-classification-landing-page-icon" style="padding-left:10px;">
+			<i data-ng-include="'ui/img/Classify_P.svg'"></i>
+		</span>
+		<span style="display:inline-block;padding:10px;">
+			<div class="admin-section-title">{{'document.classification' | translate}}</div>
+			<div class="admin-section-description">{{'company.defined.rights.description' | translate}}</div>
+		</span>
+		<span style="position:absolute; right:3%; top:32%; cursor:pointer;" data-ng-click="onClickTab('classification')">
+			<i data-ng-include="'ui/img/Arrow_Grey.svg'"></i>
+		</span>
+	</div>
+	<div data-ng-controller="classificationSelectionController" id="document-classification-body" class="admin-body-border" style="position:relative;">
+		<div ng-show="categoryList.length == 0" id="document-classification-section" class="inline-block" style="position:relative; width:245px; cursor:pointer;" data-ng-click="onClickTab('classification')">
+			<div style="position:relative;">
+				<i data-ng-include="'ui/img/Add_icon.svg'"></i>
+				<span class="light-gray-text" style="position:absolute; top:18px; right:0px;">{{'document.classification' | translate}}</span>
+			</div>
+		</div>
+		<div ng-show="categoryListlength != 0">
+			<div data-ng-repeat="category in categoryList">
+				<label style="margin-right:5px"><b>{{category.name}}</b></label>
+				<div style="background-color: #ECECF1; padding: 20px; margin-bottom: 20px">
+					<div>
+						<span data-ng-repeat="label in category.labels" >
+							<button  style="margin-bottom: 5px; cursor:initial;" class="btn btn-default button-paddings rms-settings-button-color" >{{label.name}}</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button type="button" class="btn-link" data-ng-click="onClickTab('classification')" style="position:absolute; right:0px; bottom:5px;">{{'add.manage.document.classification' | translate}}<i style="padding-left:5px;" data-ng-include="'ui/img/back arrow - black.svg'"></i></button>
+	</div>
+</div>

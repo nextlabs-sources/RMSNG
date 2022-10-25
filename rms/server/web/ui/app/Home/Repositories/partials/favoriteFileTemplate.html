@@ -1,0 +1,54 @@
+<div class="cc-ps-policy">
+	<div class="cc-layout-full-width">
+		<div class="rms-files">
+			<span class="inline-flex">
+				<img ng-src="{{fileIconName(eachFile)}}" alt="icon">
+			<span class="favorited"></span>
+			</span>
+			<a data-ng-click="onClickFileOp(eachFile, 'view')" class="rms-file-item"> {{eachFile.name}} </a>
+		</div>
+		<div title="{{eachFile.name}}">
+			<label title="{{'file.size'| translate}}" class="file-info-label">{{!eachFile.fileSize ? ('not-applicable' | translate) : (eachFile.fileSize | filesize:2)}}</label>
+			<label title="{{'last.modified'| translate}}" class="file-info-label">
+				<span data-ng-if="!eachFile.lastModifiedTime">{{'not-applicable' | translate}}</span>
+				<span data-ng-if="eachFile.lastModifiedTime">
+					<friendly-date data-date="{{eachFile.lastModifiedTime}}" data-content-class="friendly-date" data-full-format="d MMM yyyy,hh:mm a" data-short-format="hh:mm a" />
+				</span>
+			</label>
+			<label title="{{'file.origin'| translate}}" class="myvault-file-info-label file-info-label">
+			<i>{{eachFile.fromMyVault? ('myvault.title' | translate ) : eachFile.repoName }} : {{eachFile.fromMyVault ? eachFile.name : eachFile.path}}</i>
+		</label>
+		</div>
+		<div class="rms-file-menu shared-file-menu" data-ng-mouseleave="hideMenu(eachFile)" data-ng-mouseover="showMenu(eachFile)">
+			<div class="shared-file-menu-button">
+				<span>
+					<a title="{{'toolbar.menu'| translate}}" data-ng-click="onClickMenu(eachFile)" class="glyphicon glyphicon-option-vertical "></a>
+				</span>
+			</div>
+			<div class="shared-file-menu-operations">
+				<span data-ng-if="(selectedFileId === eachFile.pathId && menuClickedMode)">
+					<a class="fileListOption-info-icon" title="{{'favorite.unmark'| translate}}" data-ng-click="onClickFileOp(eachFile, 'unmark')">
+						<i data-ng-include="'ui/img/Favorite.svg'"></i>
+					</a>
+					<a class="fileListOption-info-icon" title="{{'viewer.toolbar.info'| translate}}" data-ng-click="onClickFileOp(eachFile, 'getInfo')">
+						<i data-ng-include="'ui/img/FileInfo_P.svg'"></i>
+					</a>
+					<a class="sharedFileListOption-activity-icon" title="{{'share.file.viewActivity'| translate}}" data-ng-if ="eachFile.protectedFile" data-ng-click="viewFileActivity(eachFile)">
+					<i data-ng-include="'ui/img/Share_Activity_P.svg'"></i>
+					</a>
+					<a class="fileListOption-protect-icon" title="{{'viewer.toolbar.protect'| translate}}" data-ng-click="onClickFileOp(eachFile, 'protect')" data-ng-if="!eachFile.protectedFile">
+						<i data-ng-include="'ui/img/Protect_P.svg'"></i>
+					</a>
+					<a class="fileListOption-share-icon" title="{{'viewer.toolbar.share'| translate}}" data-ng-click="onClickFileOp(eachFile, 'share')">
+						<i data-ng-include="'ui/img/Share_P.svg'"></i>
+					</a>
+					<a class="fileListOption-download-icon" title="{{'viewer.toolbar.download'| translate}}" data-ng-click="onClickFileOp(eachFile, 'download')">
+						<i data-ng-include="'ui/img/Download_Protected.svg'"></i>
+					</a>
+					<a class="fileListOption-delete-icon" title="{{'viewer.toolbar.delete'| translate}}" data-ng-click="onClickFileOp(eachFile, 'delete')">
+						<i data-ng-include="'ui/img/Delete_P.svg'"></i>
+					</a>					
+				</span>
+			</div>
+		</div>
+	</div>

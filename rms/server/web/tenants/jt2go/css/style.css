@@ -1,0 +1,27 @@
+.tenantLogo  {
+  background: url("../images/logo.png") no-repeat;
+  height: 71px;
+  width: 141px;
+  float:right;
+  display:inline-block;
+  margin-right:20px;
+}
+
+.login-left-column .description-msg {
+  margin-top: 3%;
+  margin-bottom: 2%;
+}
+
+.login-left-column .welcome-msg {
+  margin-top: 5%;
+}
+
+
+.login-left-column .more-info {
+  text-align: center;
+}
+
+.login-left-column .more-info a{
+  text-decoration: underline;
+  pointer: cursor;
+}

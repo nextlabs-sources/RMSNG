@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:import schemaLocation="types/GroupInfo.xsd"/>
+    
+    <xs:element name="CheckUpdates" type="CheckUpdatesType"/>
+
+    <xs:complexType name="CheckUpdatesRequestType">
+        <xs:sequence>
+            <xs:element name="CurrentVersion" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="LastUpdatedDate" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="groupInformation" type="GroupInfo" minOccurs="1" nillable="false"/>
+            <xs:element name="tenantId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="agentId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="osType" type="osTypeRestriction" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="osVersion" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="architecture" type="architectureType" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="CheckUpdatesResponseType">
+        <xs:sequence>
+            <xs:element name="NewVersion" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="CheckSum" type="xs:long" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="DownloadURL" type="xs:string" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="CheckUpdatesType">
+        <xs:choice minOccurs="1" maxOccurs="1">
+            <xs:element name="CheckUpdatesRequest" type="CheckUpdatesRequestType"/>
+            <xs:element name="CheckUpdatesResponse" type="CheckUpdatesResponseType"/>
+        </xs:choice>
+    </xs:complexType>
+    
+    <xs:simpleType name="architectureType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="32bit"/>
+			<xs:enumeration value="64bit"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="osTypeRestriction">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Windows"/>
+			<xs:enumeration value="Linux"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+</xs:schema>

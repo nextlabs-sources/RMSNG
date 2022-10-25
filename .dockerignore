@@ -1,0 +1,11 @@
+#To send related files used for docker build
+
+#Exclude all files
+**
+
+#Including necessary files
+!xlib
+!docker/*
+!rms/server/build/libs/rms.war
+!router/server/build/libs/router.war
+!viewer/build/libs/viewer.war

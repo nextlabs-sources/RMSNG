@@ -1,0 +1,57 @@
+<div id="assign-project-admin" style="background-color: white; width: 100%; margin-top: 30px;">
+	<div id="assign-project-admin-heading" class="admin-heading-border" style="position:relative;">
+		<span id="assign-project-admin-landing-page-icon" style="padding-left:10px;">
+			<i data-ng-include="'ui/img/AssignProjectAdmin.svg'"></i>
+		</span>
+		<span style="display:inline-block;padding:10px;">
+			<div class="admin-section-title">{{'config.project_admin' | translate}}</div>
+			<div class="admin-section-description">{{'config.project_admin.assign_proj_admin_definition' | translate}}</div>
+		</span>
+		<span style="position:absolute; right:3%; top:32%; cursor:pointer;" data-ng-click="onClickTab('assignProjectAdmin')">
+			<i data-ng-include="'ui/img/Arrow_Grey.svg'"></i>
+		</span>
+	</div>
+	<div ng-controller="assignProjAdminsController" id="assign-project-admin-body" class="admin-body-border" style="position:relative;">
+		<div ng-show="projectAdminsList.length == 1" id="assign-project-admin-section" class="inline-block" style="position:relative; width:245px; cursor:pointer;" data-ng-click="onClickTab('assignProjectAdmin')">
+			<div style="position:relative; display:inline-block;">
+				<div id="profileImageLandingPageTop" class="default_profile" data-ng-class="'profile_'+projectAdminsList[0].email[0].toLowerCase()" uib-tooltip="{{getUserFullDisplayName(displayName, email)}}"  style="position:absolute; top:0px;">
+	                <div id="profileNameLandingPageTop">
+	                    {{projectAdminsList[0].email | initials}}
+	                </div>
+	            </div>
+				<button style="margin: 5px 30px; cursor:initial;" class="btn btn-default button-paddings" ng-class="projectAdminsList[0].tenantAdmin ? 'rms-project-admin-color' : ''"  title="{{projectAdminsList[0].email}}">
+					<span style="width: 200px; display: inline-block" class="text-ellipsis">{{projectAdminsList[0].email}}</span>
+				</button>
+			</div>
+			<div style="position:relative;">
+				<i data-ng-include="'ui/img/Add_icon.svg'"></i>
+				<span class="light-gray-text" style="position:absolute; top:18px; right:0px;">{{'config.project_admin' | translate}}</span>
+			</div>
+		</div>
+		<div ng-show="projectAdminsList.length > 1">
+			<span data-ng-repeat="projectAdminElement in projectAdminsList" ng-if="$index < 3">
+				<div style="position:relative; display:inline-block;">
+					<div id="profileImageLandingPageTop" class="default_profile" data-ng-class="'profile_'+projectAdminElement.email[0].toLowerCase()" uib-tooltip="{{getUserFullDisplayName(displayName, email)}}"  style="position:absolute; top:0px;">
+		                <div id="profileNameLandingPageTop">
+		                    {{projectAdminElement.email | initials}}
+		                </div>
+		            </div>
+					<button style="margin: 5px 30px; cursor:initial;" class="btn btn-default button-paddings" ng-class="projectAdminElement.tenantAdmin ? 'rms-project-admin-color' : ''"  title="{{projectAdminElement.email}}">
+						<span style="width: 200px; display: inline-block" class="text-ellipsis">{{projectAdminElement.email}}</span>
+					</button>				
+				</div>
+			</span> 
+			<div ng-show="projectAdminsList.length > 3" style="position:relative; display:inline-block;">
+				<div id="profileImageLandingPageTop" class="default_profile" style="position:absolute; top:0px;">
+	                <div id="profileNameLandingPageTop">
+	                    +{{ projectAdminsList.length - 3 }}
+	                </div>
+	            </div>
+				<button style="margin: 5px 30px;" class="btn btn-default button-paddings" ng-click="onClickTab('assignProjectAdmin')">
+					<span style="width: 200px; display: inline-block">{{ projectAdminsList.length - 3 }} {{'more.ellipse' | translate}}</span>
+				</button>
+			</div>
+		</div>
+		<button type="button" class="btn-link" data-ng-click="onClickTab('assignProjectAdmin')" style="position:absolute; right:0px; bottom:5px;">{{'add.manage.project.admins' | translate}}<i style="padding-left:5px;" data-ng-include="'ui/img/back arrow - black.svg'"></i></button>
+	</div>
+</div>

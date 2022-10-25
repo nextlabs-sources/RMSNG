@@ -1,0 +1,28 @@
+<svg width="84" height="75" viewBox="0 0 84 75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>icons8-Windows XP</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(15093 -1971)">
+<g id="icons8-Windows XP">
+<g id="surface1">
+<g id="Vector">
+<use xlink:href="#path0_fill" transform="translate(-15093 2004.29)" fill="#03A9F4"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path1_fill" transform="translate(-15057.6 2012.44)" fill="#FFC107"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path2_fill" transform="translate(-15083.6 1971)" fill="#FF5722"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path3_fill" transform="translate(-15048.2 1979.51)" fill="#7CB342"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 39.2201 5.40977L 31.0807 33.7178C 24.0078 28.9022 16.3151 24.9379 0 31.7678L 7.95703 3.77098L 8.04818 3.72521C 24.2995 -3.04053 32.1654 0.566644 39.2201 5.40977Z"/>
+<path id="path1_fill" d="M 8.03906 -1.17187e-06L 0 27.9876C 7.0638 32.8399 14.8932 36.7034 31.181 29.8828L 38.9375 2.59094C 22.3398 8.34044 15.1029 4.80651 8.03906 -1.17187e-06Z"/>
+<path id="path2_fill" d="M 31.2083 33.6001L 39.2383 5.55752C 32.1745 0.732702 24.3359 -3.14913 8.02995 3.68985L -5.83333e-07 31.8514C 6.47135 29.1506 11.5938 27.9055 15.8776 27.9513C 22.3854 27.9879 26.9518 30.707 31.2083 33.6001Z"/>
+<path id="path3_fill" d="M 8.02995 1.0633e-06L 0 28.1982C 7.04557 33.0322 15.5586 36.9872 31.1719 29.9285L 39.1927 1.83105C 22.9049 8.63341 15.0755 4.81567 8.02995 1.0633e-06Z"/>
+</defs>
+</svg>
